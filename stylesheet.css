@@ -1,0 +1,208 @@
+
+body {
+
+    text-align: justify;
+    margin: 0;
+    padding:0 2em 0 1em;
+    word-wrap: break-word;
+    background-color: white;
+    margin: 1em;
+}
+
+h2 {
+    background-color: #007;
+    border-radius: 1em 0 0 1em;
+    margin: 1em 0 0 -1em;
+    width: auto;
+    color: white;
+    font-weight: bold;
+    padding: 0.3em 0.5em;
+    color: white;
+    counter-increment: part;
+    counter-reset: chapter;
+}
+
+q:before {
+    content: "“";
+}
+
+q:after {
+    content: "”";
+}
+
+.class::before {
+    content: "<";
+}
+
+.class::after {
+    content: ">";
+}
+
+h2:before {
+    margin: 0.5em;
+    width: 2em;
+    height: 1em;
+}
+
+.example::before {
+    content: "Example:\A\A";
+}
+
+.legend::before {
+    content: "Legend:";
+    padding-bottom: 2em;
+}
+
+
+h3:before,
+h4:before,
+h5:before,
+h6:before {
+    margin-right: 1em;
+}
+
+h3:before {
+    content: counter(chapter) ".";
+}
+
+h4:before {
+    content: counter(chapter) "." counter(section) ".";
+}
+
+h5:before {
+    content: counter(chapter) "." counter(section) "." counter(subsection) ".";
+}
+
+h6:before {
+    content: counter(chapter) "." counter(section) "." counter(subsection) "." counter(paragraph);
+}
+
+.definition-special,
+.definition-special,
+.definition-special-form,
+.definition-function,
+.definition-generic,
+.definition-local,
+.definition-syntax,
+.definition-constant,
+.definition-defining {
+    border: black solid thick;
+}
+
+.definition-special::after,
+.definition-special-form::after,
+.definition-function::after,
+.definition-generic::after,
+.definition-local::after,
+.definition-syntax::after,
+.definition-constant::after,
+.definition-defining::after {
+    float: right;
+}
+
+.definition-special::after {
+    content: "special operator";
+}
+
+.definition-special-form::after {
+    content: "special form";
+}
+
+.definition-function::after {
+    content: "function";
+}
+
+.definition-generic::after {
+    content: "generic function";
+}
+
+.definition-local::after {
+    content: "local function";
+}
+
+.definition-defining::after {
+    content: "defining operator";
+}
+
+.definition-content::after {
+    content: "defining operator";
+}
+
+.definition-syntax::after {
+    content: "syntax";
+}
+
+.definition-constant::after {
+    content: "named constant";
+}
+
+h3, h4, h5, h6 {
+    margin: 1em 0 0 -1em;
+    font-size: 1em;
+}
+
+h3 {
+    border-left: 1em solid blue;
+    padding: 0 0.5em;
+    counter-increment: chapter;
+    counter-reset: section;
+}
+
+h4 {
+    counter-increment: section;
+    counter-reset: subsection;
+
+}
+
+h5 {
+    counter-increment: subsection;
+    counter-reset: paragraph
+}
+
+h6 {
+    counter-increment: paragraph;
+}
+
+p, div.note, dl {
+    margin: 0 0 0.5em 0;
+    padding: 0;
+    line-height: 1.5;
+}
+
+h1 {
+    font-size: 200%;
+    margin: 0 -0.5em 0 -0.5em;
+    padding:0;
+    font-weight: bold;
+    background-color: white;
+    color: #007;
+    right: -1em;
+    top: -1em;
+    background: #EEE;
+}
+
+body h2 a {
+    color: white;
+}
+
+strong {
+    font-weight: bold;
+}
+
+p a {
+    font-weight: bold;
+    color: red;
+}
+
+blockquote {
+    border-left: thick solid gray;
+    padding: 0 1em 0 1em;
+}
+
+pre {
+    border-radius: 0.5em;
+    background-color: #eee;
+    margin: 0 0 0.5em 0;
+    border: black thin solid;
+    padding: 0 0.4em;
+}
