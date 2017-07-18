@@ -25,22 +25,22 @@ resulting ISO standard) may be non-exclusively derived without fee or other rest
 
 <h2>Contents</h2>
 <ol>
-<li>Scope</li>
-<li>Normative references</li>
-<li>Compliance of ISLisp processors and text</li>
-<li>Terms and definitions</li>
-<li>Notation and conventions</li>
-<li>Lexemes
+<li><a href="#scope">Scope</a></li>
+<li><a href="#normative_references">Normative references</a></li>
+<li><a href="#compliance">Compliance of ISLisp processors and text</a></li>
+<li><a href="#terms_and_definitions">Terms and definitions</a></li>
+<li><a href="#notation_and_conventions">Notation and conventions</a></li>
+<li><a href="#lexemes">Lexemes</a>
 <ol>
-<li>Separators</li>
-<li>Comments</li>
+<li><a href="#separators">Separators</a></li>
+<li><a href="#comments">Comments</a></li>
 </ol></li>
-<li>Textual representation</li>
-<li>Reserved identifiers</li>
-<li>Errors
+<li><a href="#textual_representation">Textual representation</a></li>
+<li><a href="#reserved_identifiers">Reserved identifiers</a></li>
+<li><a href="#errors">Errors</a>
 <ol>
-<li>Classes of error specification</li>
-<li>Pervasive error types</li>
+<li><a href="#classes_of_error">Classes of error specification</a></li>
+<li><a href="#pervasive_error_types">Pervasive error types</a></li>
 </ol>
 </li>
 <li>Classes
@@ -141,7 +141,7 @@ resulting ISO standard) may be non-exclusively derived without fee or other rest
 <li>Class enquiry</li>
 </ol>
 </li>
-<li>Macros</li>
+<li><a href="#macros">Macros</a></li>
 <li>Declarations and coercions</li>
 <li>Symbol class
 <ol>
@@ -163,10 +163,10 @@ resulting ISO standard) may be non-exclusively derived without fee or other rest
 <li>Integer class</li>
 </ol>
 </li>
-<li>Character class</li>
-<li>List class
+<li><a href="#character_class">Character class</a></li>
+<li><a href="#list_class">List class</a>
 <ol>
-<li>Cons</li>
+<li><a href="#cons">Cons</a></li>
 <li>Null class</li>
 <li>List operations</li>
 </ol>
@@ -222,18 +222,18 @@ resulting ISO standard) may be non-exclusively derived without fee or other rest
 </ol>
 
 <h2>Introduction</h2>
-<p>The programming language ISLISP is a member of the LISP family.</p>
+<p><a href="https://en.wikipedia.org/wiki/ISLISP">The programming language ISLISP</a> is a member of the <a href="https://en.wikipedia.org/wiki/Lisp_(programming_language)">LISP family</a>.</p>
 <p>The following factors inﬂuenced the establishment of design goals for ISLISP:</p>
 <ol>
 <li>A desire of the international LISP community to standardize on those features of LISP upon which there is widespread agreement.</li>
-<li>The existence of the incompatible dialects COMMON-LISP, EULISP, LE-LISP, and SCHEME (mentioned in alphabetical order).</li>
+<li>The existence of the incompatible dialects <a href="https://en.wikipedia.org/wiki/Common_Lisp">COMMON-LISP</a>, <a href="https://en.wikipedia.org/wiki/EuLisp">EULISP</a>, <a href="https://en.wikipedia.org/wiki/Le_Lisp">LE-LISP</a>, and <a href="https://en.wikipedia.org/wiki/Scheme_(programming_language)">SCHEME</a> (mentioned in alphabetical order).</li>
 <li>A desire to affirm LISP as an industrial language.</li>
 </ol>
 <p>This led to the following design goals for ISLISP:</p>
 <ol>
 <li>ISLISP shall be compatible with existing LISP dialects where feasible.</li>
 <li>ISLISP shall have as a primary goal to provide basic functionality.</li>
-<li>ISLISP shall be object-oriented.</li>
+<li>ISLISP shall be <a href="https://en.wikipedia.org/wiki/Object-oriented_programming">object-oriented</a>.</li>
 <li>ISLISP shall be designed with extensibility in mind.</li>
 <li>ISLISP shall give priority to industrial needs over academic needs.</li>
 <li>ISLISP shall promote efficient implementations and applications.</li>
@@ -241,7 +241,7 @@ resulting ISO standard) may be non-exclusively derived without fee or other rest
 
 <h2>Programming Language ISLISP</h2>
 
-<h3>Scope</h3>
+<h3 id="scope">Scope</h3>
 
 <p>This document specifies syntax and semantics of the computer programming language ISLISP by specifying requirements for a conforming ISLISP processor and a conforming ISLISP text.</p>
 <p>This document does not specify:</p>
@@ -257,7 +257,7 @@ this ISLISP text, prepared for execution;</li>
 <li>extensions that might or might not be provided by the implementation.</li>
 </ul>
 
-<h3>Normative references</h3>
+<h3 id="normative_references">Normative references</h3>
 
 <p>The following referenced documents are indispensable for the application of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
 <ul>
@@ -265,7 +265,7 @@ this ISLISP text, prepared for execution;</li>
 <li>IEEE standard 754-1985. Standard for binary floating point arithmetic.</li>
 </ul>
 
-<h3>Compliance of ISLisp processors and text</h3>
+<h3 id="compliance">Compliance of ISLisp processors and text</h3>
 
 <p>An ISLISP processor complying with the requirements of this document shall</p>
 <ul>
@@ -279,11 +279,11 @@ specified by ISLISP Working Draft 23.0.</q></li>
 <p>A complying ISLISP text shall not rely on implementation-dependent features. However, a complying ISLISP text may rely on implementation-defined features required by this document.</p>
 <p>A complying ISLISP text shall not attempt to create a lexical variable binding for any named constant defined in this document. It is a violation if any such attempt is made.</p>
 
-<h3>Terms and definitions</h3>
+<h3 id="terms_and_definitions">Terms and definitions</h3>
 
 <p>For the purposes of this document, the following terms and definitions apply.</p>
 
-<h4>abstract class</h4>
+<h4 id="td_abstract_class">abstract class</h4>
 <p>class that by definition has no direct instances</p>
 
 <h4>activation</h4>
@@ -356,7 +356,7 @@ specified by ISLISP Working Draft 23.0.</q></li>
 <p>object which is not subject to change, either because no operator is provided that is capable of effecting such change, or because some constraint exists which prohibits the use of an operator that might otherwise be capable of effecting such a change</p>
 <div class="note">Note: Except as explicitly indicated otherwise, a conforming processor is not required to detect attempts to modify immutable objects; the consequences are undefined if an attempt is made to modify an immutable object.</div>
 
-<h4>implementation defined</h4>
+<h4 id="td_implementation_defined">implementation defined</h4>
 <p>feature, possibly differing between different ISLISP processors, but completely defined for every processor</p>
 
 <h4>implementation dependent</h4>
@@ -428,7 +428,7 @@ Note: The structure of an instance is defined by the set of its slots.</p>
 <h4>writer</h4>
 <p>method associated with a slot of a class, whose task is to bind a value with a slot of an instance of that class</p>
 
-<h3>Notation and conventions</h3>
+<h3 id="notation_and_conventions">Notation and conventions</h3>
 
 <p>For a clear definition of, and a distinction between, syntactic and semantic concepts, several levels of description abstraction are used in the following.</p>
 <p>There is a correspondence from ISLISP textual units to their ISLISP data structure representations. Throughout this document the text and the corresponding ISLISP objects (data structures) are addressed simultaneously. ISLISP text can be seen as an external specification of ISLISP data structures. To distinguish between the two representations different concepts are used. When textual representation is discussed, textual elements (such as identifiers, literals, and compound forms) are used; when ISLISP objects are discussed, objects (such as symbols and lists) are used.</p>
@@ -510,16 +510,16 @@ Note: The structure of an instance is defined by the set of its slots.</p>
 </dl>
 <p>For any kind of entity in the language, the phrase <q>entity-kind name</q> refers to the entity of kind entity-kind denoted by name. For example, the phrases <q>function name,</q> <q>constant name,</q> or <q>class name</q> respectively mean the function, constant, or class denoted by name.</p>
 
-<h3>Lexemes</h3>
+<h3 id="lexemes">Lexemes</h3>
 
-<p>An ISLISP text is built up from lexemes. Lexemes are built up from at least the following characters (see §20):</p>
+<p>An ISLISP text is built up from lexemes. Lexemes are built up from at least the following characters (<a href="#character_class">see §20</a>):</p>
 <pre>
 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
 a b c d e f g h i j k l m n o p q r s t u v w x y z
 0 1 2 3 4 5 6 7 8 9 + - &lt; &gt; / * &amp; = . ? _ ! $ % : @ [ ] ^ { } ~ #
 </pre>
-<p>Additional characters are implementation defined.</p>
-<p>The following characters are individual lexemes (see §16 and §21.1):</p>
+<p>Additional characters are <a href="#td_implementation_defined">implementation defined</a>.</p>
+<p>The following characters are individual lexemes (see <a href="#macros">§16</a> and <a href="#cons">§21.1</a>):</p>
 <pre>
 ( ) , ’ ‘
 </pre>
@@ -537,15 +537,15 @@ The textual representations of symbols (see §18), numbers (see §19), character
 </pre>
 <p>The effect of delimiting is disestablished inside a string (see §24) or inside a corresponding pair of multiple escape characters (see §18) or for the character immediately following #\.</p>
 
-<h4>Separators</h4>
+<h4 id="separators">Separators</h4>
 <p>Separators are as follows: blank, comments, newline, and an implementation-defined set of characters, (e.g., tabs). Separators have no meaning and can be replaced by each other without changing the meaning of the ISLISP text.</p>
 
-<h4>Comments</h4>
+<h4 id="comments">Comments</h4>
 <p>The character semicolon (;) is the comment begin character. That is, the semicolon and all the characters up to and including the end-of-line form a comment.</p>
 <p>A character sequence beginning with #| and ending with |# is a comment. Such comments may be nested.</p>
 <p>Being a separator, a comment cannot occur inside a lexeme.</p>
 
-<h3>Textual representation</h3>
+<h3 id="textual_representation">Textual representation</h3>
 <p>The textual representation of an object is machine independent. The following are some of the textual representations of the ISLISP objects. This representation is readable by the read function. Lexemes are described in §6</p>
 <dl>
 <dt>Null</dt>
@@ -585,14 +585,14 @@ The textual representations of symbols (see §18), numbers (see §19), character
 </dl>
 <p>There are objects which do not have a textual representation, such as a class or an instance of the <span class="class">function</span> class.</p>
 
-<h3>Reserved identifiers</h3>
+<h3 id="reserved_identifiers">Reserved identifiers</h3>
 <p>Symbols whose names contain a colon (:) or an ampersand (&amp;) are reserved and may not be used as identifiers. Symbols whose names start with colon (:) are called keywords.</p>
 
-<h3>Errors</h3>
+<h3 id="errors">Errors</h3>
 <p>An error is a situation arising during execution in which the processor is unable to continue correct execution according to the semantics defined in this document. The act of detecting and reporting such an error is called signaling the error.</p>
 <p>A violation is a situation arising during preparation for execution in which the textual requirements of this document are not met. A violation shall be detected during preparation for execution.</p>
 
-<h4>Classes of error specification</h4>
+<h4 id="classes_of_error">Classes of error specification</h4>
 <p>The wording of error specification in this document is as follows:</p>
 <dl>
 <dt><q>an error shall be signaled</q></dt>
@@ -604,7 +604,7 @@ The textual representations of symbols (see §18), numbers (see §19), character
 </dl>
 <p>For indexing and cross-referencing convenience, errors in this document have an associated error identification label, notated by text such as <q>(error-id. sample).</q> The text of these labels has no formal significance to ISLISP texts or processors; the actual class of any object which might be used by the implementation to represent the error and the text of any error message that might be displayed is implementation dependent.</p>
 
-<h4>Pervasive error types</h4>
+<h4 id="pervasive_error_types">Pervasive error types</h4>
 <p>Most errors are described in detail in the contect in which they occur. Some error types are so pervasive that their detailed descriptions are consolidated here rather than repeated in full detail upon each occurrence.</p>
 <ol>
 <li>Domain error: an error shall be signaled if the object given as argument of a standard function for which a class restriction is in effect is not an instance of the class which is required in the definition of the function (error-id. domain-error).</li>
@@ -2144,7 +2144,7 @@ The defclass defining form returns the symbol named class-name as its result.
 <p>Each class option is an option that refers to the class as a whole. The following class options are available:</p>
 <ul>
 <li>The :metaclass class option is used to specify that instances of the class being defined are to have a different metaclass than the default provided by the system, that is, different from the class <span class="class">standard-class</span>. The class-name argument is the name of the desired metaclass. The :metaclass class option may be specified once at most. It is a violation if <span class="class">built-in-class</span> is specified as the metaclass.</li>
-<li>The :abstractp class option is used to specify that the class is an abstract class. If this option is supplied and abstract-flag is t, create will signal an error if an attempt is made to create an instance of this class. If the option is unsupplied, or if abstract-flag is nil, the class is not an abstract class. It is a violation if the abstract-flag is supplied but is neither t nor nil.</li>
+<li>The :abstractp class option is used to specify that the class is an <a href="#td_abstract_class">abstract class</a>. If this option is supplied and abstract-flag is t, create will signal an error if an attempt is made to create an instance of this class. If the option is unsupplied, or if abstract-flag is nil, the class is not an <a href="#td_abstract_class">abstract class</a>. It is a violation if the abstract-flag is supplied but is neither t nor nil.</li>
 </ul>
 <p>The following rules of defclass hold for standard classes:</p>
 <ul>
@@ -2419,7 +2419,7 @@ i.e., it is as if it were established by labels. The function object to which th
 </div>
 <p>Returns the class object that corresponds to the class named class-name.</p>
 
-<h3>Macros</h3>
+<h3 id="macros">Macros</h3>
 <p>Macros are a feature to extend the language syntactically. A macro is an abstraction for surface transformations. Because ISLISP texts (e.g., function definitions) can be represented internally by objects in ISLISP, the surface transformations can be described by means of list processing.
 Forms are represented by conses or other objects and a macro describes a transformation function from one group of objects onto another.</p>
 <p>Macros can be internally defined by expander functions which implement the transformation from one group of objects to another. The operation of an expander functions is specified by a defmacro defining form.</p>
@@ -3448,7 +3448,7 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
   ⇒ 1000000000000000
 </pre>
 
-<h3>Character class</h3>
+<h3 id="character_class">Character class</h3>
 
 <p>Characters are represented as instances of the <span class="class">character</span> class. This insulates the programmer from particular character codes.</p>
 <p>The ISLISP character set has at least ninety-five printing characters plus a newline character.
@@ -3522,10 +3522,10 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 (char&gt;= #\a #\a) ⇒ t
 </pre>
 
-<h3>List class</h3>
+<h3 id="list_class">List class</h3>
 <p>The <span class="class">list</span> class is partitioned into two subclasses <span class="class">cons</span> and <span class="class">null</span>.</p>
 
-<h4>Cons</h4>
+<h4 id="cons">Cons</h4>
 <p>A cons (sometimes also called <q>dotted pair</q>) consists of two components; the left component is called car and the right component is called cdr. The constructor of this class is cons. Conses are written as</p>
 <pre>(car . cdr)</pre>
 <p>where car and cdr denote the values in the car and cdr components, respectively, of the cons object. As a special case, if the cdr value is nil, then the cons object is written as</p>
@@ -5190,7 +5190,7 @@ However, an error shall be signaled if an implementation can determine that the 
 ‘ 62
 |# 10
 abs 73
-abstract class 2
+<a href="#td_abstract_class">abstract class 2</a>
 accessible (of a slot) 16
 accessor 2
 accessor (of a slot) 51
