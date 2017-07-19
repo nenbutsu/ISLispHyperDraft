@@ -43,54 +43,54 @@ resulting ISO standard) may be non-exclusively derived without fee or other rest
 <li><a href="#pervasive_error_types">Pervasive error types</a></li>
 </ol>
 </li>
-<li>Classes
+<li><a href="#classes">Classes</a>
 <ol>
-<li>Metaclasses</li>
-<li>Predefined classes</li>
-<li>Standard classes
+<li><a href="#metaclasses">Metaclasses</a></li>
+<li><a href="#predefined_classes">Predefined classes</a></li>
+<li><a href="#standard_classes">Standard classes</a>
 <ol>
-<li>Slots</li>
-<li>Creating instances of classes</li>
+<li><a href="#slots">Slots</a></li>
+<li><a href="#creating_instances">Creating instances of classes</a></li>
 </ol>
 </li>
 </ol>
 </li>
-<li>Scope and extent
+<li><a href="#scope_and_extent">Scope and extent</a>
 <ol>
-<li>The lexical principle</li>
-<li>Scope of identifiers</li>
-<li>Some specific scope rules</li>
-<li>Extent</li>
+<li><a href="#the_lexical_principle">The lexical principle</a></li>
+<li><a href="#scope_of_identifiers">Scope of identifiers</a></li>
+<li><a href="#some_specific_scope_rules">Some specific scope rules</a></li>
+<li><a href="#extent">Extent</a></li>
 </ol>
 </li>
-<li>Forms and evaluation
+<li><a href="#forms_and_evaluation">Forms and evaluation</a>
 <ol>
-<li>Forms</li>
-<li>Function application forms</li>
-<li>Special forms</li>
-<li>Defining forms</li>
-<li>Macro forms</li>
-<li>The evaluation model</li>
-<li>Functions</li>
-<li>Defining operators</li>
+<li><a href="#forms">Forms</a></li>
+<li><a href="#function_application_forms">Function application forms</a></li>
+<li><a href="#special_forms">Special forms</a></li>
+<li><a href="#defining_forms">Defining forms</a></li>
+<li><a href="#macro_forms">Macro forms</a></li>
+<li><a href="#the_evaluation_model">The evaluation model</a></li>
+<li><a href="#functions">Functions</a></li>
+<li><a href="#defining_operators">Defining operators</a></li>
 </ol>
 </li>
-<li>Predicates
+<li><a href="#predicates">Predicates</a>
 <ol>
-<li>Boolean values</li>
-<li>Class predicates</li>
-<li>Equality</li>
-<li>Logical connectives</li>
+<li><a href="#boolean_values">Boolean values</a></li>
+<li><a href="#class_predicates">Class predicates</a></li>
+<li><a href="#equality">Equality</a></li>
+<li><a href="#logical_connectives">Logical connectives</a></li>
 </ol>
 </li>
-<li>Control structure
+<li><a href="#control_structure">Control structure</a>
 <ol>
-<li>Constants</li>
-<li>Variables</li>
-<li>Dynamic variables</li>
-<li>Conditional expressions</li>
-<li>Sequencing forms</li>
-<li>Iteration</li>
+<li><a href="#constants">Constants</a></li>
+<li><a href="#variables">Variables</a></li>
+<li><a href="#dynamic_variables">Dynamic variables</a></li>
+<li><a href="#conditional_expressions">Conditional expressions</a></li>
+<li><a href="#sequencing_forms">Sequencing forms</a></li>
+<li><a href="#iteration">Iteration</a></li>
 <li>Non-local exits
 <ol>
 </ol>
@@ -613,7 +613,7 @@ The textual representations of symbols (see §18), numbers (see §19), character
 </ol>
 <p>This list does not exhaust the space of error types. For a more complete list, see §29.4.</p>
 
-<h3>Classes</h3>
+<h3 id="classes">Classes</h3>
 <p>In ISLISP, data types are covered by the class system. A class is an object that determines the structure and behavior of a set of other objects, which are called its instances. Every ISLISP object is an instance of a class. The behavior is the set of operations that can be performed on an instance.</p>
 <p>A class can inherit structure and behavior from other classes. A class whose definition refers to other classes for the purpose of inheriting from them is said to be a subclass of each of those classes. The classes that are designated for purposes of inheritance are said to be superclasses of the inheriting class.</p>
 <p>A class can be named by an identifier. For example, this identifier can be used as a parameter specializer in method definitions. The class special form can be used to refer to access the class object corresponding to its name.</p>
@@ -625,7 +625,7 @@ The textual representations of symbols (see §18), numbers (see §19), character
 <p>Therefore it is the superclass of every class except itself. The class named <span class="class">standard-object</span> is an instance of the class <span class="class">standard-class</span> and is a superclass of every class that is an instance of <span class="class">standard-class</span> except itself.</p>
 <p>Each class has a class precedence list, which is a total ordering on the set of the given class and its superclasses. The total ordering is expressed as a list ordered from most specific to least specific. The class precedence list is used in several ways. In general, more specific classes can shadow, or override, features that would otherwise be inherited from less specific classes. The method selection and combination process uses the class precedence list to order methods from most specific to least specific.</p>
 
-<h4>Metaclasses</h4>
+<h4 id="metaclasses">Metaclasses</h4>
 <p>Classes are represented by objects that are themselves instances of classes. The class of the class of an object is termed the metaclass of that object. The term metaclass is used to refer to a class that has instances that are themselves classes.</p>
 
 <div>
@@ -722,7 +722,7 @@ Figure 1. Class Inheritance
 <li>The class <span class="class">built-in-class</span> is the class whose instances are classes that have special implementations or restricted capabilities. For example, it is not possible to define subclasses of a built-in class.</li>
 </ul>
 
-<h4>Predefined classes</h4>
+<h4 id="predefined_classes">Predefined classes</h4>
 <p>The following classes are primitive classes in the class system (i.e., predefined classes that are not metaclasses):</p>
 <ul>
 <li><span class="class">arithmetic-error</span></li>
@@ -780,8 +780,8 @@ Figure 1. Class Inheritance
 <p>A standard class defined with no direct superclasses is guaranteed to be disjoint from all of the classes in the figure, except for the classes named <span class="class">standard-object</span> and <span class="class">object</span>.</p>
 <p>The class <span class="class">function</span> is the class of all functions. The class <span class="class">standard-generic-function</span> is the default class of all generic functions.</p>
 
-<h4>Standard classes</h4>
-<h5>Slots</h5>
+<h4 id="standard_classes">Standard classes</h4>
+<h5 id="slots">Slots</h5>
 <p>An object that has <span class="class">standard-class</span> as its metaclass has zero or more named slots. The slots of an object are determined by the class of the object. Each slot can hold one object as its value. The name of a slot is an identifier.</p>
 <p>When a slot does not have a value, the slot is said to be unbound. The consequences are undefined if an attempt is made to retrieve the value of an unbound slot.</p>
 <p>Storing and retrieving the value of a slot is done by generic functions defined by the defclass defining form.</p>
@@ -789,20 +789,20 @@ Figure 1. Class Inheritance
 <p>A class is said to define a slot with a given name when the defclass defining form for that class contains a slot specifier with that name. Defining a slot does not immediately create a slot; it causes a slot to be created each time an instance of the class is created.</p>
 <p>A slot is said to be accessible in an instance of a class if the slot is defined by the class of the instance or is inherited from a superclass of that class. At most one slot of a given name can be accessible in an instance. A detailed explanation of the inheritance of slots is given in the section §15.1.3.</p>
 
-<h5>Creating instances of classes</h5>
+<h5 id="creating_instances">Creating instances of classes</h5>
 
 <p>The generic function create creates and returns a new instance of a class. ISLISP provides several mechanisms for specifying how a new instance is to be initialized. For example, it is possible to specify the initial values for slots in newly created instances by providing default initial values. Further initialization activities can be performed by methods written for generic functions that are part of the initialization protocol.</p>
 
-<h3>Scope and extent</h3>
+<h3 id="scope_and_extent">Scope and extent</h3>
 <p>In describing ISLISP, the notions of scope and extent are useful. The first is a syntactic concept, the latter is a semantic concept. Although syntactic constructs, especially identifiers, are used to refer to runtime entities (i.e., objects arising during execution), a single entity cannot have both scope and extent. Scope is a feature of an identifier, referring to that textual part of an ISLISP text (see §4.38 and §5) within which this identifier occurs with unique meaning. Extent refers to the interval of execution time during which a certain object exists.</p>
 <p>A namespace is a mapping from identifiers to meanings. In ISLISP there are six namespaces: variable, dynamic variable, function, class, block, and tagbody tag. It is therefore possible for a single identifier to have any or all of these six meanings, depending on the context. For example, an identifier’s meaning is determined by the function namespace when the identifier appears in the operator position of a function application form, whereas the same identifier’s meaning is determined by the variable namespace if it appears in an argument position in the same form.</p>
 
-<h4>The lexical principle</h4>
+<h4 id="the_lexical_principle">The lexical principle</h4>
 
 <p>ISLISP is designed following the principle of lexical visibility. This principle states that an ISLISP text must be structured in properly nested lexical blocks of visibility. Within a block, all defined identifiers of that block and of all enclosing outer blocks are visible. Each identifier in a namespace has the meaning determined by the innermost block that defines it.</p>
 <p>ISLISP also supports a form of dynamic binding. Dynamic bindings are established and accessed by a separate mechanism (i.e., defdynamic, dynamic-let, and dynamic). The dynamic value associated with such an identifier is the one that was established by the most recently executed active block that established it, where an active block is one that has been established and not yet disestablished. Because a separate mechanism is used, the lexical meaning of and the dynamic value associated with an identifier are simultaneously accessible wherever both are defined.</p>
 
-<h4>Scope of identifiers</h4>
+<h4 id="scope_of_identifiers">Scope of identifiers</h4>
 <p>The scope of an identifier is that part of an ISLISP text where the meaning of the identifier is defined. It starts textually with the definition point—a point that is specified individually for each form that establishes an identifier. Only identifiers can have a scope.</p>
 <p>For each namespace, if an identifier has scope sa and an identical identifier (in the same namespace) has nested scope sb , then the scope sb of the inner identifier and every scope contained in it are not part of the scope sa . It is said that the inner scope shadows the outer scope.</p>
 <p>Each complete ISLISP text unit is processed in a scope called the toplevel scope.</p>
@@ -827,12 +827,12 @@ Figure 1. Class Inheritance
 <span>Figure 2. Scope Example</span>
 </pre>
 
-<h4>Some specific scope rules</h4>
+<h4 id="some_specific_scope_rules">Some specific scope rules</h4>
 <p>The toplevel scope is the scope of identifiers of required built-in functions, special operators, defining operators, and constants.</p>
 <p>Reserved identifiers are not subject to the lexical principle, because they are not identifiers.
 They cannot be defined or bound. See §8.</p>
 
-<h4>Extent</h4>
+<h4 id="extent">Extent</h4>
 <p>Complementary to scope which is a syntactic concepts, extent is a semantic concept: It describes the lifetime of entities.</p>
 <p>Objects are created at some time during execution. In most cases, it is undetermined when an object ends its existence: its lifetime begins when the object is created and ends when reference to it is no longer possible (and the object is subject to garbage collection). In this case the object is said to have indefinite extent.</p>
 <p>In other cases the processor creates entities that are associated with prepared text. The lifetime of such objects begins at the activation point of a defining construct and ends at the end of activation; in this case the object is said to have dynamic extent.</p>
@@ -868,15 +868,15 @@ They cannot be defined or bound. See §8.</p>
 <p>The defun form for copy-cell is prepared for execution and thereby copy-cell becomes a prepared function. During execution the prepared function copy-cell might be activated. Activation in this case results in the creation of a binding between the variable denoted by x and the object which is used as argument. The binding of x is an entity whose extent lasts from the activation point to the activation end of the function. (In general the extent of a binding can last beyond the activation end, but this does not occur in this simple case.) We say that the binding of x is established upon activation of the function and is disestablished at activation end.</p>
 </blockquote>
 
-<h3>Forms and evaluation</h3>
-<h4>Forms</h4>
+<h3 id="forms_and_evaluation">Forms and evaluation</h3>
+<h4 id="forms">Forms</h4>
 
 <p>Execution presupposes successful preparation for execution of an ISLISP text subject to the evaluation model. Execution is an activation of a prepared text form that results in a value and perhaps in some side-effects.</p>
 <p>An ISLISP text is a sequence of forms.</p>
 <p>Throughout this document the value a form returns is described, but in general a form might not return if one of its subforms executes a non-local exit (see §14.7.1). Therefore, it should be understood that all such descriptions implicitly include the provision that if the form returns, a particular value is returned.</p>
 <p>The following are valid forms in ISLISP:</p>
 <ul>
-<li>Compound forms
+<li id="compound_forms">Compound forms
 <ul>
 <li>Special forms</li>
 <li>Defining forms</li>
@@ -892,7 +892,7 @@ They cannot be defined or bound. See §8.</p>
 <p>A compound form is written as (operator argument *). The operator must be a special operator, a defining operator, an identifier, or a lambda expression. The identifier names a function, a macro, or a generic function. It is a violation if operator is a literal.</p>
 <p>A toplevel form is a form that is either not lexically nested within another form or is lexically nested only within one or more progn forms. Special forms and function application forms at toplevel are called set-up forms. It is a violation if a defining form is not a toplevel form.</p>
 
-<h4>Function application forms</h4>
+<h4 id="function_application_forms">Function application forms</h4>
 
 <p>A function application form is a compound form whose operator is an identifier (naming a function) or whose operator is a lambda expression. All of the arguments are evaluated, from left to right, and the function is called with (or “applied to”) arguments that are, in the same order, the objects resulting from these evaluations. This document describes a function application form in the following format:</p>
 <div class="definition-function">
@@ -908,7 +908,7 @@ They cannot be defined or bound. See §8.</p>
 </div>
 <p>This describes an ordinary function that is available only in a specified lexical scope.</p>
 
-<h4>Special forms</h4>
+<h4 id="special_forms">Special forms</h4>
 <p>A special form is a form whose arguments are treated in a special way; for example, arguments are not evaluated or are evaluated in a special order. It is implementation defined whether any special form is implemented as a macro (see §12.5 and §16). Special forms are recognized because they have a special operator in their operator position. The following are special operators:</p>
 
 <ul>
@@ -963,7 +963,7 @@ They cannot be defined or bound. See §8.</p>
 (special-operator argument*) → result-class
 </div>
 
-<h4>Defining forms</h4>
+<h4 id="defining_forms">Defining forms</h4>
 
 <p>A defining form is a toplevel special form (see §12.3) that establishes a binding between name and an object which is the result of handling the arguments according to the semantics implied by defining-form-name; it is a violation if a defining form is not a toplevel form. For each namespace, defining forms can occur at most once for the same name and, in case of method definitions for the same parameter profile. A defining form is a compound form whose operator is a defining operator. These are the defining operators:</p>
 
@@ -983,12 +983,12 @@ They cannot be defined or bound. See §8.</p>
 (defining-form-name name argument *) → <span class="class">symbol</span>
 </div>
 
-<h4>Macro forms</h4>
+<h4 id="macro_forms">Macro forms</h4>
 
 <p>Macro forms are expanded during preparation for execution.</p>
 <p>For information on how macros are processed, see §16.</p>
 
-<h4>The evaluation model</h4>
+<h4 id="the_evaluation_model">The evaluation model</h4>
 <p>This section provides an operational model of the process of evaluation.</p>
 
 <p>The process of evaluation has two steps: A valid ISLISP text is first prepared for execution, and then the prepared text is executed. Both the process of preparing the text for execution and the properties of a prepared text are implementation dependent, except that all macros have been expanded in the prepared text (see §16). The process of execution which follows is described in terms of fully macroexpanded forms.</p>
@@ -1012,7 +1012,7 @@ They cannot be defined or bound. See §8.</p>
 </ul>
 <p>See §9.2 for descriptions of error situations that might occur during execution of the above cases.</p>
 
-<h4>Functions</h4>
+<h4 id="functions">Functions</h4>
 
 <p>A function can receive some objects as arguments upon activation. If a function returns, it returns an object as its value. A function binding can be established in one of the following ways:</p>
 <ul>
@@ -1145,7 +1145,7 @@ An error shall be signaled if function is not a function (error-id. domain-error
   ⇒ 1
 </pre>
 
-<h4>Defining operators</h4>
+<h4 id="defining_operators">Defining operators</h4>
 
 <p>Although the names defined by defining forms can be used throughout the current toplevel scope, the prepared toplevel forms in an ISLISP text unit are executed sequentially from left to right.</p>
 <p>Two defining forms with the same identifier in the same namespace are not allowed in one toplevel scope.</p>
@@ -1214,8 +1214,8 @@ today                          ⇒ wednesday
 (defun caar (x) (car (car x))) ⇒ caar
 </pre>
 
-<h3>Predicates</h3>
-<h4>Boolean values</h4>
+<h3 id="predicates">Predicates</h3>
+<h4 id="boolean_values">Boolean values</h4>
 
 <p>The values t and nil are called booleans. t denotes true, and nil is the only value denoting false. Predicates, also called boolean functions, are functions that return t when satisfied and nil otherwise.</p>
 <p>Any object other than nil is treated as true (not just t). When objects are treated as true or nil this way they are called quasi-booleans.</p>
@@ -1230,7 +1230,7 @@ nil → <span class="class">null</span>
 </div>
 <p>t is a named constant whose value is the symbol t itself. nil is a named constant whose value is the symbol nil itself.</p>
 
-<h4>Class predicates</h4>
+<h4 id="class_predicates">Class predicates</h4>
 
 <p>The following functions are one-argument class membership predicates:</p>
 <ul>
@@ -1258,7 +1258,7 @@ nil → <span class="class">null</span>
 
 <p>In addition, the function instancep is a two-argument predicate that tests membership in an arbitrary class.</p>
 
-<h4>Equality</h4>
+<h4 id="equality">Equality</h4>
 
 <div class="definition-function">
 (eq obj<sub>1</sub> obj<sub>2</sub>) → boolean
@@ -1377,7 +1377,7 @@ nil → <span class="class">null</span>
 (equal "a" "A")                   ⇒ nil
 </pre>
 
-<h4>Logical connectives</h4>
+<h4 id="logical_connectives">Logical connectives</h4>
 <div class="definition-function">
 (not obj) → boolean
 </div>
@@ -1436,8 +1436,8 @@ nil → <span class="class">null</span>
 (let ((x nil)) (or x (setq x 'b))) ⇒ b
 </pre>
 
-<h3>Control structure</h3>
-<h4>Constants</h4>
+<h3 id="control_structure">Control structure</h3>
+<h4 id="constants">Constants</h4>
 
 <div class="definition-syntax">constant → <span class="class">object</span></div>
 
@@ -1478,7 +1478,7 @@ nil → <span class="class">null</span>
 
 <p>The consequences are undefined if an attempt is made to alter the value of a quoted expression.</p>
 
-<h4>Variables</h4>
+<h4 id="variables">Variables</h4>
 <p>Variable bindings are entities established during execution of the prepared variable-binding forms or by the activation of functions.</p>
 <p>A variable is used to refer to an association between an identifier and an ISLISP object, and is denoted by that identifier. The association can be altered (by assignment) using the setf special form or setq special form.</p>
 <p>The following are variable binding forms:</p>
@@ -1637,7 +1637,7 @@ In the cons x, the car now is 2.
     (list x y)))      ⇒ (2 2)
 </pre>
 
-<h4>Dynamic variables</h4>
+<h4 id="dynamic_variables">Dynamic variables</h4>
 
 <p>A dynamic variable is an association between an identifier var and an ISLISP object in the dynamic variable namespace. Dynamic variables implement a form of dynamic binding.</p>
 <p>Dynamic variables are defined globally by defdynamic and are established during the execution of a prepared dynamic-let.</p>
@@ -1680,7 +1680,7 @@ In the cons x, the car now is 2.
 (foo 2)                ⇒ 3
 </pre>
 
-<h4>Conditional expressions</h4>
+<h4 id="conditional_expressions">Conditional expressions</h4>
 <div class="definition-special">
 (if test-form then-form [else-form]) → <span class="class">object</span>
 </div>
@@ -1801,7 +1801,7 @@ nil
   (("bar") 2))                      ⇒ 2
 </pre>
 
-<h4>Sequencing forms</h4>
+<h4 id="sequencing_forms">Sequencing forms</h4>
 
 <div class="definition-special">
 (progn form*) → <span class="class">object</span>
