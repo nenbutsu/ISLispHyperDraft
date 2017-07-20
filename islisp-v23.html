@@ -3542,7 +3542,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 (x<sub>1</sub> x<sub>2</sub> … x<sub>n−1</sub> . x<sub>n</sub>)
 (x<sub>1</sub> x<sub>2</sub> … x<sub>n−1</sub>)
 </pre>
-<div class="definition-function">
+<div id="f_consp" class="definition-function">
 (consp obj) → boolean
 </div>
 
@@ -3568,7 +3568,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 (cons '(a b) 'c)     ⇒ ((a b) . c)
 </pre>
 
-<div class="definition-function">
+<div id="f_car" class="definition-function">
 (car cons) → <span class="class">object</span>
 </div>
 
@@ -3581,7 +3581,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 (car '(1 . 2))     ⇒ 1
 </pre>
 
-<div class="definition-function">
+<div id="f_cdr" class="definition-function">
 (cdr cons) → <span class="class">object</span>
 </div>
 
@@ -3597,7 +3597,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 (setf (car cons) obj) → <span class="class">object</span>
 </div>
 
-<div class="definition-function">
+<div id="f_set_car" class="definition-function">
 (set-car obj cons) → <span class="class">object</span>
 </div>
 
@@ -3615,7 +3615,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 (setf (cdr cons) obj) → <span class="class">object</span>
 </div>
 
-<div class="definition-function">
+<div id="f_set_cdr" class="definition-function">
 (set-cdr obj cons) → <span class="class">object</span>
 </div>
 
@@ -3632,7 +3632,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 <h4 id="null_class">Null class</h4>
 
 <p>This class consists of only one element, the object called nil. This object is the false value in boolean expressions. The length of the sequence nil is 0.</p>
-<div class="definition-function">
+<div id="f_null" class="definition-function">
 (null obj) → boolean
 </div>
 
@@ -3646,7 +3646,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 
 <h4 id="list_operations">List operations</h4>
 
-<div class="definition-function">
+<div id="f_listp" class="definition-function">
 (listp obj) → boolean
 </div>
 
@@ -3664,7 +3664,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 (listp 'jerome)      ⇒ nil
 </pre>
 
-<div class="definition-function">
+<div id="f_create_list" class="definition-function">
 (create-list i [initial-element]) → <span class="class">list</span>
 </div>
 
@@ -3674,7 +3674,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 (create-list 2 #\a) ⇒ (#\a #\a)
 </pre>
 
-<div class="definition-function">
+<div id="f_list" class="definition-function">
 (list obj*) → <span class="class">list</span>
 </div>
 
@@ -3685,10 +3685,10 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 (list)               ⇒ nil
 </pre>
 
-<pre class="definition-function">
+<pre id="f_reverse" class="definition-function">
 (reverse list) → <span class="class">list</span>
 </pre>
-<pre class="definition-function">
+<pre id="f_nreverse" class="definition-function">
 (nreverse list) → <span class="class">list</span>
 </pre>
 <p>These functions each return a list whose elements are those of the given list, but in reverse order. An error shall be signaled if list is not a list (error-id. domain-error).</p>
@@ -3702,7 +3702,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
                                   ⇒ implementation-defined
 </pre>
 
-<div class="definition-function">
+<div id="f_append" class="definition-function">
 (append list*) → <span class="class">list</span>
 </div>
 
@@ -3714,7 +3714,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 (append '(a b c) '(d e f)) ⇒ (a b c d e f)
 </pre>
 
-<div class="definition-function">
+<div id="f_member" class="definition-function">
 (member obj list) → <span class="class">list</span>
 </div>
 
@@ -3726,22 +3726,22 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 (member 'c '(a b c a b c)) ⇒ (c a b c)
 </pre>
 
-<div class="definition-function">
+<div id="f_mapcar" class="definition-function">
 (mapcar function list+) → <span class="class">list</span>
 </div>
-<div class="definition-function">
+<div id="f_mapc" class="definition-function">
 (mapc function list+) → <span class="class">list</span>
 </div>
-<div class="definition-function">
+<div id="f_mapcan" class="definition-function">
 (mapcan function list+) → <span class="class">list</span>
 </div>
-<div class="definition-function">
+<div id="f_maplist" class="definition-function">
 (maplist function list+) → <span class="class">list</span>
 </div>
-<div class="definition-function">
+<div id="f_mapl" class="definition-function">
 (mapl function list+) → <span class="class">list</span>
 </div>
-<div class="definition-function">
+<div id="f_mapcon" class="definition-function">
 (mapcon function list+) → <span class="class">list</span>
 </div>
 
@@ -3823,7 +3823,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 (mapcon #'list '(1 2 3 4)) ⇒ ((1 2 3 4) (2 3 4) (3 4) (4))
 </pre>
 
-<div class="definition-function">
+<div id="f_assoc" class="definition-function">
 (assoc obj association-list) → <span class="class">list</span>
 </div>
 
@@ -3877,13 +3877,13 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 
 <p>To manipulate arrays ISLISP provides the following functions.</p>
 
-<div class="definition-function">
+<div id="f_basic_array_p" class="definition-function">
 (basic-array-p obj) → boolean
 </div>
-<div class="definition-function">
+<div id_"f_basic_array_s_p" class="definition-function">
 (basic-array*-p obj) → boolean
 </div>
-<div class="definition-function">
+<div id="f_general_array_s_p" class="definition-function">
 (general-array*-p obj) → boolean
 </div>
 
@@ -3904,7 +3904,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
   ⇒ ((nil nil nil) (t nil nil) (t nil nil) (t nil nil) (t t t))
 </pre>
 
-<div class="definition-function">
+<div id="f_create_array" class="definition-function">
 (create-array dimensions [initial-element]) → <span class="class">basic-array</span>
 </div>
 
@@ -3918,10 +3918,10 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 (create-array '(2) 0.0)   ⇒ #(0.0 0.0)
 </pre>
 
-<div class="definition-function">
+<div id="f_aref" class="definition-function">
 (aref basic-array z *) → <span class="class">object</span>
 </div>
-<div class="definition-function">
+<div id="f_garef" class="definition-function">
 (garef general-array z *) → <span class="class">object</span>
 </div>
 
@@ -3949,13 +3949,13 @@ array1
 <div class="definition-special-form">
 (setf (aref basic-array z *) obj) → <span class="class">object</span>
 </div>
-<div class="definition-function">
+<div id="f_set_aref" class="definition-function">
 (set-aref obj basic-array z *) → <span class="class">object</span>
 </div>
 <div class="definition-special-form">
 (setf (garef general-array z *) obj) → <span class="class">object</span>
 </div>
-<div class="definition-function">
+<div id="f_set_garef" class="definition-function">
 (set-garef obj general-array z *) → <span class="class">object</span>
 </div>
 
@@ -3966,7 +3966,7 @@ array1
 (set-aref 51.3 array1 0 1 2)    ⇒ 51.3
 </pre>
 
-<div class="definition-function">
+<div id="f_array_dimensions" class="definition-function">
 (array-dimensions basic-array) → <span class="class">list</span>
 </div>
 
@@ -3987,10 +3987,10 @@ array1
 #(x<sub>1</sub> x<sub>2</sub> … x<sub>n</sub>)
 </pre>
 
-<div class="definition-function">
+<div id="f_basic_vector_p" class="definition-function">
 (basic-vector-p obj) → boolean
 </div>
-<div class="definition-function">
+<div id="f_general_vector_p" class="definition-function">
 (general-vector-p obj) → boolean
 </div>
 
@@ -4009,7 +4009,7 @@ array1
   ⇒ ((nil nil) (t nil) (t t) (t t) (nil nil))
 </pre>
 
-<div class="definition-function">
+<div id="f_create_vector" class="definition-function">
 (create-vector i [initial-element]) → <span class="class">general-vector</span>
 </div>
 
@@ -4021,7 +4021,7 @@ may be any ISLISP object.</p>
 (create-vector 2 #\a) ⇒ #(#\a #\a)
 </pre>
 
-<div class="definition-function">
+<div id="f_vector" class="definition-function">
 (vector obj *) → <span class="class">general-vector</span>
 </div>
 
@@ -4037,7 +4037,7 @@ may be any ISLISP object.</p>
 <p>A string is a vector that is capable only of holding elements of type <span class="class">character</span>. See §22.1 for detailed information about the relationship of arrays, vectors, and strings.</p>
 <p>Any implementation-defined character can be a string element. In ISLISP, string indices are 0-based. Strings are written by listing all the element characters in order and by enclosing them with double quotes <q>&quot;</q>. If the string has a double quote as its element, the double quote must be preceded by a backslash <q>\</q>. If the string has a backslash as its element, the backslash must be preceded by another backslash. Strings contained in program text as literals are immutable objects. The representation of non-printing characters is implementation defined.</p>
 
-<div class="definition-function">
+<div id="f_stringp" class="definition-function">
 (stringp obj) → boolean
 </div>
 
@@ -4048,7 +4048,7 @@ may be any ISLISP object.</p>
 (stringp 'abc) ⇒ nil
 </pre>
 
-<div class="definition-function">
+<div id="f_create_string" class="definition-function">
 (create-string i [initial-character ]) → <span class="class">string</span>
 </div>
 
@@ -4060,22 +4060,22 @@ An error shall be signaled if i is not a non-negative integer or if initial-char
 (create-string 0 #\a) ⇒ ""
 </pre>
 
-<div class="definition-function">
+<div id="f_stringeq" class="definition-function">
 (string= string<sub>1</sub> string<sub>2</sub>) → quasi-boolean
 </div>
-<div class="definition-function">
+<div id="f_stringneq" class="definition-function">
 (string/= string<sub>1</sub> string<sub>2</sub>) → quasi-boolean
 </div>
-<div class="definition-function">
+<div id="f_stringlt" class="definition-function">
 (string&lt; string<sub>1</sub> string<sub>2</sub>) → quasi-boolean
 </div>
-<div class="definition-function">
+<div id="f_stringgt" class="definition-function">
 (string&gt; string<sub>1</sub> string<sub>2</sub>) → quasi-boolean
 </div>
-<div class="definition-function">
+<div id="f_stringgteq" class="definition-function">
 (string&gt;= string<sub>1</sub> string<sub>2</sub>) → quasi-boolean
 </div>
-<div class="definition-function">
+<div id="f_stringlteq" class="definition-function">
 (string&lt;= string<sub>1</sub> string<sub>2</sub>) → quasi-boolean
 </div>
 
@@ -4105,7 +4105,7 @@ An error shall be signaled if i is not a non-negative integer or if initial-char
 (if (string&gt;= "abcd" "abcd") t nil)  ⇒ t
 </pre>
 
-<div class="definition-function">
+<div id="f_char_index" class="definition-function">
 (char-index char string [start-position]) → <span class="class">object</span>
 </div>
 <p>Returns the position of char in string, The search starts from the position indicated by start-position (which is 0-based and defaults to 0). The value returned if the search succeeds is an offset from the beginning of the string, not from the starting point. If the char does not occur in the string, nil is returned. The function char= is used for the comparisons.</p>
@@ -4119,7 +4119,7 @@ An error shall be signaled if i is not a non-negative integer or if initial-char
 (char-index #\a "abcab" 4) ⇒ nil
 </pre>
 
-<div class="definition-function">
+<div id="f_string_index" class="definition-function">
 (string-index substring string [start-position]) → <span class="class">object</span>
 </div>
 
@@ -4136,7 +4136,7 @@ An error shall be signaled if i is not a non-negative integer or if initial-char
 (string-index "" "foo")         ⇒ 0
 </pre>
 
-<div class="definition-function">
+<div id="f_string_append" class="definition-function">
 (string-append string*) → <span class="class">string</span>
 </div>
 
@@ -4156,7 +4156,7 @@ An error shall be signaled if i is not a non-negative integer or if initial-char
 
 <p>Objects that are either of class <span class="class">basic-vector</span> or of class <span class="class">list</span> are sometimes called <q>sequences</q>. The operations upon sequences are called <q>sequence functions.</q></p>
 
-<div class="definition-function">
+<div id="f_length" class="definition-function">
 (length sequence) → <span class="class">integer</span>
 </div>
 
@@ -4172,7 +4172,7 @@ An error shall be signaled if i is not a non-negative integer or if initial-char
 (length (vector 'a 'b 'c)) ⇒ 3
 </pre>
 
-<div class="definition-function">
+<div id="f_elt" class="definition-function">
 (elt sequence z) → <span class="class">object</span>
 </div>
 
@@ -4188,7 +4188,7 @@ An error shall be signaled if i is not a non-negative integer or if initial-char
 (setf (elt sequence z) obj) → <span class="class">object</span>
 </div>
 
-<div class="definition-function">
+<div id="f_set_elt" class="definition-function">
 (set-elt obj sequence z) → <span class="class">object</span>
 </div>
 
@@ -4201,7 +4201,7 @@ An error shall be signaled if i is not a non-negative integer or if initial-char
   x)                           ⇒ "xxOxx"
 </pre>
 
-<div class="definition-function">
+<div id="f_subseq" class="definition-function">
 (subseq sequence z1 z2) → sequence
 </div>
 
@@ -4214,7 +4214,7 @@ An error shall be signaled if i is not a non-negative integer or if initial-char
   ⇒ #(b c d)
 </pre>
 
-<div class="definition-function">
+<div id="f_map_into" class="definition-function">
 (map-into destination function sequence*) → sequence
 </div>
 
@@ -4243,7 +4243,7 @@ a                           ⇒ (2 4 6 8)
 
 <p>Streams are instances of the <span class="class">stream</span> class. They are objects that serve as sources or sinks of data.</p>
 
-<div class="definition-function">
+<div id="f_streamp" class="definition-function">
 (streamp obj) → boolean
 </div>
 
@@ -4254,13 +4254,13 @@ a                           ⇒ (2 4 6 8)
 (streamp '())              ⇒ nil
 </pre>
 
-<div class="definition-function">
+<div id="f_open_stream_p" class="definition-function">
 (open-stream-p obj) → boolean
 </div>
 
 <p>Returns t if obj is an open stream; otherwise, returns nil.</p>
 
-<div class="definition-function">
+<div id="f_input_stream_p" class="definition-function">
 (input-stream-p obj) → boolean
 </div>
 
@@ -4271,7 +4271,7 @@ a                           ⇒ (2 4 6 8)
 (input-stream-p '(a b c))          ⇒ nil
 </pre>
 
-<div class="definition-function">
+<div id="f_output_stream_p" class="definition-function">
 (output-stream-p obj) → boolean
 </div>
 
@@ -4283,13 +4283,13 @@ a                           ⇒ (2 4 6 8)
 (output-stream-p "hello")           ⇒ nil
 </pre>
 
-<div class="definition-function">
+<div id="f_standard_input" class="definition-function">
 (standard-input) → <span class="class">stream</span>
 </div>
-<div class="definition-function">
+<div id="f_standard_output" class="definition-function">
 (standard-output) → <span class="class">stream</span>
 </div>
-<div class="definition-function">
+<div id="f_error_output" class="definition-function">
 (error-output) → <span class="class">stream</span>
 </div>
 
@@ -4323,13 +4323,13 @@ a                           ⇒ (2 4 6 8)
 <p>A filename is represented by a string. The correct syntax of filenames is implementation defined.</p>
 <p>Streams to files are created by open-input-file, open-output-file, open-io-file, with-open-input-file, with-open-output-file, and with-open-io-file.</p>
 
-<div class="definition-function">
+<div id="f_open_input_file" class="definition-function">
 (open-input-file filename [element-class]) → <span class="class">stream</span>
 </div>
-<div class="definition-function">
+<div id="f_open_output_file" class="definition-function">
 (open-output-file filename [element-class]) → <span class="class">stream</span>
 </div>
-<div class="definition-function">
+<div id="f_open_io_file" class="definition-function">
 (open-io-file filename [element-class]) → <span class="class">stream</span>
 </div>
 
@@ -4367,7 +4367,7 @@ a                           ⇒ (2 4 6 8)
                                       ⇒ hello
 </pre>
 
-<div class="definition-function">
+<div id="f_close" class="definition-function">
 (close stream) → implementation defined
 </div>
 
@@ -4380,7 +4380,7 @@ a                           ⇒ (2 4 6 8)
 (close input-str)          ⇒ implementation-defined
 </pre>
 
-<div class="definition-function">
+<div id="f_finish_output" class="definition-function">
 (finish-output stream) → <span class="class">null</span>
 </div>
 
@@ -4402,7 +4402,7 @@ An error shall be signaled if stream is not a stream that can handle output oper
 </ul>
 <p>A string stream is a stream that is simply a string. For input, the reading functions construct objects from a character sequence obtained from an input string. For output, the printing functions deliver characters which are collected to a result string.</p>
 
-<div class="definition-function">
+<div id="f_create_string_input_stream" class="definition-function">
 (create-string-input-stream string) → <span class="class">stream</span>
 </div>
 
@@ -4414,7 +4414,7 @@ An error shall be signaled if stream is not a stream that can handle output oper
   ⇒ (this is a)
 </pre>
 
-<div class="definition-function">
+<div id="f_create_string_output_stream" class="definition-function">
 (create-string-output-stream) → <span class="class">stream</span>
 </div>
 
@@ -4428,7 +4428,7 @@ An error shall be signaled if stream is not a stream that can handle output oper
   ⇒ "helloworld"
 </pre>
 
-<div class="definition-function">
+<div id="f_get_output_stream_string" class="definition-function">
 (get-output-stream-string stream) → <span class="class">string</span>
 </div>
 <p>Returns a string containing all characters written to stream since the last call to this function or since the creation of the stream, if this function has not been called with stream before. An error shall be signaled if stream is not a stream created with create-string-output-stream (error-id. domain-error).</p>
@@ -4453,7 +4453,7 @@ An error shall be signaled if stream is not a stream that can handle output oper
 
 <p>The following operations are used for character I/O. An error shall be signaled if an attempt is made to perform a character I/O operation on a stream that does not handle such operations.</p>
 
-<div class="definition-function">
+<div id="f_read" class="definition-function">
 (read [input-stream [eos-error-p [eos-value]]]) → <span class="class">object</span>
 </div>
 
@@ -4471,7 +4471,7 @@ An error shall be signaled if stream is not a stream that can handle output oper
 (read str nil "the end") ⇒ "the end"
 </pre>
 
-<div class="definition-function">
+<div id="f_read_char" class="definition-function">
 (read-char [input-stream [eos-error-p [eos-value]]]) → <span class="class">object</span>
 </div>
 
@@ -4487,7 +4487,7 @@ An error shall be signaled if stream is not a stream that can handle output oper
 (read-char str) an error shall be signaled
 </pre>
 
-<div class="definition-function">
+<div id="f_preview_char" class="definition-function">
 (preview-char [input-stream [eos-error-p [eos-value]]]) → <span class="class">object</span>
 </div>
 
@@ -4499,7 +4499,7 @@ An error shall be signaled if stream is not a stream that can handle output oper
  ⇒ (#\f #\f #\o)
 </pre>
 
-<div class="definition-function">
+<div id="f_read_line" class="definition-function">
 (read-line [input-stream [eos-error-p [eos-value]]]) → <span class="class">object</span>
 </div>
 
@@ -4519,7 +4519,7 @@ An error shall be signaled if stream is not a stream that can handle output oper
 (read-line str)  ⇒ "look at the output file"
 </pre>
 
-<div class="definition-function">
+<div id="f_stream_ready_p" class="definition-function">
 (stream-ready-p input-stream) → boolean
 </div>
 
@@ -4532,25 +4532,25 @@ An error shall be signaled if stream is not a stream that can handle output oper
   (stream-ready-p in))               ⇒ t
 </pre>
 
-<div class="definition-function">
+<div id="f_format" class="definition-function">
 (format output-stream format-string obj *) → <span class="class">null</span>
 </div>
-<div class="definition-function">
+<div id="f_format_char" class="definition-function">
 (format-char output-stream char) → <span class="class">null</span>
 </div>
-<div class="definition-function">
+<div id="f_format_float" class="definition-function">
 (format-float output-stream float) → <span class="class">null</span>
 </div>
-<div class="definition-function">
+<div id="f_format_fresh_line" class="definition-function">
 (format-fresh-line output-stream) → <span class="class">null</span>
 </div>
-<div class="definition-function">
+<div id="f_format_integer" class="definition-function">
 (format-integer output-stream integer radix) → <span class="class">null</span>
 </div>
-<div class="definition-function">
+<div id="f_format_object" class="definition-function">
 (format-object output-stream obj escape-p) → <span class="class">null</span>
 </div>
-<div class="definition-function">
+<div id="f_format_tab" class="definition-function">
 (format-tab output-stream column) → <span class="class">null</span>
 </div>
 
@@ -4661,7 +4661,7 @@ An error shall be signaled if the output-stream parameter does not satisfy the o
 
 <p>The following operations are used for binary I/O. An error shall be signaled if an attempt is made to perform a binary I/O operation on a stream that does not handle such operations.</p>
 
-<div class="definition-function">
+<div id="f_read_byte" class="definition-function">
 (read-byte input-stream [eos-error-p [eos-value]]) → <span class="class">integer</span>
 </div>
 
@@ -4685,7 +4685,7 @@ An error shall be signaled if the output-stream parameter does not satisfy the o
 (read-byte byte-example)          ⇒ 111 (implementation-defined)
 </pre>
 
-<div class="definition-function">
+<div id="f_write_byte" class="definition-function">
 (write-byte z output-stream) → <span class="class">integer</span>
 </div>
 
@@ -4699,7 +4699,7 @@ An error shall be signaled if the output-stream parameter does not satisfy the o
 
 <h3 id="files">Files</h3>
 
-<div class="definition-function">
+<div id="f_probe_file" class="definition-function">
 (probe-file filename) → boolean
 </div>
 
@@ -4714,7 +4714,7 @@ An error shall be signaled if the output-stream parameter does not satisfy the o
 (probe-file "notexist.lsp") ⇒ t
 </pre>
 
-<div class="definition-function">
+<div id="f_file_position" class="definition-function">
 (file-position stream) → <span class="class">integer</span>
 </div>
 
@@ -4755,7 +4755,7 @@ An error shall be signaled if the output-stream parameter does not satisfy the o
 (file-position example)        ⇒ 1 (implementation-defined)
 </pre>
 
-<div class="definition-function">
+<div id="f_set_file_position" class="definition-function">
 (set-file-position stream z) → <span class="class">integer</span>
 </div>
 
@@ -4766,7 +4766,7 @@ An error shall be signaled if the output-stream parameter does not satisfy the o
 (set-file-position example 4) ⇒ 4
 </pre>
 
-<div class="definition-function">
+<div id="f_file_length" class="definition-function">
 (file-length filename element-class) → <span class="class">object</span>
 </div>
 
@@ -4800,7 +4800,7 @@ An error shall be signaled if the output-stream parameter does not satisfy the o
 
 <h5 id="operations_relating_to_condition_signaling">Operations relating to condition signaling</h5>
 
-<div class="definition-function">
+<div id="f_error" class="definition-function">
 (error error-string obj *) → <span class="class">object</span>
 </div>
 
@@ -4815,7 +4815,7 @@ An error shall be signaled if the output-stream parameter does not satisfy the o
   nil)
 </pre>
 
-<div class="definition-function">
+<div id="f_cerror" class="definition-function">
 (cerror continue-string error-string obj *) → <span class="class">object</span>
 </div>
 
@@ -4831,7 +4831,7 @@ An error shall be signaled if the output-stream parameter does not satisfy the o
     (get-output-stream-string str)))
 </pre>
 
-<div class="definition-function">
+<div id="f_signal_condition" class="definition-function">
 (signal-condition condition continuable) → <span class="class">object</span>
 </div>
 
@@ -4861,13 +4861,13 @@ An error shall be signaled if the output-stream parameter does not satisfy the o
 
 <p>Presents a natural language description of condition to stream. This generic function may be specialized for user-defined condition classes.</p>
 
-<div class="definition-function">
+<div id="f_condition_continuable" class="definition-function">
 (condition-continuable condition) → <span class="class">object</span>
 </div>
 
 <p>Returns nil if condition is not continuable, or a string describing the effect of continuing otherwise.</p>
 
-<div class="definition-function">
+<div id="f_continue_condition" class="definition-function">
 (continue-condition condition [value]) transfers control and data
 </div>
 
@@ -4892,10 +4892,10 @@ An error shall be signaled if the output-stream parameter does not satisfy the o
 </dd>
 </dl>
 
-<div class="definition-function">
+<div id="f_arithmetic_error_operation" class="definition-function">
 (arithmetic-error-operation arithmetic-error) → <span class="class">function</span>
 </div>
-<div class="definition-function">
+<div id="f_arithmetic_error_operands" class="definition-function">
 (arithmetic-error-operands arithmetic-error) → <span class="class">list</span>
 </div>
 
@@ -4910,10 +4910,10 @@ An error shall be signaled if the output-stream parameter does not satisfy the o
 </dd>
 </dl>
 
-<div class="definition-function">
+<div id="f_domain_error_object" class="definition-function">
 (domain-error-object domain-error) → <span class="class">object</span>
 </div>
-<div class="definition-function">
+<div id="f_domain_error_expected_class" class="definition-function">
 (domain-error-expected-class domain-error) → <span class="class">class</span>
 </div>
 
@@ -4927,10 +4927,10 @@ An error shall be signaled if the output-stream parameter does not satisfy the o
 </dd>
 </dl>
 
-<div class="definition-function">
+<div id="f_parse_error_string" class="definition-function">
 (parse-error-string parse-error) → <span class="class">string</span>
 </div>
-<div class="definition-function">
+<div id="f_parse_error_expected_class" class="definition-function">
 (parse-error-expected-class parse-error) → <span class="class">class</span>
 </div>
 
@@ -4946,10 +4946,10 @@ An error shall be signaled if the output-stream parameter does not satisfy the o
 </dd>
 </dl>
 
-<div class="definition-function">
+<div id="f_simple_error_format_string" class="definition-function">
 (simple-error-format-string simple-error) → <span class="class">string</span>
 </div>
-<div class="definition-function">
+<div id="f_simple_error_format_arguments" class="definition-function">
 (simple-error-format-arguments simple-error) → <span class="class">list</span>
 </div>
 
@@ -4963,7 +4963,7 @@ An error shall be signaled if the output-stream parameter does not satisfy the o
 </dd>
 </dl>
 
-<div class="definition-function">
+<div id="f_stream_error_stream" class="definition-function">
 (stream-error-stream stream-error) → <span class="class">stream</span>
 </div>
 
@@ -4979,10 +4979,10 @@ An error shall be signaled if the output-stream parameter does not satisfy the o
 </dd>
 </dl>
 
-<div class="definition-function">
+<div id="f_undefined_entity_name" class="definition-function">
 (undefined-entity-name undefined-entity) → <span class="class">symbol</span>
 </div>
-<div class="definition-function">
+<div id="f_undefined_entity_namespace" class="definition-function">
 (undefined-entity-namespace undefined-entity) → <span class="class">symbol</span>
 </div>
 
@@ -5115,7 +5115,7 @@ of class <span class="class">undefined-function</span>.
 <p>Some errors that can occur have not been named in this document, and others might be added by the implementation. The above list should not be taken as an exhaustive list of all possible errors in the language.</p>
 
 <h3 id="miscellaneous">Miscellaneous</h3>
-<div class="definition-function">
+<div id="f_identity" class="definition-function">
 (identity obj) → <span class="class">object</span>
 </div>
 
@@ -5123,7 +5123,7 @@ of class <span class="class">undefined-function</span>.
 <pre class="example">
 (identity '(a b c)) ⇒ (a b c)
 </pre>
-<div class="definition-function">
+<div id="f_get_universal_time" class="definition-function">
 (get-universal-time) → <span class="class">integer</span>
 </div>
 
@@ -5136,17 +5136,17 @@ However, an error shall be signaled if an implementation can determine that the 
 (get-universal-time) ⇒ 2901312000
 </pre>
 
-<div class="definition-function">
+<div id="f_get_internal_run_time" class="definition-function">
 (get-internal-run-time) → <span class="class">integer</span>
 </div>
-<div class="definition-function">
+<div id="f_get_internal_real_time" class="definition-function">
 (get-internal-real-time) → <span class="class">integer</span>
 </div>
 
 <p>get-internal-real-time returns as an integer the current time in internal time units, relative to an arbitrary time base. The difference between the values of two calls to this function is the amount of elapsed real time (i.e., clock time) between the two calls.</p>
 <p>get-internal-run-time returns as an integer the current run time in internal time units. The precise meaning of this quantity is implementation defined. The difference between the values of two calls to this function is the amount of time between the two calls during which computational effort was expended on behalf of the executing program.</p>
 
-<div class="definition-function">
+<div id="f_internal_time_units_per_second" class="definition-function">
 (internal-time-units-per-second) → <span class="class">integer</span>
 </div>
 
