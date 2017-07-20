@@ -1029,7 +1029,7 @@ They cannot be defined or bound. See §8.</p>
 </pre>
 <p>Function bindings are entities established during execution of a prepared labels or flet forms or by a function-defining form. A function binding is an association between an identifier, function-name, and a function object that is denoted by function-name—if in operator position—or by (function function-name) elsewhere.</p>
 
-<div class="definition-special">
+<div id="s_function" class="definition-special">
 (function function-name) → <span class="class">function</span>
 </div>
 <div class="definition-syntax">
@@ -1045,7 +1045,7 @@ They cannot be defined or bound. See §8.</p>
 (apply #'- '(4 3)) ⇒ 1
 </pre>
 
-<div class="definition-special">
+<div id="s_lambda" class="definition-special">
 (lambda lambda-list form*) → <span class="class">function</span>
 </div>
 
@@ -1077,10 +1077,10 @@ Example:
 ⇒ -18
 </pre>
 
-<div class="definition-special">
+<div id="s_labels" class="definition-special">
 (labels ((function-name lambda-list form*)*) body-form*) → <span class="class">object</span>
 </div>
-<div class="definition-special">
+<div id="s_flet" class="definition-special">
 (flet ((function-name lambda-list form*)*) body-form*) → <span class="class">object</span>
 </div>
 
@@ -1417,7 +1417,7 @@ nil → <span class="class">null</span>
 (- time 12) time))                  ⇒ 6
 </pre>
 
-<div class="definition-special">
+<div id="s_or" class="definition-special">
 (or form*) → <span class="class">object</span>
 </div>
 
@@ -1452,7 +1452,7 @@ nil → <span class="class">null</span>
 #(a b c)              ⇒ #(a b c)
 </pre>
 
-<div class="definition-special">
+<div id="s_quote" class="definition-special">
 (quote obj) → <span class="class">object</span>
 </div>
 <div class="definition-syntax">
@@ -1499,7 +1499,7 @@ x               ⇒ 0
 x               ⇒ 0
 </pre>
 
-<div class="definition-special">
+<div id="s_setq" class="definition-special">
 (setq var form) → <span class="class">object</span>
 </div>
 
@@ -1514,7 +1514,7 @@ x               ⇒ 0
 (+ x 1)                    ⇒ 5
 </pre>
 
-<div class="definition-special">
+<div id="s_setf" class="definition-special">
 (setf place form) → <span class="class">object</span>
 </div>
 
@@ -1544,7 +1544,7 @@ In the cons x, the car now is 2.
 In the cons x, the car now is 2.
 </pre>
 
-<div class="definition-special">
+<div id="s_let" class="definition-special">
 (let ((var form)*) body-form*) → <span class="class">object</span>
 </div>
 
@@ -1593,7 +1593,7 @@ In the cons x, the car now is 2.
     (list x y)))    ⇒ (2 1)
 </pre>
 
-<div class="definition-special">
+<div id="s_let_s" class="definition-special">
 (let* ((var form)*) body-form*) → <span class="class">object</span>
 </div>
 
@@ -1644,7 +1644,7 @@ In the cons x, the car now is 2.
 <p>Dynamic variable bindings defined by defdynamic persist indefinitely whereas those established by dynamic-let are disestablished upon end of execution of this special form.</p>
 <p>The value of a dynamic variable can be accessed by (dynamic var).</p>
 
-<div class="definition-special">
+<div id="s_dynamic" class="definition-special">
 (dynamic var) → <span class="class">object</span>
 </div>
 
@@ -1654,7 +1654,7 @@ In the cons x, the car now is 2.
 <div class="definition-special-form">
 (setf (dynamic var) form) → <span class="class">object</span>
 </div>
-<div class="definition-special">
+<div id="s_set_dynamic" class="definition-special">
 (set-dynamic form var) → <span class="class">object</span>
 </div>
 
@@ -1662,7 +1662,7 @@ In the cons x, the car now is 2.
 <p>form is evaluated and the result of the evaluation is used to change the dynamic binding of var.</p>
 <p>An error shall be signaled if var has no dynamic value (error-id. unbound-variable). setf of dynamic can be used only for modifying bindings, and not for establishing them.
 </p>
-<div class="definition-special">
+<div id="s_dynamic_let" class="definition-special">
 (dynamic-let ((var form)*) body-form*) → <span class="class">object</span>
 </div>
 
@@ -1681,7 +1681,7 @@ In the cons x, the car now is 2.
 </pre>
 
 <h4 id="conditional_expressions">Conditional expressions</h4>
-<div class="definition-special">
+<div id="s_if" class="definition-special">
 (if test-form then-form [else-form]) → <span class="class">object</span>
 </div>
 
@@ -1697,7 +1697,7 @@ In the cons x, the car now is 2.
   (if (&lt; x 0) x (- x)))      ⇒ -7
 </pre>
 
-<div class="definition-special">
+<div id="s_cond" class="definition-special">
 (cond (test form*)*) → <span class="class">object</span>
 </div>
 
@@ -1761,10 +1761,10 @@ nil
       (t          'equal))  ⇒ equal
 </pre>
 
-<div class="definition-special">
+<div id="s_case" class="definition-special">
 (case keyform ((key*) form*)* [(t form*)]) → <span class="class">object</span>
 </div>
-<div class="definition-special">
+<div id="s_case_using" class="definition-special">
 (case-using predform keyform ((key*) form*)* [(t form*)]) → <span class="class">object</span>
 </div>
 
@@ -1803,7 +1803,7 @@ nil
 
 <h4 id="sequencing_forms">Sequencing forms</h4>
 
-<div class="definition-special">
+<div id="s_progn" class="definition-special">
 (progn form*) → <span class="class">object</span>
 </div>
 
@@ -1827,7 +1827,7 @@ nil
 
 <h4>Iteration</h4>
 
-<div class="definition-special">
+<div id="s_while" class="definition-special">
 (while test-form body-form*) → <span class="class">null</span>
 </div>
 
@@ -1845,7 +1845,7 @@ nil
   x)                                  ⇒ (1 2 3 4 5)
 </pre>
 
-<div class="definition-special">
+<div id="s_for" class="definition-special">
 (for (iteration-spec*) (end-test result *) form*) → <span class="class">object</span>
 </div>
 
@@ -1910,10 +1910,10 @@ iteration-spec ::= (var init [step])
 <p>A lexical transfer of control is a non-local exit from a go form to a tagged point in a tagbody form which contains it both lexically and dynamically.</p>
 <p>When a non-local exit is initiated, any potential destination that was established more recently than the destination to which control is being transferred is immediately considered invalid.</p>
 
-<div class="definition-special">
+<div id="s_block" class="definition-special">
 (block name form*) → <span class="class">object</span>
 </div>
-<div class="definition-special">
+<div id="s_return_from" class="definition-special">
 (return-from name result-form) transfers control and data
 </div>
 
@@ -1962,10 +1962,10 @@ iteration-spec ::= (var init [step])
 (bar t t)        an error shall be signaled
 </pre>
 
-<div class="definition-special">
+<div id="s_catch" class="definition-special">
 (catch tag-form form*) → <span class="class">object</span>
 </div>
-<div class="definition-special">
+<div id="s_throw" class="definition-special">
 (throw tag-form result-form) transfers control and data
 </div>
 
@@ -1989,10 +1989,10 @@ iteration-spec ::= (var init [step])
 (foo '(1 2 3 4)) ⇒ 10
 (foo '(1 2 a 4)) ⇒ 0
 </pre>
-<div class="definition-special">
+<div id="s_tagbody" class="definition-special">
 (tagbody {tagbody-tag | form}*) → <span class="class">object</span>
 </div>
-<div class="definition-special">
+<div id="s_go" class="definition-special">
 (go tagbody-tag) transfers control
 </div>
 
@@ -2025,7 +2025,7 @@ iteration-spec ::= (var init [step])
 </pre>
 
 <h5 id="assuring_data_consistency">Assuring data consistency during non-local exits</h5>
-<div class="definition-special">
+<div id="s_unwind_protect" class="definition-special">
 (unwind-protect form cleanup-form*) → <span class="class">object</span>
 </div>
 
@@ -2414,7 +2414,7 @@ i.e., it is as if it were established by labels. The function object to which th
 </div>
 
 <p>Returns t if the class class1 is a subclass of the class class2 ; otherwise, returns nil. An error shall be signaled if either class1 or class2 is not a class object (error-id. domain-error).</p>
-<div class="definition-special">
+<div id="s_class" class="definition-special">
 (class class-name) → <span class="class">class</span>
 </div>
 <p>Returns the class object that corresponds to the class named class-name.</p>
@@ -2475,10 +2475,10 @@ The definition point of macro-name is the closing parenthesis of the lambda-list
 </pre>
 
 <h3 id="declarations_and_coercions">Declarations and coercions</h3>
-<div class="definition-special">
+<div id="s_the" class="definition-special">
 (the class-name form) → <span class="class">object</span>
 </div>
-<div class="definition-special">
+<div id="s_assure" class="definition-special">
 (assure class-name form) → <span class="class">object</span>
 </div>
 <p>These forms evaluate form. If form returns, the returned value is returned by the the or assure form. In addition, these forms specify that the value of form is of the class specified by class-name (which must be the name of an existing class).</p>
@@ -2491,7 +2491,7 @@ The definition point of macro-name is the closing parenthesis of the lambda-list
 (assure <span class="class">number</span> 10)  ⇒ 10
 (assure <span class="class">float</span> 10)  an error shall be signaled
 </pre>
-<div class="definition-special">
+<div id="s_convert" class="definition-special">
 (convert obj class-name) → <span class="class">object</span>
 </div>
 
@@ -4298,13 +4298,13 @@ a                           ⇒ (2 4 6 8)
 <p>The function error-output returns the stream used as the default stream for warnings and non-interactive error messages.</p>
 <p>The value returned by each of these functions is initially implementation-defined, but can be dynamically bound; see with-standard-input, with-standard-output, and with-error-output.</p>
 
-<div class="definition-special">
+<div id="s_with_standard_input" class="definition-special">
 (with-standard-input stream-form form*) → <span class="class">object</span>
 </div>
-<div class="definition-special">
+<div id="s_with_standard_output" class="definition-special">
 (with-standard-output stream-form form*) → <span class="class">object</span>
 </div>
-<div class="definition-special">
+<div id="s_with_error_output" class="definition-special">
 (with-error-output stream-form form*) → <span class="class">object</span>
 </div>
 
@@ -4343,13 +4343,13 @@ a                           ⇒ (2 4 6 8)
   ⇒ implementation-defined
 </pre>
 
-<div class="definition-special">
+<div id="s_with_open_output_file" class="definition-special">
 (with-open-output-file (name filename [element-class]) form*) → <span class="class">object</span>
 </div>
-<div class="definition-special">
+<div id="s_with_open_io_file" class="definition-special">
 (with-open-io-file (name filename [element-class]) form*) → <span class="class">object</span>
 </div>
-<div class="definition-special">
+<div id="s_with_open_input_file" class="definition-special">
 (with-open-input-file (name filename [element-class]) form*) → <span class="class">object</span>
 </div>
 
@@ -4849,7 +4849,7 @@ An error shall be signaled if the output-stream parameter does not satisfy the o
 
 <h5 id="operations_relating_to_condition_handling">Operations relating to condition handling</h5>
 
-<div class="definition-special">
+<div id="s_ignore_errors" class="definition-special">
 (ignore-errors form*) → <span class="class">object</span>
 </div>
 
@@ -4873,7 +4873,7 @@ An error shall be signaled if the output-stream parameter does not satisfy the o
 
 <p><q>Continues</q> from condition by finding the call to signal-condition and arranging for it to perform a normal return of the value, which defaults to nil. The consequences are undefined if the condition is not continuable.</p>
 
-<div class="definition-special">
+<div id="s_with_handler" class="definition-special">
 (with-handler handler form*) → <span class="class">object</span>
 </div>
 
