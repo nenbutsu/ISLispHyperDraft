@@ -276,7 +276,7 @@ this ISLISP text, prepared for execution;</li>
 these extensions shall be described as being <q>extensions to ISLISP as
 specified by ISLISP Working Draft 23.0.</q></li>
 </ul>
-<p>A complying ISLISP text shall not rely on <a href="#implementation_dependent">implementation-dependent</a> features. However, a complying ISLISP text may rely on <a href="#td_implementation_defined">implementation-defined</a> features required by this document.</p>
+<p>A complying ISLISP text shall not rely on <a href="#td_implementation_dependent">implementation-dependent</a> features. However, a complying ISLISP text may rely on <a href="#td_implementation_defined">implementation-defined</a> features required by this document.</p>
 <p>A complying ISLISP text shall not attempt to create a lexical variable binding for any named constant defined in this document. It is a violation if any such attempt is made.</p>
 
 <h3 id="terms_and_definitions">Terms and definitions</h3>
@@ -333,7 +333,7 @@ specified by ISLISP Working Draft 23.0.</q></li>
 <p>sequence of (sometimes nested) activations</p>
 
 <h4>extension</h4>
-<p><a href="#td_implementation_defined">implementation-defined</a> modification to the requirements of this document that does not invalidate any ISLISP text complying with this document (except by prohibiting the use of one or more particular spellings of identifiers), does not alter the set of actions which are required to signal errors, and does not alter the status of any feature designated as <a href="#implementation_dependent">implementation dependent</a></p>
+<p><a href="#td_implementation_defined">implementation-defined</a> modification to the requirements of this document that does not invalidate any ISLISP text complying with this document (except by prohibiting the use of one or more particular spellings of identifiers), does not alter the set of actions which are required to signal errors, and does not alter the status of any feature designated as <a href="#td_implementation_dependent">implementation dependent</a></p>
 
 <h4>form</h4>
 <p>single, syntactically valid unit of program text, capable of being prepared for execution</p>
@@ -602,7 +602,7 @@ The textual representations of symbols (see §18), numbers (see §19), character
 <dt><q>the consequences are undefined</q></dt>
 <dd>This means that the consequences are unpredictable. The consequences may range from harmless to fatal. No conforming ISLISP text may depend on the results or effects. A conforming ISLISP text must treat the consequences as unpredictable. In places where <q>must,</q> <q>must not,</q> or <q>may not</q> are used, then this is equivalent to stating that <q>the consequences are undefined</q> if the stated requirement is not met and no specific consequence is explicitly stated. An implementation is permitted to signal an error in this case.</dd>
 </dl>
-<p>For indexing and cross-referencing convenience, errors in this document have an associated error identification label, notated by text such as <q>(error-id. sample).</q> The text of these labels has no formal significance to ISLISP texts or processors; the actual class of any object which might be used by the implementation to represent the error and the text of any error message that might be displayed is <a href="#implementation_dependent">implementation dependent</a>.</p>
+<p>For indexing and cross-referencing convenience, errors in this document have an associated error identification label, notated by text such as <q>(error-id. sample).</q> The text of these labels has no formal significance to ISLISP texts or processors; the actual class of any object which might be used by the implementation to represent the error and the text of any error message that might be displayed is <a href="#td_implementation_dependent">implementation dependent</a>.</p>
 
 <h4 id="pervasive_error_types">Pervasive error types</h4>
 <p>Most errors are described in detail in the contect in which they occur. Some error types are so pervasive that their detailed descriptions are consolidated here rather than repeated in full detail upon each occurrence.</p>
@@ -991,7 +991,7 @@ They cannot be defined or bound. See §8.</p>
 <h4 id="the_evaluation_model">The evaluation model</h4>
 <p>This section provides an operational model of the process of evaluation.</p>
 
-<p>The process of evaluation has two steps: A valid ISLISP text is first prepared for execution, and then the prepared text is executed. Both the process of preparing the text for execution and the properties of a prepared text are <a href="#implementation_dependent">implementation dependent</a>, except that all macros have been expanded in the prepared text (see §16). The process of execution which follows is described in terms of fully macroexpanded forms.</p>
+<p>The process of evaluation has two steps: A valid ISLISP text is first prepared for execution, and then the prepared text is executed. Both the process of preparing the text for execution and the properties of a prepared text are <a href="#td_implementation_dependent">implementation dependent</a>, except that all macros have been expanded in the prepared text (see §16). The process of execution which follows is described in terms of fully macroexpanded forms.</p>
 <p>A prepared form is executed as follows:</p>
 <ul>
 <li>If the form is a literal, the result is the form itself.</li>
@@ -3245,8 +3245,8 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 *most-negative-float* → <span class="class">float</span>
 </div>
 
-<p>The value of *most-positive-float* is the <a href="#implementation_dependent">implementation-dependent</a> ﬂoating-point number closest to positive infinity.</p>
-<p>The value of *most-negative-float* is the <a href="#implementation_dependent">implementation-dependent</a> ﬂoating-point number closest to negative infinity.</p>
+<p>The value of *most-positive-float* is the <a href="#td_implementation_dependent">implementation-dependent</a> ﬂoating-point number closest to positive infinity.</p>
+<p>The value of *most-negative-float* is the <a href="#td_implementation_dependent">implementation-dependent</a> ﬂoating-point number closest to negative infinity.</p>
 
 <div class="definition-function">
 (floatp obj) → boolean
@@ -5418,7 +5418,7 @@ ignore-errors 117
 immutable binding 4
 immutable object 4
 <a href="#td_implementation_defined">implementation defined 4</a>
-<a href="#implementation_dependent">implementation dependent 5</a>
+<a href="#td_implementation_dependent">implementation dependent 5</a>
 indefinite extent 18
 inheritance 5
 inheritance (of slots) 51
