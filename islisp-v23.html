@@ -271,12 +271,12 @@ this ISLISP text, prepared for execution;</li>
 <ul>
 <li>accept and implement all features of ISLISP specified in this document.</li>
 <li>reject any text that contains any textual usage which this document explicitly defines to be a violation (see §9).</li>
-<li>be accompanied by a document that provides the definitions of all implementation-defined features.</li>
+<li>be accompanied by a document that provides the definitions of all <a href="#td_implementation_defined">implementation-defined</a> features.</li>
 <li>be accompanied by a document that separately describes any features accepted by the processor that are not specified in this document;
 these extensions shall be described as being <q>extensions to ISLISP as
 specified by ISLISP Working Draft 23.0.</q></li>
 </ul>
-<p>A complying ISLISP text shall not rely on implementation-dependent features. However, a complying ISLISP text may rely on implementation-defined features required by this document.</p>
+<p>A complying ISLISP text shall not rely on <a href="#implementation_dependent">implementation-dependent</a> features. However, a complying ISLISP text may rely on <a href="#td_implementation_defined">implementation-defined</a> features required by this document.</p>
 <p>A complying ISLISP text shall not attempt to create a lexical variable binding for any named constant defined in this document. It is a violation if any such attempt is made.</p>
 
 <h3 id="terms_and_definitions">Terms and definitions</h3>
@@ -333,7 +333,7 @@ specified by ISLISP Working Draft 23.0.</q></li>
 <p>sequence of (sometimes nested) activations</p>
 
 <h4>extension</h4>
-<p>implementation-defined modification to the requirements of this document that does not invalidate any ISLISP text complying with this document (except by prohibiting the use of one or more particular spellings of identifiers), does not alter the set of actions which are required to signal errors, and does not alter the status of any feature designated as implementation dependent</p>
+<p><a href="#td_implementation_defined">implementation-defined</a> modification to the requirements of this document that does not invalidate any ISLISP text complying with this document (except by prohibiting the use of one or more particular spellings of identifiers), does not alter the set of actions which are required to signal errors, and does not alter the status of any feature designated as <a href="#implementation_dependent">implementation dependent</a></p>
 
 <h4>form</h4>
 <p>single, syntactically valid unit of program text, capable of being prepared for execution</p>
@@ -359,7 +359,7 @@ specified by ISLISP Working Draft 23.0.</q></li>
 <h4 id="td_implementation_defined">implementation defined</h4>
 <p>feature, possibly differing between different ISLISP processors, but completely defined for every processor</p>
 
-<h4>implementation dependent</h4>
+<h4 id="td_implementation_dependent">implementation dependent</h4>
 <p>feature, possibly differing between different ISLISP processors, but not necessarily defined for any particular processor</p>
 <div class="note">Note: A conforming ISLISP text must not depend upon implementation-dependent features.</div>
 
@@ -538,7 +538,7 @@ The textual representations of symbols (see §18), numbers (see §19), character
 <p>The effect of delimiting is disestablished inside a string (see §24) or inside a corresponding pair of multiple escape characters (see §18) or for the character immediately following #\.</p>
 
 <h4 id="separators">Separators</h4>
-<p>Separators are as follows: blank, comments, newline, and an implementation-defined set of characters, (e.g., tabs). Separators have no meaning and can be replaced by each other without changing the meaning of the ISLISP text.</p>
+<p>Separators are as follows: blank, comments, newline, and an <a href="#td_implementation_defined">implementation-defined</a> set of characters, (e.g., tabs). Separators have no meaning and can be replaced by each other without changing the meaning of the ISLISP text.</p>
 
 <h4 id="comments">Comments</h4>
 <p>The character semicolon (;) is the comment begin character. That is, the semicolon and all the characters up to and including the end-of-line form a comment.</p>
@@ -549,7 +549,7 @@ The textual representations of symbols (see §18), numbers (see §19), character
 <p>The textual representation of an object is machine independent. The following are some of the textual representations of the ISLISP objects. This representation is readable by the read function. Lexemes are described in §6</p>
 <dl>
 <dt>Null</dt>
-<dd>The object nil is the only object whose class is <span class="class">null</span>. Upon input, it may be written as nil or (). It is implementation defined whether nil prints as nil or ().</dd>
+<dd>The object nil is the only object whose class is <span class="class">null</span>. Upon input, it may be written as nil or (). It is <a href="#td_implementation_defined">implementation defined</a> whether nil prints as nil or ().</dd>
 <dt>List</dt>
 <dd>Proper lists are those lists terminated by nil. Usually they are denoted as (obj<sub>1</sub> obj<sub>2</sub> ...obj<sub>n</sub>). A dotted list (i.e., a list whose last tail is not nil) appears as (obj<sub>1</sub> obj<sub>2</sub> ...obj<sub>n</sub> . obj<sub>n+1</sub>).</dd>
 <dt>Character</dt>
@@ -581,7 +581,7 @@ The textual representations of symbols (see §18), numbers (see §19), character
 <dt>String</dt>
 <dd>A string is represented by the sequence of its characters enclosed in a pair of "’s. For example: "abc". Special characters are preceded with a backslash as an escape character.</dd>
 <dt>Symbol</dt>
-<dd>A named symbol is represented by its print name. Vertical bars (|) might need to enclose the symbol if it contains certain special characters; see §18. The notation, if any, used for unnamed symbols is implementation defined.</dd>
+<dd>A named symbol is represented by its print name. Vertical bars (|) might need to enclose the symbol if it contains certain special characters; see §18. The notation, if any, used for unnamed symbols is <a href="#td_implementation_defined">implementation defined</a>.</dd>
 </dl>
 <p>There are objects which do not have a textual representation, such as a class or an instance of the <span class="class">function</span> class.</p>
 
@@ -597,12 +597,12 @@ The textual representations of symbols (see §18), numbers (see §19), character
 <dl>
 <dt><q>an error shall be signaled</q></dt>
 <dd><p>An implementation shall detect an error of this kind no later than the completion of execution of the form having the error, but might detect them sooner (e.g., when the code is being prepared for execution).</p>
-<p>Evaluation of the current form shall stop. If no active handler is established by with-handler, it is implementation defined whether the entire running process exits, a debugger is entered, or control is transferred elsewhere within the process.</p>
+<p>Evaluation of the current form shall stop. If no active handler is established by with-handler, it is <a href="#td_implementation_defined">implementation defined</a> whether the entire running process exits, a debugger is entered, or control is transferred elsewhere within the process.</p>
 </dd>
 <dt><q>the consequences are undefined</q></dt>
 <dd>This means that the consequences are unpredictable. The consequences may range from harmless to fatal. No conforming ISLISP text may depend on the results or effects. A conforming ISLISP text must treat the consequences as unpredictable. In places where <q>must,</q> <q>must not,</q> or <q>may not</q> are used, then this is equivalent to stating that <q>the consequences are undefined</q> if the stated requirement is not met and no specific consequence is explicitly stated. An implementation is permitted to signal an error in this case.</dd>
 </dl>
-<p>For indexing and cross-referencing convenience, errors in this document have an associated error identification label, notated by text such as <q>(error-id. sample).</q> The text of these labels has no formal significance to ISLISP texts or processors; the actual class of any object which might be used by the implementation to represent the error and the text of any error message that might be displayed is implementation dependent.</p>
+<p>For indexing and cross-referencing convenience, errors in this document have an associated error identification label, notated by text such as <q>(error-id. sample).</q> The text of these labels has no formal significance to ISLISP texts or processors; the actual class of any object which might be used by the implementation to represent the error and the text of any error message that might be displayed is <a href="#implementation_dependent">implementation dependent</a>.</p>
 
 <h4 id="pervasive_error_types">Pervasive error types</h4>
 <p>Most errors are described in detail in the contect in which they occur. Some error types are so pervasive that their detailed descriptions are consolidated here rather than repeated in full detail upon each occurrence.</p>
@@ -770,7 +770,7 @@ Figure 1. Class Inheritance
 <p>A user-defined class, defined by defclass, must be implemented as an instance of <span class="class">standard-class</span>. A predefined class can be implemented either as an instance of <span class="class">standard-class</span> (as if defined by defclass) or as an instance of <span class="class">built-in-class</span>.</p>
 <p>Figure 1 shows the required inheritance relationships among the classes defined by ISLISP. For each pair of classes C<sub>1</sub> and C<sub>2</sub> in this figure, if C<sub>1</sub> is linked directly by an arrow to C<sub>2</sub> , C<sub>1</sub> is a direct superclass of C<sub>2</sub> (and C<sub>2</sub> is a direct subclass of C<sub>1</sub>). Additional relationships might exist, subject to the following constraints:</p>
 <ul>
-<li>It is implementation defined whether <span class="class">standard-generic-function</span> is a subclass of the class <span class="class">standard-object</span>.</li>
+<li>It is <a href="#td_implementation_defined">implementation defined</a> whether <span class="class">standard-generic-function</span> is a subclass of the class <span class="class">standard-object</span>.</li>
 <li>Except as described in Figure 1 and the above constraint on <span class="class">standard-generic-function</span>, no other subclass relationships exist among the classes defined in this document. However, additional implementation-specific subclass relationships may exist between implementation-specific classes and classes defined in this document.</li>
 <li>The class precedence list for <span class="class">null</span> observes the partial order <span class="class">null</span>, <span class="class">symbol</span>, <span class="class">list</span>, <span class="class">object</span>.</li>
 <li>Users may define additional classes using defclass.</li>
@@ -909,7 +909,7 @@ They cannot be defined or bound. See §8.</p>
 <p>This describes an ordinary function that is available only in a specified lexical scope.</p>
 
 <h4 id="special_forms">Special forms</h4>
-<p>A special form is a form whose arguments are treated in a special way; for example, arguments are not evaluated or are evaluated in a special order. It is implementation defined whether any special form is implemented as a macro (see §12.5 and §16). Special forms are recognized because they have a special operator in their operator position. The following are special operators:</p>
+<p>A special form is a form whose arguments are treated in a special way; for example, arguments are not evaluated or are evaluated in a special order. It is <a href="#td_implementation_defined">implementation defined</a> whether any special form is implemented as a macro (see §12.5 and §16). Special forms are recognized because they have a special operator in their operator position. The following are special operators:</p>
 
 <ul>
 <li>and</li>
@@ -957,7 +957,7 @@ They cannot be defined or bound. See §8.</p>
 <li>with-standard-output</li>
 </ul>
 
-<p>There might be additional, implementation-defined special operators.</p>
+<p>There might be additional, <a href="#td_implementation_defined">implementation-defined</a> special operators.</p>
 <p>This document describes the evaluation of special forms in the following format:</p>
 <div class="definition-special">
 (special-operator argument*) → result-class
@@ -991,7 +991,7 @@ They cannot be defined or bound. See §8.</p>
 <h4 id="the_evaluation_model">The evaluation model</h4>
 <p>This section provides an operational model of the process of evaluation.</p>
 
-<p>The process of evaluation has two steps: A valid ISLISP text is first prepared for execution, and then the prepared text is executed. Both the process of preparing the text for execution and the properties of a prepared text are implementation dependent, except that all macros have been expanded in the prepared text (see §16). The process of execution which follows is described in terms of fully macroexpanded forms.</p>
+<p>The process of evaluation has two steps: A valid ISLISP text is first prepared for execution, and then the prepared text is executed. Both the process of preparing the text for execution and the properties of a prepared text are <a href="#implementation_dependent">implementation dependent</a>, except that all macros have been expanded in the prepared text (see §16). The process of execution which follows is described in terms of fully macroexpanded forms.</p>
 <p>A prepared form is executed as follows:</p>
 <ul>
 <li>If the form is a literal, the result is the form itself.</li>
@@ -1062,7 +1062,7 @@ lambda-list ::= (identifier * [&amp;rest identifier ]) |
 A &amp;rest or :rest variable, if any, is bound to the list of the values of the remaining arguments.
 An error shall be signaled if the number of arguments received is incompatible with the specified lambda-list (error-id. arity-error).</p>
 <p>Once the lambda variables have been bound, the body is executed. If the body is empty, nil is returned otherwise the result of the evaluation of the last form of body is returned if the body was not left by a non-local exit (see §14.7.1).</p>
-<p>If the function receives a &amp;rest or :rest parameter R, the list L<sub>1</sub> to which that parameter is bound has indefinite extent. L<sub>1</sub> is newly allocated unless the function was called with apply and R corresponds to the final argument, L<sub>2</sub> , to that call to apply (or some subtail of L<sub>2</sub>), in which case it is implementation defined whether L<sub>1</sub> shares structure with L<sub>2</sub> .
+<p>If the function receives a &amp;rest or :rest parameter R, the list L<sub>1</sub> to which that parameter is bound has indefinite extent. L<sub>1</sub> is newly allocated unless the function was called with apply and R corresponds to the final argument, L<sub>2</sub> , to that call to apply (or some subtail of L<sub>2</sub>), in which case it is <a href="#td_implementation_defined">implementation defined</a> whether L<sub>1</sub> shares structure with L<sub>2</sub> .
 </p>
 
 <pre class="example">
@@ -1268,7 +1268,7 @@ nil → <span class="class">null</span>
 </div>
 
 <p>eq and eql test whether obj<sub>1</sub> and obj<sub>2</sub> are same identical object. They return t if the objects are the same; otherwise, they return nil. Two objects are the same if there is no operation that could distinguish them (without modifying them), and if modifying one would modify the other the same way.</p>
-<p>For eq, the consequences are implementation defined if both obj<sub>1</sub> and obj<sub>2</sub> are numbers or both are characters. For eql the meaning for numbers and characters is defined as follows:</p>
+<p>For eq, the consequences are <a href="#td_implementation_defined">implementation defined</a> if both obj<sub>1</sub> and obj<sub>2</sub> are numbers or both are characters. For eql the meaning for numbers and characters is defined as follows:</p>
 <ul>
 <li><p>If obj<sub>1</sub> and obj<sub>2</sub> are numbers, eql tests whether they are direct instances of the same class and have the same value.</p>
 <p>If an implementation supports positive and negative zeros as distinct values, then (eql 0.0 -0.0) returns nil. When the syntax -0.0 is read and it is interpreted as the value 0.0 then (eql 0.0 -0.0) returns t.</p>
@@ -1289,47 +1289,47 @@ nil → <span class="class">null</span>
 (eql 'f 'nil)               ⇒ nil
 (eq  'f 'nil)               ⇒ nil
 (eql 2 2)                   ⇒ t
-(eq  2 2)                   ⇒ nil or t (implementation-defined)
+(eq  2 2)                   ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
 (eql 2 2.0)                 ⇒ nil
 (eq  2 2.0)                 ⇒ nil
 (eql 100000000 100000000)   ⇒ t
-(eq  100000000 100000000)   ⇒ nil or t (implementation-defined)
+(eq  100000000 100000000)   ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
 (eql 10.00000 10.0)         ⇒ t
-(eq  10.00000 10.0)         ⇒ nil or t (implementation-defined)
+(eq  10.00000 10.0)         ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
 (eql (cons 1 2) (cons 1 2)) ⇒ nil
 (eq  (cons 1 2) (cons 1 2)) ⇒ nil
 (let ((x '(a))) (eql x x))  ⇒ t
 (let ((x '(a))) (eq x x))   ⇒ t
-(eql '(a) '(a))             ⇒ nil or t (implementation-defined)
-(eq '(a) '(a))              ⇒ nil or t (implementation-defined)
+(eql '(a) '(a))             ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+(eq '(a) '(a))              ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
 (let ((x '(b))
       (y '(a b)))
-  (eql x (cdr y)))          ⇒ nil or t (implementation-defined)
+  (eql x (cdr y)))          ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
 (let ((x '(b))
       (y '(a b)))
-  (eq x (cdr y)))           ⇒ nil or t (implementation-defined)
-(eql '(b) (cdr '(a b)))     ⇒ nil or t (implementation-defined)
-(eq '(b) (cdr '(a b)))      ⇒ nil or t (implementation-defined)
+  (eq x (cdr y)))           ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+(eql '(b) (cdr '(a b)))     ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+(eq '(b) (cdr '(a b)))      ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
 (let ((p (lambda (x) x)))
   (eql p p))                ⇒ t
 (let ((p (lambda (x) x)))
   (eq p p))                 ⇒ t
 (let ((x "a")) (eql x x))   ⇒ t
 (let ((x "a")) (eq x x))    ⇒ t
-(eql "a" "a")               ⇒ nil or t (implementation-defined)
-(eq "a" "a")                ⇒ nil or t (implementation-defined)
+(eql "a" "a")               ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+(eq "a" "a")                ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
 (let ((x "")) (eql x x))    ⇒ t
 (let ((x "")) (eq x x))     ⇒ t
-(eql "" "")                 ⇒ nil or t (implementation-defined)
-(eq "" "")                  ⇒ nil or t (implementation-defined)
+(eql "" "")                 ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+(eq "" "")                  ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
 (eql #\a #\A)               ⇒ nil
 (eq #\a #\A)                ⇒ nil
 (eql #\a #\a)               ⇒ t
-(eq #\a #\a)                ⇒ nil or t (implementation-defined)n
+(eq #\a #\a)                ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
 (eql #\space #\Space)       ⇒ t
-(eq #\space #\Space)        ⇒ nil or t (implementation-defined)
+(eq #\space #\Space)        ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
 (eql #\space #\space)       ⇒ t
-(eq #\space #\space)        ⇒ nil or t (implementation-defined)
+(eq #\space #\space)        ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
 </pre>
 
 <div class="definition-function">
@@ -2152,7 +2152,7 @@ The defclass defining form returns the symbol named class-name as its result.
 <li>All the superclasses of a class must be defined before an instance of the class can be made.</li>
 <li>Any reference to class-name as a parameter specializer in a defmethod form must be in the scope of class-name. That is, a defmethod form that names a class must textually follow the defclass form that defines that class.</li>
 </ul>
-<p>An ISLISP processor may be extended to cover situations where these rules are not obeyed. These extensions shall be implementation defined.</p>
+<p>An ISLISP processor may be extended to cover situations where these rules are not obeyed. These extensions shall be <a href="#td_implementation_defined">implementation defined</a>.</p>
 <p>Some slot options are inherited by a class from its superclasses, and some can be shadowed or altered by providing a local slot description. No class options are inherited. For a detailed description of how slots and slot options are inherited, see the section §15.1.3.</p>
 <p>If no slot accessors are specified for a slot, the slot cannot be accessed.</p>
 <p>When a class is defined, the order in which its direct superclasses are mentioned in the defining form is important. The new class has a local precedence order, which is a list consisting of the class followed by its direct superclasses in the order mentioned in its defclass defining form.</p>
@@ -2234,7 +2234,7 @@ var                        ::= identifier
 <p>The method-desc arguments define methods that will belong to the generic function, as if defined by defmethod. The method-qualifier and parameter-profile arguments in a method description are the same as for defmethod. The form arguments specify the method body.</p>
 <p>If no method descriptions are specified, a generic function with no methods is created. An error shall be signaled if a generic function is called and no methods apply.</p>
 <p>The lambda-list argument of defgeneric specifies the shape of lambda-lists for the methods on this generic function. All methods on the resulting generic function must have parameter-profiles that are congruent with this shape. For further details on method congruence, see §15.2.2.2.</p>
-<p>Implementations can extend defgeneric to include other implementation-defined options.</p>
+<p>Implementations can extend defgeneric to include other <a href="#td_implementation_defined">implementation-defined</a> options.</p>
 
 <h5 id="defining_methods">Defining methods for generic functions</h5>
 
@@ -2596,10 +2596,10 @@ The definition point of macro-name is the closing parenthesis of the lambda-list
 </dl>
 </dt>
 <dt>I</dt>
-<dd>This coercion shall be provided, but its definition is implementation defined.
+<dd>This coercion shall be provided, but its definition is <a href="#td_implementation_defined">implementation defined</a>.
 <dl>
 <dt>I(3)</dt>
-<dd>This coercion shall be provided, but its definition is implementation defined. The coercion depends on the implementation's neutral alphabetic characters (see §18.1.2).</dd>
+<dd>This coercion shall be provided, but its definition is <a href="#td_implementation_defined">implementation defined</a>. The coercion depends on the implementation's neutral alphabetic characters (see §18.1.2).</dd>
 </dl>
 </dd>
 <dt>–</dt>
@@ -2612,7 +2612,7 @@ The definition point of macro-name is the closing parenthesis of the lambda-list
 </dl>
 </dd>
 </dl>
-<p>If an implementation provides implementation-defined classes, it may also provide implementation-defined coercions for the names of those classes using convert.</p>
+<p>If an implementation provides <a href="#td_implementation_defined">implementation-defined</a> classes, it may also provide <a href="#td_implementation_defined">implementation-defined</a> coercions for the names of those classes using convert.</p>
 <pre class="example">
 (convert 3 <span class="class">float</span>)              ⇒ 3.0
 (convert "abc" <span class="class">general-vector</span>) ⇒ #(#\a #\b #\c)
@@ -2653,11 +2653,11 @@ The definition point of macro-name is the closing parenthesis of the lambda-list
 <ol>
 <li><p>The symbol's print name consists only of neutral alphabetic characters (see §18.1.2) or the following additional characters:</p>
 <pre>0 1 2 3 4 5 6 7 8 9 + - &lt; &gt; / * = ? _ ! $ % [ ] ^ { } ~</pre>
-<p>(This set may have additional implementation-defined characters.)</p>
+<p>(This set may have additional <a href="#td_implementation_defined">implementation-defined</a> characters.)</p>
 </li>
 <li><p>The first character of the symbol's print name is a neutral alphabetic character or one of the following characters:</p>
 <pre>&lt; &gt; / * = ? _ ! $ % [ ] ^ { } ~</pre>
-<p>(This set may have additional implementation-defined characters.)</p>
+<p>(This set may have additional <a href="#td_implementation_defined">implementation-defined</a> characters.)</p>
 </li>
 </ol>
 
@@ -2669,7 +2669,7 @@ The definition point of macro-name is the closing parenthesis of the lambda-list
 If the symbol name contains a backslash, the backslash must be preceded by another backslash.
 For example, <q>|\\\\\|\\\||</q> denotes a symbol whose name is a 5 character string containing backslash, backslash, vertical bar, backslash, vertical bar.</p>
 <div class="note">Note: All required symbols can be written without vertical bars.</div>
-<p>It is implementation defined whether the names of symbols can contain colon (:) or ampersand (&amp;). Consequently, whether &amp;rest and keywords (e.g., :rest, :before, and :after) are represented as symbols or something else is implementation defined.</p>
+<p>It is <a href="#td_implementation_defined">implementation defined</a> whether the names of symbols can contain colon (:) or ampersand (&amp;). Consequently, whether &amp;rest and keywords (e.g., :rest, :before, and :after) are represented as symbols or something else is <a href="#td_implementation_defined">implementation defined</a>.</p>
 
 <h5 id="alphabetic_case_in_symbol_names">Alphabetic case in symbol names</h5>
 <p>If the enclosing vertical bars are omitted, the case of alphabetic characters in a symbol is translated by the reader to a canonical case that is used internally. Therefore, for example, each of the following denotes the same symbol in all implementations:</p>
@@ -2683,13 +2683,13 @@ For example, <q>|\\\\\|\\\||</q> denotes a symbol whose name is a 5 character st
 <li>FOo</li>
 <li>FOO</li>
 </ul>
-<p>Internally, alphabetic case in a symbol's print name is maintained, and is significant. For example, |FOO| and |foo| are not the same symbol in any implementation. However, the reader canonicalizes the case of symbols whose names are not written enclosed by vertical bars. So foo and FOO both represent the same symbol, but it is implementation defined whether that symbol is |foo| or |FOO|.</p>
-<p>Specifically, each implementation has an implementation-defined attribute called its neutral alphabetic case, which is either <q>lowercase</q> or <q>uppercase.</q> If the neutral alphabetic case of an implementation is lowercase, the neutral alphabetic characters for that implementation are defined to be as follows:</p>
+<p>Internally, alphabetic case in a symbol's print name is maintained, and is significant. For example, |FOO| and |foo| are not the same symbol in any implementation. However, the reader canonicalizes the case of symbols whose names are not written enclosed by vertical bars. So foo and FOO both represent the same symbol, but it is <a href="#td_implementation_defined">implementation defined</a> whether that symbol is |foo| or |FOO|.</p>
+<p>Specifically, each implementation has an <a href="#td_implementation_defined">implementation-defined</a> attribute called its neutral alphabetic case, which is either <q>lowercase</q> or <q>uppercase.</q> If the neutral alphabetic case of an implementation is lowercase, the neutral alphabetic characters for that implementation are defined to be as follows:</p>
 <pre>a b c d e f g h i j k l m n o p q r s t u v w x y z</pre>
 <p>Otherwise (if the neutral alphabetic case of an implementation is uppercase), the neutral alphabetic characters for that implementation are defined to be as follows:</p>
 <pre>A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</pre>
 <p>Continuing again with the above example, if the neutral alphabetic case of an implementation is lowercase, foo, FOO and |foo| denote the same symbol; otherwise, foo, FOO and |FOO| denote the same symbol.</p>
-<p>An implementation may extend the set of neutral alphabetic characters to include additional implementation-defined characters.</p>
+<p>An implementation may extend the set of neutral alphabetic characters to include additional <a href="#td_implementation_defined">implementation-defined</a> characters.</p>
 
 <h5 id="nil_and">nil and ()</h5>
 <p>The symbol nil, which represents both the false value and the empty list, can also be denoted by ().</p>
@@ -2916,11 +2916,11 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 <pre class="example">
 (max -5 3)       ⇒ 3
 (max 2.0 3)      ⇒ 3
-(max 2 2.0)      ⇒ 2 or 2.0 (implementation-defined)
+(max 2 2.0)      ⇒ 2 or 2.0 (<a href="#td_implementation_defined">implementation-defined</a>)
 (max 1 5 2 4 3)  ⇒ 5
 (min 3 1)        ⇒ 1
 (min 1 2.0)      ⇒ 1
-(min 2 2.0)      ⇒ 2 or 2.0 (implementation-defined)
+(min 2 2.0)      ⇒ 2 or 2.0 (<a href="#td_implementation_defined">implementation-defined</a>)
 (min 1 5 2 5 3)  ⇒ 1
 </pre>
 <div class="definition-function">
@@ -2944,7 +2944,7 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 (exp 1)    ⇒ 2.718281828459045
 (exp 2)    ⇒ 7.38905609893065
 (exp 1.23) ⇒ 3.4212295362896734
-(exp 0)    ⇒ 1 or 1.0 (implementation-defined)
+(exp 0)    ⇒ 1 or 1.0 (<a href="#td_implementation_defined">implementation-defined</a>)
 </pre>
 
 <div class="definition-function">
@@ -2956,7 +2956,7 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 <pre class="example">
 (log 2.718281828459045) ⇒ 1.0
 (log 10)                ⇒ 2.302585092994046
-(log 1)                 ⇒ 0 or 0.0 (implementation-defined)
+(log 1)                 ⇒ 0 or 0.0 (<a href="#td_implementation_defined">implementation-defined</a>)
 </pre>
 
 <div class="definition-function">
@@ -3015,13 +3015,13 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 ;; Note that conforming processors are permitted to vary
 ;; in the floating precision of these results.
 (sin 1)     ⇒ 0.8414709848078965
-(sin 0)     ⇒ 0 or 0.0 (implementation-defined)
+(sin 0)     ⇒ 0 or 0.0 (<a href="#td_implementation_defined">implementation-defined</a>)
 (sin 0.001) ⇒ 9.999998333333417E-4
 (cos 1)     ⇒ 0.5403023058681398
-(cos 0)     ⇒ 1 or 1.0 (implementation-defined)
+(cos 0)     ⇒ 1 or 1.0 (<a href="#td_implementation_defined">implementation-defined</a>)
 (cos 0.001) ⇒ 0.9999995000000417
 (tan 1)     ⇒ 1.557407724654902
-(tan 0)     ⇒ 0 or 0.0 (implementation-defined)
+(tan 0)     ⇒ 0 or 0.0 (<a href="#td_implementation_defined">implementation-defined</a>)
 (tan 0.001) ⇒ 0.0010000003333334668
 </pre>
 
@@ -3053,7 +3053,7 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 (atan2 x1 x2) → <span class="class">number</span>
 </div>
 
-<p>Given a point (x<sub>2</sub>, x<sub>1</sub>) in rectangular coordinates, this function returns the phase of its representation in polar coordinates. If x<sub>1</sub> is zero and x<sub>2</sub> is negative, the result is positive. If x<sub>1</sub> and x<sub>2</sub> are both zero, the result is implementation defined.</p>
+<p>Given a point (x<sub>2</sub>, x<sub>1</sub>) in rectangular coordinates, this function returns the phase of its representation in polar coordinates. If x<sub>1</sub> is zero and x<sub>2</sub> is negative, the result is positive. If x<sub>1</sub> and x<sub>2</sub> are both zero, the result is <a href="#td_implementation_defined">implementation defined</a>.</p>
 <p>An error shall be signaled if x is not a number (error-id. domain-error).</p>
 <p>The value of atan2 is always between −π (exclusive) and π (inclusive) when minus zero is not supported; when minus zero is supported, the range includes −π.</p>
 
@@ -3141,7 +3141,7 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 <td>y=0</td>
 <td>x=0</td>
 <td>Origin</td>
-<td>implementation defined</td>
+<td><a href="#td_implementation_defined">implementation defined</a></td>
 </tr>
 <tr>
 <td>*y=+0</td>
@@ -3171,7 +3171,7 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 
 <p>The signs of x<sub>1</sub> (indicated as y) and x<sub>2</sub> (indicated as x) are used to derive quadrant information. Figure 19.1 details various special cases. The asterisk (*) indicates that the entry in the figure applies to implementations that support minus zero.</p>
 <pre class="example">
-(atan2 0 3.0)     ⇒ 0 or 0.0 (implementation-defined)
+(atan2 0 3.0)     ⇒ 0 or 0.0 (<a href="#td_implementation_defined">implementation-defined</a>)
 (atan2 1 1)       ⇒ 0.7853981633974483
 (atan2 1.0 -0.3)  ⇒ 1.8622531212727635
 (atan2 0.0 -0.5)  ⇒ 3.141592653589793
@@ -3198,13 +3198,13 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 <p>An error shall be signaled if x is not a number (error-id. domain-error).</p>
 <pre class="example">
 (sinh 1)     ⇒ 1.1752011936438014
-(sinh 0)     ⇒ 0 or 0.0 (implementation-defined)
+(sinh 0)     ⇒ 0 or 0.0 (<a href="#td_implementation_defined">implementation-defined</a>)
 (sinh 0.001) ⇒ 0.001000000166666675
 (sinh 1)     ⇒ 1.5430806348152437
-(cosh 0)     ⇒ 1 or 1.0 (implementation-defined)
+(cosh 0)     ⇒ 1 or 1.0 (<a href="#td_implementation_defined">implementation-defined</a>)
 (cosh 0.001) ⇒ 1.0000005000000416
 (tanh 1)     ⇒ 0.7615941559557649
-(tanh 0)     ⇒ 0 or 0.0 (implementation-defined)
+(tanh 0)     ⇒ 0 or 0.0 (<a href="#td_implementation_defined">implementation-defined</a>)
 (tanh 0.001) ⇒ 9.999996666668002E-4
 </pre>
 
@@ -3216,7 +3216,7 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 
 <pre class="example">
 (atanh 0.5)   ⇒ 0.5493061443340549
-(atanh 0)     ⇒ 0 or 0.0 (implementation-defined)
+(atanh 0)     ⇒ 0 or 0.0 (<a href="#td_implementation_defined">implementation-defined</a>)
 (atanh 0.001) ⇒ 0.0010000003333335335
 
 (defun asinh (x) (atanh (quotient x (sqrt (+ 1 (expt x 2)))))) ⇒ asinh
@@ -3245,8 +3245,8 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 *most-negative-float* → <span class="class">float</span>
 </div>
 
-<p>The value of *most-positive-float* is the implementation-dependent ﬂoating-point number closest to positive infinity.</p>
-<p>The value of *most-negative-float* is the implementation-dependent ﬂoating-point number closest to negative infinity.</p>
+<p>The value of *most-positive-float* is the <a href="#implementation_dependent">implementation-dependent</a> ﬂoating-point number closest to positive infinity.</p>
+<p>The value of *most-negative-float* is the <a href="#implementation_dependent">implementation-dependent</a> ﬂoating-point number closest to negative infinity.</p>
 
 <div class="definition-function">
 (floatp obj) → boolean
@@ -3338,7 +3338,7 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 <h4 id="integer_class">Integer class</h4>
 
 <p>Integer objects correspond to mathematical integers.</p>
-<p>Arithmetic operations that only involve integers behave in a mathematically correct way, regardless of the size of the integer. If there are cases where arithmetic on integers would produce results or intermediate expressions that exceed the precision of the underlying hardware, an ISLISP processor shall simulate any necessary operations in software in order to assure mathematical correctness. The circumstances, if any, for which such simulation is necessary is implementation defined; the point at which such simulation will exceed the capacity of the processor is also implementation defined.</p>
+<p>Arithmetic operations that only involve integers behave in a mathematically correct way, regardless of the size of the integer. If there are cases where arithmetic on integers would produce results or intermediate expressions that exceed the precision of the underlying hardware, an ISLISP processor shall simulate any necessary operations in software in order to assure mathematical correctness. The circumstances, if any, for which such simulation is necessary is <a href="#td_implementation_defined">implementation defined</a>; the point at which such simulation will exceed the capacity of the processor is also <a href="#td_implementation_defined">implementation defined</a>.</p>
 <p>Integers are written in one of the following formats.</p>
 <pre>
 #B [s]bb … b, each b being either <q>0</q> or <q>1</q>.
@@ -3501,7 +3501,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 (char&gt;= char<sub>1</sub> char<sub>2</sub>) → boolean
 </div>
 
-<p>The function char= tests whether char<sub>1</sub> is the same character as char<sub>2</sub>. The function char&lt; tests whether char<sub>1</sub> is less than char<sub>2</sub>. The function char&lt;= tests whether char<sub>1</sub> is less than or equal to char<sub>2</sub>. The ordering used is the partial order defined above, extended to a total order on all characters in an implementation-defined manner. If the test is satisfied, t is returned; otherwise, nil is returned.</p>
+<p>The function char= tests whether char<sub>1</sub> is the same character as char<sub>2</sub>. The function char&lt; tests whether char<sub>1</sub> is less than char<sub>2</sub>. The function char&lt;= tests whether char<sub>1</sub> is less than or equal to char<sub>2</sub>. The ordering used is the partial order defined above, extended to a total order on all characters in an <a href="#td_implementation_defined">implementation-defined</a> manner. If the test is satisfied, t is returned; otherwise, nil is returned.</p>
 <p>Two characters are char/= if and only if they are not char=. Two characters are char&gt; if and only if they are not char&lt;=. Two characters are char&gt;= if and only if they are not char&lt;.</p>
 <p>An error shall be signaled if either char1 or char2 is not a character (error-id. domain-error).</p>
 
@@ -3513,11 +3513,11 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 (char&lt; #\a #\a)  ⇒ nil
 (char&lt; #\a #\b)  ⇒ t
 (char&lt; #\b #\a)  ⇒ nil
-(char&lt; #\a #\A)  ⇒ nil or t (implementation-defined)
-(char&lt; #\* #\a)  ⇒ nil or t (implementation-defined)
+(char&lt; #\a #\A)  ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+(char&lt; #\* #\a)  ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
 (char&gt; #\b #\a)  ⇒ t
 (char&lt;= #\a #\a) ⇒ t
-(char&lt;= #\a #\A) ⇒ nil or t (implementation-defined)
+(char&lt;= #\a #\A) ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
 (char&gt;= #\b #\a) ⇒ t
 (char&gt;= #\a #\a) ⇒ t
 </pre>
@@ -3668,7 +3668,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 (create-list i [initial-element]) → <span class="class">list</span>
 </div>
 
-<p>Returns a list of length i. If initial-element is given, the elements of the new list are initialized with this object; otherwise, the initialization is implementation defined. An error shall be signaled if the requested list cannot be allocated (error-id. cannot-create-list). An error shall be signaled if i is not a non-negative integer (error-id. domain-error). initial-element may be any ISLISP object.</p>
+<p>Returns a list of length i. If initial-element is given, the elements of the new list are initialized with this object; otherwise, the initialization is <a href="#td_implementation_defined">implementation defined</a>. An error shall be signaled if the requested list cannot be allocated (error-id. cannot-create-list). An error shall be signaled if i is not a non-negative integer (error-id. domain-error). initial-element may be any ISLISP object.</p>
 <pre class="example">
 (create-list 3 17)  ⇒ (17 17 17)
 (create-list 2 #\a) ⇒ (#\a #\a)
@@ -3699,7 +3699,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 (reverse '(a))                    ⇒ (a)
 (reverse '())                     ⇒ ()
 (let* ((x (list 'a 'b)) (y (nreverse x))) (equal x y))
-                                  ⇒ implementation-defined
+                                  ⇒ <a href="#td_implementation_defined">implementation-defined</a>
 </pre>
 
 <div id="f_append" class="definition-function">
@@ -3707,7 +3707,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 </div>
 
 <p>Returns the result of appending all of the lists, or () if given no lists. An error shall be signaled if any list is not a list (error-id. domain-error).</p>
-<p>This function does not modify its arguments. It is implementation defined whether and when the result shares structure with its list arguments.</p>
+<p>This function does not modify its arguments. It is <a href="#td_implementation_defined">implementation defined</a> whether and when the result shares structure with its list arguments.</p>
 <p>An error shall be signaled if the list cannot be allocated (error-id. cannot-create-list).</p>
 
 <pre class="example">
@@ -3848,7 +3848,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 </dd>
 <dt><span class="class">basic-vector</span></dt>
 <dd><p>All one-dimensional arrays are of the abstract class <span class="class">basic-vector</span>, but (as with all abstract classes) there are no direct instances of this class. It is provided for type discrimination purposes only.</p>
-<p>ISLISP defines only two direct subclasses of <span class="class">basic-vector</span>: <span class="class">general-vector</span> and <span class="class">string</span>. There may be additional, implementation-defined subclasses of <span class="class">basic-vector</span>.</p>
+<p>ISLISP defines only two direct subclasses of <span class="class">basic-vector</span>: <span class="class">general-vector</span> and <span class="class">string</span>. There may be additional, <a href="#td_implementation_defined">implementation-defined</a> subclasses of <span class="class">basic-vector</span>.</p>
 <div class="note">Note: An implementation might provide specialized array representations for one-dimensional arrays of bits. If provided, such an array representation would be subclass of <span class="class">basic-vector</span>.</div>
 </dd>
 <dt><span class="class">general-vector</span></dt>
@@ -3857,7 +3857,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 <dd>An object of class <span class="class">string</span> is a one-dimensional array that is capable only of holding elements of type <span class="class">character</span>. When the function create-string is used, the result is of this class.</dd>
 <dt>&lt;basic-array*&gt;</dt>
 <dd><p>All non-one-dimensional arrays are of the abstract class &lt;basic-array*&gt;, but (as with all abstract classes) there are no direct instances of this class. It is provided for type discrimination purposes only.</p>
-<p>ISLISP defines only one direct subclass of &lt;basic-array*&gt;: &lt;general-array*&gt;. There may be additional, implementation-defined subclasses of &lt;basic-array*&gt;.</p>
+<p>ISLISP defines only one direct subclass of &lt;basic-array*&gt;: &lt;general-array*&gt;. There may be additional, <a href="#td_implementation_defined">implementation-defined</a> subclasses of &lt;basic-array*&gt;.</p>
 <div class="note">Note: An implementation might provide specialized array representations for two-dimensional arrays of 1 or more bits to hold display information for a monochrome or color screen. If provided, such array representations would be subclasses of &lt;basic-array*&gt;.</div>
 </dd>
 <dt>&lt;general-array*&gt;</dt>
@@ -3910,7 +3910,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 
 <p>This function creates an array of the given dimensions. The dimensions argument is a list of non-negative integers.</p>
 <p>The result is of class <span class="class">general-vector</span> if there is only one dimension, or of class &lt;general-array*&gt; otherwise.</p>
-<p>If initial-element is given, the elements of the new array are initialized with this object, otherwise the initialization is implementation defined.</p>
+<p>If initial-element is given, the elements of the new array are initialized with this object, otherwise the initialization is <a href="#td_implementation_defined">implementation defined</a>.</p>
 <p>An error shall be signaled if the requested array cannot be allocated (error-id. cannot-create-array).</p>
 <p>An error shall be signaled if dimensions is not a proper list of non-negative integers (error-id. domain-error). initial-element may be any ISLISP object.</p>
 <pre class="example">
@@ -4013,7 +4013,7 @@ array1
 (create-vector i [initial-element]) → <span class="class">general-vector</span>
 </div>
 
-<p>Returns a general-vector of length i. If initial-element is given, the elements of the new vector are initialized with this object, otherwise the initialization is implementation defined. An error shall be signaled if the requested vector cannot be allocated (error-id. cannot-create-vector). An error shall be signaled if i is not a non-negative integer (error-id. domain-error). initial-element
+<p>Returns a general-vector of length i. If initial-element is given, the elements of the new vector are initialized with this object, otherwise the initialization is <a href="#td_implementation_defined">implementation defined</a>. An error shall be signaled if the requested vector cannot be allocated (error-id. cannot-create-vector). An error shall be signaled if i is not a non-negative integer (error-id. domain-error). initial-element
 may be any ISLISP object.</p>
 
 <pre class="example">
@@ -4035,7 +4035,7 @@ may be any ISLISP object.</p>
 <h3 id="string_class">String class</h3>
 
 <p>A string is a vector that is capable only of holding elements of type <span class="class">character</span>. See §22.1 for detailed information about the relationship of arrays, vectors, and strings.</p>
-<p>Any implementation-defined character can be a string element. In ISLISP, string indices are 0-based. Strings are written by listing all the element characters in order and by enclosing them with double quotes <q>&quot;</q>. If the string has a double quote as its element, the double quote must be preceded by a backslash <q>\</q>. If the string has a backslash as its element, the backslash must be preceded by another backslash. Strings contained in program text as literals are immutable objects. The representation of non-printing characters is implementation defined.</p>
+<p>Any <a href="#td_implementation_defined">implementation-defined</a> character can be a string element. In ISLISP, string indices are 0-based. Strings are written by listing all the element characters in order and by enclosing them with double quotes <q>&quot;</q>. If the string has a double quote as its element, the double quote must be preceded by a backslash <q>\</q>. If the string has a backslash as its element, the backslash must be preceded by another backslash. Strings contained in program text as literals are immutable objects. The representation of non-printing characters is <a href="#td_implementation_defined">implementation defined</a>.</p>
 
 <div id="f_stringp" class="definition-function">
 (stringp obj) → boolean
@@ -4052,7 +4052,7 @@ may be any ISLISP object.</p>
 (create-string i [initial-character ]) → <span class="class">string</span>
 </div>
 
-<p>Returns a string of length i. If initial-character is given, then the characters of the new string are initialized with this character, otherwise the initialization is implementation defined. An error shall be signaled if the requested string cannot be allocated (error-id. cannot-create-string).
+<p>Returns a string of length i. If initial-character is given, then the characters of the new string are initialized with this character, otherwise the initialization is <a href="#td_implementation_defined">implementation defined</a>. An error shall be signaled if the requested string cannot be allocated (error-id. cannot-create-string).
 An error shall be signaled if i is not a non-negative integer or if initial-character is not a character (error-id. domain-error).</p>
 
 <pre class="example">
@@ -4085,7 +4085,7 @@ An error shall be signaled if i is not a non-negative integer or if initial-char
 <p>Two strings string<sub>1</sub> and string<sub>2</sub> are in order (string&lt;) if in the first position in which they differ the character of string<sub>1</sub> is char&lt; the corresponding character of string<sub>2</sub>, or if the string<sub>1</sub> is a proper prefix of string<sub>2</sub> (of shorter length and matching in all the characters of string<sub>1</sub>).</p>
 <p>Two strings are string&lt;= if they are either string&lt; or they are string=.</p>
 <p>Two strings are string/= if and only if they are not string=. Two strings are string&gt; if and only if they are not string&lt;=. Two strings are string&gt;= if and only if they are not string&lt;.</p>
-<p>For these 6 string comparison functions, if the test is satisfied, an implementation-defined non-nil value is returned; otherwise, nil is returned.</p>
+<p>For these 6 string comparison functions, if the test is satisfied, an <a href="#td_implementation_defined">implementation-defined</a> non-nil value is returned; otherwise, nil is returned.</p>
 <p>An error shall be signaled if either string1 or string2 is not a string (error-id. domain-error).</p>
 <pre class="example">
 (if (string= "abcd" "abcd") t nil)      ⇒ t
@@ -4141,7 +4141,7 @@ An error shall be signaled if i is not a non-negative integer or if initial-char
 </div>
 
 <p>Returns a single string containing a sequence of characters that results from appending the sequences of characters of each of the strings, or "" if given no strings. An error shall be signaled if any string is not a string (error-id. domain-error).</p>
-<p>This function does not modify its arguments. It is implementation defined whether and when the result shares structure with its string arguments.</p>
+<p>This function does not modify its arguments. It is <a href="#td_implementation_defined">implementation defined</a> whether and when the result shares structure with its string arguments.</p>
 <p>An error shall be signaled if the string cannot be allocated (error-id. cannot-create-string).</p>
 
 <pre class="example">
@@ -4296,7 +4296,7 @@ a                           ⇒ (2 4 6 8)
 <p>The function standard-input returns the stream used as the default stream for input functions.</p>
 <p>The function standard-output returns the stream used as the default stream for output functions.</p>
 <p>The function error-output returns the stream used as the default stream for warnings and non-interactive error messages.</p>
-<p>The value returned by each of these functions is initially implementation-defined, but can be dynamically bound; see with-standard-input, with-standard-output, and with-error-output.</p>
+<p>The value returned by each of these functions is initially <a href="#td_implementation_defined">implementation-defined</a>, but can be dynamically bound; see with-standard-input, with-standard-output, and with-error-output.</p>
 
 <div id="s_with_standard_input" class="definition-special">
 (with-standard-input stream-form form*) → <span class="class">object</span>
@@ -4320,7 +4320,7 @@ a                           ⇒ (2 4 6 8)
 
 <p>Streams might be connected to files or devices. Given a name, a stream can be created that is connected to a file having that name. File systems in which files are not named are not supported.
 </p>
-<p>A filename is represented by a string. The correct syntax of filenames is implementation defined.</p>
+<p>A filename is represented by a string. The correct syntax of filenames is <a href="#td_implementation_defined">implementation defined</a>.</p>
 <p>Streams to files are created by open-input-file, open-output-file, open-io-file, with-open-input-file, with-open-output-file, and with-open-io-file.</p>
 
 <div id="f_open_input_file" class="definition-function">
@@ -4334,13 +4334,13 @@ a                           ⇒ (2 4 6 8)
 </div>
 
 <p>open-input-file opens a file for input only. open-output-file opens a file for output only. open-io-file opens a file for both input and output.</p>
-<p>An error shall be signaled if filename is not a string. The corresponding file is opened in an implementation-defined way. These functions return an instance of the <span class="class">stream</span> class connected to the file specified by filename.</p>
+<p>An error shall be signaled if filename is not a string. The corresponding file is opened in an <a href="#td_implementation_defined">implementation-defined</a> way. These functions return an instance of the <span class="class">stream</span> class connected to the file specified by filename.</p>
 <p>The element-class can be either the class <span class="class">character</span> (the default) or a positive integer that is a number of bits in a byte to be used for a binary stream. All implementations must support a value of 8 (denoting integer byte values from 0 to 255), but some implementations might support other byte sizes as well.</p>
-<div class="note">Note: When a binary stream is used, the order of bits within bytes and bytes within words (i.e., whether it is right to left or left to right) are each implementation defined.</div>
+<div class="note">Note: When a binary stream is used, the order of bits within bytes and bytes within words (i.e., whether it is right to left or left to right) are each <a href="#td_implementation_defined">implementation defined</a>.</div>
 
 <pre class="example">
 (open-input-file "example.lsp" 8)
-  ⇒ implementation-defined
+  ⇒ <a href="#td_implementation_defined">implementation-defined</a>
 </pre>
 
 <div id="s_with_open_output_file" class="definition-special">
@@ -4368,16 +4368,16 @@ a                           ⇒ (2 4 6 8)
 </pre>
 
 <div id="f_close" class="definition-function">
-(close stream) → implementation defined
+(close stream) → <a href="#td_implementation_defined">implementation defined</a>
 </div>
 
-<p>The function close closes the stream stream. If stream is closed it may no longer be used in input or output operations. Closing a file stream ends the association between the stream and its file. If the stream was already closed this function performs nothing. The result value is implementation defined. An error shall be signaled if stream is not a stream (error-id. domain-error).</p>
+<p>The function close closes the stream stream. If stream is closed it may no longer be used in input or output operations. Closing a file stream ends the association between the stream and its file. If the stream was already closed this function performs nothing. The result value is <a href="#td_implementation_defined">implementation defined</a>. An error shall be signaled if stream is not a stream (error-id. domain-error).</p>
 
 <pre class="example">
 (defglobal input-str (open-input-file "data.lsp"))
   ⇒ input-str
-(close input-str)          ⇒ implementation-defined
-(close input-str)          ⇒ implementation-defined
+(close input-str)          ⇒ <a href="#td_implementation_defined">implementation-defined</a>
+(close input-str)          ⇒ <a href="#td_implementation_defined">implementation-defined</a>
 </pre>
 
 <div id="f_finish_output" class="definition-function">
@@ -4592,7 +4592,7 @@ An error shall be signaled if the output-stream parameter does not satisfy the o
 <p>This effect is implemented by (format-object output-stream obj t).</p>
 </dd>
 <dt>~nT</dt>
-<dd><p>Tab: output enough spaces to move to column n (where column 0 represents the left margin). If already at or beyond column n, one space is output. If an implementation cannot determine the current column position, the behavior is implementation defined, but at least one space will be output.</p>
+<dd><p>Tab: output enough spaces to move to column n (where column 0 represents the left margin). If already at or beyond column n, one space is output. If an implementation cannot determine the current column position, the behavior is <a href="#td_implementation_defined">implementation defined</a>, but at least one space will be output.</p>
 <p>This effect is implemented by (format-tab output-stream n).</p>
 </dd>
 <dt>~X</dt>
@@ -4674,15 +4674,15 @@ An error shall be signaled if the output-stream parameter does not satisfy the o
   ⇒ byte-example
 
 (format byte-example "hello")     ⇒ nil
-(close byte-example)              ⇒ implementation-defined
+(close byte-example)              ⇒ <a href="#td_implementation_defined">implementation-defined</a>
 (setq byte-example (open-input-stream "byte-ex" 8))
-  ⇒ implementation-defined
+  ⇒ <a href="#td_implementation_defined">implementation-defined</a>
 
-(read-byte byte-example)          ⇒ 104 (implementation-defined)
-(read-byte byte-example)          ⇒ 101 (implementation-defined)
-(read-byte byte-example)          ⇒ 108 (implementation-defined)
-(read-byte byte-example)          ⇒ 108 (implementation-defined)
-(read-byte byte-example)          ⇒ 111 (implementation-defined)
+(read-byte byte-example)          ⇒ 104 (<a href="#td_implementation_defined">implementation-defined</a>)
+(read-byte byte-example)          ⇒ 101 (<a href="#td_implementation_defined">implementation-defined</a>)
+(read-byte byte-example)          ⇒ 108 (<a href="#td_implementation_defined">implementation-defined</a>)
+(read-byte byte-example)          ⇒ 108 (<a href="#td_implementation_defined">implementation-defined</a>)
+(read-byte byte-example)          ⇒ 111 (<a href="#td_implementation_defined">implementation-defined</a>)
 </pre>
 
 <div id="f_write_byte" class="definition-function">
@@ -4694,7 +4694,7 @@ An error shall be signaled if the output-stream parameter does not satisfy the o
 <pre class="example">
 (let ((out-str (open-output-stream "byte-example" 8)))
     (write-byte #b101 out-str)
-    (close out-str))               ⇒ implementation-defined
+    (close out-str))               ⇒ <a href="#td_implementation_defined">implementation-defined</a>
 </pre>
 
 <h3 id="files">Files</h3>
@@ -4710,7 +4710,7 @@ An error shall be signaled if the output-stream parameter does not satisfy the o
 (defglobal new-file (open-output-file "notexist.lsp"))
   ⇒ new-file
 
-(close new-file)            ⇒ implementation-defined
+(close new-file)            ⇒ <a href="#td_implementation_defined">implementation-defined</a>
 (probe-file "notexist.lsp") ⇒ t
 </pre>
 
@@ -4724,7 +4724,7 @@ An error shall be signaled if the output-stream parameter does not satisfy the o
 (read-byte stream)
 (write-byte z stream)
 </pre>
-<p>For character streams, the file position is increased by an implementation-defined non-negative amount each time one of the following is done:</p>
+<p>For character streams, the file position is increased by an <a href="#td_implementation_defined">implementation-defined</a> non-negative amount each time one of the following is done:</p>
 <pre>
 (format stream...)
 (format-char stream char)
@@ -4738,7 +4738,7 @@ An error shall be signaled if the output-stream parameter does not satisfy the o
 (read-line stream)
 (read stream)
 </pre>
-<p>The amount may depend on the output and on the file position itself. It is implementation-defined which integer represents the first element of the file. An error shall be signaled if stream is not a stream to or from a file (error-id. domain-error).</p>
+<p>The amount may depend on the output and on the file position itself. It is <a href="#td_implementation_defined">implementation-defined</a> which integer represents the first element of the file. An error shall be signaled if stream is not a stream to or from a file (error-id. domain-error).</p>
 
 <pre class="example">
 ;; This example assumes 8-bit byte codes are stored in files.
@@ -4746,20 +4746,20 @@ An error shall be signaled if the output-stream parameter does not satisfy the o
   ⇒ example
 
 (format example "hello")       ⇒ nil
-(close example)                ⇒ implementation-defined
+(close example)                ⇒ <a href="#td_implementation_defined">implementation-defined</a>
 (setq example (open-input-stream "example.lsp" 8))
-  ⇒ implementation-defined
+  ⇒ <a href="#td_implementation_defined">implementation-defined</a>
 
-(file-position example)        ⇒ 0 (implementation-defined)
-(read-byte example)            ⇒ 104 (implementation-defined)
-(file-position example)        ⇒ 1 (implementation-defined)
+(file-position example)        ⇒ 0 (<a href="#td_implementation_defined">implementation-defined</a>)
+(read-byte example)            ⇒ 104 (<a href="#td_implementation_defined">implementation-defined</a>)
+(file-position example)        ⇒ 1 (<a href="#td_implementation_defined">implementation-defined</a>)
 </pre>
 
 <div id="f_set_file_position" class="definition-function">
 (set-file-position stream z) → <span class="class">integer</span>
 </div>
 
-<p>Attempts to change the file position (see file-position) of the stream stream to z . If it is not possible to move to the exact position z , some implementation-defined motion within the file might still be performed. The value returned is the new file position, which might or might not be z.</p>
+<p>Attempts to change the file position (see file-position) of the stream stream to z . If it is not possible to move to the exact position z , some <a href="#td_implementation_defined">implementation-defined</a> motion within the file might still be performed. The value returned is the new file position, which might or might not be z.</p>
 <p>An error shall be signaled if stream is not a stream to or from a file, or if z is not a non-negative integer (error-id. domain-error).</p>
 
 <pre class="example">
@@ -4791,7 +4791,7 @@ An error shall be signaled if the output-stream parameter does not satisfy the o
 
 <h4 id="signaling_and_handling">Signaling and handling conditions</h4>
 
-<p>When a condition is signaled, the active handler is called with one argument, a condition which represents the situation. An initial active handler will have been established by the system; it will provide some implementation-defined action (such as return to toplevel, program exit, or entry into an interactive debugger). User programs may also establish handlers (see with-handler).</p>
+<p>When a condition is signaled, the active handler is called with one argument, a condition which represents the situation. An initial active handler will have been established by the system; it will provide some <a href="#td_implementation_defined">implementation-defined</a> action (such as return to toplevel, program exit, or entry into an interactive debugger). User programs may also establish handlers (see with-handler).</p>
 <p>At any given time, only one handler is active. Establishing a new handler with with-handler shadows any previously active handler. This newly established handler is active throughout execution of its associated body of code unless shadowed by another use of with-handler.</p>
 <p>If called, a handler function will execute in the dynamic environment of the call to signal-condition, except that the handler context is re-bound to match the dynamic handler state that was current at the point the handler function was established as the active handler.</p>
 <div class="note">Note: This means that handlers are not expected to handle errors in themselves. If a programmer wishes to have a handler handle its own errors, he might use labels to allow the function a way to refer to itself and might have the function re-establish itself as a handler within its own body.</div>
@@ -4805,7 +4805,7 @@ An error shall be signaled if the output-stream parameter does not satisfy the o
 </div>
 
 <p>An error shall be signaled.</p>
-<p>error-string and the objs are advice to the implementation about how the error message might be textually described (using format), but whether or not that advice is used is implementation defined.</p>
+<p>error-string and the objs are advice to the implementation about how the error message might be textually described (using format), but whether or not that advice is used is <a href="#td_implementation_defined">implementation defined</a>.</p>
 <p>This is equivalent to:</p>
 <pre>
 (signal-condition
@@ -4837,7 +4837,7 @@ An error shall be signaled if the output-stream parameter does not satisfy the o
 
 <p>Invokes the condition handling system on condition.</p>
 <p>If continuable is nil, the results of attempting to “continue” (see continue-condition) are not defined except that the call to signal-condition will not return normally.</p>
-<p>If continuable is not nil, it will be possible to return from the call to signal-condition (see continue-condition). In this case, the specific value of continuable may be a string indicating the effect of continuing, or it may be the symbol t, indicating that an implementation-defined string such as "Continue with no special action." is to be used.</p>
+<p>If continuable is not nil, it will be possible to return from the call to signal-condition (see continue-condition). In this case, the specific value of continuable may be a string indicating the effect of continuing, or it may be the symbol t, indicating that an <a href="#td_implementation_defined">implementation-defined</a> string such as "Continue with no special action." is to be used.</p>
 
 <pre class="example">
 (signal-condition (create (class <span class="class">simple-error</span>)
@@ -5144,7 +5144,7 @@ However, an error shall be signaled if an implementation can determine that the 
 </div>
 
 <p>get-internal-real-time returns as an integer the current time in internal time units, relative to an arbitrary time base. The difference between the values of two calls to this function is the amount of elapsed real time (i.e., clock time) between the two calls.</p>
-<p>get-internal-run-time returns as an integer the current run time in internal time units. The precise meaning of this quantity is implementation defined. The difference between the values of two calls to this function is the amount of time between the two calls during which computational effort was expended on behalf of the executing program.</p>
+<p>get-internal-run-time returns as an integer the current run time in internal time units. The precise meaning of this quantity is <a href="#td_implementation_defined">implementation defined</a>. The difference between the values of two calls to this function is the amount of time between the two calls during which computational effort was expended on behalf of the executing program.</p>
 
 <div id="f_internal_time_units_per_second" class="definition-function">
 (internal-time-units-per-second) → <span class="class">integer</span>
@@ -5417,8 +5417,8 @@ if 38
 ignore-errors 117
 immutable binding 4
 immutable object 4
-implementation defined 4
-implementation dependent 5
+<a href="#td_implementation_defined">implementation defined 4</a>
+<a href="#implementation_dependent">implementation dependent 5</a>
 indefinite extent 18
 inheritance 5
 inheritance (of slots) 51
