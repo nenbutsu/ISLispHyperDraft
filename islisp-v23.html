@@ -1029,7 +1029,7 @@ They cannot be defined or bound. See §8.</p>
 <li>by using labels and flet special forms</li>
 </ul>
 
-<div class="definition-function">
+<div id="f_functionp" class="definition-function">
 (functionp obj) → boolean
 </div>
 <p>Returns t if obj is a (normal or generic) function; otherwise, returns nil. obj may be any ISLISP object.</p>
@@ -1159,7 +1159,7 @@ An error shall be signaled if function is not a function (error-id. domain-error
 <p>Although the names defined by defining forms can be used throughout the current toplevel scope, the prepared toplevel forms in an ISLISP text unit are executed sequentially from left to right.</p>
 <p>Two defining forms with the same identifier in the same namespace are not allowed in one toplevel scope.</p>
 
-<div class="definition-defining">
+<div id="def_defconstant" class="definition-defining">
 (defconstant name form) → <span class="class">symbol</span>
 </div>
 
@@ -1173,7 +1173,7 @@ e                                  ⇒ 2.7182818284590451
 (f)                                ⇒ 2.7182818284590451
 </pre>
 
-<div class="definition-defining">
+<div id="def_defglobal" class="definition-defining">
 (defglobal name form) → <span class="class">symbol</span>
 </div>
 
@@ -1193,7 +1193,7 @@ today                          ⇒ wednesday
   ⇒ wednesday
 </pre>
 
-<div class="definition-defining">
+<div id="def_defdynamic" class="definition-defining">
 (defdynamic name form) → <span class="class">symbol</span>
 </div>
 
@@ -1210,7 +1210,7 @@ today                          ⇒ wednesday
   ⇒ green
 </pre>
 
-<div class="definition-defining">
+<div id="def_defun" class="definition-defining">
 (defun function-name lambda-list form*) → <span class="class">symbol</span>
 </div>
 
@@ -1231,10 +1231,10 @@ today                          ⇒ wednesday
 <p>t is an identifier naming the symbol t, and nil is an identifier naming the symbol nil (which is also the empty list). nil is the unique instance of the <span class="class">null</span> class.</p>
 <p>Like boolean functions, the and and or special forms return truth values; however, these truth values are nil when the test is not satisfied and a non-nil value otherwise. The result of and and or are quasi-booleans.</p>
 
-<div class="definition-constant">
+<div id="c_t" class="definition-constant">
 t → <span class="class">symbol</span>
 </div>
-<div class="definition-constant">
+<div id="c_nil" class="definition-constant">
 nil → <span class="class">null</span>
 </div>
 <p>t is a named constant whose value is the symbol t itself. nil is a named constant whose value is the symbol nil itself.</p>
@@ -1269,10 +1269,10 @@ nil → <span class="class">null</span>
 
 <h4 id="equality">Equality</h4>
 
-<div class="definition-function">
+<div id="f_eq" class="definition-function">
 (eq obj<sub>1</sub> obj<sub>2</sub>) → boolean
 </div>
-<div class="definition-function">
+<div id="f_eql" class="definition-function">
 (eql obj<sub>1</sub> obj<sub>2</sub>) → boolean
 </div>
 
@@ -1341,7 +1341,7 @@ nil → <span class="class">null</span>
 (eq #\space #\space)        ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
 </pre>
 
-<div class="definition-function">
+<div id="f_equal" class="definition-function">
 (equal obj<sub>1</sub> obj<sub>2</sub>) → boolean
 </div>
 
@@ -1387,7 +1387,7 @@ nil → <span class="class">null</span>
 </pre>
 
 <h4 id="logical_connectives">Logical connectives</h4>
-<div class="definition-function">
+<div id="f_not" class="definition-function">
 (not obj) → boolean
 </div>
 <p>This predicate is the logical “not” (or “¬”). It returns t if obj is nil and nil otherwise. obj may be any ISLISP object.</p>
@@ -1401,7 +1401,7 @@ nil → <span class="class">null</span>
 (not (list 3))    ⇒ nil
 </pre>
 
-<div class="definition-sepcial">
+<div id="s_and" class="definition-sepcial">
 (and form*) → <span class="class">object</span>
 </div>
 
@@ -2108,7 +2108,7 @@ iteration-spec ::= (var init [step])
 </li>
 </ul>
 
-<div class="definition-defining">
+<div id="def_defclass" class="definition-defining">
 (defclass class-name (sc-name*) (slot-spec*) class-opt*) → <span class="class">symbol</span>
 </div>
 <pre>
@@ -2199,7 +2199,7 @@ The defclass defining form returns the symbol named class-name as its result.
 <p>The method combination facility controls the selection of methods, the order in which they are activated, and the value that is returned by the generic function. ISLISP provides a default method combination type but does not provide a facility for declaring new types of method combination.</p>
 <p>Like an ordinary ISLISP function, a generic function takes arguments, performs a series of operations, and returns a value. An ordinary function has a single body of code that is always executed when the function is called. A generic function has a set of bodies of code of which a non-empty subset is selected for execution. The selected bodies of code and the manner of their combination are determined by the classes of the arguments to the generic function and by its method combination type.</p>
 
-<div class="definition-function">
+<div id="f_generic_function_p" class="definition-function">
 (generic-function-p obj) → boolean
 </div>
 
@@ -2213,7 +2213,7 @@ The defclass defining form returns the symbol named class-name as its result.
 
 <p>Some forms define methods for a generic function. These forms will be referred to as <q>method-defining forms.</q> These forms are the defmethod and defclass defining forms.</p>
 <p>During preparation for execution, a defmethod form must be preceded by the defgeneric form for the generic function to be specialized. (Methods implicitly defined by defclass due to :reader, :writer, or :accessor options do not need a preceding defgeneric.)</p>
-<div class="definition-defining">
+<div id="def_defgeneric" class="definition-defining">
 (defgeneric func-spec lambda-list {option | method-desc}*) → <span class="class">symbol</span>
 </div>
 <pre>
@@ -2247,7 +2247,7 @@ var                        ::= identifier
 
 <h5 id="defining_methods">Defining methods for generic functions</h5>
 
-<div class="definition-defining">
+<div id="def_defmethod" class="definition-defining">
 (defmethod func-spec method-qualifier* parameter-profile form*)
 → <span class="class">symbol</span>
 </div>
@@ -2360,7 +2360,7 @@ Class C<sub>1</sub>'s :after method runs after all of class C<sub>2</sub>'s meth
 <p>If only primary methods are used and if call-next-method is not used, only the most specific method is invoked; that is, more specific methods shadow more general ones.</p>
 
 <h5 id="calling_more_general_methods">Calling more general methods</h5>
-<div class="definition-local">
+<div id="l_call_next_method" class="definition-local">
 (call-next-method) → <span class="class">object</span>
 </div>
 
@@ -2372,7 +2372,7 @@ Class C<sub>1</sub>'s :after method runs after all of class C<sub>2</sub>'s meth
 <p>call-next-method passes the current method's original arguments to the next method. Neither using setq nor rebinding variables with the same names as parameters of the method affects the values call-next-method passes to the method it calls. The call-next-method function returns the value returned by the method it calls. After call-next-method returns, further computation is possible. The next-method-p function can be used to test whether there is a next method.</p>
 <p>The functional binding of call-next-method is lexical within the body of the method-defining form; i.e., it is as if it were established by labels. The function object to which the binding refers has indefinite extent.</p>
 <p>An error shall be signaled if call-next-method is used in methods that do not support it. An error shall be signaled if call-next-method is executed and there is no next method.</p>
-<div class="definition-local">
+<div id="l_next_method_p" class="definition-local">
 (next-method-p) → boolean
 </div>
 <p>The next-method-p function can be used within the body of a method defined by a method-defining form to determine whether a next method exists. The next-method-p function takes no arguments and returns t or nil.</p>
@@ -2380,7 +2380,7 @@ Class C<sub>1</sub>'s :after method runs after all of class C<sub>2</sub>'s meth
 i.e., it is as if it were established by labels. The function object to which the binding refers has indefinite extent.</p>
 
 <h4 id="object_creation">Object creation and initialization</h4>
-<div class="definition-generic">
+<div id="gf_create" class="definition-generic">
 (create class {initarg initval }*) → <span class="class">object</span>
 </div>
 
@@ -2398,7 +2398,7 @@ i.e., it is as if it were established by labels. The function object to which th
 <li>Otherwise, the slot is left uninitialized.</li>
 </ul>
 
-<div class="definition-generic">
+<div id="gf_initialize_object" class="definition-generic">
 (initialize-object instance initialization-arguments) → <span class="class">object</span>
 </div>
 
@@ -2408,17 +2408,17 @@ i.e., it is as if it were established by labels. The function object to which th
 <p>The instance argument is the object to be initialized. The modified instance is returned as the result. Programmers can define methods for initialize-object to specify actions to be taken when an instance is initialized. If only :after methods are defined, they will be run after the system-supplied primary method for initialization and therefore will not interfere with the default behavior of initialize-object. The consequences are undefined if a programmer-defined primary method for this generic function does not return instance.</p>
 
 <h4 id="class_enquiry">Class enquiry</h4>
-<div class="definition-function">
+<div id="f_class_of" class="definition-function">
 (class-of obj) → <span class="class">class</span>
 </div>
 
 <p>Returns the class of which the given obj is a direct instance. obj may be any ISLISP object.</p>
-<div class="definition-function">
+<div id="f_instancep" class="definition-function">
 (instancep obj class) → boolean
 </div>
 <p>Returns t if obj is an instance (directly or otherwise) of the class class; otherwise, returns nil obj may be any ISLISP object. An error shall be signaled if class is not a class object (error-id. domain-error).</p>
 
-<div class="definition-function">
+<div id="f_subclassp" class="definition-function">
 (subclassp class1 class2) → boolean
 </div>
 
@@ -2440,7 +2440,7 @@ those operations are forbidden that cause side-effects to the environment (such 
 <p>The result of expanding a macro form is another form. If that form is a macro form, it is expanded by the same mechanism until the result is not a macro form.</p>
 <p>When a toplevel form is a macro form, its resulting macro expansion is also considered to be a toplevel form.</p>
 <p>A macro form can appear as the place specified in a setf special form. See setf on page 35.</p>
-<div class="definition-defining">
+<div id="def_defmacro" class="definition-defining">
 (defmacro macro-name lambda-list form*) → <span class="class">symbol</span>
 </div>
 
@@ -2630,7 +2630,7 @@ The definition point of macro-name is the closing parenthesis of the lambda-list
 
 <h3 id="symbol_class">Symbol class</h3>
 <p>A symbol (an instance of class <span class="class">symbol</span>) is an object. Symbols can be named or unnamed. A symbol's name is sometimes called a print name because it is used to identify the symbol during reading and printing. Symbols can have associated properties.</p>
-<div class="definition-function">
+<div id="f_symbolp" class="definition-function">
 (symbolp obj) → boolean
 </div>
 
@@ -2707,7 +2707,7 @@ For example, <q>|\\\\\|\\\||</q> denotes a symbol whose name is a 5 character st
 <h4 id="symbol_properties">Symbol properties</a></h4>
 
 <p>A property of a symbol is a named association between a property indicator and a property value. A symbol s is said to have a property p if a property indicator p is associated with s.</p>
-<div class="definition-function">
+<div id="f_property" class="definition-function">
 (property symbol property-name [obj]) → <span class="class">object</span>
 </div>
 <p>Returns the value of the property named property-name associated with the symbol symbol . If symbol has no property named property-name, obj (which defaults to nil) is returned.</p>
@@ -2718,7 +2718,7 @@ For example, <q>|\\\\\|\\\||</q> denotes a symbol whose name is a 5 character st
 <div class="definition-special-form">
 (setf (property symbol property-name) obj) → <span class="class">object</span>
 </div>
-<div class="definition-function">
+<div id="f_set_property" class="definition-function">
 (set-property obj symbol property-name) → <span class="class">object</span>
 </div>
 <p>Causes obj to be the new value of the property named property-name asssociated with the symbol symbol . If the property named property-name already exists, its corresponding property value is replaced; otherwise, a new property is created. obj is returned.</p>
@@ -2730,7 +2730,7 @@ For example, <q>|\\\\\|\\\||</q> denotes a symbol whose name is a 5 character st
 (set-property 'athena 'zeus 'daughter)
   ⇒ athena
 </pre>
-<div class="definition-function">
+<div id="f_remove_property" class="definition-function">
 (remove-property symbol property-name) → <span class="class">object</span>
 </div>
 
@@ -2741,7 +2741,7 @@ For example, <q>|\\\\\|\\\||</q> denotes a symbol whose name is a 5 character st
 </pre>
 
 <h4 id="unnamed_symbols">Unnamed symbols</h4>
-<div class="definition-function">
+<div id="f_gensym" class="definition-function">
 (gensym) → <span class="class">symbol</span>
 </div>
 
@@ -2757,7 +2757,7 @@ For example, <q>|\\\\\|\\\||</q> denotes a symbol whose name is a 5 character st
 <p>The class <span class="class">number</span> has the disjoint subclasses <span class="class">float</span> and <span class="class">integer</span>.</p>
 
 <h4 id="number_class_2">Number class</h4>
-<div class="definition-function">
+<div id="f_numberp" class="definition-function">
 (numberp obj) → boolean
 </div>
 
@@ -2769,7 +2769,7 @@ For example, <q>|\\\\\|\\\||</q> denotes a symbol whose name is a 5 character st
 (numberp "17")     ⇒ nil
 </pre>
 
-<div class="definition-function">
+<div id="f_parse_number" class="definition-function">
 (parse-number string) → <span class="class">number</span>
 </div>
 
@@ -2785,7 +2785,7 @@ For example, <q>|\\\\\|\\\||</q> denotes a symbol whose name is a 5 character st
               one mantissa digit after the decimal point.
 </pre>
 
-<div class="definition-function">
+<div id="f_math_eq" class="definition-function">
 (= x<sub>1</sub> x<sub>2</sub>) → boolean
 </div>
 
@@ -2798,7 +2798,7 @@ For example, <q>|\\\\\|\\\||</q> denotes a symbol whose name is a 5 character st
 (= 0.0 -0.0)                       ⇒ t
 </pre>
 
-<div class="definition-function">
+<div id="f_math_neq" class="definition-function">
 (/= x1 x2) → boolean
 </div>
 
@@ -2809,16 +2809,16 @@ For example, <q>|\\\\\|\\\||</q> denotes a symbol whose name is a 5 character st
 (/= (parse-number "134.54") 134.54) ⇒ nil
 </pre>
 
-<div class="definition-function">
+<div id="f_gteq" class="definition-function">
 (&gt;= x<sub>1</sub> x<sub>2</sub>) → boolean
 </div>
-<div class="definition-function">
+<div id="f_lteq" class="definition-function">
 (&lt;= x<sub>1</sub> x<sub>2</sub>) → boolean
 </div>
-<div class="definition-function">
+<div id="f_gt" class="definition-function">
 (&gt; x<sub>1</sub> x<sub>2</sub>) → boolean
 </div>
-<div class="definition-function">
+<div id="f_lt" class="definition-function">
 (&lt; x<sub>1</sub> x<sub>2</sub>) → boolean
 </div>
 
@@ -2839,10 +2839,10 @@ For example, <q>|\\\\\|\\\||</q> denotes a symbol whose name is a 5 character st
 </pre>
 
 <p>In the remaining definitions in this section, any noted coercion to <span class="class">float</span> is done as if by float or by (convert z <span class="class">float</span>).</p>
-<div class="definition-function">
+<div id="f_plus" class="definition-function">
 (+ x*) → <span class="class">number</span>
 </div>
-<div class="definition-function">
+<div id="f_muptiply" class="definition-function">
 (* x*) → <span class="class">number</span>
 </div>
 
@@ -2862,7 +2862,7 @@ When given no arguments, + returns 0 and * returns 1. An error shall be signaled
 (*)        ⇒ 1
 </pre>
 
-<div class="definition-function">
+<div id="f_minus" class="definition-function">
 (- x+) → <span class="class">number</span>
 </div>
 
@@ -2888,10 +2888,10 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 (- 3 4 5)    ⇒ -6
 </pre>
 
-<div class="definition-function">
+<div id="f_quotient" class="definition-function">
 (quotient dividend divisor +) → <span class="class">number</span>
 </div>
-<div class="definition-function">
+<div id="f_reciprocal" class="definition-function">
 (reciprocal x) → <span class="class">number</span>
 </div>
 
@@ -2912,10 +2912,10 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 (quotient 2 3 4)  ⇒ 0.16666666666666666
 </pre>
 
-<div class="definition-function">
+<div id="f_max" class="definition-function">
 (max x+) → <span class="class">number</span>
 </div>
-<div class="definition-function">
+<div id="f_min" class="definition-function">
 (min x+) → <span class="class">number</span>
 </div>
 
@@ -2932,7 +2932,7 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 (min 2 2.0)      ⇒ 2 or 2.0 (<a href="#td_implementation_defined">implementation-defined</a>)
 (min 1 5 2 5 3)  ⇒ 1
 </pre>
-<div class="definition-function">
+<div id="f_abs" class="definition-function">
 (abs x) → <span class="class">number</span>
 </div>
 
@@ -2944,7 +2944,7 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 (abs -0.0) ⇒ 0.0
 </pre>
 
-<div class="definition-function">
+<div id="f_exp" class="definition-function">
 (exp x) → <span class="class">number</span>
 </div>
 
@@ -2956,7 +2956,7 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 (exp 0)    ⇒ 1 or 1.0 (<a href="#td_implementation_defined">implementation-defined</a>)
 </pre>
 
-<div class="definition-function">
+<div id="f_log" class="definition-function">
 (log x) → <span class="class">number</span>
 </div>
 
@@ -2968,7 +2968,7 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 (log 1)                 ⇒ 0 or 0.0 (<a href="#td_implementation_defined">implementation-defined</a>)
 </pre>
 
-<div class="definition-function">
+<div id="f_expt" class="definition-function">
 (expt x<sub>1</sub> x<sub>2</sub>) → <span class="class">number</span>
 </div>
 
@@ -2988,7 +2988,7 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 (expt 0.0 0.0)   an error shall be signaled
 </pre>
 
-<div class="definition-function">
+<div id="f_sqrt" class="definition-function">
 (sqrt x) → <span class="class">number</span>
 </div>
 <p>Returns the non-negative square root of x. An error shall be signaled if x is not a non-negative number (error-id. domain-error).</p>
@@ -2998,7 +2998,7 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 (sqrt -1) an error shall be signaled
 </pre>
 
-<div class="definition-constant">
+<div id="c_pi" class="definition-constant">
 *pi* → <span class="class">float</span>
 </div>
 <p>The value of this constant is an approximation of π.</p>
@@ -3007,13 +3007,13 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 *pi*  ⇒ 3.141592653589793
 </pre>
 
-<div class="definition-function">
+<div id="f_sin" class="definition-function">
 (sin x) → <span class="class">number</span>
 </div>
-<div class="definition-function">
+<div id="f_cos" class="definition-function">
 (cos x) → <span class="class">number</span>
 </div>
-<div class="definition-function">
+<div id="f_tan" class="definition-function">
 (tan x) → <span class="class">number</span>
 </div>
 
@@ -3034,7 +3034,7 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 (tan 0.001) ⇒ 0.0010000003333334668
 </pre>
 
-<div class="definition-function">
+<div id="f_atan" class="definition-function">
 (atan x) → <span class="class">number</span>
 </div>
 
@@ -3058,7 +3058,7 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 
 <p>An error shall be signaled if x is not a number (error-id. domain-error).</p>
 
-<div class="definition-function">
+<div id="f_atan2" class="definition-function">
 (atan2 x1 x2) → <span class="class">number</span>
 </div>
 
@@ -3193,13 +3193,13 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 (defun atan (x) (atan2 x 1)) ⇒ atan
 </pre>
 
-<div class="definition-function">
+<div id="f_sinh" class="definition-function">
 (sinh x) → <span class="class">number</span>
 </div>
-<div class="definition-function">
+<div id="f_cosh" class="definition-function">
 (cosh x) → <span class="class">number</span>
 </div>
-<div class="definition-function">
+<div id="f_tanh" class="definition-function">
 (tanh x) → <span class="class">number</span>
 </div>
 
@@ -3217,7 +3217,7 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 (tanh 0.001) ⇒ 9.999996666668002E-4
 </pre>
 
-<div class="definition-function">
+<div id="f_atanh" class="definition-function">
 (atanh x) → <span class="class">number</span>
 </div>
 
@@ -3247,17 +3247,17 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 <p>where s is either <q>+</q> or <q>-</q>, and dd … d is at least one digit from <q>0</q>–<q>9</q>.</p>
 <p>There must be at least one digit before the decimal point and at least one mantissa digit after the decimal point.</p>
 
-<div class="definition-constant">
+<div id="c_most_positive_float" class="definition-constant">
 *most-positive-float* → <span class="class">float</span>
 </div>
-<div class="definition-constant">
+<div id="c_most_negative_float" class="definition-constant">
 *most-negative-float* → <span class="class">float</span>
 </div>
 
 <p>The value of *most-positive-float* is the <a href="#td_implementation_dependent">implementation-dependent</a> ﬂoating-point number closest to positive infinity.</p>
 <p>The value of *most-negative-float* is the <a href="#td_implementation_dependent">implementation-dependent</a> ﬂoating-point number closest to negative infinity.</p>
 
-<div class="definition-function">
+<div id="f_floatp" class="definition-function">
 (floatp obj) → boolean
 </div>
 
@@ -3269,7 +3269,7 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 (floatp 2.0)   ⇒ t
 </pre>
 
-<div class="definition-function">
+<div id="f_float" class="definition-function">
 (float x) → <span class="class">float</span>
 </div>
 
@@ -3281,7 +3281,7 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 (float 123456789123456789123456789) ⇒ 1.2345678912345679E26
 </pre>
 
-<div class="definition-function">
+<div id="f_floor" class="definition-function">
 (floor x) → <span class="class">integer</span>
 </div>
 
@@ -3296,7 +3296,7 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 (floor -3.0) ⇒ -3
 </pre>
 
-<div class="definition-function">
+<div id="f_ceiling" class="definition-function">
 (ceiling x) → <span class="class">integer</span>
 </div>
 
@@ -3311,7 +3311,7 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 (ceiling -3.0) ⇒ -3
 </pre>
 
-<div class="definition-function">
+<div id="f_truncate" class="definition-function">
 (truncate x) → <span class="class">integer</span>
 </div>
 
@@ -3326,7 +3326,7 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 (truncate -3.0) ⇒ -3
 </pre>
 
-<div class="definition-function">
+<div id="f_round" class="definition-function">
 (round x) → <span class="class">integer</span>
 </div>
 
@@ -3360,7 +3360,7 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 </pre>
 <p>where s is either <q>+</q> or <q>-</q>.</p>
 <div class="note">Note: In ISLISP, there is no variable that controls the reader. Thus the above notations are exactly the notations for integers.</div>
-<div class="definition-function">
+<div id="f_integerp" class="definition-function">
 (integerp obj) → boolean
 </div>
 
@@ -3373,10 +3373,10 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 (integerp '(a b c)) ⇒ nil
 </pre>
 
-<div class="definition-function">
+<div id="f_div" class="definition-function">
 (div z<sub>1</sub> z<sub>2</sub>) → <span class="class">integer</span>
 </div>
-<div class="definition-function">
+<div id="f_mod" class="definition-function">
 (mod z<sub>1</sub> z<sub>2</sub>) → <span class="class">integer</span>
 </div>
 
@@ -3409,7 +3409,7 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 (mod -14 -3) ⇒ 02
 </pre>
 
-<div class="definition-function">
+<div id="f_gcd" class="definition-function">
 (gcd z<sub>1</sub> z<sub>2</sub>) → <span class="class">integer</span>
 </div>
 
@@ -3425,7 +3425,7 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 (gcd 0 0)     ⇒ 0
 </pre>
 
-<div class="definition-function">
+<div id="f_lcm" class="definition-function">
 (lcm z<sub>1</sub> z<sub>2</sub>) → <span class="class">integer</span>
 </div>
 <p>lcm returns the least common multiple of its integer arguments. gcd and lcm satisfies:</p>
@@ -3445,7 +3445,7 @@ An error shall be signaled if any x is not a number (error-id. domain-error).
 (lcm 0 0)     ⇒ 0
 </pre>
 
-<div class="definition-function">
+<div id="f_isqrt" class="definition-function">
 (isqrt z) → <span class="class">integer</span>
 </div>
 
@@ -3479,7 +3479,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 </pre>
 <p>where char1 &lt; char2 means that (char&lt; char1 char2) is true.</p>
 
-<div class="definition-function">
+<div id="f_characterp" class="definition-function">
 (characterp obj) → boolean
 </div>
 
@@ -3491,22 +3491,22 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 (characterp 'a)  ⇒ nil
 </pre>
 
-<div class="definition-function">
+<div id="f_char_eq" class="definition-function">
 (char= char<sub>1</sub> char<sub>2</sub>) → boolean
 </div>
-<div class="definition-function">
+<div id="f_char_neq" class="definition-function">
 (char/= char<sub>1</sub> char<sub>2</sub>) → boolean
 </div>
-<div class="definition-function">
+<div id="f_char_lt" class="definition-function">
 (char&lt; char<sub>1</sub> char<sub>2</sub>) → boolean
 </div>
-<div class="definition-function">
+<div id="f_char_gt" class="definition-function">
 (char&gt; char<sub>1</sub> char<sub>2</sub>) → boolean
 </div>
-<div class="definition-function">
+<div id="f_char_lteq" class="definition-function">
 (char&lt;= char<sub>1</sub> char<sub>2</sub>) → boolean
 </div>
-<div class="definition-function">
+<div id="f_char_gteq" class="definition-function">
 (char&gt;= char<sub>1</sub> char<sub>2</sub>) → boolean
 </div>
 
@@ -4864,7 +4864,7 @@ An error shall be signaled if the output-stream parameter does not satisfy the o
 
 <p>Establishes a handler for <span class="class">error</span>, such that if an error occurs during execution of forms, ignore-errors will immediately return nil. Then it executes forms, returning the value returned by the last form (or nil if there were no forms) if execution terminates normally.</p>
 
-<div class="definition-generic">
+<div id="gf_report_condition" class="definition-generic">
 (report-condition condition stream) → <span class="class">condition</span>
 </div>
 
