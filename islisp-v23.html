@@ -20,16 +20,16 @@ ISLISP Working Draft 23.0.</p>
 The textual material that makes up this document, excluding the cover and any running headers
 that establish the identity of the document itself as ISLISP Working Draft 23.0, is expressly
 dedicated to the Public Domain, from which individual, copyrighted works (including any
-resulting ISO standard) may be non-exclusively derived without fee or other restriction.
+<a href="https://www.iso.org/obp/ui/#iso:std:iso-iec:13816:ed-2:v1:en">resulting ISO standard</a>) may be non-exclusively derived without fee or other restriction.
 </p>
 
 <p>
-  Yuji Minejima (yuji@minejima.jp) is in charge of this HTML version.
+  <a href="https://github.com/nenbutsu">Yuji Minejima</a> (yuji@minejima.jp) is in charge of this HTML version.
 </p>
 
 <p>
   Acknowledgment:
-  Atsushi Saito did the first tagging of HTML version.
+  <a href="https://github.com/SaitoAtsushi">Atsushi Saito</a> did the first tagging of HTML version.
 </p>
 
 <h2>Contents</h2>
@@ -295,18 +295,18 @@ specified by ISLISP Working Draft 23.0.</q></li>
 <h4 id="td_abstract_class">abstract class</h4>
 <p>class that by definition has no direct instances</p>
 
-<h4>activation</h4>
+<h4 id="td_activation">activation</h4>
 <p>computation of a function</p>
 
 <div class="note">Note: Every activation has an activation point, an activation period, and an activation end. The activator, which is a function application form prepared for execution, starts the activation at the activation point.</div>
 
-<h4>accessor</h4>
+<h4 id="td_accessor">accessor</h4>
 <p>association of a reader and a writer for a slot of an instance</p>
 
-<h4>argument position</h4>
+<h4 id="td_argument_position">argument position</h4>
 <p>occurrence of a text unit as an element in a form excluding the first one</p>
 
-<h4>binding</h4>
+<h4 id="td_binding">binding</h4>
 <p>concept that has both a syntactic and a semantic aspect, where</p>
 <ul>
 <li>syntactically, <q>binding</q> describes the relation between an identifier and a binding ISLISP form, and</li>
@@ -315,53 +315,53 @@ specified by ISLISP Working Draft 23.0.</q></li>
 <div class="note">Note 1: The property of being bound can be checked textually by relating defining and applied identifier occurrences.</div>
 <div class="note">Note 2: Semantically, the binding relation might be imagined to be materialized in some entity, the binding. Such a binding entity is constructed at run time and destroyed later, or might have indefinite extent.</div>
 
-<h4>class</h4>
+<h4 id="td_class">class</h4>
 <p>object that determines the structure and behavior of a set of other objects called its instances</p>
 <div class="note">Note: The behavior is the set of operations that can be performed on an instance.</div>
 
-<h4>condition</h4>
+<h4 id="td_condition">condition</h4>
 <p>object that represents a situation that has been (or might be) detected by a running program</p>
 
-<h4>definition point</h4>
+<h4 id="td_definition_point">definition point</h4>
 <p>textual point of an ISLISP text that is the start of an identifier's representation of an ISLISP object</p>
 
-<h4>direct instance</h4>
+<h4 id="td_direct_instance">direct instance</h4>
 <p>instance of a class but not an instance of one of its subclasses</p>
 <div class="note">Note: Every ISLISP object is direct instance of exactly one class, which is called <q>its class</q>. The set of all direct instances together with their behavior constitute a class.</div>
 
-<h4>dynamic</h4>
+<h4 id="td_dynamic">dynamic</h4>
 <p>having an effect that is determined only through program execution and that cannot, in general, be determined statically</p>
 
-<h4>dynamic variable</h4>
+<h4 id="td_dynamic_variable">dynamic variable</h4>
 <p>variable whose associated binding is determined by the most recently executed active block that established it, rather than statically by a lexically apparent block according to the lexical principle</p>
 
-<h4>evaluation</h4>
+<h4 id="td_evaluation">evaluation</h4>
 <p>computation of a form prepared for execution which results in a value and/or a side-effect</p>
 
-<h4>execution</h4>
+<h4 id="td_execution">execution</h4>
 <p>sequence of (sometimes nested) activations</p>
 
-<h4>extension</h4>
+<h4 id="td_extension">extension</h4>
 <p><a href="#td_implementation_defined">implementation-defined</a> modification to the requirements of this document that does not invalidate any ISLISP text complying with this document (except by prohibiting the use of one or more particular spellings of identifiers), does not alter the set of actions which are required to signal errors, and does not alter the status of any feature designated as <a href="#td_implementation_dependent">implementation dependent</a></p>
 
-<h4>form</h4>
+<h4 id="td_form">form</h4>
 <p>single, syntactically valid unit of program text, capable of being prepared for execution</p>
 
-<h4>function</h4>
+<h4 id="td_function">function</h4>
 <p>ISLISP object that is called with arguments, performs a computation (possibly having side-effects), and returns a value</p>
 
-<h4>generic function</h4>
+<h4 id="td_generic_function">generic function</h4>
 <p>function whose application behavior is determined by the classes of the values of its arguments and which consists - in general - of several methods</p>
 
-<h4>identifier</h4>
+<h4 id="td_identifier">identifier</h4>
 <p>lexical element (lexeme) which designates an ISLISP object</p>
 <div class="note">Note: In the data structure representation of ISLISP texts, identifiers are denoted by symbols.</div>
 
-<h4>immutable binding</h4>
+<h4 id="td_immutable_binding">immutable binding</h4>
 <p>binding in which the relation between an identifier and the object represented by this identifier cannot be changed</p>
 <div class="note">Note: It is a violation if there is attempt to change an immutable binding (error-id. immutable-binding).</div>
 
-<h4>immutable object</h4>
+<h4 id="td_immutable_object">immutable object</h4>
 <p>object which is not subject to change, either because no operator is provided that is capable of effecting such change, or because some constraint exists which prohibits the use of an operator that might otherwise be capable of effecting such a change</p>
 <div class="note">Note: Except as explicitly indicated otherwise, a conforming processor is not required to detect attempts to modify immutable objects; the consequences are undefined if an attempt is made to modify an immutable object.</div>
 
@@ -372,69 +372,69 @@ specified by ISLISP Working Draft 23.0.</q></li>
 <p>feature, possibly differing between different ISLISP processors, but not necessarily defined for any particular processor</p>
 <div class="note">Note: A conforming ISLISP text must not depend upon implementation-dependent features.</div>
 
-<h4>inheritance</h4>
+<h4 id="td_inheritance">inheritance</h4>
 <p>relation between a class and its superclass which maps structure and behavior of the superclass onto the class</p>
 <div class="note">Note: ISLISP supports a restricted form of multiple inheritance; i.e., a class may have several direct superclasses at once.</div>
 
-<h4>instance</h4>
+<h4 id="td_instance">instance</h4>
 <p>〈class〉 either a direct instance of a class or an instance of one of its subclasses</p>
 
-<h4>literal</h4>
+<h4 id="td_literal">literal</h4>
 <p>object whose representation occurs directly in a program as a constant value</p>
 
-<h4>metaclass</h4>
+<h4 id="td_metaclass">metaclass</h4>
 <p>class whose instances are themselves classes</p>
 
-<h4>method</h4>
+<h4 id="td_method">method</h4>
 <p>case of a generic function for a particular parameter profile, which defines the class-specific behavior and operations of the generic function</p>
 
-<h4>object</h4>
+<h4 id="td_object">object</h4>
 <p>anything that can be created, destroyed, manipulated, compared, stored, input, or output by the ISLISP processor</p>
 <div class="note">Note 1: In particular, functions are ISLISP objects.</div>
 <div class="note">Note 2: Objects that can be passed as arguments to functions, can be returned as values, can be bound to variables, and can be part of structures, are called first-class objects.</div>
 
-<h4>operator</h4>
+<h4 id="td_operator">operator</h4>
 <p>first element of a compound form, which is either a reserved name that identifies the form as a special form, or the name of a macro, or a lambda expression, or else an identifier in the function namespace</p>
 
-<h4>operator position</h4>
+<h4 id="td_oeprator_position">operator position</h4>
 <p>occurrence of a text unit as the first element in a form</p>
 
-<h4>parameter profile</h4>
+<h4 id="td_parameter_profile">parameter profile</h4>
 <p>parameter list of a method, where each formal parameter is accompanied by its class name</p>
 <div class="note">Note: If a parameter is not accompanied by a class name, it belongs to the most general class.</div>
 
-<h4>place</h4>
+<h4 id="td_place">place</h4>
 <p>location where objects can be stored and retrieved later</p>
 <div class="note">Note: Places are designated by forms which are permitted as the first argument of setf. If used this way an object is stored in the place. If the form is not used as first argument of setf the stored object is retrieved. The cases are listed in the description of setf.</div>
 
-<h4>process</h4>
+<h4 id="td_process">process</h4>
 <p>execution of an ISLISP text prepared for execution</p>
 
-<h4>processor</h4>
+<h4 id="td_processor">processor</h4>
 <p>system or mechanism, that accepts an ISLISP text (or an equivalent data structure) as input, prepares it for execution, and executes the result to produce values and side-effects</p>
 
-<h4>program</h4>
+<h4 id="td_program">program</h4>
 <p>aggregation of expressions to be evaluated, the specific nature of which depends on context</p>
 <div class="note">Note: Within this document, the term “program” is used only in an abstract way; there is no specific syntactic construct that delineates a program.</div>
 
-<h4>scope</h4>
+<h4 id="td_scope">scope</h4>
 <p>〈identifier〉 the textual part of a program where the meaning of that identifier is defined; i.e., there exists an ISLISP object designated by this identifier</p>
 
-<h4>slot</h4>
+<h4 id="td_slot">slot</h4>
 <p>named component of an instance which can be accessed using the slot accessors
 Note: The structure of an instance is defined by the set of its slots.</p>
 
-<h4>text</h4>
+<h4 id="td_text">text</h4>
 <p>text that complies with the requirements of this document (i.e., with the syntax and static semantics of ISLISP)</p>
 <div class="note">Note: An ISLISP text consists of a sequence of toplevel forms.</div>
 
-<h4>toplevel form</h4>
+<h4 id="td_toplevel">toplevel form</h4>
 <p>any form that either is not nested in any other form or is nested only in progn forms</p>
 
-<h4>toplevel scope</h4>
+<h4 id="td_toplevel_scope">toplevel scope</h4>
 <p>scope in which a complete ISLISP text unit is processed</p>
 
-<h4>writer</h4>
+<h4 id="td_writer">writer</h4>
 <p>method associated with a slot of a class, whose task is to bind a value with a slot of an instance of that class</p>
 
 <h3 id="notation_and_conventions">Notation and conventions</h3>
