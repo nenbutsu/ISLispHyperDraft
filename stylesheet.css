@@ -190,8 +190,10 @@ strong {
 }
 
 p a {
+    /*
     font-weight: bold;
     color: red;
+    */
 }
 
 blockquote {
@@ -205,4 +207,5 @@ pre {
     margin: 0 0 0.5em 0;
     border: black thin solid;
     padding: 0 0.4em;
+    font-family: monospace;
 }
