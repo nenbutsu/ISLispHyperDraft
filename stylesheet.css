@@ -10,7 +10,7 @@ body {
     display: flex;
 }
 
-body > div {
+#sidebar {
     height: 100%;
     overflow-y: auto;
     width: 300px;
@@ -18,20 +18,20 @@ body > div {
     border-right: 1px solid #ccc;
 }
 
-body > div ol {
+#sidebar ol {
     padding-left: 40px;
 }
 
-body > div ol ol {
+#sidebar ol ol {
     padding-left: 10px;
 }
 
-body > div h2 {
+#sidebar h2 {
     margin: 0;
     border-radius: 0;
 }
 
-body > main {
+#content {
     height: 100%;
     overflow-y: auto;
     flex: 1;
