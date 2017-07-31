@@ -437,7 +437,7 @@
             <p>There is a correspondence from ISLISP textual units to their ISLISP data structure representations. Throughout this document the text and the corresponding ISLISP objects (data structures) are addressed simultaneously. ISLISP text can be seen as an external specification of ISLISP data structures. To distinguish between the two representations different concepts are used. When textual representation is discussed, textual elements (such as identifiers, literals, and compound forms) are used; when ISLISP objects are discussed, objects (such as symbols and lists) are used.</p>
             <p>The constituents of ISLISP text are called forms. A form can be an identifier, a literal, or a compound form. A compound form can be a function application form, a macro form, a special form, or a defining form.</p>
             <p>An identifier is represented by a symbol. A compound form is represented by a non-null list. A literal is represented by neither a symbol nor a list, and so is neither an identifier nor a compound form; for example, a number is a literal.</p>
-            <p>An object is prepared for execution; this might include transformation or compilation, including macro expansion. The method of preparation for execution and its result are not defined in this document (with exception of the violations to be detected). After successful preparation for execution the result is ready for execution. The combination of preparation for execution and subsequent execution implements ISLISP’s evaluation model. The term “evaluation” is used because ISLISP is an expression language—each form has a value which is used to compute the value of the containing form. The results obtained when an entity is prepared for execution are designated throughout this document by the construction <q>prepared entity</q>; e.g., <q>prepared form,</q> <q>prepared special form.</q></p>
+            <p>An object is prepared for execution; this might include transformation or compilation, including macro expansion. The method of preparation for execution and its result are not defined in this document (with exception of the violations to be detected). After successful preparation for execution the result is ready for execution. The combination of preparation for execution and subsequent execution implements ISLISP's evaluation model. The term “evaluation” is used because ISLISP is an expression language—each form has a value which is used to compute the value of the containing form. The results obtained when an entity is prepared for execution are designated throughout this document by the construction <q>prepared entity</q>; e.g., <q>prepared form,</q> <q>prepared special form.</q></p>
             <div class="example">Example: A “cond special form” becomes a “prepared cond” by preparation for execution.</div>
             <p>In the examples, the metasymbol “⇒” designates the result of an actual evaluation. For example:</p>
 <pre>
@@ -526,11 +526,11 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             <p>Additional characters are <a href="#td_implementation_defined">implementation defined</a>.</p>
             <p>The following characters are individual lexemes (see <a href="#macros">§16</a> and <a href="#cons">§21.1</a>):</p>
 <pre>
-( ) , ’ ‘
+( ) , ' ‘
 </pre>
             <p>The following character tuples (where n is a sequence of digits) are individual lexemes (see §12.7, §16, and §22.1):</p>
 <pre>
-#’ #( ,@ #B #b #O #o #X #x #na #nA
+#' #( ,@ #B #b #O #o #X #x #na #nA
 </pre>
             <p>
                 The textual representations of symbols (see §18), numbers (see §19), characters (see §20), and strings (see §24) are lexemes.
@@ -538,7 +538,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             <p>\ (single escape) and | (multiple escape) are special characters. They may occur in some lexemes (identifiers and string literals).</p>
             <p>Other lexemes are separated by delimiters. Delimiters are separators along with the following characters:</p>
 <pre>
-( ) ‘ , ’
+( ) ‘ , '
 </pre>
             <p>The effect of delimiting is disestablished inside a string (see §24) or inside a corresponding pair of multiple escape characters (see §18) or for the character immediately following #\.</p>
             
@@ -579,14 +579,14 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
                 <dd>A vector of class <span class="class">general-vector</span> is written as #(obj<sub>1</sub> … obj<sub>n</sub>).</dd>
                 <dt>Array</dt>
                 <dd>
-                    <p>An array of class &lt;general-array*&gt; or <span class="class">general-vector</span> can be written on input as #na (where n is an integer indicating the number of dimensions of the array) followed by a nested structure of sequences denoting the contents of the array. This structure is defined as follows. If n = 1 the structure is simply (obj<sub>1</sub> ... obj<sub>n</sub>). If n > 1 and the dimensions are n<sub>1</sub> n<sub>2</sub> ..., the structure is (str<sub>1</sub> ... strn<sub>1</sub>), where the stri are the structures of the n<sub>1</sub> subarrays, each of which has dimensions (n<sub>2</sub> ...). As an example, the representation of (create-array ’(2 3 4) 5) is as follows:</p>
+                    <p>An array of class &lt;general-array*&gt; or <span class="class">general-vector</span> can be written on input as #na (where n is an integer indicating the number of dimensions of the array) followed by a nested structure of sequences denoting the contents of the array. This structure is defined as follows. If n = 1 the structure is simply (obj<sub>1</sub> ... obj<sub>n</sub>). If n > 1 and the dimensions are n<sub>1</sub> n<sub>2</sub> ..., the structure is (str<sub>1</sub> ... strn<sub>1</sub>), where the stri are the structures of the n<sub>1</sub> subarrays, each of which has dimensions (n<sub>2</sub> ...). As an example, the representation of (create-array '(2 3 4) 5) is as follows:</p>
 <pre>
 #3a(((5 5 5 5) (5 5 5 5) (5 5 5 5)) ((5 5 5 5) (5 5 5 5) (5 5 5 5))).
 </pre>
                     <p>On output (see format), arrays of class <span class="class">general-vector</span> will be printed using #(...) notation.</p>
                 </dd>
                 <dt>String</dt>
-                <dd>A string is represented by the sequence of its characters enclosed in a pair of "’s. For example: "abc". Special characters are preceded with a backslash as an escape character.</dd>
+                <dd>A string is represented by the sequence of its characters enclosed in a pair of "'s. For example: "abc". Special characters are preceded with a backslash as an escape character.</dd>
                 <dt>Symbol</dt>
                 <dd>A named symbol is represented by its print name. Vertical bars (|) might need to enclose the symbol if it contains certain special characters; see §18. The notation, if any, used for unnamed symbols is <a href="#td_implementation_defined">implementation defined</a>.</dd>
             </dl>
@@ -803,7 +803,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             
             <h3 id="scope_and_extent">Scope and extent</h3>
             <p>In describing ISLISP, the notions of scope and extent are useful. The first is a syntactic concept, the latter is a semantic concept. Although syntactic constructs, especially identifiers, are used to refer to runtime entities (i.e., objects arising during execution), a single entity cannot have both scope and extent. Scope is a feature of an identifier, referring to that textual part of an ISLISP text (see §4.38 and §5) within which this identifier occurs with unique meaning. Extent refers to the interval of execution time during which a certain object exists.</p>
-            <p>A namespace is a mapping from identifiers to meanings. In ISLISP there are six namespaces: variable, dynamic variable, function, class, block, and tagbody tag. It is therefore possible for a single identifier to have any or all of these six meanings, depending on the context. For example, an identifier’s meaning is determined by the function namespace when the identifier appears in the operator position of a function application form, whereas the same identifier’s meaning is determined by the variable namespace if it appears in an argument position in the same form.</p>
+            <p>A namespace is a mapping from identifiers to meanings. In ISLISP there are six namespaces: variable, dynamic variable, function, class, block, and tagbody tag. It is therefore possible for a single identifier to have any or all of these six meanings, depending on the context. For example, an identifier's meaning is determined by the function namespace when the identifier appears in the operator position of a function application form, whereas the same identifier's meaning is determined by the variable namespace if it appears in an argument position in the same form.</p>
             
             <h4 id="the_lexical_principle">The lexical principle</h4>
             
@@ -1060,8 +1060,8 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             
 <pre>
 Where:
-lambda-list ::= (identifier * [&amp;rest identifier ]) |
-(identifier * [:rest identifier ])
+lambda-list ::= (identifier* [&amp;rest identifier ]) |
+                (identifier* [:rest identifier ])
 </pre>
             
             <p>and where no identifier may appear more than once in lambda-list.</p>
@@ -1076,10 +1076,13 @@ lambda-list ::= (identifier * [&amp;rest identifier ]) |
 Example:
 ((lambda (x y) (+ (* x x) (* y y))) 3 4)
 ⇒ 25
+
 ((lambda (x y &amp;rest z) z) 3 4 5 6)
 ⇒ (5 6)
+
 ((lambda (x y :rest z) z) 3 4 5 6)
 ⇒ (5 6)
+
 (funcall (lambda (x y) (- y (* x y))) 7 3)
 ⇒ -18
 </pre>
@@ -1100,15 +1103,16 @@ Example:
             <p>During activation, the prepared labels or flet establishes function bindings and then evaluates each body-form in the body sequentially; the value of the last one (or nil if there is none) is the value returned by the special form activation.</p>
             <p>No function-name may appear more than once in the function bindings.</p>
 <pre class="example">
+
 (labels  ((evenp (n)
-             (if (= n 0)
-                 t
-               (oddp (- n 1))))
+            (if (= n 0)
+                t
+              (oddp (- n 1))))
           (oddp (n)
-             (if (= n 0)
-                 nil
-               (evenp (- n 1)))))
-  (evenp 88))                       ⇒ t	      
+            (if (= n 0)
+                nil
+              (evenp (- n 1)))))
+  (evenp 88))                       ⇒ t
 
 (flet ((f (x) (+ x 3)))
   (flet ((f (x) (+ x (f x))))
@@ -1123,12 +1127,14 @@ Example:
             <p>An error shall be signaled if function is not a function (error-id. domain-error). Each obj may be any ISLISP object. An error shall be signaled if list is not a proper list (see §7) (error-id. improper-argument-list).</p>
 <pre class="example">
 (apply (if (&lt; 1 2) (function max) (function min))
-       1 2 (list 3 4))	      ⇒ 4
+       1 2 (list 3 4))
+⇒ 4
 
 (defun compose (f g)
   (lambda (:rest args)
-    (funcall f (apply g args)))))      ⇒ compose           
-                
+    (funcall f (apply g args)))))
+⇒ compose
+
 (funcall (compose (function sqrt) (function *)) 12 75)
 ⇒ 30
 </pre>
@@ -1146,7 +1152,7 @@ Example:
                 An error shall be signaled if function is not a function (error-id. domain-error). Each obj may be any ISLISP object.
             </p>
 <pre class="example">
-(let ((x ’(1 2 3)))
+(let ((x '(1 2 3)))
   (funcall (cond ((listp x) (function car))
                  (t (lambda (x) (cons x 1)))) x))	      
 ⇒ 1
@@ -1166,8 +1172,11 @@ Example:
             <p>The result of the evaluation of form is bound to the variable named by name. The binding and the object created as the result of evaluating the second argument are immutable. The symbol named name is returned.</p>
 <pre class="example">
 (defconstant e 2.7182818284590451) ⇒ e
+
 e                                  ⇒ 2.7182818284590451
+
 (defun f () e)                     ⇒ f
+
 (f)                                ⇒ 2.7182818284590451
 </pre>
             
@@ -1180,13 +1189,20 @@ e                                  ⇒ 2.7182818284590451
             <p>form is evaluated to compute an initializing value for the variable named name. Therefore, defglobal is used only for defining variables and not for modifying them. The symbol named name is returned.</p>
             <p>A lexical variable binding for name can still be locally established by a binding form; in that case, the local binding lexically shadows the outer binding of name defined by defglobal.</p>
 <pre class="example">
-(defglobal today ’wednesday)  ⇒ today
+(defglobal today 'wednesday)   ⇒ today
+
 today                          ⇒ wednesday
+
 (defun what-is-today () today) ⇒ what-is-today
+
 (what-is-today)                ⇒ wednesday
-(let ((what-is-today ’thursday)) (what-is-today))
+
+(let ((what-is-today 'thursday))
+  (what-is-today))
 ⇒ wednesday
-(let ((today ’thursday)) (what-is-today))
+
+(let ((today 'thursday))
+  (what-is-today))
 ⇒ wednesday
 </pre>
             
@@ -1198,13 +1214,17 @@ today                          ⇒ wednesday
             
             <p>The symbol named name is returned.</p>
 <pre class="example">
-(defdynamic *color* ’red)         ⇒ *color*
+(defdynamic *color* 'red)          ⇒ *color*
+
 (dynamic *color*)                  ⇒ red
-(defun what-color () (dynamic *color*))
-⇒ what-color
+
+(defun what-color ()
+  (dynamic *color*))               ⇒ what-color
+
 (what-color)                       ⇒ red
-(dynamic-let ((*color* ’green)) (what-color))
-⇒ green
+
+(dynamic-let ((*color* 'green))
+  (what-color))                    ⇒ green
 </pre>
             
             <div id="def_defun" class="definition-defining">
@@ -1284,58 +1304,111 @@ today                          ⇒ wednesday
             </ul>
 <pre class="example">
 (eql () ())                 ⇒ t
+
 (eq  () ())                 ⇒ t
+
 (eql '() '())               ⇒ t
+
 (eq  '() '())               ⇒ t
+
 (eql 'a 'a)                 ⇒ t
+
 (eq  'a 'a)                 ⇒ t
+
 (eql 'a 'A)                 ⇒ t
+
 (eq  'a 'A)                 ⇒ t
+
 (eql 'a 'b)                 ⇒ nil
+
 (eq  'a 'b)                 ⇒ nil
+
 (eql 'f 'nil)               ⇒ nil
+
 (eq  'f 'nil)               ⇒ nil
+
 (eql 2 2)                   ⇒ t
+
 (eq  2 2)                   ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+
 (eql 2 2.0)                 ⇒ nil
+
 (eq  2 2.0)                 ⇒ nil
+
 (eql 100000000 100000000)   ⇒ t
+
 (eq  100000000 100000000)   ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+
 (eql 10.00000 10.0)         ⇒ t
+
 (eq  10.00000 10.0)         ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+
 (eql (cons 1 2) (cons 1 2)) ⇒ nil
+
 (eq  (cons 1 2) (cons 1 2)) ⇒ nil
+
 (let ((x '(a))) (eql x x))  ⇒ t
+
 (let ((x '(a))) (eq x x))   ⇒ t
+
 (eql '(a) '(a))             ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+
 (eq '(a) '(a))              ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+
 (let ((x '(b))
+
 (y '(a b)))
-(eql x (cdr y)))          ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+
+(eql x (cdr y)))            ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+
 (let ((x '(b))
+
 (y '(a b)))
-(eq x (cdr y)))           ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+
+(eq x (cdr y)))             ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+
 (eql '(b) (cdr '(a b)))     ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+
 (eq '(b) (cdr '(a b)))      ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+
 (let ((p (lambda (x) x)))
-(eql p p))                ⇒ t
+
+(eql p p))                  ⇒ t
+
 (let ((p (lambda (x) x)))
-(eq p p))                 ⇒ t
+
+(eq p p))                   ⇒ t
+
 (let ((x "a")) (eql x x))   ⇒ t
+
 (let ((x "a")) (eq x x))    ⇒ t
+
 (eql "a" "a")               ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+
 (eq "a" "a")                ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+
 (let ((x "")) (eql x x))    ⇒ t
+
 (let ((x "")) (eq x x))     ⇒ t
+
 (eql "" "")                 ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+
 (eq "" "")                  ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+
 (eql #\a #\A)               ⇒ nil
+
 (eq #\a #\A)                ⇒ nil
+
 (eql #\a #\a)               ⇒ t
+
 (eq #\a #\a)                ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+
 (eql #\space #\Space)       ⇒ t
+
 (eq #\space #\Space)        ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+
 (eql #\space #\space)       ⇒ t
+
 (eq #\space #\space)        ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
 </pre>
             
@@ -1351,6 +1424,7 @@ today                          ⇒ wednesday
                     <p>lists: either obj1 and obj2 are both the empty list (i.e., nil), or</p>
 <pre>
 (and (equal (car obj1) (car obj2))
+
 (equal (cdr obj1) (cdr obj2))) holds;
 </pre>
                 </li>
@@ -1358,11 +1432,13 @@ today                          ⇒ wednesday
                     <p>basic arrays:</p>
 <pre>
 (equal (array-dimensions obj<sub>1</sub>)
+
 (array-dimensions obj<sub>2</sub>))
 </pre>
                     <p>holds and for every valid reference (aref obj<sub>1</sub> ind<sub>1</sub> ...ind<sub>n</sub>)</p>
 <pre>
 (equal (aref obj<sub>1</sub> ind<sub>1</sub> … ind<sub>n</sub>)
+
 (aref obj<sub>2</sub> ind<sub>1</sub> … ind<sub>n</sub>)) is satisfied.
 </pre>
                 </li>
@@ -1371,17 +1447,28 @@ today                          ⇒ wednesday
             <p>obj<sub>1</sub> and obj<sub>2</sub> may be any ISLISP objects.</p>
 <pre class="example">
 (equal 'a 'a)                     ⇒ t
+
 (equal 2 2)                       ⇒ t
+
 (equal 2 2.0)                     ⇒ nil
+
 (equal '(a) '(a))                 ⇒ t
+
 (equal '(a (b) c)
-'(a (b) c))                ⇒ t
+       '(a (b) c))                ⇒ t
+
 (equal (cons 1 2) (cons 1 2))     ⇒ t
+
 (equal '(a) (list 'a))            ⇒ t
+
 (equal "abc" "abc")               ⇒ t
+
 (equal (vector 'a) (vector 'a))   ⇒ t
+
 (equal #(a b) #(a b))             ⇒ t
+
 (equal #(a b) #(a c))             ⇒ nil
+
 (equal "a" "A")                   ⇒ nil
 </pre>
             
@@ -1392,11 +1479,17 @@ today                          ⇒ wednesday
             <p>This predicate is the logical “not” (or “¬”). It returns t if obj is nil and nil otherwise. obj may be any ISLISP object.</p>
 <pre class="example">
 (not t)           ⇒ nil
+
 (not '())         ⇒ t
+
 (not 'nil)        ⇒ t
+
 (not nil)         ⇒ t
+
 (not 3)           ⇒ nil
+
 (not (list))      ⇒ t
+
 (not (list 3))    ⇒ nil
 </pre>
             
