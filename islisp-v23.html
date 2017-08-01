@@ -1200,11 +1200,11 @@ today                          ⇒ wednesday
 
 (let ((what-is-today 'thursday))
   (what-is-today))
-⇒ wednesday
+                               ⇒ wednesday
 
 (let ((today 'thursday))
   (what-is-today))
-⇒ wednesday
+                               ⇒ wednesday
 </pre>
             
             <div id="def_defdynamic" class="definition-defining">
@@ -1424,22 +1424,19 @@ today                          ⇒ wednesday
                     <p>lists: either obj1 and obj2 are both the empty list (i.e., nil), or</p>
 <pre>
 (and (equal (car obj1) (car obj2))
-
-(equal (cdr obj1) (cdr obj2))) holds;
+     (equal (cdr obj1) (cdr obj2))) holds;
 </pre>
                 </li>
                 <li>
                     <p>basic arrays:</p>
 <pre>
 (equal (array-dimensions obj<sub>1</sub>)
-
-(array-dimensions obj<sub>2</sub>))
+       (array-dimensions obj<sub>2</sub>))
 </pre>
                     <p>holds and for every valid reference (aref obj<sub>1</sub> ind<sub>1</sub> ...ind<sub>n</sub>)</p>
 <pre>
 (equal (aref obj<sub>1</sub> ind<sub>1</sub> … ind<sub>n</sub>)
-
-(aref obj<sub>2</sub> ind<sub>1</sub> … ind<sub>n</sub>)) is satisfied.
+       (aref obj<sub>2</sub> ind<sub>1</sub> … ind<sub>n</sub>)) is satisfied.
 </pre>
                 </li>
             </ul>
@@ -1499,8 +1496,8 @@ today                          ⇒ wednesday
             
             <p>and is the sequential logical “and” (or “∧”). forms are evaluated from left to right until either one of them evaluates to nil or else none are left. If one of them evaluates to nil, then nil is returned from the and; otherwise, the value of the last evaluated form is returned. The form and is equivalent to the following:</p>
 <pre>
-(and)                    ≡ 't
-(and form)               ≡ form
+(and)                      ≡ 't
+(and form)                 ≡ form
 <span title="For the definition of if, see §14.4 below.">(and form<sub>1</sub> form<sub>2</sub> … form<sub>n</sub>) ≡ (if form<sub>1</sub> (and form<sub>2</sub> … form<sub>n</sub>) 'nil)</span>
 </pre>
             
@@ -1511,19 +1508,25 @@ today                          ⇒ wednesday
 
 (and (eql 'a 'a) (not (&gt; 1 2)))  ⇒ t
 
-(let ((x 'a)) (and x (setq x 'b)))  ⇒ b
+(let ((x 'a))
+  (and x (setq x 'b)))
+                                 ⇒ b
 
-(let ((x nil)) (and x (setq x 'b))) ⇒ nil
+(let ((x nil))
+  (and x (setq x 'b)))
+                                 ⇒ nil
 
 (let ((time 10))
   (if (and (&lt; time 24) (&gt; time 12))
       (- time 12)
-    time))                          ⇒ 10
+    time))
+                                 ⇒ 10
 
 (let ((time 18))
   (if (and (&lt; time 24) (&gt; time 12))
       (- time 12)
-    time))                          ⇒ 6
+    time))
+                                 ⇒ 6
 </pre>
             
             <div id="s_or" class="definition-special">
@@ -1545,9 +1548,11 @@ where var does not occur in form<sub>2</sub> … form<sub>n</sub>
 
 (or (= 2 2) (&lt; 2 1))            ⇒ t
 
-(let ((x 'a)) (or x (setq x 'b)))  ⇒ a
+(let ((x 'a))
+  (or x (setq x 'b)))           ⇒ a
 
-(let ((x nil)) (or x (setq x 'b))) ⇒ b
+(let ((x nil))
+  (or x (setq x 'b)))           ⇒ b
 </pre>
             
             <h3 id="control_structure">Control structure</h3>
@@ -1645,7 +1650,9 @@ x               ⇒ 0
 
 (+ x 1)                    ⇒ 5
 
-(let ((x 1)) (setq x 2) x) ⇒ 2
+(let ((x 1))
+  (setq x 2)
+  x)                       ⇒ 2
 
 (+ x 1)                    ⇒ 5
 </pre>
