@@ -459,7 +459,7 @@
             <p>Notes, appearing as Note: note-text, in this document have no effect on the language. They are for better understanding by the human reader.</p>
             <p>Regarding the pattern variables and the extensions of above, the following conventions are also adopted:</p>
             <dl>
-                <dt>term +</dt>
+                <dt>term+</dt>
                 <dd>denotes one or more occurrences of term;</dd>
                 <dt>term*</dt>
                 <dd>denotes zero or more occurrences of term;</dd>
@@ -513,7 +513,7 @@
                 <dt>set-</dt>
                 <dd>Within this document, any functions named set-name are writers for a place, for which there is a corresponding reader named name.</dd>
             </dl>
-            <p>For any kind of entity in the language, the phrase <q>entity-kind name</q> refers to the entity of kind entity-kind denoted by name. For example, the phrases <q>function name,</q> <q>constant name,</q> or <q>class name</q> respectively mean the function, constant, or class denoted by name.</p>
+            <p>For any kind of entity in the language, the phrase <q>entity-kind name</q> refers to the entity of kind entity-kind denoted by name. For example, the phrases <q>function name</q>, <q>constant name</q>, or <q>class name</q> respectively mean the function, constant, or class denoted by name.</p>
             
             <h3 id="lexemes">Lexemes</h3>
             
@@ -1051,6 +1051,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             <p>An error shall be signaled if no binding has been established for the identifier in the function namespace of current lexical environment (see §9.2) (error-id. undefined-function). The consequences are undefined if the function-name names a macro or special form.</p>
 <pre class="example">
 (funcall (function -) 3) ⇒ -3
+
 (apply #'- '(4 3)) ⇒ 1
 </pre>
             
@@ -1060,8 +1061,8 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             
 <pre>
 Where:
-lambda-list ::= (identifier* [&amp;rest identifier ]) |
-                (identifier* [:rest identifier ])
+lambda-list ::= (identifier* [&amp;rest identifier]) |
+                (identifier* [:rest identifier])
 </pre>
             
             <p>and where no identifier may appear more than once in lambda-list.</p>
@@ -1120,10 +1121,10 @@ Example:
 </pre>
             
             <div id="f_apply" class="definition-function">
-                (apply function obj * list) → <span class="class">object</span>
+                (apply function obj* list) → <span class="class">object</span>
             </div>
             
-            <p>Applies function to the arguments, obj *, followed by the elements of list, if any. It returns the value returned by function.</p>
+            <p>Applies function to the arguments, obj*, followed by the elements of list, if any. It returns the value returned by function.</p>
             <p>An error shall be signaled if function is not a function (error-id. domain-error). Each obj may be any ISLISP object. An error shall be signaled if list is not a proper list (see §7) (error-id. improper-argument-list).</p>
 <pre class="example">
 (apply (if (&lt; 1 2) (function max) (function min))
@@ -1140,13 +1141,13 @@ Example:
 </pre>
             
             <div id="f_funcall" class="definition-function">
-                (funcall function obj *) → <span class="class">object</span>
+                (funcall function obj*) → <span class="class">object</span>
             </div>
             
             <p>Activates the specified function function and returns the value that the function returns. The ith argument (2 ≤ i) of funcall becomes the (i − 1)th argument of the function. funcall could have been defined using apply as follows:</p>
 <pre>
 (defun funcall (function :rest arguments)
-(apply function arguments))
+  (apply function arguments))
 </pre>
             <p>
                 An error shall be signaled if function is not a function (error-id. domain-error). Each obj may be any ISLISP object.
@@ -1506,16 +1507,24 @@ today                          ⇒ wednesday
             
 <pre class="example">
 (and (= 2 2) (&gt; 2 1))            ⇒ t
+
 (and (= 2 2) (&lt; 2 1))            ⇒ nil
+
 (and (eql 'a 'a) (not (&gt; 1 2)))  ⇒ t
+
 (let ((x 'a)) (and x (setq x 'b)))  ⇒ b
+
 (let ((x nil)) (and x (setq x 'b))) ⇒ nil
+
 (let ((time 10))
-(if (and (&lt; time 24) (&gt; time 12))
-(- time 12) time))                  ⇒ 10
+  (if (and (&lt; time 24) (&gt; time 12))
+      (- time 12)
+    time))                          ⇒ 10
+
 (let ((time 18))
-(if (and (&lt; time 24) (&gt; time 12))
-(- time 12) time))                  ⇒ 6
+  (if (and (&lt; time 24) (&gt; time 12))
+      (- time 12)
+    time))                          ⇒ 6
 </pre>
             
             <div id="s_or" class="definition-special">
@@ -1525,15 +1534,20 @@ today                          ⇒ wednesday
             <p>or is the sequential logical <q>or</q> (or <q>∨</q>). forms are evaluated from left to right until either one of them evaluates to a non-nil value or else none are left. If one of them evaluates to a non-nil value, then this non-nil value is returned, otherwise nil is returned. The form or is equivalent to the following:</p>
 <pre>
 (or) ≡ 'nil
+
 (or form) ≡ form
+
 (or form<sub>1</sub> form<sub>2</sub> … form<sub>n</sub>) ≡ ((lambda (var)
-                                                                (if var var (or form<sub>2</sub> … form<sub>n</sub>))) form<sub>1</sub>)
+                                (if var var (or form<sub>2</sub> … form<sub>n</sub>))) form<sub>1</sub>)
 where var does not occur in form<sub>2</sub> … form<sub>n</sub>
 </pre>
 <pre class="example">
 (or (= 2 2) (&gt; 2 1))            ⇒ t
+
 (or (= 2 2) (&lt; 2 1))            ⇒ t
+
 (let ((x 'a)) (or x (setq x 'b)))  ⇒ a
+
 (let ((x nil)) (or x (setq x 'b))) ⇒ b
 </pre>
             
@@ -1547,9 +1561,13 @@ where var does not occur in form<sub>2</sub> … form<sub>n</sub>
             <p>The result of evaluating the literal constant constant is constant itself. Instances of the following classes are literal constants: <span class="class">basic-array</span>, <span class="class">character</span>, and <span class="class">number</span></p>
 <pre class="example">
 #2A((a b c) (d e f))  ⇒ #2A((a b c) (d e f))
+
 #\a                   ⇒ #\a
+
 145932                ⇒ 145932
+
 "abc"                 ⇒ "abc"
+
 #(a b c)              ⇒ #(a b c)
 </pre>
             
@@ -1565,15 +1583,25 @@ where var does not occur in form<sub>2</sub> … form<sub>n</sub>
             <p>The result of the evaluation of the quote special form is obj.</p>
 <pre class="example">
 (quote a)         ⇒ a
+
 (quote #(a b c))  ⇒ #(a b c)
+
 (quote (+ 1 2))   ⇒ (+ 1 2)
+
 '()               ⇒ nil
+
 'a                ⇒ a
+
 '#(a b c)         ⇒ #(a b c)
+
 '(car l)          ⇒ (car l)
+
 '(+ 1 2)          ⇒ (+ 1 2)
+
 '(quote a)        ⇒ (quote a)
+
 ''a               ⇒ (quote a)
+
 (car ''a)         ⇒ quote
 </pre>
             
@@ -1595,8 +1623,11 @@ where var does not occur in form<sub>2</sub> … form<sub>n</sub>
             <p>The value of var is the object associated with var in its variable binding.</p>
 <pre class="example">
 (defglobal x 0) ⇒ x 
+
 x               ⇒ 0
+
 (let ((x 1)) x) ⇒ 1
+
 x               ⇒ 0
 </pre>
             
@@ -1608,10 +1639,15 @@ x               ⇒ 0
             <p>The result of the evaluation of form is returned. This result is used to modify the variable binding denoted by the identifier var (if it is mutable). setq can be used only for modifying bindings, and not for establishing a variable. The setq special form must be contained in the scope of var , established by defglobal, let, let*, for, or a lambda expression.</p>
 <pre class="example">
 (defglobal x 2)            ⇒ x
+
 (+ x 1)                    ⇒ 3
+
 (setq x 4)                 ⇒ 4
+
 (+ x 1)                    ⇒ 5
+
 (let ((x 1)) (setq x 2) x) ⇒ 2
+
 (+ x 1)                    ⇒ 5
 </pre>
             
@@ -1669,8 +1705,10 @@ x               ⇒ 0
 <pre class="example">
 (setf (car x) 2)                     ⇒ 2
 In the cons x, the car now is 2.
+
 (defmacro first (spot)
-`(car ,spot))                        ⇒ first
+  `(car ,spot))                      ⇒ first
+
 (setf (first x) 2)                   ⇒ 2
 In the cons x, the car now is 2.
 </pre>
@@ -1795,7 +1833,7 @@ In the cons x, the car now is 2.
 <pre class="example">
 (defun foo (x)
   (dynamic-let ((y x))
-     (bar 1)))          ⇒ foo
+    (bar 1)))          ⇒ foo
                 
 (defun bar (x)
   (+ x (dynamic y)))   ⇒ bar
@@ -1811,9 +1849,13 @@ In the cons x, the car now is 2.
             <p>The test-form is evaluated. If its result is anything non-nil, the then-form is evaluated and its value is returned; otherwise (if the test-form returned nil), the else-form is evaluated and its value is returned.</p>
             <p>If no else-form is provided, it defaults to nil.</p>
 <pre class="example">
+
 (if (&gt; 3 2) 'yes 'no)        ⇒ yes
+
 (if (&gt; 2 3) 'yes 'no)        ⇒ no
+
 (if (&gt; 2 3) 'yes)            ⇒ nil
+
 (if (&gt; 3 2) (- 3 2) (+ 3 2)) ⇒ 1
                 
 (let ((x 7))
@@ -1867,14 +1909,14 @@ In the cons x, the car now is 2.
             
 <pre class="example">
 (cond ((&gt; 3 2) 'greater)
-      ((&lt; 3 2) 'less))   ⇒ greater
+      ((&lt; 3 2) 'less))    ⇒ greater
                 
 (cond ((&gt; 3 3) 'greater)
-      ((&lt; 3 3) 'less))   ⇒ nil
+      ((&lt; 3 3) 'less))    ⇒ nil
                 
 (cond ((&gt; 3 3) 'greater)
       ((&lt; 3 3) 'less)
-      (t          'equal))  ⇒ equal
+      (t       'equal))   ⇒ equal
 </pre>
             
             <div id="s_case" class="definition-special">
@@ -1956,8 +1998,11 @@ prints  4 plus 1 equals 5
             </ol>
             
 <pre class="example">
-(let ((x '()) (i 5))
-  (while (&gt; i 0) (setq x (cons i x)) (setq i (- i 1)))
+(let ((x '())
+      (i 5))
+  (while (&gt; i 0)
+    (setq x (cons i x))
+    (setq i (- i 1)))
   x)                                  ⇒ (1 2 3 4 5)
 </pre>
             
@@ -1979,7 +2024,7 @@ iteration-spec ::= (var init [step])
 (for ((vec (vector 0 0 0 0 0))
       (i 0 (+ i 1)))
      ((= i 5) vec)
-  (setf (elt vec i) i))          ⇒ #(0 1 2 3 4)
+  (setf (elt vec i) i))       ⇒ #(0 1 2 3 4)
                 
 (let ((x '(1 3 5 7 9)))
   (for ((x x (cdr x))
@@ -2075,8 +2120,11 @@ iteration-spec ::= (var init [step])
               ⇒ bar
                 
 (bar t nil)   ⇒ second-exit
+
 (bar nil nil) ⇒ third-exit
+
 (bar nil t)   an error shall be signaled
+
 (bar t t)     an error shall be signaled
 </pre>
             
@@ -2105,6 +2153,7 @@ iteration-spec ::= (var init [step])
                  ⇒ bar
                 
 (foo '(1 2 3 4)) ⇒ 10
+
 (foo '(1 2 a 4)) ⇒ 0
 </pre>
             <div id="s_tagbody" class="definition-special">
@@ -2172,8 +2221,11 @@ iteration-spec ::= (var init [step])
                              ⇒ bar
                 
 (foo '(a b c))               ⇒ t
+
 (property 'a 'label)         ⇒ nil
+
 (foo '(a b a c))             ⇒ found
+
 (property 'a 'label)         ⇒ nil
                 
 (defun test ()
@@ -2223,23 +2275,32 @@ iteration-spec ::= (var init [step])
 <pre>
 Where:
 class-name           ::= identifier
+
 sc-name              ::= identifier
-slot-spec            ::= slot-name | (slot-name slot-opt *)
+
+slot-spec            ::= slot-name | (slot-name slot-opt*)
+
 slot-name            ::= identifier
+
 slot-opt             ::= :reader reader-function-name |
-:writer writer-function-name |
-:accessor reader-function-name |
-:boundp boundp-function-name |
-:initform form |
-:initarg initarg-name
+                         :writer writer-function-name |
+                         :accessor reader-function-name |
+                         :boundp boundp-function-name |
+                         :initform form |
+                         :initarg initarg-name
                 
                 
 initarg-name         ::= identifier
+
 reader-function-name ::= identifier
+
 writer-function-name ::= identifier
+
 boundp-function-name ::= identifier
+
 class-opt            ::= (:metaclass class-name) |
-(:abstractp abstract-flag)
+                         (:abstractp abstract-flag)
+
 abstract-flag        ::= t | nil
 </pre>
             
@@ -2328,15 +2389,23 @@ abstract-flag        ::= t | nil
 <pre>
 Where:
 func-spec                  ::= identifier | (setf identifier)
-lambda-list                ::= (var * [&amp;rest var ]) |
-                               (var * [:rest var ])
-option                     ::= (:method-combination {identifier | keyword }) |
+
+lambda-list                ::= (var * [&amp;rest var]) |
+                               (var * [:rest var])
+
+option                     ::= (:method-combination {identifier | keyword}) |
                                (:generic-function-class class-name)
+
 method-desc                ::= (:method method-qualifier * parameter-profile form*)
+
 method-qualifier           ::= identifier | keyword
-parameter-profile          ::= ({var | (var parameter-specializer-name)}* [{&amp;rest | :rest}var ])
+
+parameter-profile          ::= ({var | (var parameter-specializer-name)}* [{&amp;rest | :rest} var])
+
 parameter-specializer-name ::= class-name
+
 class-name                 ::= identifier
+
 var                        ::= identifier
 </pre>
             
@@ -2362,10 +2431,15 @@ var                        ::= identifier
 <pre>
 Where:
 func-spec                  ::= identifier | (setf identifier)
+
 method-qualifier           ::= identifier | keyword
-parameter-profile          ::= ({var | (var parameter-specializer-name)}* [{&amp;rest | :rest} var ])
+
+parameter-profile          ::= ({var | (var parameter-specializer-name)}* [{&amp;rest | :rest} var])
+
 parameter-specializer-name ::= class-name
+
 class-name                 ::= identifier
+
 var                        ::= identifier
 </pre>
             
@@ -2598,11 +2672,16 @@ var                        ::= identifier
             <p>In a the special form, the consequences are undefined if the value of form is not of the class or a subclass of the class designated by class-name. In an assure special form, an error shall be signaled if the value of form is not of the class or a subclass of the class designated by class-name (error-id. domain-error).</p>
 <pre class="example">
 (the <span class="class">integer</span> 10)    ⇒ 10
+
 (the <span class="class">number</span> 10)     ⇒ 10
-(the <span class="class">float</span> 10)     the consequences are undefined
+
+(the <span class="class">float</span> 10)      the consequences are undefined
+
 (assure <span class="class">integer</span> 10) ⇒ 10
+
 (assure <span class="class">number</span> 10)  ⇒ 10
-(assure <span class="class">float</span> 10)  an error shall be signaled
+
+(assure <span class="class">float</span> 10)   an error shall be signaled
 </pre>
             <div id="s_convert" class="definition-special">
                 (convert obj class-name) → <span class="class">object</span>
@@ -2728,7 +2807,9 @@ var                        ::= identifier
             <p>If an implementation provides <a href="#td_implementation_defined">implementation-defined</a> classes, it may also provide <a href="#td_implementation_defined">implementation-defined</a> coercions for the names of those classes using convert.</p>
 <pre class="example">
 (convert 3 <span class="class">float</span>)              ⇒ 3.0
+
 (convert "abc" <span class="class">general-vector</span>) ⇒ #(#\a #\b #\c)
+
 (convert #(a b) <span class="class">list</span>)          ⇒ (a b)
 </pre>
             
@@ -2742,14 +2823,23 @@ var                        ::= identifier
             
 <pre class="example">
 (symbolp 'a)    ⇒ t
+
 (symbolp "a")   ⇒ nil
+
 (symbolp #\a)   ⇒ nil
+
 (symbolp 't)    ⇒ t
+
 (symbolp t)     ⇒ t
+
 (symbolp 'nil)  ⇒ t
+
 (symbolp nil)   ⇒ t
+
 (symbolp '())   ⇒ t
+
 (symbolp '*pi*) ⇒ t
+
 (symbolp *pi*)  ⇒ nil
 </pre>
             
@@ -2855,6 +2945,7 @@ var                        ::= identifier
 (defmacro twice (x)
   (let ((v (gensym)))
     `(let ((,v ,x)) (+ ,v ,v)))) ⇒ twice
+
 (twice 5)                        ⇒ 10
 </pre>
             
@@ -2869,8 +2960,11 @@ var                        ::= identifier
             <p>Returns t if obj is a number (instance of class <span class="class">number</span>); otherwise, returns nil. The obj may be any ISLISP object.</p>
 <pre class="example">
 (numberp 3)        ⇒ t
+
 (numberp -0.3)     ⇒ t
+
 (numberp '(a b c)) ⇒ nil
+
 (numberp "17")     ⇒ nil
 </pre>
             
@@ -2882,9 +2976,13 @@ var                        ::= identifier
             <p>An error shall be signaled if string is not a string (error-id. domain-error). An error shall be signaled if string is not the textual representation of a number (error-id. cannot-parse-number).</p>
 <pre class="example">
 (parse-number "123.34") ⇒ 123.34
+
 (parse-number "#XFACE") ⇒ 64206
-(parse-number "-37.")  an error shall be signaled
-(parse-number "-.5")   an error shall be signaled
+
+(parse-number "-37.")   an error shall be signaled
+
+(parse-number "-.5")    an error shall be signaled
+
 since floating-point number lexemes have
 at least one mantissa digit before and at least
 one mantissa digit after the decimal point.
@@ -2898,8 +2996,11 @@ one mantissa digit after the decimal point.
             <div class="note">Note: = differs from eql because = compares only the mathematical values of its arguments, whereas eql also compares the representations.</div>
 <pre class="example">
 (= 3 4)                            ⇒ nil
+
 (= 3 3.0)                          ⇒ t
+
 (= (parse-number "134.54") 134.54) ⇒ t
+
 (= 0.0 -0.0)                       ⇒ t
 </pre>
             
@@ -2910,7 +3011,9 @@ one mantissa digit after the decimal point.
             <p>Returns t if x1 and x2 have mathematically distinct values; otherwise, returns nil. An error shall be signaled if either x1 or x2 is not a number (error-id. domain-error).</p>
 <pre class="example">
 (/= 3 4)                            ⇒ t
+
 (/= 3 3.0)                          ⇒ nil
+
 (/= (parse-number "134.54") 134.54) ⇒ nil
 </pre>
             
@@ -2931,15 +3034,25 @@ one mantissa digit after the decimal point.
             <p>The mathematical values of the arguments are compared. An error shall be signaled if either x<sub>1</sub> or x<sub>2</sub> is not a number (error-id. domain-error).</p>
 <pre class="example">
 (&gt; 2 2)    ⇒ nil
+
 (&gt; 2.0 2)  ⇒ nil
+
 (&gt; 2 -10)  ⇒ t
+
 (&gt; 100 3)  ⇒ t
+
 (&lt; 2 2)    ⇒ nil
+
 (&lt; 1 2)    ⇒ t
+
 (&gt;= 2 2)   ⇒ t
+
 (&gt;= 2.0 2) ⇒ t
+
 (&gt;= -1 2)  ⇒ nil
+
 (&lt;= -1 2)  ⇒ t
+
 (&lt;= 2 -1)  ⇒ nil
 </pre>
             
@@ -2955,14 +3068,23 @@ one mantissa digit after the decimal point.
             
 <pre class="example">
 (+ 12 3)   ⇒ 15
+
 (+ 1 2 3)  ⇒ 6
+
 (+ 12 3.0) ⇒ 15.0
+
 (+ 4 0.0)  ⇒ 4.0
+
 (+)        ⇒ 0
+
 (* 12 3)   ⇒ 36
+
 (* 12 3.0) ⇒ 36.0
+
 (* 4.0 0)  ⇒ 0.0
+
 (* 2 3 4)  ⇒ 24
+
 (*)        ⇒ 1
 </pre>
             
@@ -2975,9 +3097,13 @@ one mantissa digit after the decimal point.
             
 <pre class="example">
 (- 1)              ⇒ -1
+
 (- -4.0)           ⇒ 4.0
+
 (- 4.0)            ⇒ -4.0
+
 (eql (- 0.0) -0.0) ⇒ t
+
 (eql (- -0.0) 0.0) ⇒ t
 </pre>
             
@@ -2985,9 +3111,13 @@ one mantissa digit after the decimal point.
             </p>
 <pre class="example">
 (- 1 2)      ⇒ -1
+
 (- 92 43)    ⇒ 49
+
 (- 2.3 -3.0) ⇒ 5.3
+
 (- 0.0 0.0)  ⇒ 0.0
+
 (- 3 4 5)    ⇒ -6
 </pre>
             
@@ -3008,10 +3138,15 @@ one mantissa digit after the decimal point.
             <p>An error shall be signaled if dividend is not a number (error-id. domain-error). An error shall be signaled if any divisor is not a number (error-id. domain-error). An error shall be signaled if any divisor is zero (error-id. division-by-zero).</p>
 <pre class="example">
 (reciprocal 2)    ⇒ 0.5
+
 (quotient 10 5)   ⇒ 2
+
 (quotient 1 2)    ⇒ 0.5
+
 (quotient 2 -0.5) ⇒ -4.0
+
 (quotient 0 0.0)  an error shall be signaled
+
 (quotient 2 3 4)  ⇒ 0.16666666666666666
 </pre>
             
@@ -3027,12 +3162,19 @@ one mantissa digit after the decimal point.
             <p>An error shall be signaled if any x is not a number (error-id. domain-error).</p>
 <pre class="example">
 (max -5 3)       ⇒ 3
+
 (max 2.0 3)      ⇒ 3
+
 (max 2 2.0)      ⇒ 2 or 2.0 (<a href="#td_implementation_defined">implementation-defined</a>)
+
 (max 1 5 2 4 3)  ⇒ 5
+
 (min 3 1)        ⇒ 1
+
 (min 1 2.0)      ⇒ 1
+
 (min 2 2.0)      ⇒ 2 or 2.0 (<a href="#td_implementation_defined">implementation-defined</a>)
+
 (min 1 5 2 5 3)  ⇒ 1
 </pre>
             <div id="f_abs" class="definition-function">
@@ -3043,7 +3185,9 @@ one mantissa digit after the decimal point.
             
 <pre class="example">
 (abs -3)   ⇒ 3
+
 (abs 2.0)  ⇒ 2.0
+
 (abs -0.0) ⇒ 0.0
 </pre>
             
@@ -3054,8 +3198,11 @@ one mantissa digit after the decimal point.
             <p>Returns e raised to the power x , where e is the base of the natural logarithm. An error shall be signaled if x is not a number (error-id. domain-error).</p>
 <pre class="example">
 (exp 1)    ⇒ 2.718281828459045
+
 (exp 2)    ⇒ 7.38905609893065
+
 (exp 1.23) ⇒ 3.4212295362896734
+
 (exp 0)    ⇒ 1 or 1.0 (<a href="#td_implementation_defined">implementation-defined</a>)
 </pre>
             
@@ -3067,7 +3214,9 @@ one mantissa digit after the decimal point.
             
 <pre class="example">
 (log 2.718281828459045) ⇒ 1.0
+
 (log 10)                ⇒ 2.302585092994046
+
 (log 1)                 ⇒ 0 or 0.0 (<a href="#td_implementation_defined">implementation-defined</a>)
 </pre>
             
@@ -3079,15 +3228,25 @@ one mantissa digit after the decimal point.
             
 <pre class="example">
 (expt2 3)       ⇒ 8
+
 (expt -100 2)   ⇒ 10000
+
 (expt 4 -2)     ⇒ 0.0625
+
 (expt 0.5 2)    ⇒ 0.25
+
 (expt x 0)      ⇒ 1        if x is an integer
+
 (expt x 0)      ⇒ 1.0      if x is a float
+
 (expt -0.25 -1) ⇒ -4.0
+
 (expt 100 0.5)  ⇒ 10.0
+
 (expt 100 -1.5) ⇒ 0.001
+
 (expt x 0.0)    ⇒ 1.0      if x is a positive float
+
 (expt 0.0 0.0)   an error shall be signaled
 </pre>
             
@@ -3097,7 +3256,9 @@ one mantissa digit after the decimal point.
             <p>Returns the non-negative square root of x. An error shall be signaled if x is not a non-negative number (error-id. domain-error).</p>
 <pre class="example">
 (sqrt 4)   ⇒ 2
+
 (sqrt 2)   ⇒ 1.4142135623730951
+
 (sqrt -1) an error shall be signaled
 </pre>
             
@@ -3127,13 +3288,21 @@ one mantissa digit after the decimal point.
 ;; Note that conforming processors are permitted to vary
 ;; in the floating precision of these results.
 (sin 1)     ⇒ 0.8414709848078965
+
 (sin 0)     ⇒ 0 or 0.0 (<a href="#td_implementation_defined">implementation-defined</a>)
+
 (sin 0.001) ⇒ 9.999998333333417E-4
+
 (cos 1)     ⇒ 0.5403023058681398
+
 (cos 0)     ⇒ 1 or 1.0 (<a href="#td_implementation_defined">implementation-defined</a>)
+
 (cos 0.001) ⇒ 0.9999995000000417
+
 (tan 1)     ⇒ 1.557407724654902
+
 (tan 0)     ⇒ 0 or 0.0 (<a href="#td_implementation_defined">implementation-defined</a>)
+
 (tan 0.001) ⇒ 0.0010000003333334668
 </pre>
             
@@ -3287,15 +3456,23 @@ one mantissa digit after the decimal point.
             <p>The signs of x<sub>1</sub> (indicated as y) and x<sub>2</sub> (indicated as x) are used to derive quadrant information. Figure 19.1 details various special cases. The asterisk (*) indicates that the entry in the figure applies to implementations that support minus zero.</p>
 <pre class="example">
 (atan2 0 3.0)     ⇒ 0 or 0.0 (<a href="#td_implementation_defined">implementation-defined</a>)
+
 (atan2 1 1)       ⇒ 0.7853981633974483
+
 (atan2 1.0 -0.3)  ⇒ 1.8622531212727635
+
 (atan2 0.0 -0.5)  ⇒ 3.141592653589793
+
 (atan2 -1 -1)     ⇒ -2.356194490192345
+
 (atan2 -1.0 0.3)  ⇒ -1.2793396
+
 (atan2 0.0 0.5)   ⇒ 0.0
                 
 (defun asin (x) (atan2 x (sqrt (- 1 (expt x 2))))) ⇒ asin
+
 (defun acos (x) (atan2 (sqrt (- 1 (expt x 2))) x)) ⇒ acos
+
 (defun atan (x) (atan2 x 1)) ⇒ atan
 </pre>
             
@@ -3313,13 +3490,21 @@ one mantissa digit after the decimal point.
             <p>An error shall be signaled if x is not a number (error-id. domain-error).</p>
 <pre class="example">
 (sinh 1)     ⇒ 1.1752011936438014
+
 (sinh 0)     ⇒ 0 or 0.0 (<a href="#td_implementation_defined">implementation-defined</a>)
+
 (sinh 0.001) ⇒ 0.001000000166666675
+
 (sinh 1)     ⇒ 1.5430806348152437
+
 (cosh 0)     ⇒ 1 or 1.0 (<a href="#td_implementation_defined">implementation-defined</a>)
+
 (cosh 0.001) ⇒ 1.0000005000000416
+
 (tanh 1)     ⇒ 0.7615941559557649
+
 (tanh 0)     ⇒ 0 or 0.0 (<a href="#td_implementation_defined">implementation-defined</a>)
+
 (tanh 0.001) ⇒ 9.999996666668002E-4
 </pre>
             
@@ -3331,7 +3516,9 @@ one mantissa digit after the decimal point.
             
 <pre class="example">
 (atanh 0.5)   ⇒ 0.5493061443340549
+
 (atanh 0)     ⇒ 0 or 0.0 (<a href="#td_implementation_defined">implementation-defined</a>)
+
 (atanh 0.001) ⇒ 0.0010000003333335335
                 
 (defun asinh (x) (atanh (quotient x (sqrt (+ 1 (expt x 2)))))) ⇒ asinh
@@ -3371,7 +3558,9 @@ one mantissa digit after the decimal point.
             
 <pre class="example">
 (floatp "2.4") ⇒ nil
+
 (floatp 2)     ⇒ nil
+
 (floatp 2.0)   ⇒ t
 </pre>
             
@@ -3382,8 +3571,11 @@ one mantissa digit after the decimal point.
             <p>Returns x itself if it is an instance of the class <span class="class">float</span> and returns a ﬂoating-point approximation of x otherwise. An error shall be signaled if x is not a number (error-id. domain-error).</p>
 <pre class="example">
 (float 0)                           ⇒ 0.0
+
 (float 2)                           ⇒ 2.0
+
 (float -2.0)                        ⇒ -2.0
+
 (float 123456789123456789123456789) ⇒ 1.2345678912345679E26
 </pre>
             
@@ -3395,10 +3587,15 @@ one mantissa digit after the decimal point.
             
 <pre class="example">
 (floor 3.0)  ⇒ 3
+
 (floor 3.4)  ⇒ 3
+
 (floor 3.9)  ⇒ 3
+
 (floor -3.9) ⇒ -4
+
 (floor -3.4) ⇒ -4
+
 (floor -3.0) ⇒ -3
 </pre>
             
@@ -3410,10 +3607,15 @@ one mantissa digit after the decimal point.
             
 <pre class="example">
 (ceiling 3.0)  ⇒ 3
+
 (ceiling 3.4)  ⇒ 4
+
 (ceiling 3.9)  ⇒ 4
+
 (ceiling -3.9) ⇒ -3
+
 (ceiling -3.4) ⇒ -3
+
 (ceiling -3.0) ⇒ -3
 </pre>
             
@@ -3425,10 +3627,15 @@ one mantissa digit after the decimal point.
             
 <pre class="example">
 (truncate 3.0)  ⇒ 3
+
 (truncate 3.4)  ⇒ 3
+
 (truncate 3.9)  ⇒ 3
+
 (truncate -3.4) ⇒ -3
+
 (truncate -3.9) ⇒ -3
+
 (truncate -3.0) ⇒ -3
 </pre>
             
@@ -3440,13 +3647,21 @@ one mantissa digit after the decimal point.
             
 <pre class="example">
 (round 3.0)  ⇒ 3
+
 (round 3.4)  ⇒ 3
+
 (round -3.4) ⇒ -3
+
 (round 3.6)  ⇒ 4
+
 (round -3.6) ⇒ -4
+
 (round 3.5)  ⇒ 4
+
 (round -3.5) ⇒ -4
+
 (round 2.5)  ⇒ 2
+
 (round -0.5) ⇒ 0
 </pre>
             
@@ -3458,9 +3673,12 @@ one mantissa digit after the decimal point.
 <pre>
 #B [s]bb … b, each b being either <q>0</q> or <q>1</q>.
 #b [s]bb … b, each b being either <q>0</q> or <q>1</q>.
+
 #O [s]oo … o, each o being one of <q>0</q>–<q>7</q>.
 #o [s]oo … o, each o being one of <q>0</q>–<q>7</q>.
+
    [s]dd … d, each d being one of <q>0</q>–<q>9</q>.
+
 #X [s]xx … x, each x being one of <q>0</q>–<q>9</q>, <q>A</q>–<q>F</q>, <q>a</q>–<q>f</q>.
 #x [s]xx … x, each x being one of <q>0</q>–<q>9</q>, <q>A</q>–<q>F</q>, <q>a</q>–<q>f</q>.
 </pre>
@@ -3474,8 +3692,11 @@ one mantissa digit after the decimal point.
             
 <pre class="example">
 (integerp 3)        ⇒ t 
+
 (integerp 3.4)      ⇒ nil
+
 (integerp "4")      ⇒ nil
+
 (integerp '(a b c)) ⇒ nil
 </pre>
             
@@ -3496,22 +3717,39 @@ one mantissa digit after the decimal point.
             <p>An error shall be signaled if either z<sub>1</sub> or z<sub>2</sub> is not an integer (error-id. domain-error).</p>
 <pre class="example">
 (div 12 3)   ⇒ 4
+
 (div 14 3)   ⇒ 4
+
 (div -12 3)  ⇒ -4
+
 (div -14 3)  ⇒ -5
+
 (div 12 -3)  ⇒ -4
+
 (div 14 -3)  ⇒ -5
+
 (div -12 -3) ⇒ 4
+
 (div -14 -3) ⇒ 4
+
 (mod 12 3)   ⇒ 0
+
 (mod 7 247)  ⇒ 7
+
 (mod 247 7)  ⇒ 2
+
 (mod 14 3)   ⇒ 2
+
 (mod -12 3)  ⇒ 0
+
 (mod -14 3)  ⇒ 1
+
 (mod 12 -3)  ⇒ 0
+
 (mod 14 -3)  ⇒ -1
+
 (mod -12 -3) ⇒ 0
+
 (mod -14 -3) ⇒ 02
 </pre>
             
@@ -3523,11 +3761,17 @@ one mantissa digit after the decimal point.
             <p>An error shall be signaled if either z<sub>1</sub> or z<sub>2</sub> is not an integer (error-id. domain-error).</p>
 <pre class="example">
 (gcd 12 5)    ⇒ 1
+
 (gcd 15 24)   ⇒ 3
+
 (gcd -15 24)  ⇒ 3
+
 (gcd 15 -24)  ⇒ 3
+
 (gcd -15 -24) ⇒ 3
+
 (gcd 0 -4)    ⇒ 4
+
 (gcd 0 0)     ⇒ 0
 </pre>
             
@@ -3543,11 +3787,17 @@ one mantissa digit after the decimal point.
             
 <pre class="example">
 (lcm 2 3)     ⇒ 6
+
 (lcm 15 24)   ⇒ 120
+
 (lcm 15 -24)  ⇒ 120
+
 (lcm -15 24)  ⇒ 120
+
 (lcm -15 -24) ⇒ 120
+
 (lcm 0 -4)    ⇒ 0
+
 (lcm 0 0)     ⇒ 0
 </pre>
             
@@ -3558,9 +3808,11 @@ one mantissa digit after the decimal point.
             <p>Returns the greatest integer less than or equal to the exact positive square root of z . An error shall be signaled if z is not a non-negative integer (error-id. domain-error).</p>
 <pre class="example">
 (isqrt 49) ⇒ 7
+
 (isqrt 63) ⇒ 7
+
 (isqrt 1000000000000002000000000000000)
-⇒ 1000000000000000
+           ⇒ 1000000000000000
 </pre>
             
             <h3 id="character_class">Character class</h3>
@@ -3591,7 +3843,9 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             
 <pre class="example">
 (characterp #\a) ⇒ t
+
 (characterp "a") ⇒ nil
+
 (characterp 'a)  ⇒ nil
 </pre>
             
@@ -3620,18 +3874,31 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             
 <pre class="example">
 (char= #\a #\a)     ⇒ t
+
 (char= #\a #\b)     ⇒ nil
+
 (char= #\a #\A)     ⇒ nil
+
 (char/= #\a #\a)    ⇒ nil
+
 (char&lt; #\a #\a)  ⇒ nil
+
 (char&lt; #\a #\b)  ⇒ t
+
 (char&lt; #\b #\a)  ⇒ nil
+
 (char&lt; #\a #\A)  ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+
 (char&lt; #\* #\a)  ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+
 (char&gt; #\b #\a)  ⇒ t
+
 (char&lt;= #\a #\a) ⇒ t
+
 (char&lt;= #\a #\A) ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+
 (char&gt;= #\b #\a) ⇒ t
+
 (char&gt;= #\a #\a) ⇒ t
 </pre>
             
@@ -3647,12 +3914,14 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 </pre>
             <p>Thus, in general, a data structure that consists of cons objects will be written in either of the following formats:</p>
 <pre>
-(x<sub>1</sub> . (x<sub>2</sub> . … (x<sub>n−1</sub> . x<sub>n</sub>) …))
-(x<sub>1</sub> . (x<sub>2</sub> . … (x<sub>n−1</sub>) …))
+(x<sub>1</sub> . (x<sub>2</sub> . … (x<sub>n−1</sub> . x<sub>n</sub>)))
+
+(x<sub>1</sub> . (x<sub>2</sub> . … (x<sub>n−1</sub>)))
 </pre>
             <p>These may be written, respectively, as</p>
 <pre>
 (x<sub>1</sub> x<sub>2</sub> … x<sub>n−1</sub> . x<sub>n</sub>)
+
 (x<sub>1</sub> x<sub>2</sub> … x<sub>n−1</sub>)
 </pre>
             <div id="f_consp" class="definition-function">
@@ -3662,8 +3931,11 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             <p>Returns t if obj is a cons (instance of class <span class="class">cons</span>); otherwise, returns nil. obj may be any ISLISP object.</p>
 <pre class="example">
 (consp '(a . b)) ⇒ t
+
 (consp '(a b c)) ⇒ t
+
 (consp '())      ⇒ nil
+
 (consp #(a b))   ⇒ nil
 </pre>
             
@@ -3675,9 +3947,13 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             
 <pre class="example">
 (cons 'a '())        ⇒ (a)
+
 (cons '(a) '(b c d)) ⇒ ((a) b c d)
+
 (cons "a" '(b c))    ⇒ ("a" b c)
+
 (cons 'a 3)          ⇒ (a . 3)
+
 (cons '(a b) 'c)     ⇒ ((a b) . c)
 </pre>
             
@@ -3689,8 +3965,11 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             
 <pre class="example">
 (car '())          an error shall be signaled
+
 (car '(a b c))     ⇒ a
+
 (car '((a) b c d)) ⇒ (a)
+
 (car '(1 . 2))     ⇒ 1
 </pre>
             
@@ -3701,8 +3980,10 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             <p>The function cdr returns the right component of the cons. An error shall be signaled if cons is not a cons (error-id. domain-error).</p>
             
 <pre class="example">
-(cdr '())            an error shall be signaled
+(cdr '())          an error shall be signaled
+
 (cdr '((a) b c d)) ⇒ (b c d)
+
 (cdr '(1 . 2))     ⇒ 2
 </pre>
             
@@ -3753,7 +4034,9 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             
 <pre class="example">
 (null '(a b c)) ⇒ nil
+
 (null '())      ⇒ t
+
 (null (list))   ⇒ t
 </pre>
             
@@ -3767,13 +4050,21 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             
 <pre class="example">
 (listp '(a b c))     ⇒ t
+
 (listp '())          ⇒ t
+
 (listp '(a . b))     ⇒ t
+
 (let ((x (list 'a)))
+
 (setf (cdr x) x)
-(listp x))         ⇒ t
+
+(listp x))           ⇒ t
+
 (listp "abc")        ⇒ nil
+
 (listp #(1 2))       ⇒ nil
+
 (listp 'jerome)      ⇒ nil
 </pre>
             
@@ -3784,6 +4075,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             <p>Returns a list of length i. If initial-element is given, the elements of the new list are initialized with this object; otherwise, the initialization is <a href="#td_implementation_defined">implementation defined</a>. An error shall be signaled if the requested list cannot be allocated (error-id. cannot-create-list). An error shall be signaled if i is not a non-negative integer (error-id. domain-error). initial-element may be any ISLISP object.</p>
 <pre class="example">
 (create-list 3 17)  ⇒ (17 17 17)
+
 (create-list 2 #\a) ⇒ (#\a #\a)
 </pre>
             
@@ -3795,6 +4087,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             
 <pre class="example">
 (list 'a (+ 3 4) 'c) ⇒ (a 7 c)
+
 (list)               ⇒ nil
 </pre>
             
@@ -3809,8 +4102,11 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             <p>For nreverse, the conses which make up the top level of the given list are permitted, but not required, to be side-effected in order to produce this new list. nreverse should never be called on a literal object.</p>
 <pre class="example">
 (reverse '(a b c d e))            ⇒ (e d c b a)
+
 (reverse '(a))                    ⇒ (a)
+
 (reverse '())                     ⇒ ()
+
 (let* ((x (list 'a 'b))
        (y (nreverse x)))
   (equal x y))
@@ -3837,7 +4133,9 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             
 <pre class="example">
 (member 'c '(a b c d e f)) ⇒ (c d e f)
+
 (member 'g '(a b c d e f)) ⇒ nil
+
 (member 'c '(a b c a b c)) ⇒ (c a b c)
 </pre>
             
@@ -3908,16 +4206,22 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             <p>In all cases, the calls to function proceed from left to right, so that if function has side-effects, it can rely upon being called first on all of the elements with index 0, then on all of those numbered 1, and so on.</p>
 <pre class="example">
 (mapcar #'car '((1 a) (2 b) (3 c))) ⇒ (1 2 3)
+
 (mapcar #'abs '(3 -4 2 -5 -6))      ⇒ (3 4 2 5 6)
+
 (mapcar #'cons '(a b c) '(1 2 3))   ⇒ ((a . 1) (b . 2) (c . 3))
                 
-(let ((x 0)) (mapc (lambda (v) (setq x (+ x v))) '(3 5)) x)
+(let ((x 0))
+  (mapc (lambda (v) (setq x (+ x v))) '(3 5))
+    x)
 ⇒ 8
 
-(maplist #'append '(1 2 3 4) '(1 2) '(1 2 3))
+(maplist #'append
+  '(1 2 3 4) '(1 2) '(1 2 3))
 ⇒ ((1 2 3 4 1 2 1 2 3) (2 3 4 2 2 3))
 
-(maplist (lambda (x) (cons 'foo x)) '(a b c d))
+(maplist (lambda (x) (cons 'foo x))
+  '(a b c d))
 ⇒ ((foo a b c d) (foo b c d) (foo c d) (foo d))
 
 (maplist (lambda (x) (if (member (car x) (cdr x)) 0 1))
@@ -3931,14 +4235,16 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
   k)
 ⇒ 4
                 
-(mapcan (lambda (x) (if (&gt; x 0) (list x))) '(-3 4 0 5 -2 7))
+(mapcan (lambda (x) (if (&gt; x 0) (list x)))
+  '(-3 4 0 5 -2 7))
 ⇒ (4 5 7)
                 
 (mapcon (lambda (x) (if (member (car x) (cdr x)) (list (car x))))
   '(a b a c d b c b c))
 ⇒ (a b c b c)
                 
-(mapcon #'list '(1 2 3 4)) ⇒ ((1 2 3 4) (2 3 4) (3 4) (4))
+(mapcon #'list
+  '(1 2 3 4)) ⇒ ((1 2 3 4) (2 3 4) (3 4) (4))
 </pre>
             
             <div id="f_assoc" class="definition-function">
@@ -3949,7 +4255,9 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             
 <pre class="example">
 (assoc 'a '((a . 1) (b . 2))) ⇒ (a . 1)
+
 (assoc 'a '((a . 1) (a . 2))) ⇒ (a . 1)
+
 (assoc 'c '((a . 1) (b . 2))) ⇒ nil
 </pre>
             
@@ -4036,6 +4344,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             <p>An error shall be signaled if dimensions is not a proper list of non-negative integers (error-id. domain-error). initial-element may be any ISLISP object.</p>
 <pre class="example">
 (create-array '(2 3) 0.0) ⇒ #2a((0.0 0.0 0.0) (0.0 0.0 0.0))
+
 (create-array '(2) 0.0)   ⇒ #(0.0 0.0)
 </pre>
             
@@ -4060,10 +4369,13 @@ array1
       ((0 0 0) (0 0 0) (0 0 0)))
                 
 (aref array1 0 1 2)                ⇒ 0
+
 (setf (aref array1 0 1 2) 3.14)    ⇒ 3.14
+
 (aref array1 0 1 2)                ⇒ 3.14
                 
 (aref (create-array '(8 8) 6) 1 1) ⇒ 6
+
 (aref (create-array '() 19))       ⇒ 19
 </pre>
             
@@ -4084,6 +4396,7 @@ array1
             
 <pre class="example">
 (setf (aref array1 0 1 2) 3.15) ⇒ 3.15
+
 (set-aref 51.3 array1 0 1 2)    ⇒ 51.3
 </pre>
             
@@ -4096,7 +4409,9 @@ array1
 <pre class="example">
 (array-dimensions
   (create-array '(2 2) 0))        ⇒ (2 2)
+
 (array-dimensions (vector 'a 'b)) ⇒ (2)
+
 (array-dimensions "foo")          ⇒ (3)
 </pre>
             
@@ -4138,17 +4453,19 @@ array1
             
 <pre class="example">
 (create-vector 3 17)  ⇒ #(17 17 17)
+
 (create-vector 2 #\a) ⇒ #(#\a #\a)
 </pre>
             
             <div id="f_vector" class="definition-function">
-                (vector obj *) → <span class="class">general-vector</span>
+                (vector obj*) → <span class="class">general-vector</span>
             </div>
             
             <p>Returns a new general-vector whose elements are its obj arguments. The length of the newly created vector is, therefore, the number of objs passed as arguments. The vector is indexed by integers ranging from 0 to dimension−1. An error shall be signaled if the requested vector cannot be allocated (error-id. cannot-create-vector). Each obj may be any ISLISP object.</p>
             
 <pre class="example">
 (vector 'a 'b 'c) ⇒ #(a b c)
+
 (vector)          ⇒ #()
 </pre>
             
@@ -4165,6 +4482,7 @@ array1
             
 <pre class="example">
 (stringp "abc") ⇒ t
+
 (stringp 'abc) ⇒ nil
 </pre>
             
@@ -4176,6 +4494,7 @@ array1
             
 <pre class="example">
 (create-string 3 #\a) ⇒ "aaa"
+
 (create-string 0 #\a) ⇒ ""
 </pre>
             
@@ -4207,20 +4526,34 @@ array1
             <p>For these 6 string comparison functions, if the test is satisfied, an <a href="#td_implementation_defined">implementation-defined</a> non-nil value is returned; otherwise, nil is returned.</p>
             <p>An error shall be signaled if either string1 or string2 is not a string (error-id. domain-error).</p>
 <pre class="example">
-(if (string= "abcd" "abcd") t nil)      ⇒ t
-(if (string= "abcd" "wxyz") t nil)      ⇒ nil
-(if (string= "abcd" "abcde") t nil)     ⇒ nil
-(if (string= "abcde" "abcd") t nil)     ⇒ nil
-(if (string/= "abcd" "wxyz") t nil)     ⇒ t
+(if (string= "abcd" "abcd") t nil)   ⇒ t
+
+(if (string= "abcd" "wxyz") t nil)   ⇒ nil
+
+(if (string= "abcd" "abcde") t nil)  ⇒ nil
+
+(if (string= "abcde" "abcd") t nil)  ⇒ nil
+
+(if (string/= "abcd" "wxyz") t nil)  ⇒ t
+
 (if (string&lt; "abcd" "abcd") t nil)   ⇒ nil
+
 (if (string&lt; "abcd" "wxyz") t nil)   ⇒ t
+
 (if (string&lt; "abcd" "abcde") t nil)  ⇒ t
+
 (if (string&lt; "abcde" "abcd") t nil)  ⇒ nil
+
 (if (string&lt;= "abcd" "abcd") t nil)  ⇒ t
+
 (if (string&lt;= "abcd" "wxyz") t nil)  ⇒ t
+
 (if (string&lt;= "abcd" "abcde") t nil) ⇒ t
+
 (if (string&lt;= "abcde" "abcd") t nil) ⇒ nil
+
 (if (string&gt; "abcd" "wxyz") t nil)   ⇒ nil
+
 (if (string&gt;= "abcd" "abcd") t nil)  ⇒ t
 </pre>
             
@@ -4232,9 +4565,13 @@ array1
             
 <pre class="example">
 (char-index #\b "abcab")   ⇒ 1
+
 (char-index #\B "abcab")   ⇒ nil
+
 (char-index #\b "abcab" 2) ⇒ 4
+
 (char-index #\d "abcab")   ⇒ nil
+
 (char-index #\a "abcab" 4) ⇒ nil
 </pre>
             
@@ -4247,11 +4584,17 @@ array1
             
 <pre class="example">
 (string-index "foo" "foobar")   ⇒ 0
+
 (string-index "bar" "foobar")   ⇒ 3
+
 (string-index "FOO" "foobar")   ⇒ nil
+
 (string-index "foo" "foobar" 1) ⇒ nil
+
 (string-index "bar" "foobar" 1) ⇒ 3
+
 (string-index "foo" "")         ⇒ nil
+
 (string-index "" "foo")         ⇒ 0
 </pre>
             
@@ -4265,9 +4608,13 @@ array1
             
 <pre class="example">
 (string-append "abc" "def")    ⇒ "abcdef"
+
 (string-append "abc" "abc")    ⇒ "abcabc"
+
 (string-append "abc" "")       ⇒ "abc"
+
 (string-append "" "abc")       ⇒ "abc"
+
 (string-append "abc" "" "def") ⇒ "abcdef"
 </pre>
             
@@ -4286,8 +4633,11 @@ array1
             
 <pre class="example">
 (length '(a b c))          ⇒ 3
+
 (length '(a (b) (c d e)))  ⇒ 3
+
 (length '())               ⇒ 0
+
 (length (vector 'a 'b 'c)) ⇒ 3
 </pre>
             
@@ -4299,7 +4649,9 @@ array1
             <p>An error shall be signaled if sequence is not a basic-vector or a list or if z is not an integer (error-id. domain-error).</p>
 <pre class="example">
 (elt '(a b c) 2)          ⇒ c
+
 (elt (vector 'a 'b 'c) 1) ⇒ b
+
 (elt "abc" 0)             ⇒ #\a
 </pre>
             
@@ -4317,7 +4669,8 @@ array1
 <pre class="example">
 (let ((string (create-string 5 #\x)))
   (setf (elt string 2) #\O)
-  x)                           ⇒ "xxOxx"
+  x)
+⇒ "xxOxx"
 </pre>
             
             <div id="f_subseq" class="definition-function">
@@ -4328,7 +4681,9 @@ array1
             <p>An error shall be signaled if the requested subsequence cannot be allocated (error-id. cannot-create-sequence). An error shall be signaled if z<sub>1</sub> or z<sub>2</sub> are outside of the bounds mentioned (error-id. index-out-of-range). An error shall be signaled if sequence is not a basic-vector or a list, or if z<sub>1</sub> is not an integer, or if z<sub>2</sub> is not an integer (error-id. domain-error).</p>
 <pre class="example">
 (subseq "abcdef" 1 4)              ⇒ "bcd"
+
 (subseq '(a b c d e f) 1 4)        ⇒ (b c d)
+
 (subseq (vector 'a 'b 'c 'd 'e 'f) 1 4)
 ⇒ #(b c d)
 </pre>
@@ -4345,16 +4700,24 @@ array1
             
 <pre class="example">
 (setq a (list 1 2 3 4))     ⇒ (1 2 3 4)
+
 (setq b (list 10 10 10 10)) ⇒ (10 10 10 10)
+
 (map-into a #'+ a b)        ⇒ (11 12 13 14)
+
 a                           ⇒ (11 12 13 14)
+
 b                           ⇒ (10 10 10 10)
+
 (setq k '(one two three))   ⇒ (one two three)
+
 (map-into a #'cons k a)     ⇒ ((one . 11) (two . 12) (three . 13) 14)
+
 (let ((x 0))
   (map-into a
     (lambda () (setq x (+ x 2)))))
                             ⇒ (2 4 6 8)
+
 a                           ⇒ (2 4 6 8)
 </pre>
             
@@ -4370,6 +4733,7 @@ a                           ⇒ (2 4 6 8)
             
 <pre class="example">
 (streamp (standard-input)) ⇒ t
+
 (streamp '())              ⇒ nil
 </pre>
             
@@ -4386,7 +4750,9 @@ a                           ⇒ (2 4 6 8)
             <p>Returns t if obj is a stream that can handle input operations; otherwise, returns nil.</p>
 <pre class="example">
 (input-stream-p (standard-input))  ⇒ t
+
 (input-stream-p (standard-output)) ⇒ nil
+
 (input-stream-p '(a b c))          ⇒ nil
 </pre>
             
@@ -4398,7 +4764,9 @@ a                           ⇒ (2 4 6 8)
             
 <pre class="example">
 (output-stream-p (standard-output)) ⇒ t
+
 (output-stream-p (standard-input))  ⇒ nil
+
 (output-stream-p "hello")           ⇒ nil
 </pre>
             
@@ -4494,8 +4862,10 @@ a                           ⇒ (2 4 6 8)
             
 <pre class="example">
 (defglobal input-str (open-input-file "data.lsp"))
-⇒ input-str
+                           ⇒ input-str
+
 (close input-str)          ⇒ <a href="#td_implementation_defined">implementation-defined</a>
+
 (close input-str)          ⇒ <a href="#td_implementation_defined">implementation-defined</a>
 </pre>
             
@@ -4583,9 +4953,13 @@ a                           ⇒ (2 4 6 8)
                          ⇒ str
                 
 (read str)               ⇒ hello
+
 (read str)               ⇒ #(1 2 3)
+
 (read str)               ⇒ 123
+
 (read str)               ⇒ #\A
+
 (read str nil "the end") ⇒ "the end"
 </pre>
             
@@ -4601,8 +4975,10 @@ a                           ⇒ (2 4 6 8)
                    ⇒ str
                 
 (read-char str)    ⇒ #\h
+
 (read-char str)    ⇒ #\i
-(read-char str) an error shall be signaled
+
+(read-char str)    an error shall be signaled
 </pre>
             
             <div id="f_preview_char" class="definition-function">
@@ -4634,6 +5010,7 @@ a                           ⇒ (2 4 6 8)
                  ⇒ str
                 
 (read-line str)  ⇒ "This is an example"
+
 (read-line str)  ⇒ "look at the output file"
 </pre>
             
@@ -4652,7 +5029,7 @@ a                           ⇒ (2 4 6 8)
 </pre>
             
             <div id="f_format" class="definition-function">
-                (format output-stream format-string obj *) → <span class="class">null</span>
+                (format output-stream format-string obj*) → <span class="class">null</span>
             </div>
             <div id="f_format_char" class="definition-function">
                 (format-char output-stream char) → <span class="class">null</span>
@@ -4805,14 +5182,20 @@ Output is: This is a tilde: ~
 ⇒ byte-example
                 
 (format byte-example "hello")     ⇒ nil
+
 (close byte-example)              ⇒ <a href="#td_implementation_defined">implementation-defined</a>
+
 (setq byte-example (open-input-stream "byte-ex" 8))
                                   ⇒ <a href="#td_implementation_defined">implementation-defined</a>
                 
 (read-byte byte-example)          ⇒ 104 (<a href="#td_implementation_defined">implementation-defined</a>)
+
 (read-byte byte-example)          ⇒ 101 (<a href="#td_implementation_defined">implementation-defined</a>)
+
 (read-byte byte-example)          ⇒ 108 (<a href="#td_implementation_defined">implementation-defined</a>)
+
 (read-byte byte-example)          ⇒ 108 (<a href="#td_implementation_defined">implementation-defined</a>)
+
 (read-byte byte-example)          ⇒ 111 (<a href="#td_implementation_defined">implementation-defined</a>)
 </pre>
             
@@ -4838,10 +5221,12 @@ Output is: This is a tilde: ~
             
 <pre class="example">
 (probe-file "notexist.lsp") ⇒ nil
+
 (defglobal new-file (open-output-file "notexist.lsp"))
-⇒ new-file
+                            ⇒ new-file
                 
 (close new-file)            ⇒ <a href="#td_implementation_defined">implementation-defined</a>
+
 (probe-file "notexist.lsp") ⇒ t
 </pre>
             
@@ -4853,20 +5238,31 @@ Output is: This is a tilde: ~
             <p>A file position is a non-negative integer that represents a position in the stream. For binary streams, the file position represents the number of preceding bytes in the stream. It is increased by one each time one of the following is done:</p>
 <pre>
 (read-byte stream)
+
 (write-byte z stream)
 </pre>
             <p>For character streams, the file position is increased by an <a href="#td_implementation_defined">implementation-defined</a> non-negative amount each time one of the following is done:</p>
 <pre>
 (format stream...)
+
 (format-char stream char)
+
 (format-float stream float)
+
 (format-fresh-line stream)
+
 (format-integer stream integer radix)
+
 (format-object stream obj escape-p)
+
 (format-tab stream column)
+
 (report-condition condition stream)
+
 (read-char stream)
+
 (read-line stream)
+
 (read stream)
 </pre>
             <p>The amount may depend on the output and on the file position itself. It is <a href="#td_implementation_defined">implementation-defined</a> which integer represents the first element of the file. An error shall be signaled if stream is not a stream to or from a file (error-id. domain-error).</p>
@@ -4877,12 +5273,16 @@ Output is: This is a tilde: ~
                                ⇒ example
                 
 (format example "hello")       ⇒ nil
+
 (close example)                ⇒ <a href="#td_implementation_defined">implementation-defined</a>
+
 (setq example (open-input-stream "example.lsp" 8))
                                ⇒ <a href="#td_implementation_defined">implementation-defined</a>
                 
 (file-position example)        ⇒ 0 (<a href="#td_implementation_defined">implementation-defined</a>)
+
 (read-byte example)            ⇒ 104 (<a href="#td_implementation_defined">implementation-defined</a>)
+
 (file-position example)        ⇒ 1 (<a href="#td_implementation_defined">implementation-defined</a>)
 </pre>
             
@@ -4932,7 +5332,7 @@ Output is: This is a tilde: ~
             <h5 id="operations_relating_to_condition_signaling">Operations relating to condition signaling</h5>
             
             <div id="f_error" class="definition-function">
-                (error error-string obj *) → <span class="class">object</span>
+                (error error-string obj*) → <span class="class">object</span>
             </div>
             
             <p>An error shall be signaled.</p>
@@ -4942,12 +5342,12 @@ Output is: This is a tilde: ~
 (signal-condition
   (create (class <span class="class">simple-error</span>)
           'format-string error-string
-          'format-arguments (list obj *))
+          'format-arguments (list obj*))
           nil)
 </pre>
             
             <div id="f_cerror" class="definition-function">
-                (cerror continue-string error-string obj *) → <span class="class">object</span>
+                (cerror continue-string error-string obj*) → <span class="class">object</span>
             </div>
             
             <p>Like error, but the error that it signals is “continuable” (see continue-condition). The extra argument continue-string describes what happens if this function returns.</p>
@@ -4956,10 +5356,10 @@ Output is: This is a tilde: ~
 (signal-condition
   (create (class <span class="class">simple-error</span>)
           'format-string error-string
-          'format-arguments (list obj *))
-          (let ((str (create-string-output-stream)))
-          (format str continue-string obj *)
-          (get-output-stream-string str)))
+          'format-arguments (list obj*))
+  (let ((str (create-string-output-stream)))
+    (format str continue-string obj*)
+    (get-output-stream-string str)))
 </pre>
             
             <div id="f_signal_condition" class="definition-function">
