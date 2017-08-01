@@ -4,9 +4,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" type="text/css" href="stylesheet.css" />
-    <title>Programming Language ISLISP Working Draft 23.0</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="stylesheet.css" />
+  <title>Programming Language ISLISP Working Draft 23.0</title>
 </head>
 
 <body>
@@ -581,7 +581,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
                 <dd>
                     <p>An array of class &lt;general-array*&gt; or <span class="class">general-vector</span> can be written on input as #na (where n is an integer indicating the number of dimensions of the array) followed by a nested structure of sequences denoting the contents of the array. This structure is defined as follows. If n = 1 the structure is simply (obj<sub>1</sub> ... obj<sub>n</sub>). If n > 1 and the dimensions are n<sub>1</sub> n<sub>2</sub> ..., the structure is (str<sub>1</sub> ... strn<sub>1</sub>), where the stri are the structures of the n<sub>1</sub> subarrays, each of which has dimensions (n<sub>2</sub> ...). As an example, the representation of (create-array '(2 3 4) 5) is as follows:</p>
 <pre>
-#3a(((5 5 5 5) (5 5 5 5) (5 5 5 5)) ((5 5 5 5) (5 5 5 5) (5 5 5 5))).
+#3a(((5 5 5 5) (5 5 5 5) (5 5 5 5)) ((5 5 5 5) (5 5 5 5) (5 5 5 5)))
 </pre>
                     <p>On output (see format), arrays of class <span class="class">general-vector</span> will be printed using #(...) notation.</p>
                 </dd>
