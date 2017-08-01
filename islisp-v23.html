@@ -920,49 +920,49 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             <p>A special form is a form whose arguments are treated in a special way; for example, arguments are not evaluated or are evaluated in a special order. It is <a href="#td_implementation_defined">implementation defined</a> whether any special form is implemented as a macro (see §12.5 and §16). Special forms are recognized because they have a special operator in their operator position. The following are special operators:</p>
             
             <ul>
-                <li>and</li>
-                <li>assure</li>
-                <li>block</li>
-                <li>case</li>
-                <li>case-using</li>
-                <li>catch</li>
-                <li>class</li>
-                <li>cond</li>
-                <li>convert</li>
-                <li>dynamic</li>
+                <li><a href="#s_and">and</a></li>
+                <li><a href="#s_assure">assure</a></li>
+                <li><a href="#s_block">block</a></li>
+                <li><a href="#s_case">case</a></li>
+                <li><a href="#s_case_using">case-using</a></li>
+                <li><a href="#s_catch">catch</a></li>
+                <li><a href="#s_class">class</a></li>
+                <li><a href="#s_cond">cond</a></li>
+                <li><a href="#s_convert">convert</a></li>
+                <li><a href="#s_dynamic">dynamic</a></li>
                 
-                <li>dynamic-let</li>
-                <li>flet</li>
-                <li>for</li>
-                <li>function</li>
-                <li>go</li>
-                <li>if</li>
-                <li>ignore-errors</li>
-                <li>labels</li>
-                <li>lambda</li>
-                <li>let</li>
+                <li><a href="#s_dynamic_let">dynamic-let</a></li>
+                <li><a href="#s_flet">flet</a></li>
+                <li><a href="#s_for">for</a></li>
+                <li><a href="#s_function">function</a></li>
+                <li><a href="#s_go">go</a></li>
+                <li><a href="#s_if">if</a></li>
+                <li><a href="#s_ignore_errors">ignore-errors</a></li>
+                <li><a href="#s_labels">labels</a></li>
+                <li><a href="#s_lambda">lambda</a></li>
+                <li><a href="#s_let">let</a></li>
                 
-                <li>let*</li>
-                <li>or</li>
-                <li>progn</li>
-                <li>quote</li>
-                <li>return-from</li>
-                <li>set-dynamic</li>
-                <li>setf</li>
-                <li>setq</li>
-                <li>tagbody</li>
-                <li>the</li>
+                <li><a href="#s_let_s">let*</a></li>
+                <li><a href="#s_or">or</a></li>
+                <li><a href="#s_progn">progn</a></li>
+                <li><a href="#s_quote">quote</a></li>
+                <li><a href="#s_return_from">return-from</a></li>
+                <li><a href="#s_set_dynamic">set-dynamic</a></li>
+                <li><a href="#s_setf">setf</a></li>
+                <li><a href="#s_setq">setq</a></li>
+                <li><a href="#s_tagbody">tagbody</a></li>
+                <li><a href="#s_the">the</a></li>
                 
-                <li>throw</li>
-                <li>unwind-protect</li>
-                <li>while</li>
-                <li>with-error-output</li>
-                <li>with-handler</li>
-                <li>with-open-input-file</li>
-                <li>with-open-io-file</li>
-                <li>with-open-output-file</li>
-                <li>with-standard-input</li>
-                <li>with-standard-output</li>
+                <li><a href="#s_throw">throw</a></li>
+                <li><a href="#s_unwind_protect">unwind-protect</a></li>
+                <li><a href="#s_while">while</a></li>
+                <li><a href="#s_with_error_output">with-error-output</a></li>
+                <li><a href="#s_with_handler">with-handler</a></li>
+                <li><a href="#s_with_open_input_file">with-open-input-file</a></li>
+                <li><a href="#s_with_open_io_file">with-open-io-file</a></li>
+                <li><a href="#s_with_open_output_file">with-open-output-file</a></li>
+                <li><a href="#s_with_standard_input">with-standard-input</a></li>
+                <li><a href="#s_with_standard_output">with-standard-output</a></li>
             </ul>
             
             <p>There might be additional, <a href="#td_implementation_defined">implementation-defined</a> special operators.</p>
@@ -976,14 +976,14 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             <p>A defining form is a toplevel special form (see §12.3) that establishes a binding between name and an object which is the result of handling the arguments according to the semantics implied by defining-form-name; it is a violation if a defining form is not a toplevel form. For each namespace, defining forms can occur at most once for the same name and, in case of method definitions for the same parameter profile. A defining form is a compound form whose operator is a defining operator. These are the defining operators:</p>
             
             <ul>
-                <li>defclass</li>
-                <li>defdynamic</li>
-                <li>defglobal</li>
-                <li>defmethod</li>
-                <li>defconstant</li>
-                <li>defgeneric</li>
-                <li>defmacro</li>
-                <li>defun</li>
+                <li><a href="#def_defclass">defclass</a></li>
+                <li><a href="#def_defdynamic">defdynamic</a></li>
+                <li><a href="#def_defglobal">defglobal</a></li>
+                <li><a href="#def_defmethod">defmethod</a></li>
+                <li><a href="#def_defconstant">defconstant</a></li>
+                <li><a href="#def_defgeneric">defgeneric</a></li>
+                <li><a href="#def_defmacro">defmacro</a></li>
+                <li><a href="#def_defun">defun</a></li>
             </ul>
             
             <p>This document describes defining forms in the following format:</p>
@@ -1261,26 +1261,25 @@ today                          ⇒ wednesday
             
             <p>The following functions are one-argument class membership predicates:</p>
             <ul>
-                <li>basic-array*-p</li>
-                <li>basic-array-p</li>
-                <li>basic-vector-p</li>
-                <li>characterp</li>
-                <li>consp</li>
+                <li><a href="#f_basic_array_s_p">basic-array*-p</a></li>
+                <li><a href="#f_basic_array_p">basic-array-p</a></li>
+                <li><a href="#f_basic_vector_p">basic-vector-p</a></li>
+                <li><a href="#f_characterp">characterp</a></li>
+                <li><a href="#f_consp">consp</a></li>
                 
-                <li>floatp</li>
-                <li>functionp</li>
-                <li>general-array*-p</li>
-                <li>general-vector-p</li>
-                <li>generic-function-p</li>
+                <li><a href="#f_floatp">floatp</a></li>
+                <li><a href="#f_functionp">functionp</a></li>
+                <li><a href="#f_general_array_s_p">general-array*-p</a></li>
+                <li><a href="#f_general_vector_p">general-vector-p</a></li>
+                <li><a href="#f_generic_function_p">generic-function-p</a></li>
                 
-                <li>integerp</li>
-                <li>listp</li>
-                <li>null</li>
-                <li>numberp</li>
-                <li>streamp</li>
-                
-                <li>stringp</li>
-                <li>symbolp</li>
+                <li><a href="#f_integerp">integerp</a></li>
+                <li><a href="#f_listp">listp</a></li>
+                <li><a href="#f_null">null</a></li>
+                <li><a href="#f_numberp">numberp</a></li>
+                <li><a href="#f_streamp">streamp</a></li>
+                <li><a href="#f_stringp">stringp</a></li>
+                <li><a href="#f_symbolp">symbolp</a></li>
             </ul>
             
             <p>In addition, the function instancep is a two-argument predicate that tests membership in an arbitrary class.</p>
@@ -1612,10 +1611,10 @@ where var does not occur in form<sub>2</sub> … form<sub>n</sub>
             <p>A variable is used to refer to an association between an identifier and an ISLISP object, and is denoted by that identifier. The association can be altered (by assignment) using the setf special form or setq special form.</p>
             <p>The following are variable binding forms:</p>
             <ul>
-                <li>defglobal</li>
-                <li>let</li>
-                <li>for</li>
-                <li>let*</li>
+                <li><a href="#def_defglobal">defglobal</a></li>
+                <li><a href="#s_let">let</a></li>
+                <li><a href="#s_for">for</a></li>
+                <li><a href="#s_let_s">let*</a></li>
             </ul>
             <div class="definition-syntax">
                 var → <span class="class">object</span>
