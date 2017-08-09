@@ -526,7 +526,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             <p>Additional characters are <a href="#td_implementation_defined">implementation defined</a>.</p>
             <p>The following characters are individual lexemes (see <a href="#macros">§16</a> and <a href="#cons">§21.1</a>):</p>
 <pre>
-( ) , ' ‘
+( ) , ' `
 </pre>
             <p>The following character tuples (where n is a sequence of digits) are individual lexemes (see §12.7, §16, and §22.1):</p>
 <pre>
@@ -538,7 +538,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             <p>\ (single escape) and | (multiple escape) are special characters. They may occur in some lexemes (identifiers and string literals).</p>
             <p>Other lexemes are separated by delimiters. Delimiters are separators along with the following characters:</p>
 <pre>
-( ) ‘ , '
+( ) ` , '
 </pre>
             <p>The effect of delimiting is disestablished inside a string (see §24) or inside a corresponding pair of multiple escape characters (see §18) or for the character immediately following #\.</p>
             
@@ -2317,9 +2317,9 @@ abstract-flag        ::= t | nil
             <p>Each superclass name argument sc-name is an identifier that specifies a direct superclass of the new class. The new class will inherit slots and their :reader or :writer or :accessor methods from each of its superclasses. See §15.1.3 for a definition of how slots are inherited, and §15.2.3 for a definition of how methods are inherited. No sc-name may appear more than once in super class names. It is a violation if the superclasses of any two direct superclasses sc-name have superclasses other than <span class="class">standard-object</span> and <span class="class">object</span> in common unless a metaclass other than <span class="class">standard-class</span> is specified.</p>
             <p>Each slot-spec argument is the name of the slot or a list consisting of the slot name followed by zero or more slot options. The slot-name argument is an identifier that is syntactically valid for use as an ISLISP variable name. No slot names may appear more than once in slot-spec The following slot options are available:</p>
             <ul>
-                <li>The :reader slot option specifies that an unqualified method with the parameter profile ((x class-name)) is to be defined on the generic function named reader-function-name to retrieve the value of the given slot. The :reader slot option may be specified more than once for a given slot.</li>
-                <li>The :writer slot option specifies that an unqualified method with the parameter profile ((y <span class="class">object</span>) (x class-name)) is to be defined on the generic function named writer-function-name to store the value into the slot. The writer-function-name argument is an identifier. The :writer slot option may be specified more than once for a given slot.</li>
-                <li>The :accessor slot option specifies that an unqualified method is to be defined on the generic function named reader-function-name to retrieve the value of the given slot. Furthermore, there is a generic function such that (setf (reader-function-name x) y) is equivalent to calling this generic function with first argument y and second argument x. This generic function is extended by a method with the parameter profile ((y <span class="class">object</span>) (x class-name)). The reader-function-name argument is an identifier. The :accessor slot option may be specified more than once for a given slot.</li>
+                <li id="reader">The :reader slot option specifies that an unqualified method with the parameter profile ((x class-name)) is to be defined on the generic function named reader-function-name to retrieve the value of the given slot. The :reader slot option may be specified more than once for a given slot.</li>
+                <li id="writer">The :writer slot option specifies that an unqualified method with the parameter profile ((y <span class="class">object</span>) (x class-name)) is to be defined on the generic function named writer-function-name to store the value into the slot. The writer-function-name argument is an identifier. The :writer slot option may be specified more than once for a given slot.</li>
+                <li id="accessor">The :accessor slot option specifies that an unqualified method is to be defined on the generic function named reader-function-name to retrieve the value of the given slot. Furthermore, there is a generic function such that (setf (reader-function-name x) y) is equivalent to calling this generic function with first argument y and second argument x. This generic function is extended by a method with the parameter profile ((y <span class="class">object</span>) (x class-name)). The reader-function-name argument is an identifier. The :accessor slot option may be specified more than once for a given slot.</li>
                 <li>The :boundp slot option specifies that an unqualified method with the parameter profile ((x class-name)) is to be defined on the generic function named boundp-function-name to test whether the given slot has been given a value. The :boundp slot option may be specified more than once for a given slot.</li>
                 <li>The :initform slot option is used to provide a default initial value form to be used in the initialization of the slot. The :initform slot option may be specified once at most for a given slot. This form is evaluated every time it is used to initialize the slot. The lexical scope of the identifiers used in the initialization of the slot is the lexical scope of those identifiers in the defclass form. Note that the lexical scope refers both to variable and to function identifiers. In contrast, the current dynamic bindings used are those existing during activation of create. For more information, see §15.4.1.</li>
                 <li>The :initarg slot option declares an initialization argument named initarg-name and specifies that this initialization argument initializes the given slot. If the initialization argument and associated value are supplied in the call to initialize-object, the value will be stored into the given slot and the slot's :initform slot option, if any, is not evaluated. If none of the initialization arguments specified for a given slot has a value, the slot is initialized according to the :initform option, if specified. The consequences are undefined if more than one initialization argument for the same slot is supplied. For more information, see §15.4.1.</li>
@@ -2329,7 +2329,7 @@ abstract-flag        ::= t | nil
             <p>Each class option is an option that refers to the class as a whole. The following class options are available:</p>
             <ul>
                 <li>The :metaclass class option is used to specify that instances of the class being defined are to have a different metaclass than the default provided by the system, that is, different from the class <span class="class">standard-class</span>. The class-name argument is the name of the desired metaclass. The :metaclass class option may be specified once at most. It is a violation if <span class="class">built-in-class</span> is specified as the metaclass.</li>
-                <li>The :abstractp class option is used to specify that the class is an <a href="#td_abstract_class">abstract class</a>. If this option is supplied and abstract-flag is t, create will signal an error if an attempt is made to create an instance of this class. If the option is unsupplied, or if abstract-flag is nil, the class is not an <a href="#td_abstract_class">abstract class</a>. It is a violation if the abstract-flag is supplied but is neither t nor nil.</li>
+                <li id="abstractp">The :abstractp class option is used to specify that the class is an <a href="#td_abstract_class">abstract class</a>. If this option is supplied and abstract-flag is t, create will signal an error if an attempt is made to create an instance of this class. If the option is unsupplied, or if abstract-flag is nil, the class is not an <a href="#td_abstract_class">abstract class</a>. It is a violation if the abstract-flag is supplied but is neither t nor nil.</li>
             </ul>
             <p>The following rules of defclass hold for standard classes:</p>
             <ul>
@@ -2365,7 +2365,7 @@ abstract-flag        ::= t | nil
                 <li>All the slot specifiers for a given slot name are ordered from most specific to least specific, according to the order in C's class precedence list. All references to the specificity of slot specifiers immediately below refer to this ordering.</li>
                 <li>The default initial value form for a slot is the value of the :initform slot option in the most specific slot specifier that contains one. If no slot specifier contains an :initform slot option, the slot has no default initial value form.</li>
             </ul>
-            <p>The :reader, :writer, and :accessor slot options create methods rather than define the characteristics of a slot. Reader and writer methods are inherited in the sense described in the section §15.2.3.</p>
+            <p id="reader_writer_accessor">The :reader, :writer, and :accessor slot options create methods rather than define the characteristics of a slot. Reader and writer methods are inherited in the sense described in the section §15.2.3.</p>
             
             <h4 id="generic_functions">Generic functions</h4>
             
@@ -2388,7 +2388,7 @@ abstract-flag        ::= t | nil
             <p>Some forms specify the options of a generic function, such as the type of method combination it uses. These forms will be referred to as <q>forms that specify generic function options.</q> These forms are the defgeneric defining forms.</p>
             
             <p>Some forms define methods for a generic function. These forms will be referred to as <q>method-defining forms.</q> These forms are the defmethod and defclass defining forms.</p>
-            <p>During preparation for execution, a defmethod form must be preceded by the defgeneric form for the generic function to be specialized. (Methods implicitly defined by defclass due to :reader, :writer, or :accessor options do not need a preceding defgeneric.)</p>
+            <p id="reader_writer_accessor2">During preparation for execution, a defmethod form must be preceded by the defgeneric form for the generic function to be specialized. (Methods implicitly defined by defclass due to :reader, :writer, or :accessor options do not need a preceding defgeneric.)</p>
             <div id="def_defgeneric" class="definition-defining">
                 (defgeneric func-spec lambda-list {option | method-desc}*) → <span class="class">symbol</span>
             </div>
@@ -2630,13 +2630,13 @@ var                        ::= identifier
 ⇒ caar
 </pre>
             
-            <div class="definition-syntax">
+            <div id="syn_backquote" class="definition-syntax">
                 `form → <span class="class">object</span>
             </div>
-            <div class="definition-syntax">
+            <div id="syn_comma" class="definition-syntax">
                 ,form → <span class="class">object</span>
             </div>
-            <div class="definition-syntax">
+            <div id="syn_comma_at" class="definition-syntax">
                 ,@form → <span class="class">object</span>
             </div>
             
@@ -2878,7 +2878,7 @@ var                        ::= identifier
 </pre>
             <p>If the symbol name contains a vertical bar, the vertical bar must be preceded by a backslash <q>\</q>. If the symbol name contains a backslash, the backslash must be preceded by another backslash. For example, <q>|\\\\\|\\\||</q> denotes a symbol whose name is a 5 character string containing backslash, backslash, vertical bar, backslash, vertical bar.</p>
             <div class="note">Note: All required symbols can be written without vertical bars.</div>
-            <p>It is <a href="#td_implementation_defined">implementation defined</a> whether the names of symbols can contain colon (:) or ampersand (&amp;). Consequently, whether &amp;rest and keywords (e.g., :rest, :before, and :after) are represented as symbols or something else is <a href="#td_implementation_defined">implementation defined</a>.</p>
+            <p id="rest_66">It is <a href="#td_implementation_defined">implementation defined</a> whether the names of symbols can contain colon (:) or ampersand (&amp;). Consequently, whether &amp;rest and keywords (e.g., :rest, :before, and :after) are represented as symbols or something else is <a href="#td_implementation_defined">implementation defined</a>.</p>
             
             <h5 id="alphabetic_case_in_symbol_names">Alphabetic case in symbol names</h5>
             <p>If the enclosing vertical bars are omitted, the case of alphabetic characters in a symbol is translated by the reader to a canonical case that is used internally. Therefore, for example, each of the following denotes the same symbol in all implementations:</p>
@@ -3829,7 +3829,7 @@ one mantissa digit after the decimal point.
 <pre>
 ! &quot; # $ % &amp; ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; &lt; = &gt; ?
 @ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z [ \ ] ^ _
-‘ a b c d e f g h i j k l m n o p q r s t u v w x y z { | } ~
+` a b c d e f g h i j k l m n o p q r s t u v w x y z { | } ~
 </pre>
             
             <p>A character literal is denoted by #\ followed by a token which is either the character itself, or, if the character has a name, the character's name. For example, the letter A is denoted by <q>#\A</q>. The newline and space characters have the names <q>newline</q> and <q>space,</q> respectively, so they can be denoted by <q>#\newline</q> and <q>#\space</q>. (Case is not significant when naming a character.)</p>
@@ -3949,7 +3949,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
                 (cons obj<sub>1</sub> obj<sub>2</sub>) → <span class="class">cons</span>
             </div>
             
-            <p>This function builds a cons from two objects, with obj<sub>1</sub> as its car (or ‘left') part and with obj2 as its cdr (or ‘right') part. An error shall be signaled if the requested cons cannot be allocated (error-id. cannot-create-cons). Both obj1 and obj2 may be any ISLISP object.</p>
+            <p>This function builds a cons from two objects, with obj<sub>1</sub> as its car (or `left') part and with obj2 as its cdr (or `right') part. An error shall be signaled if the requested cons cannot be allocated (error-id. cannot-create-cons). Both obj1 and obj2 may be any ISLISP object.</p>
             
 <pre class="example">
 (cons 'a '())        ⇒ (a)
@@ -5650,21 +5650,21 @@ Output is: This is a tilde: ~
             
             <h2 id="index">Index</h2>
 <pre>
-#' 23
-#| 10
-&amp;rest 24, 53, 54, 55, 66
-' 33
-* 70
-*most-negative-float* 78
-*most-positive-float* 78
-*pi* 74
-+ 70
-, 62
-,@ 62
-- 71
-/= 70
-:abstractp 48, 50
-:accessor 48, 49, 52, 53
+#' <a href="#s_function">23</a>
+#| <a href="#comments">10</a>
+&amp;rest <a href="#s_lambda">24</a>, <a href="#def_defgeneric">53</a>, <a href="#def_defmethod">54</a>, <a href="#congruent_lambda_lists">55</a>, <a href="#rest_66">66</a>
+' <a href="#s_quote">33</a>
+* <a href="#f_muptiply">70</a>
+*most-negative-float* <a href="#c_most_negative_float">78</a>
+*most-positive-float* <a href="#c_most_positive_float">78</a>
+*pi* <a href="#c_pi">74</a>
++ <a href="#f_plus">70</a>
+, <a href="#syn_comma">62</a>
+,@ <a href="#syn_comma_at">62</a>
+- <a href="#f_minus">71</a>
+/= <a href="#f_math_neq">70</a>
+:abstractp <a href="#def_defclass">48</a>, <a href="#abstractp">50</a>
+:accessor <a href="#def_defclass">48</a>, <a href="#accessor">49</a>, <a href="#reader_writer_accessor">52</a>, <a href="#reader_writer_accessor2">53</a>
 :after 53, 54, 55, 57, 58, 66
 :around 53, 54, 55, 57, 58
 :before 53, 54, 55, 57, 66
@@ -5675,15 +5675,15 @@ Output is: This is a tilde: ~
 :metaclass 48, 50
 :method 53
 :method-combination 53, 57
-:reader 48, 49, 52, 53
+:reader <a href="#def_defclass">48</a>, <a href="#reader">49</a>, <a href="#reader_writer_accessor">52</a>, <a href="#reader_writer_accessor2">53</a>
 :rest 24, 53, 54, 55, 66
-:writer 48, 49, 52, 53
+:writer <a href="#def_defclass">48</a>, <a href="#writer">49</a>, <a href="#reader_writer_accessor">52</a>, <a href="#reader_writer_accessor2">53</a>
 &lt; 70
 &lt;= 70
 = 69
 &gt; 70
 &gt;= 70
-‘ 62
+` <a href="#syn_backquote">62</a>
 |# 10
 abs 73
 <a href="#td_abstract_class">abstract class 2</a>
