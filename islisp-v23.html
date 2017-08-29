@@ -2320,15 +2320,15 @@ abstract-flag        ::= t | nil
                 <li id="reader">The :reader slot option specifies that an unqualified method with the parameter profile ((x class-name)) is to be defined on the generic function named reader-function-name to retrieve the value of the given slot. The :reader slot option may be specified more than once for a given slot.</li>
                 <li id="writer">The :writer slot option specifies that an unqualified method with the parameter profile ((y <span class="class">object</span>) (x class-name)) is to be defined on the generic function named writer-function-name to store the value into the slot. The writer-function-name argument is an identifier. The :writer slot option may be specified more than once for a given slot.</li>
                 <li id="accessor">The :accessor slot option specifies that an unqualified method is to be defined on the generic function named reader-function-name to retrieve the value of the given slot. Furthermore, there is a generic function such that (setf (reader-function-name x) y) is equivalent to calling this generic function with first argument y and second argument x. This generic function is extended by a method with the parameter profile ((y <span class="class">object</span>) (x class-name)). The reader-function-name argument is an identifier. The :accessor slot option may be specified more than once for a given slot.</li>
-                <li>The :boundp slot option specifies that an unqualified method with the parameter profile ((x class-name)) is to be defined on the generic function named boundp-function-name to test whether the given slot has been given a value. The :boundp slot option may be specified more than once for a given slot.</li>
-                <li>The :initform slot option is used to provide a default initial value form to be used in the initialization of the slot. The :initform slot option may be specified once at most for a given slot. This form is evaluated every time it is used to initialize the slot. The lexical scope of the identifiers used in the initialization of the slot is the lexical scope of those identifiers in the defclass form. Note that the lexical scope refers both to variable and to function identifiers. In contrast, the current dynamic bindings used are those existing during activation of create. For more information, see §15.4.1.</li>
-                <li>The :initarg slot option declares an initialization argument named initarg-name and specifies that this initialization argument initializes the given slot. If the initialization argument and associated value are supplied in the call to initialize-object, the value will be stored into the given slot and the slot's :initform slot option, if any, is not evaluated. If none of the initialization arguments specified for a given slot has a value, the slot is initialized according to the :initform option, if specified. The consequences are undefined if more than one initialization argument for the same slot is supplied. For more information, see §15.4.1.</li>
+                <li id="boundp">The :boundp slot option specifies that an unqualified method with the parameter profile ((x class-name)) is to be defined on the generic function named boundp-function-name to test whether the given slot has been given a value. The :boundp slot option may be specified more than once for a given slot.</li>
+                <li id="initform">The :initform slot option is used to provide a default initial value form to be used in the initialization of the slot. The :initform slot option may be specified once at most for a given slot. This form is evaluated every time it is used to initialize the slot. The lexical scope of the identifiers used in the initialization of the slot is the lexical scope of those identifiers in the defclass form. Note that the lexical scope refers both to variable and to function identifiers. In contrast, the current dynamic bindings used are those existing during activation of create. For more information, see §15.4.1.</li>
+                <li id="initarg">The :initarg slot option declares an initialization argument named initarg-name and specifies that this initialization argument initializes the given slot. If the initialization argument and associated value are supplied in the call to initialize-object, the value will be stored into the given slot and the slot's :initform slot option, if any, is not evaluated. If none of the initialization arguments specified for a given slot has a value, the slot is initialized according to the :initform option, if specified. The consequences are undefined if more than one initialization argument for the same slot is supplied. For more information, see §15.4.1.</li>
             </ul>
             <p>The generic functions, to which the methods created by the :reader, :writer, and :accessor slot options belong are called slot accessors.</p>
             <p>No implementation is permitted to extend the syntax of defclass to allow (slot-name form) as an abbreviation for (slot-name :initform form).</p>
             <p>Each class option is an option that refers to the class as a whole. The following class options are available:</p>
             <ul>
-                <li>The :metaclass class option is used to specify that instances of the class being defined are to have a different metaclass than the default provided by the system, that is, different from the class <span class="class">standard-class</span>. The class-name argument is the name of the desired metaclass. The :metaclass class option may be specified once at most. It is a violation if <span class="class">built-in-class</span> is specified as the metaclass.</li>
+                <li id="metaclass">The :metaclass class option is used to specify that instances of the class being defined are to have a different metaclass than the default provided by the system, that is, different from the class <span class="class">standard-class</span>. The class-name argument is the name of the desired metaclass. The :metaclass class option may be specified once at most. It is a violation if <span class="class">built-in-class</span> is specified as the metaclass.</li>
                 <li id="abstractp">The :abstractp class option is used to specify that the class is an <a href="#td_abstract_class">abstract class</a>. If this option is supplied and abstract-flag is t, create will signal an error if an attempt is made to create an instance of this class. If the option is unsupplied, or if abstract-flag is nil, the class is not an <a href="#td_abstract_class">abstract class</a>. It is a violation if the abstract-flag is supplied but is neither t nor nil.</li>
             </ul>
             <p>The following rules of defclass hold for standard classes:</p>
@@ -2459,7 +2459,7 @@ var                        ::= identifier
                 <li>It is a violation if the given name func-spec does not exist in the current toplevel scope immediately containing the defmethod defining form. Furthermore, it is a violation if a defgeneric form for func-spec does not precede the method-defining form in the text unit being prepared for execution unless the method-defining form is a defclass.</li>
             </ul>
             <p>The parameter-profile of the method being defined must be congruent with the lambda-list of the generic function. See §15.2.2.2 for a definition of congruence in this context.</p>
-            <p>Each method-qualifier argument is an object that is used as an attribute to the given method by method combination. A method qualifier is a non-nil symbol or keyword. The method combination type further restricts what a method qualifier may be. The standard method combination type allows for unqualified methods or methods whose sole qualifier is one of the keywords :before, :after, :around.</p>
+            <p id="method_qualifier">Each method-qualifier argument is an object that is used as an attribute to the given method by method combination. A method qualifier is a non-nil symbol or keyword. The method combination type further restricts what a method qualifier may be. The standard method combination type allows for unqualified methods or methods whose sole qualifier is one of the keywords :before, :after, :around.</p>
             <p>The parameter-profile argument is like an ordinary function lambda-list except that the names of required parameters can be replaced by specialized parameters. A specialized parameter is a list of the form (variable-name parameter-specializer-name). Only required parameters may be specialized. A parameter specializer name is an identifier that names a class. If no parameter specializer name is specified for a given required parameter, the parameter specializer defaults to the class named <span class="class">object</span>.</p>
             <p>The form arguments specify the method body.</p>
             <p>No two methods with agreeing parameter specializers and qualifiers may be defined for the same generic function. See the section §15.2.2.1 for a definition of agreement in this context.</p>
@@ -2527,7 +2527,7 @@ var                        ::= identifier
                 <li>An :after method has the keyword :after as its qualifier. An :after method specifies code that is to be run after primary methods.</li>
                 <li>An :around method has the keyword :around as its qualifier. An :around method specifies code that is to be run instead of other applicable methods but which is able to cause some of them to be run.</li>
             </ul>
-            <p>The semantics of standard method combination is as follows:</p>
+            <p id="semantics_of_standard_method_combination">The semantics of standard method combination is as follows:</p>
             <ul>
                 <li>If there are any :around methods, the most specific :around method is called. It supplies the value of the generic function.</li>
                 <li>Inside the body of an :around method, call-next-method can be used to call the next method. When the next method returns, the :around method can execute more code, perhaps based on the returned value. An error shall be signaled if call-next-method is used and there is no applicable method to call. The function next-method-p can be used to determine whether a next method exists.</li>
@@ -5665,16 +5665,16 @@ Output is: This is a tilde: ~
 /= <a href="#f_math_neq">70</a>
 :abstractp <a href="#def_defclass">48</a>, <a href="#abstractp">50</a>
 :accessor <a href="#def_defclass">48</a>, <a href="#accessor">49</a>, <a href="#reader_writer_accessor">52</a>, <a href="#reader_writer_accessor2">53</a>
-:after 53, 54, 55, 57, 58, 66
-:around 53, 54, 55, 57, 58
-:before 53, 54, 55, 57, 66
-:boundp 48, 49
-:generic-function-class 53
-:initarg 48, 49, 60
-:initform 48, 49, 52, 60, 61
-:metaclass 48, 50
-:method 53
-:method-combination 53, 57
+:after <a href="#def_defgeneric">53</a>, <a href="#def_defmethod">54</a>, <a href="#method_qualifier">55</a>, <a href="#standard_method_combination">57</a>, <a href="#semantics_of_standard_method_combination">58</a>, <a href="#rest_66">66</a>
+:around <a href="#def_defgeneric">53</a>, <a href="#def_defmethod">54</a>, <a href="#method_qualifier">55</a>, <a href="#standard_method_combination">57</a>, <a href="#semantics_of_standard_method_combination">58</a>
+:before <a href="#def_defgeneric">53</a>, <a href="#def_defmethod">54</a>, <a href="#method_qualifier">55</a>, <a href="#standard_method_combination">57</a>, <a href="#rest_66">66</a>
+:boundp <a href="#def_defclass">48</a>, <a href="#boundp">49</a>
+:generic-function-class <a href="#def_defgeneric">53</a>
+:initarg <a href="#def_defclass">48</a>, <a href="#initarg">49</a>, <a href="#initialize_object">60</a>
+:initform <a href="#def_defclass">48</a>, <a href="#initform">49</a>, <a href="#inheritance_of_slots">52</a>, <a href="#initialize_object">60</a>, <a href="#gf_initialize_object">61</a>
+:metaclass <a href="#def_defclass">48</a>, <a href="#metaclass">50</a>
+:method <a href="#def_defgeneric">53</a>
+:method-combination <a href="#def_defgeneric">53</a>, <a href="#applying_methods">57</a>
 :reader <a href="#def_defclass">48</a>, <a href="#reader">49</a>, <a href="#reader_writer_accessor">52</a>, <a href="#reader_writer_accessor2">53</a>
 :rest 24, 53, 54, 55, 66
 :writer <a href="#def_defclass">48</a>, <a href="#writer">49</a>, <a href="#reader_writer_accessor">52</a>, <a href="#reader_writer_accessor2">53</a>
@@ -5686,7 +5686,7 @@ Output is: This is a tilde: ~
 ` <a href="#syn_backquote">62</a>
 |# 10
 abs 73
-<a href="#td_abstract_class">abstract class 2</a>
+abstract class <a href="#td_abstract_class">2</a>
 accessible (of a slot) 16
 accessor 2
 accessor (of a slot) 51
@@ -5913,8 +5913,8 @@ if 38
 ignore-errors 117
 immutable binding 4
 immutable object 4
-<a href="#td_implementation_defined">implementation defined 4</a>
-<a href="#td_implementation_dependent">implementation dependent 5</a>
+implementation defined <a href="#td_implementation_defined">4</a>
+implementation dependent <a href="#td_implementation_dependent">5</a>
 indefinite extent 18
 inheritance 5
 inheritance (of slots) 51
