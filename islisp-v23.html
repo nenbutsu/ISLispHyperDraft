@@ -577,7 +577,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
                 </dd>
                 <dt>Vector</dt>
                 <dd>A vector of class <span class="class">general-vector</span> is written as #(obj<sub>1</sub> … obj<sub>n</sub>).</dd>
-                <dt>Array</dt>
+                <dt id="array">Array</dt>
                 <dd>
                     <p>An array of class &lt;general-array*&gt; or <span class="class">general-vector</span> can be written on input as #na (where n is an integer indicating the number of dimensions of the array) followed by a nested structure of sequences denoting the contents of the array. This structure is defined as follows. If n = 1 the structure is simply (obj<sub>1</sub> ... obj<sub>n</sub>). If n > 1 and the dimensions are n<sub>1</sub> n<sub>2</sub> ..., the structure is (str<sub>1</sub> ... strn<sub>1</sub>), where the stri are the structures of the n<sub>1</sub> subarrays, each of which has dimensions (n<sub>2</sub> ...). As an example, the representation of (create-array '(2 3 4) 5) is as follows:</p>
 <pre>
@@ -795,7 +795,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             <p>Storing and retrieving the value of a slot is done by generic functions defined by the defclass defining form.</p>
             <p>All slots are local; i.e., there are no shared slots accessible by several instances.</p>
             <p>A class is said to define a slot with a given name when the defclass defining form for that class contains a slot specifier with that name. Defining a slot does not immediately create a slot; it causes a slot to be created each time an instance of the class is created.</p>
-            <p>A slot is said to be accessible in an instance of a class if the slot is defined by the class of the instance or is inherited from a superclass of that class. At most one slot of a given name can be accessible in an instance. A detailed explanation of the inheritance of slots is given in the section §15.1.3.</p>
+            <p id="accesible_slots">A slot is said to be accessible in an instance of a class if the slot is defined by the class of the instance or is inherited from a superclass of that class. At most one slot of a given name can be accessible in an instance. A detailed explanation of the inheritance of slots is given in the section §15.1.3.</p>
             
             <h5 id="creating_instances">Creating instances of classes</h5>
             
@@ -5685,33 +5685,33 @@ Output is: This is a tilde: ~
 &gt;= <a href="#f_gteq">70</a>
 ` <a href="#syn_backquote">62</a>
 |# 10
-abs 73
+abs <a href="#f_abs">73</a>
 abstract class <a href="#td_abstract_class">2</a>
-accessible (of a slot) 16
-accessor 2
-accessor (of a slot) 51
-activation 2
-active block 17
-active handler 115
-and 31
-append 88
-applicable (of a method) 56
-applicable method 56
-apply 25
-aref 94
-argument position 2
-arithmetic-error-operands 118
+accessible (of a slot) <a href="#accesible_slots">16</a>
+accessor <a href="#td_accessor">2</a>
+accessor (of a slot) <a href="#accessing_slots">51</a>
+activation <a href="#td_activation">2</a>
+active block <a href="#the_lexical_principle">17</a>
+active handler <a href="#signaling_and_handling">115</a>
+and <a href="#s_and">31</a>
+append <a href="#f_append">88</a>
+applicable (of a method) <a href="#selecting_the_applicable_methods">56</a>
+applicable method <a href="#selecting_the_applicable_methods">56</a>
+apply <a href="#f_apply">25</a>
+aref <a href="#f_aref">94</a>
+argument position <a href="#td_argument_position">2</a>
+arithmetic-error-operands <a href="#f_arithmetic_error_operands">118</a>
 
-arithmetic-error-operation 118
-array 11, 91
-array (general) 92
-array-dimensions 95
-assignment 34
-assoc 91
-assure 63
-atan 75
-atan2 75
-atanh 77
+arithmetic-error-operation <a href="#f_arithmetic_error_operation">118</a>
+array <a href="#array">11</a>, <a href="#arrays">91</a>
+array (general) <a href="#general_arrays">92</a>
+array-dimensions <a href="#f_array_dimensions">95</a>
+assignment <a href="#variables">34</a>
+assoc <a href="#f_assoc">91</a>
+assure <a href="#s_assure">63</a>
+atan <a href="#f_atan">75</a>
+atan2 <a href="#f_atan2">75</a>
+atanh <a href="#f_atanh">77</a>
 auxiliary method 57
 basic-array*-p 93
 basic-array-p 93
