@@ -557,7 +557,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
                 <dd>The object nil is the only object whose class is <span class="class">null</span>. Upon input, it may be written as nil or (). It is <a href="#td_implementation_defined">implementation defined</a> whether nil prints as nil or ().</dd>
                 <dt>List</dt>
                 <dd>Proper lists are those lists terminated by nil. Usually they are denoted as (obj<sub>1</sub> obj<sub>2</sub> ...obj<sub>n</sub>). A dotted list (i.e., a list whose last tail is not nil) appears as (obj<sub>1</sub> obj<sub>2</sub> ...obj<sub>n</sub> . obj<sub>n+1</sub>).</dd>
-                <dt>Character</dt>
+                <dt id="character">Character</dt>
                 <dd>An instance of the <span class="class">character</span> class is represented by #\?, where <q>?</q> is the character in question. There are two special standard characters that are not represented in this way, namely newline and space, whose representations are #\newline and #\space, respectively.</dd>
                 <dt>Cons</dt>
                 <dd>A cons is expressed as (car . cdr), where the car and cdr are objects.</dd>
@@ -5712,36 +5712,36 @@ assure <a href="#s_assure">63</a>
 atan <a href="#f_atan">75</a>
 atan2 <a href="#f_atan2">75</a>
 atanh <a href="#f_atanh">77</a>
-auxiliary method 57
-basic-array*-p 93
-basic-array-p 93
-basic-vector-p 95
-binary i/o 111
-binding 3, 34
-block 43
-boolean functions 28
-booleans 28
-call-next-method 59
-car 85, 86
-case 39
-case forms 39
-case-using 39
-catch 44
-catch tag 44
-cdr 86
-ceiling 79
-cerror 116
-char-index 98
-char/= 83
-char&lt; 83
-char&lt;= 83
-char= 83
-char&gt; 83
-char&gt;= 83
-character 10, 83
-character i/o 107
-characterp 83
-class 3, 13
+auxiliary method <a href="#standard_method_combination">57</a>
+basic-array*-p <a href="#f_basic_array_s_p">93</a>
+basic-array-p <a href="#f_basic_array_p">93</a>
+basic-vector-p <a href="#f_basic_vector_p">95</a>
+binary i/o <a href="#binary_io">111</a>
+binding <a href="#td_binding">3</a>, <a href="#variables">34</a>
+block <a href="#s_block">43</a>
+boolean functions <a href="#predicates">28</a>
+booleans <a href="#predicates">28</a>
+call-next-method <a href="#l_call_next_method">59</a>
+car <a href="#f_car">85</a>
+case <a href="#s_case">39</a>
+case forms <a href="#s_case">39</a>
+case-using <a href="#s_case_using">39</a>
+catch <a href="#s_catch">44</a>
+catch tag <a href="#s_catch">44</a>
+cdr <a href="#f_cdr">86</a>
+ceiling <a href="#f_ceiling">79</a>
+cerror <a href="#f_cerror">116</a>
+char-index <a href="#f_char_index">98</a>
+char/= <a href="#f_char_neq">83</a>
+char&lt; <a href="#f_char_lt">83</a>
+char&lt;= <a href="#f_char_lteq">83</a>
+char= <a href="#f_char_eq">83</a>
+char&gt; <a href="#f_char_gt">83</a>
+char&gt;= <a href="#f_char_gteq">83</a>
+character <a href="#character">10</a>, <a href="#character_class">83</a>
+character i/o <a href="#character_io">107</a>
+characterp <a href="#f_characterp">83</a>
+class <a href="#td_class">3</a>, <a href="#classes">13</a>
 class 61, 119, 120
 class option 48
 class precedence list 13, 50
