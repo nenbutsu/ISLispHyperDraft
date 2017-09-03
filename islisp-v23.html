@@ -499,16 +499,16 @@
                 <dt>z , z<sub>1</sub> , … z<sub>j</sub> , …</dt>
                 <dd><span class="class">integer</span></dd>
             </dl>
-            <p>In this document the conventions detailed below are used, except where noted:</p>
+            <p id="conventions">In this document the conventions detailed below are used, except where noted:</p>
             <dl>
                 <dt>-p</dt>
                 <dd>
                     <p>Predicates—sometimes called <q>boolean functions</q>—usually have names that end in a -p.</p>
                     <p>Usually every class <span class="class">name</span> has a characteristic function, whose name is built as name-p if name is hyphenated (generic-function-p), or namep if name is not hyphenated (symbolp). Note that not all functions whose names end with <q>p</q> are predicates.</p>
                 </dd>
-                <dt>create-</dt>
+                <dt id="create_">create-</dt>
                 <dd>Usually a built-in class <span class="class">name</span> has a constructor function, which is called create-name.</dd>
-                <dt>def</dt>
+                <dt id="def_">def</dt>
                 <dd>This is used as the prefix of the defining operators.</dd>
                 <dt>set-</dt>
                 <dd>Within this document, any functions named set-name are writers for a place, for which there is a corresponding reader named name.</dd>
@@ -559,7 +559,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
                 <dd>Proper lists are those lists terminated by nil. Usually they are denoted as (obj<sub>1</sub> obj<sub>2</sub> ...obj<sub>n</sub>). A dotted list (i.e., a list whose last tail is not nil) appears as (obj<sub>1</sub> obj<sub>2</sub> ...obj<sub>n</sub> . obj<sub>n+1</sub>).</dd>
                 <dt id="character">Character</dt>
                 <dd>An instance of the <span class="class">character</span> class is represented by #\?, where <q>?</q> is the character in question. There are two special standard characters that are not represented in this way, namely newline and space, whose representations are #\newline and #\space, respectively.</dd>
-                <dt>Cons</dt>
+                <dt id="cons10">Cons</dt>
                 <dd>A cons is expressed as (car . cdr), where the car and cdr are objects.</dd>
                 <dt>Integer</dt>
                 <dd>An integer (radix 10) is represented as a sequence of digits optionally preceded by a + or sign. If the number is represented in binary radix (or in octal or hexadecimal) then the textual representation is preceded by #b (or #o or #x, respectively).</dd>
@@ -607,7 +607,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
                     <p>An implementation shall detect an error of this kind no later than the completion of execution of the form having the error, but might detect them sooner (e.g., when the code is being prepared for execution).</p>
                     <p>Evaluation of the current form shall stop. If no active handler is established by with-handler, it is <a href="#td_implementation_defined">implementation defined</a> whether the entire running process exits, a debugger is entered, or control is transferred elsewhere within the process.</p>
                 </dd>
-                <dt><q>the consequences are undefined</q></dt>
+                <dt id="consequences_are_undefined"><q>the consequences are undefined</q></dt>
                 <dd>This means that the consequences are unpredictable. The consequences may range from harmless to fatal. No conforming ISLISP text may depend on the results or effects. A conforming ISLISP text must treat the consequences as unpredictable. In places where <q>must,</q> <q>must not,</q> or <q>may not</q> are used, then this is equivalent to stating that <q>the consequences are undefined</q> if the stated requirement is not met and no specific consequence is explicitly stated. An implementation is permitted to signal an error in this case.</dd>
             </dl>
             <p>For indexing and cross-referencing convenience, errors in this document have an associated error identification label, notated by text such as <q>(error-id. sample).</q> The text of these labels has no formal significance to ISLISP texts or processors; the actual class of any object which might be used by the implementation to represent the error and the text of any error message that might be displayed is <a href="#td_implementation_dependent">implementation dependent</a>.</p>
@@ -794,7 +794,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             <p>When a slot does not have a value, the slot is said to be unbound. The consequences are undefined if an attempt is made to retrieve the value of an unbound slot.</p>
             <p>Storing and retrieving the value of a slot is done by generic functions defined by the defclass defining form.</p>
             <p>All slots are local; i.e., there are no shared slots accessible by several instances.</p>
-            <p>A class is said to define a slot with a given name when the defclass defining form for that class contains a slot specifier with that name. Defining a slot does not immediately create a slot; it causes a slot to be created each time an instance of the class is created.</p>
+            <p id="define_a_slot">A class is said to define a slot with a given name when the defclass defining form for that class contains a slot specifier with that name. Defining a slot does not immediately create a slot; it causes a slot to be created each time an instance of the class is created.</p>
             <p id="accesible_slots">A slot is said to be accessible in an instance of a class if the slot is defined by the class of the instance or is inherited from a superclass of that class. At most one slot of a given name can be accessible in an instance. A detailed explanation of the inheritance of slots is given in the section §15.1.3.</p>
             
             <h5 id="creating_instances">Creating instances of classes</h5>
@@ -843,7 +843,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             <h4 id="extent">Extent</h4>
             <p>Complementary to scope which is a syntactic concepts, extent is a semantic concept: It describes the lifetime of entities.</p>
             <p>Objects are created at some time during execution. In most cases, it is undetermined when an object ends its existence: its lifetime begins when the object is created and ends when reference to it is no longer possible (and the object is subject to garbage collection). In this case the object is said to have indefinite extent.</p>
-            <p>In other cases the processor creates entities that are associated with prepared text. The lifetime of such objects begins at the activation point of a defining construct and ends at the end of activation; in this case the object is said to have dynamic extent.</p>
+            <p id="dynamic_extent">In other cases the processor creates entities that are associated with prepared text. The lifetime of such objects begins at the activation point of a defining construct and ends at the end of activation; in this case the object is said to have dynamic extent.</p>
             <p>During execution, defining forms and the following binding forms create bindings at their activation points:</p>
             <ul>
                 <li>block</li>
@@ -2141,7 +2141,7 @@ iteration-spec ::= (var init [step])
                 (throw tag-form result-form) transfers control and data
             </div>
             
-            <p>The special forms catch and throw provide a facility for programming of structured non-local dynamic exits. A catch form and a throw form are said to correspond if the tag-form of the catch and the tag-form of the throw evaluate to the same object, a catch tag. A catch tag may be any object other than a number or a character; the comparison of catch tags uses eq.</p>
+            <p id="dynamic_exits">The special forms catch and throw provide a facility for programming of structured non-local dynamic exits. A catch form and a throw form are said to correspond if the tag-form of the catch and the tag-form of the throw evaluate to the same object, a catch tag. A catch tag may be any object other than a number or a character; the comparison of catch tags uses eq.</p>
             <p>The catch special form first evaluates the tag-form to produce a catch tag, and then executes each form sequentially from left to right. If execution of the forms finishes normally, whatever is returned by the last form is returned by the catch form.</p>
             <p>Prior to execution of the forms of a catch form C<sub>0</sub> , an association between the catch tag T<sub>0</sub> and the executing form C<sub>0</sub> is dynamically established, upon exit from C<sub>0</sub> , the association is disestablished. If there was an outer association for the same catch tag T<sub>0</sub> , it is hidden during the execution of C<sub>0</sub> 's forms; only the most recently established (i.e., innermost) association for T<sub>0</sub> is ever visible.</p>
             <p>If a throw special form is executed, it evaluates the tag-form producing a catch tag T<sub>1</sub> , and then evaluates the result-form producing a result R<sub>1</sub> . If there is a corresponding association between T<sub>1</sub> and some catch form C<sub>1</sub> that is executing, R<sub>1</sub> is immediately returned as the value of C<sub>1</sub>. The throw form can be anywhere in the entire current toplevel scope; it need not be lexically contained within C<sub>1</sub>.</p>
@@ -2486,7 +2486,7 @@ var                        ::= identifier
             <p>The inheritance of methods acts the same way regardless of whether the method was created by using the defmethod form or by using one of the defclass options that causes methods to be generated automatically.</p>
             
             <h4 id="calling_generic_functions">Calling generic functions</h4>
-            <p>When a generic function is called with particular arguments, it must determine the code to execute. This code is called the effective method for those arguments. The effective method is a combination of the applicable methods in the generic function, which might be some or all of the defined methods. An error shall be signaled if a generic function is called and no methods apply.</p>
+            <p id="effective_method">When a generic function is called with particular arguments, it must determine the code to execute. This code is called the effective method for those arguments. The effective method is a combination of the applicable methods in the generic function, which might be some or all of the defined methods. An error shall be signaled if a generic function is called and no methods apply.</p>
             <p>When the effective method has been determined, it is invoked with the same arguments that were passed to the generic function. Whatever value it returns is returned as the value of the generic function.</p>
             <p>The effective method is determined by the following three-step procedure:</p>
             <ul>
@@ -2498,7 +2498,7 @@ var                        ::= identifier
             <h5 id="selecting_the_applicable_methods">Selecting the applicable methods</h5>
             <p>Given a generic function and a set of arguments, an applicable method is a method for that generic function whose parameter specializers are satisfied by their corresponding arguments. The following definition specifies what it means for a method to be applicable and for an argument to satisfy a parameter specializer.</p>
             <p>Let 〈A<sub>1</sub> , … , A<sub>n</sub>〉 be the required arguments to a generic function in order. Let 〈P<sub>1</sub> , … , P<sub>n</sub>〉 be the parameter specializers corresponding to the required parameters of the method M in order. The method M is applicable when each Ai satisfies P<sub>i</sub> . If A<sub>i</sub> is an instance of a class C, then it is said that A<sub>i</sub> satisfies P<sub>i</sub> when C = P<sub>i</sub> or when C is a subclass of P<sub>i</sub>.</p>
-            <p>A method all of whose parameter specializers are the class named <span class="class">object</span> is called a default method; it is always applicable but might be shadowed by a more specific method.</p>
+            <p id="default_method">A method all of whose parameter specializers are the class named <span class="class">object</span> is called a default method; it is always applicable but might be shadowed by a more specific method.</p>
             <p>Methods can have qualifiers, which give the method combination procedure a way to distinguish among methods. A method that has one or more qualifiers is called a qualified method. A method with no qualifiers is called an unqualified method. Any object after :method and before the first list in method-desc is regarded as a qualifier, but only non-nil symbols and keywords are accepted as qualifiers. The qualifiers defined by standard method combination are keywords.</p>
             
             <h5 id="sorting_the_applicable_methods">Sorting the applicable methods</h5>
@@ -5701,7 +5701,6 @@ apply <a href="#f_apply">25</a>
 aref <a href="#f_aref">94</a>
 argument position <a href="#td_argument_position">2</a>
 arithmetic-error-operands <a href="#f_arithmetic_error_operands">118</a>
-
 arithmetic-error-operation <a href="#f_arithmetic_error_operation">118</a>
 array <a href="#array">11</a>, <a href="#arrays">91</a>
 array (general) <a href="#general_arrays">92</a>
@@ -5749,78 +5748,73 @@ class-of <a href="#f_class_of">61</a>
 close <a href="#f_close">105</a>
 coercion <a href="#s_convert">64</a>
 combination (of applicable methods) <a href="#selecting_the_applicable_methods">56</a>
-comment begin 10
-cond 39
-condition 3, 115
-condition system 114
-123
-
-ISLISP Working Draft 23.0
-condition-continuable 117
-conditional expressions 38
-cons 10, 84
-cons 85
-consequences undefined 12
-consp 85
-constant 33
-constants 33
-constructor 9
-continue-condition 117
-control 33
-conventions 9
-convert 64
-cos 75
-cosh 76
-create 60, 116
-create-array 93
-create-list 87
-create-string 97
-create-string-input-stream 106
-create-string-output-stream 106, 116
-create-vector 96
-declarations 63
-default method 56
-defclass 48
-defconstant 26
-defdynamic 27
-defgeneric 53
-defglobal 27
-define (a slot) 16
-defining form 21
-defining operator 21
-defining-form 9
-defining-form-name 21
-definition point 3
-defmacro 62
-defmethod 54
-defun 27
-destination 42
-direct instance 3
-direct subclass 13
-direct superclass 13
-directed acyclic graph 13
-disestablishing a binding 19
-div 81
-domain-error-expected-class 118
-domain-error-object 118
-dotted pair 84
-dynamic 3
-dynamic 37
-dynamic binding 17
-dynamic exit 43
-dynamic extent 18
-dynamic variable 3
-124
-
-dynamic-let 38
-dynamic-variable 119, 120
-effective method 56
-elt 100
-eq 29
-eql 29
-equal 30
-error 11
-error 116
+comment begin <a href="#comments">10</a>
+cond <a href="#s_cond">39</a>
+condition <a href="#td_condition">3</a>, <a href="#conditions">115</a>
+condition system <a href="#condition_system">114</a>
+condition-continuable <a href="#f_condition_continuable">117</a>
+conditional expressions <a href="#conditional_expressions">38</a>
+cons <a href="#cons10">10</a>, <a href="#cons">84</a>
+cons <a href="#f_cons">85</a>
+consequences undefined <a href="#consequences_are_undefined">12</a>
+consp <a href="#f_consp">85</a>
+constant <a href="#constants">33</a>
+constants <a href="#constants">33</a>
+constructor <a href="#create_">9</a>
+continue-condition <a href="#f_continue_condition">117</a>
+control <a href="#control_structure">33</a>
+conventions <a href="#conventions">9</a>
+convert <a href="#f_convert">64</a>
+cos <a href="#f_cos">75</a>
+cosh <a href="#f_cosh">76</a>
+create <a href="#gf_create">60</a>, <a href="#f_error">116</a>
+create-array <a href="#f_create_array">93</a>
+create-list <a href="#f_create_list">87</a>
+create-string <a href="#f_create_string">97</a>
+create-string-input-stream <a href="#f_create_string_input_stream">106</a>
+create-string-output-stream <a href="#f_create_string_output_stream">106</a>, <a href="#f_cerror">116</a>
+create-vector <a href="#f_create_vector">96</a>
+declarations <a href="#declarations_and_coercions">63</a>
+default method <a href="#default_method">56</a>
+defclass <a href="#def_defclass">48</a>
+defconstant <a href="#def_defconstant">26</a>
+defdynamic <a href="#def_defdynamic">27</a>
+defgeneric <a href="#def_defgeneric">53</a>
+defglobal <a href="#def_defglobal">27</a>
+define (a slot) <a href="#define_a_slot">16</a>
+defining form <a href="#defining_forms">21</a>
+defining operator <a href="#defining_forms">21</a>
+defining-form <a href="#def_">9</a>
+defining-form-name <a href="#defining_forms">21</a>
+definition point <a href="#td_definition_point">3</a>
+defmacro <a href="#def_defmacro">62</a>
+defmethod <a href="#def_defmethod">54</a>
+defun <a href="#def_defun">27</a>
+destination <a href="#non_local_exits">42</a>
+direct instance <a href="#td_direct_instance">3</a>
+direct subclass <a href="#classes">13</a>
+direct superclass <a href="#classes">13</a>
+directed acyclic graph <a href="#classes">13</a>
+disestablishing a binding <a href="#extent">19</a>
+div <a href="#f_div">81</a>
+domain-error-expected-class <a href="#f_domain_error_expected_class">118</a>
+domain-error-object <a href="#f_domain_error_object">118</a>
+dotted pair <a href="#cons">84</a>
+dynamic <a href="#td_dynamic">3</a>
+dynamic <a href="#s_dynamic">37</a>
+dynamic binding <a href="#the_lexical_principle">17</a>
+dynamic exit <a href="#dynamic_exits">43</a>
+dynamic extent <a href="#dynamic_extent">18</a>
+dynamic variable <a href="#td_dynamic_variable">3</a>
+dynamic-let <a href="#s_dynamic_let">38</a>
+dynamic-variable <a href="#undefined_entity_errors">119</a>, <a href="#f_undefined_entity_namespace">120</a>
+effective method <a href="#effective_method">56</a>
+elt <a href="#f_elt">100</a>
+eq <a href="#f_eq">29</a>
+eql <a href="#f_eql">29</a>
+equal <a href="#f_equal">30</a>
+error <a href="#errors">11</a>
+error <a href="#f_error">116</a>
 error condition 115
 error system 114
 error-id. arity-error 12, 24, 120
@@ -5866,7 +5860,6 @@ file-length 114
 file-position 113
 filename 104
 files 112
-
 finish-output 105
 flet 24
 ﬂoat 11, 77
@@ -5921,7 +5914,6 @@ inheritance (of slots) 51
 initialize-object 60
 input-stream-p 102
 instance 5, 13
-
 instancep 61
 integer 10, 80
 integerp 80
@@ -5976,9 +5968,6 @@ null 10, 87
 null 87
 number 68
 numberp 69
-125
-
-ISLISP Working Draft 23.0
 object 5
 object 118
 open-input-file 104
@@ -6033,8 +6022,6 @@ return (a value from a function) 22
 return-from 43
 reverse 88
 round 79
-126
-
 satisfying parameter specializers 56
 scope 6, 17
 sequence 99
@@ -6089,7 +6076,6 @@ string= 97
 string&gt; 97
 string&gt;= 97
 stringp 96
-
 structure (of an instance) 51
 subclass 13
 subclassp 61
@@ -6136,7 +6122,7 @@ write-byte 112
 writer 7
 writer (of a slot) 51
 </pre>
-        </main>
-    </body>
+</main>
+</body>
     
-    </html>
+</html>
