@@ -631,7 +631,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             <p>An instance of a class is either a direct instance of that class or an instance of one of its subclasses.</p>
             <p>Classes are organized into a directed acyclic graph defined by the subclass relation. The nodes are classes and there is an edge from C<sub>1</sub> to C<sub>2</sub> iff C<sub>2</sub> is direct subclass of C<sub>1</sub> . This graph is called the inheritance graph. It has as root the class <span class="class">object</span>, the only class with no superclass.</p>
             <p>Therefore it is the superclass of every class except itself. The class named <span class="class">standard-object</span> is an instance of the class <span class="class">standard-class</span> and is a superclass of every class that is an instance of <span class="class">standard-class</span> except itself.</p>
-            <p>Each class has a class precedence list, which is a total ordering on the set of the given class and its superclasses. The total ordering is expressed as a list ordered from most specific to least specific. The class precedence list is used in several ways. In general, more specific classes can shadow, or override, features that would otherwise be inherited from less specific classes. The method selection and combination process uses the class precedence list to order methods from most specific to least specific.</p>
+            <p id="class_precedence_list">Each class has a class precedence list, which is a total ordering on the set of the given class and its superclasses. The total ordering is expressed as a list ordered from most specific to least specific. The class precedence list is used in several ways. In general, more specific classes can shadow, or override, features that would otherwise be inherited from less specific classes. The method selection and combination process uses the class precedence list to order methods from most specific to least specific.</p>
             
             <h4 id="metaclasses">Metaclasses</h4>
             <p>Classes are represented by objects that are themselves instances of classes. The class of the class of an object is termed the metaclass of that object. The term metaclass is used to refer to a class that has instances that are themselves classes.</p>
@@ -2260,7 +2260,7 @@ iteration-spec ::= (var init [step])
             
             <p>The defclass defining form is used to define a new named class.</p>
             
-            <p>The definition of a class includes the following:</p>
+            <p id="definition_of_a_class">The definition of a class includes the following:</p>
             <ul>
                 <li>The name of the new class.</li>
                 <li>The list of the direct superclasses of the new class.</li>
@@ -5742,13 +5742,13 @@ character <a href="#character">10</a>, <a href="#character_class">83</a>
 character i/o <a href="#character_io">107</a>
 characterp <a href="#f_characterp">83</a>
 class <a href="#td_class">3</a>, <a href="#classes">13</a>
-class 61, 119, 120
-class option 48
-class precedence list 13, 50
-class-of 61
-close 105
-coercion 64
-combination (of applicable methods) 56
+class <a href="#s_class">61</a>, <a href="#undefined_entity_errors">119</a>, <a href="#f_undefined_entity_namespace">120</a>
+class option <a href="#definition_of_a_class">48</a>
+class precedence list <a href="#class_precedence_list">13</a>, <a href="#determining_the_class_precedence">50</a>
+class-of <a href="#f_class_of">61</a>
+close <a href="#f_close">105</a>
+coercion <a href="#s_convert">64</a>
+combination (of applicable methods) <a href="#selecting_the_applicable_methods">56</a>
 comment begin 10
 cond 39
 condition 3, 115
