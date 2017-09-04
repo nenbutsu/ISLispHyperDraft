@@ -615,7 +615,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             <h4 id="pervasive_error_types">Pervasive error types</h4>
             <p>Most errors are described in detail in the contect in which they occur. Some error types are so pervasive that their detailed descriptions are consolidated here rather than repeated in full detail upon each occurrence.</p>
             <ol>
-                <li>Domain error: an error shall be signaled if the object given as argument of a standard function for which a class restriction is in effect is not an instance of the class which is required in the definition of the function (error-id. domain-error).</li>
+                <li id="domain_error">Domain error: an error shall be signaled if the object given as argument of a standard function for which a class restriction is in effect is not an instance of the class which is required in the definition of the function (error-id. domain-error).</li>
                 <li id="arity_error"> Arity error: an error shall be signaled if a function is activated with a number of arguments which is different than the number of parameters as required in the function definition (error-id. arity-error).</li>
                 <li>Undefined entity error: an error shall be signaled if the entity denoted by an identifier does not exist when a reference to that entity is made (error-id. undefined-entity). Two commonly occuring examples of this type of error are undefined-function and unbound-variable.</li>
             </ol>
@@ -5534,43 +5534,43 @@ Output is: This is a tilde: ~
             <p>The following is a summary of all named errors in the language and the semantics associated with each error.</p>
             
             <dl>
-                <dt id="td_arity_error">arity-error</dt>
+                <dt id="e_arity_error">arity-error</dt>
                 <dd>Errors of this kind occur when a function is activated with a number of arguments that is not compatible with the number of parameters permitted by the function's definition. Errors of this kind are represented as conditions of class <span class="class">program-error</span>.</dd>
-                <dt id="td_cannot_create_array">cannot-create-array</dt>
+                <dt id="e_cannot_create_array">cannot-create-array</dt>
                 <dd>Errors of this kind occur when a request is made to allocate an array that cannot be allocated. Errors of this kind are represented as conditions of class <span class="class">storage-exhausted</span>.</dd>
-                <dt id="td_cannot_create_cons">cannot-create-cons</dt>
+                <dt id="e_cannot_create_cons">cannot-create-cons</dt>
                 <dd>Errors of this kind occur when a request is made to allocate a cons that cannot be allocated. Errors of this kind are represented as conditions of class <span class="class">storage-exhausted</span>.</dd>
-                <dt id="td_cannot_create_list">cannot-create-list</dt>
+                <dt id="e_cannot_create_list">cannot-create-list</dt>
                 <dd>Errors of this kind occur when a request is made to allocate a list that cannot be allocated. Errors of this kind are represented as conditions of class <span class="class">storage-exhausted</span>.</dd>
-                <dt id="td_cannot_create_sequence">cannot-create-sequence</dt>
+                <dt id="e_cannot_create_sequence">cannot-create-sequence</dt>
                 <dd>
                     Errors of this kind occur if a function that produces a sequence (e.g., subseq) cannot allocate that sequence. Errors of this kind are represented as conditions of class <span class="class">storage-exhausted</span>.
                 </dd>
-                <dt id="td_cannot_create_string">cannot-create-string</dt>
+                <dt id="e_cannot_create_string">cannot-create-string</dt>
                 <dd>
                     Errors of this kind occur when a request is made to allocate a string that cannot be allocated. Errors of this kind are represented as conditions of class <span class="class">storage-exhausted</span>.
                 </dd>
-                <dt id="td_cannot_create_vector">cannot-create-vector</dt>
+                <dt id="e_cannot_create_vector">cannot-create-vector</dt>
                 <dd>
                     Errors of this kind occur when a request is made to allocate a vector that cannot be allocated. Errors of this kind are represented as conditions of class <span class="class">storage-exhausted</span>.
                 </dd>
                 
-                <dt id="td_cannot_parse_number">cannot-parse-number</dt>
+                <dt id="e_cannot_parse_number">cannot-parse-number</dt>
                 <dd>
                     Errors of this kind occur when the string parameter received by the parse-number function cannot be classified as the textual representation of a number. Errors of this kind are represented as conditions of class <span class="class">parse-error</span>.
                 </dd>
-                <dt id="td_control_error">control-error</dt>
+                <dt id="e_control_error">control-error</dt>
                 <dd>
                     Errors of this kind occur when an attempt is made to leave a block more than once or when there is no outstanding catcher for a catch tag. Errors of this kind are represented as conditions of class
                     <span class="class">control-error</span>.
                 </dd>
                 
-                <dt>division-by-zero</dt>
+                <dt id="e_division_by_zero">division-by-zero</dt>
                 <dd>
                     Errors of this kind occur when an attempt is made to divide by zero. Errors of this kind are represented as conditions of class
                     <span class="class">division-by-zero</span>.
                 </dd>
-                <dt>domain-error</dt>
+                <dt id="e_domain_error">domain-error</dt>
                 <dd>
                     Errors of this kind occur when the object given as argument to a standard function for which an argument class restriction is in effect is not an instance of the class to which the argument is restricted. Errors of this kind are represented as conditions of class
                     <span class="class">domain-error</span>.
@@ -5817,22 +5817,22 @@ error <a href="#errors">11</a>
 error <a href="#f_error">116</a>
 error condition <a href="#error_conditions">115</a>
 error system <a href="#error_system">114</a>
-error-id. arity-error <a href="#arity_error">12</a>, <a href="#s_lambda">24</a>, <a href="#td_arity_error">120</a>
-error-id. cannot-create-array <a href="#f_create_array">93</a>, <a href="#td_cannot_create_array">120</a>
-error-id. cannot-create-cons <a href="#f_cons">85</a>, <a href="#td_cannot_create_cons">120</a>
-error-id. cannot-create-list <a href="#f_create_list">87</a>, <a href="#f_list">88</a>, <a href="#f_append">89</a>, <a href="#td_cannot_create_list">120</a>
-error-id. cannot-create-sequence <a href="#f_subseq">101</a>, <a href="#td_cannot_create_sequence">120</a>
-error-id. cannot-create-string <a href="#f_create_string">97</a>, <a href="#f_string_append">99</a>, <a href="#td_cannot_create_string">120</a>
-error-id. cannot-create-vector <a href="#f_vector">96</a>, <a href="#td_cannot_create_vector">120</a>
-error-id. cannot-parse-number <a href="#f_parse_number">69</a>, <a href="#td_cannot_parse_number">120</a>
-error-id. control-error <a href="#s_block">43</a>, <a href="#s_catch">44</a>, <a href="#s_unwind_protect">46</a>, <a href="#td_control_error">120</a>
-error-id. division-by-zero 72, 81, 121
-error-id. domain-error 12, 25, 26, 61, 63, 67,
-68, 69, 70, 71, 72, 73, 74, 75, 76, 77,
-78, 79, 81, 82, 84, 85, 86, 88, 89, 90,
-91, 93, 94, 95, 96, 97, 98, 99, 100, 101,
-105, 106, 109, 112, 113, 114, 118, 119,
-120, 121
+error-id. arity-error <a href="#arity_error">12</a>, <a href="#s_lambda">24</a>, <a href="#e_arity_error">120</a>
+error-id. cannot-create-array <a href="#f_create_array">93</a>, <a href="#e_cannot_create_array">120</a>
+error-id. cannot-create-cons <a href="#f_cons">85</a>, <a href="#e_cannot_create_cons">120</a>
+error-id. cannot-create-list <a href="#f_create_list">87</a>, <a href="#f_list">88</a>, <a href="#f_append">89</a>, <a href="#e_cannot_create_list">120</a>
+error-id. cannot-create-sequence <a href="#f_subseq">101</a>, <a href="#e_cannot_create_sequence">120</a>
+error-id. cannot-create-string <a href="#f_create_string">97</a>, <a href="#f_string_append">99</a>, <a href="#e_cannot_create_string">120</a>
+error-id. cannot-create-vector <a href="#f_vector">96</a>, <a href="#e_cannot_create_vector">120</a>
+error-id. cannot-parse-number <a href="#f_parse_number">69</a>, <a href="#e_cannot_parse_number">120</a>
+error-id. control-error <a href="#s_block">43</a>, <a href="#s_catch">44</a>, <a href="#s_unwind_protect">46</a>, <a href="#e_control_error">120</a>
+error-id. division-by-zero <a href="#f_quotient">72</a>, <a href="#f_div">81</a>, <a href="#e_division_by_zero">121</a>
+error-id. domain-error <a href="#domain_error">12</a>, <a href="#f_apply">25</a>, <a href="#f_funcall">26</a>, <a href="#f_subclassp">61</a>, <a href="#s_the">63</a>, <a href="#s_setf">67</a>,
+<a href="#f_remove_property">68</a>, <a href="#f_parse_number">69</a>, <a href="#f_math_neq">70</a>,<a href="#f_minus">71</a>, <a href="#f_max">72</a>, <a href="#f_abs">73</a>, <a href="#f_sqrt">74</a>, <a href="#f_sin">75</a>, <a href="#f_sinh">76</a>, <a href="#f_atanh">77</a>,
+<a href="#f_float">78</a>, <a href="#f_ceiling">79</a>, <a href="#f_div">81</a>, <a href="#f_lcm">82</a>, <a href="#f_char_eq">84</a>, <a href="#f_car">85</a>, <a href="#f_cdr">86</a>, <a href="#f_reverse">88</a>, <a href="#f_member">89</a>, <a href="#f_mapcar">90</a>,
+<a href="#f_assoc">91</a>, <a href="#f_create_array">93</a>, <a href="#f_aref">94</a>, <a href="#f_array_dimensions">95</a>, <a href="#f_create_vector">96</a>, <a href="#f_create_string">97</a>, <a href="#f_char_index">98</a>, <a href="#f_string_append">99</a>, <a href="#f_elt">100</a>, <a href="#f_subseq">101</a>,
+<a href="#f_close">105</a>, <a href="#f_create_string_input_stream">106</a>, <a href="#f_stream_ready_p">109</a>, <a href="#f_write_byte">112</a>, <a href="#f_file_position">113</a>, <a href="#f_set_file_position">114</a>, <a href="#f_arithmetic_error_operation">118</a>, <a href="#f_parse_error_string">119</a>,
+<a href="#f_undefined_entity_name">120</a>, <a href="#e_domain_error">121</a>
 error-id. end-of-stream 107, 121
 error-id. immutable-binding 4, 121
 error-id. improper-argument-list 25, 121
