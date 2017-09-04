@@ -616,7 +616,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             <p>Most errors are described in detail in the contect in which they occur. Some error types are so pervasive that their detailed descriptions are consolidated here rather than repeated in full detail upon each occurrence.</p>
             <ol>
                 <li>Domain error: an error shall be signaled if the object given as argument of a standard function for which a class restriction is in effect is not an instance of the class which is required in the definition of the function (error-id. domain-error).</li>
-                <li> Arity error: an error shall be signaled if a function is activated with a number of arguments which is different than the number of parameters as required in the function definition (error-id. arity-error).</li>
+                <li id="arity_error"> Arity error: an error shall be signaled if a function is activated with a number of arguments which is different than the number of parameters as required in the function definition (error-id. arity-error).</li>
                 <li>Undefined entity error: an error shall be signaled if the entity denoted by an identifier does not exist when a reference to that entity is made (error-id. undefined-entity). Two commonly occuring examples of this type of error are undefined-function and unbound-variable.</li>
             </ol>
             <p>This list does not exhaust the space of error types. For a more complete list, see §29.4.</p>
@@ -5317,13 +5317,13 @@ Output is: This is a tilde: ~
             
             <h3 id="condition_system">Condition system</h3>
             
-            <p>The condition system, sometimes called the <q>error system,</q> is a facility which permits problem situations detected at runtime to be represented and resolved while still under the control of a conforming program.</p>
+            <p id="error_system">The condition system, sometimes called the <q>error system,</q> is a facility which permits problem situations detected at runtime to be represented and resolved while still under the control of a conforming program.</p>
             
             <h4 id="conditions">Conditions</h4>
             <p>When a problem situation is detected, a representation of that situation called a condition (or sometimes a <q>condition object</q> to emphasize its nature as an ordinary ISLISP object) is constructed and the situation represented by the condition is announced by a process called signaling. This signaling process allows a dynamically established handler an opportunity to resolve the problem.</p>
             <p>Figure 1 shows an inheritance graph for the various condition classes.</p>
             <p>Some condition classes require initialization arguments when using create so that associated data can be provided. For more information, see §29.3.</p>
-            <p>Conditions that represent situations involving dynamically detected program errors are called error conditions. Error conditions and those conditions that represent implementation limitations that may not be symptomatic of program errors are collectively called serious conditions.</p>
+            <p id="error_conditions">Conditions that represent situations involving dynamically detected program errors are called error conditions. Error conditions and those conditions that represent implementation limitations that may not be symptomatic of program errors are collectively called serious conditions.</p>
             <div class="note">Note: In some dialects of LISP a meaning is assigned to the idea of conditions that are not serious. Such conditions are beyond the scope of this document; hence the use of the class name <span class="class">serious-condition</span> as the most general kind of condition defined herein.</div>
             
             <h4 id="signaling_and_handling">Signaling and handling conditions</h4>
@@ -5534,32 +5534,32 @@ Output is: This is a tilde: ~
             <p>The following is a summary of all named errors in the language and the semantics associated with each error.</p>
             
             <dl>
-                <dt>arity-error</dt>
+                <dt id="td_arity_error">arity-error</dt>
                 <dd>Errors of this kind occur when a function is activated with a number of arguments that is not compatible with the number of parameters permitted by the function's definition. Errors of this kind are represented as conditions of class <span class="class">program-error</span>.</dd>
-                <dt>cannot-create-array</dt>
+                <dt id="td_cannot_create_array">cannot-create-array</dt>
                 <dd>Errors of this kind occur when a request is made to allocate an array that cannot be allocated. Errors of this kind are represented as conditions of class <span class="class">storage-exhausted</span>.</dd>
-                <dt>cannot-create-cons</dt>
+                <dt id="td_cannot_create_cons">cannot-create-cons</dt>
                 <dd>Errors of this kind occur when a request is made to allocate a cons that cannot be allocated. Errors of this kind are represented as conditions of class <span class="class">storage-exhausted</span>.</dd>
-                <dt>cannot-create-list</dt>
+                <dt id="td_cannot_create_list">cannot-create-list</dt>
                 <dd>Errors of this kind occur when a request is made to allocate a list that cannot be allocated. Errors of this kind are represented as conditions of class <span class="class">storage-exhausted</span>.</dd>
-                <dt>cannot-create-sequence</dt>
+                <dt id="td_cannot_create_sequence">cannot-create-sequence</dt>
                 <dd>
                     Errors of this kind occur if a function that produces a sequence (e.g., subseq) cannot allocate that sequence. Errors of this kind are represented as conditions of class <span class="class">storage-exhausted</span>.
                 </dd>
-                <dt>cannot-create-string</dt>
+                <dt id="td_cannot_create_string">cannot-create-string</dt>
                 <dd>
                     Errors of this kind occur when a request is made to allocate a string that cannot be allocated. Errors of this kind are represented as conditions of class <span class="class">storage-exhausted</span>.
                 </dd>
-                <dt>cannot-create-vector</dt>
+                <dt id="td_cannot_create_vector">cannot-create-vector</dt>
                 <dd>
                     Errors of this kind occur when a request is made to allocate a vector that cannot be allocated. Errors of this kind are represented as conditions of class <span class="class">storage-exhausted</span>.
                 </dd>
                 
-                <dt>cannot-parse-number</dt>
+                <dt id="td_cannot_parse_number">cannot-parse-number</dt>
                 <dd>
                     Errors of this kind occur when the string parameter received by the parse-number function cannot be classified as the textual representation of a number. Errors of this kind are represented as conditions of class <span class="class">parse-error</span>.
                 </dd>
-                <dt>control-error</dt>
+                <dt id="td_control_error">control-error</dt>
                 <dd>
                     Errors of this kind occur when an attempt is made to leave a block more than once or when there is no outstanding catcher for a catch tag. Errors of this kind are represented as conditions of class
                     <span class="class">control-error</span>.
@@ -5815,17 +5815,17 @@ eql <a href="#f_eql">29</a>
 equal <a href="#f_equal">30</a>
 error <a href="#errors">11</a>
 error <a href="#f_error">116</a>
-error condition 115
-error system 114
-error-id. arity-error 12, 24, 120
-error-id. cannot-create-array 93, 120
-error-id. cannot-create-cons 85, 120
-error-id. cannot-create-list 87, 88, 89, 120
-error-id. cannot-create-sequence 101, 120
-error-id. cannot-create-string 97, 99, 120
-error-id. cannot-create-vector 96, 120
-error-id. cannot-parse-number 69, 120
-error-id. control-error 43, 44, 46, 120
+error condition <a href="#error_conditions">115</a>
+error system <a href="#error_system">114</a>
+error-id. arity-error <a href="#arity_error">12</a>, <a href="#s_lambda">24</a>, <a href="#td_arity_error">120</a>
+error-id. cannot-create-array <a href="#f_create_array">93</a>, <a href="#td_cannot_create_array">120</a>
+error-id. cannot-create-cons <a href="#f_cons">85</a>, <a href="#td_cannot_create_cons">120</a>
+error-id. cannot-create-list <a href="#f_create_list">87</a>, <a href="#f_list">88</a>, <a href="#f_append">89</a>, <a href="#td_cannot_create_list">120</a>
+error-id. cannot-create-sequence <a href="#f_subseq">101</a>, <a href="#td_cannot_create_sequence">120</a>
+error-id. cannot-create-string <a href="#f_create_string">97</a>, <a href="#f_string_append">99</a>, <a href="#td_cannot_create_string">120</a>
+error-id. cannot-create-vector <a href="#f_vector">96</a>, <a href="#td_cannot_create_vector">120</a>
+error-id. cannot-parse-number <a href="#f_parse_number">69</a>, <a href="#td_cannot_parse_number">120</a>
+error-id. control-error <a href="#s_block">43</a>, <a href="#s_catch">44</a>, <a href="#s_unwind_protect">46</a>, <a href="#td_control_error">120</a>
 error-id. division-by-zero 72, 81, 121
 error-id. domain-error 12, 25, 26, 61, 63, 67,
 68, 69, 70, 71, 72, 73, 74, 75, 76, 77,
