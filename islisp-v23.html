@@ -5576,23 +5576,23 @@ Output is: This is a tilde: ~
                     <span class="class">domain-error</span>.
                 </dd>
                 
-                <dt>end-of-stream</dt>
+                <dt id="e_end_of_stream">end-of-stream</dt>
                 <dd>
                     Errors of this kind occur when an attempt to read a character or byte at the end-of-stream when eos-error-p argument is true, or when an attempt to read a more complex object is about to begin (e.g., by read or read-line) but the end-of-stream is seen before parsing of that object has finished. Errors of this kind are represented as conditions of class <span class="class">end-of-stream</span>.
                 </dd>
-                <dt>immutable-binding</dt>
+                <dt id="e_immutable_binding">immutable-binding</dt>
                 <dd>Errors of this kind occur when an attempt is made to change an immutable binding. Errors of this kind are represented as conditions of class <span class="class">program-error</span>.
                 </dd>
-                <dt>improper-argument-list</dt>
+                <dt id="e_improper_argument_list">improper-argument-list</dt>
                 <dd>
                     Errors of this kind occur when the last argument given to the apply function is not a proper list. Errors of this kind are represented as conditions of class <span class="class">program-error</span>.
                 </dd>
-                <dt>index-out-of-range</dt>
+                <dt id="e_index_out_of_range">index-out-of-range</dt>
                 <dd>Errors of this kind occur when the index given to a function that accesses an element in a sequence (such as elt) is an integer outside the range of the sequence. Errors of this kind are represented as conditions of class <span class="class">program-error</span>.
                 </dd>
-                <dt>not-an-input-stream</dt>
+                <dt id="e_not_an_input_stream">not-an-input-stream</dt>
                 <dd>Errors of this kind occur when an attempt is made to read from a stream which is not an input stream. Errors of this kind are represented as conditions of class <span class="class">domain-error</span>.</dd>
-                <dt>not-an-output-stream</dt>
+                <dt id="e_not_an_output_stream">not-an-output-stream</dt>
                 <dd>
                     Errors of this kind occur when an attempt is made to write to a stream which is not an output stream. Errors of this kind are represented as conditions of class <span class="class">domain-error</span>.
                 </dd>
@@ -5833,13 +5833,13 @@ error-id. domain-error <a href="#domain_error">12</a>, <a href="#f_apply">25</a>
 <a href="#f_assoc">91</a>, <a href="#f_create_array">93</a>, <a href="#f_aref">94</a>, <a href="#f_array_dimensions">95</a>, <a href="#f_create_vector">96</a>, <a href="#f_create_string">97</a>, <a href="#f_char_index">98</a>, <a href="#f_string_append">99</a>, <a href="#f_elt">100</a>, <a href="#f_subseq">101</a>,
 <a href="#f_close">105</a>, <a href="#f_create_string_input_stream">106</a>, <a href="#f_stream_ready_p">109</a>, <a href="#f_write_byte">112</a>, <a href="#f_file_position">113</a>, <a href="#f_set_file_position">114</a>, <a href="#f_arithmetic_error_operation">118</a>, <a href="#f_parse_error_string">119</a>,
 <a href="#f_undefined_entity_name">120</a>, <a href="#e_domain_error">121</a>
-error-id. end-of-stream 107, 121
-error-id. immutable-binding 4, 121
-error-id. improper-argument-list 25, 121
-error-id. index-out-of-range 100, 101, 121
-error-id. not-an-input-stream 107, 121
-error-id. not-an-output-stream 109, 121
-error-id. sample 12
+error-id. end-of-stream <a href="#input_and_output">107</a>, <a href="#e_end_of_stream">121</a>
+error-id. immutable-binding <a href="#td_immutable_binding">4</a>, <a href="#e_immutable_binding">121</a>
+error-id. improper-argument-list <a href="#f_apply">25</a>, <a href="#e_improper_argument_list">121</a>
+error-id. index-out-of-range <a href="#f_elt">100</a>, <a href="#f_subseq">101</a>, <a href="#e_index_out_of_range">121</a>
+error-id. not-an-input-stream <a href="#input_and_output">107</a>, <a href="#e_not_an_input_stream">121</a>
+error-id. not-an-output-stream <a href="#f_format">109</a>, <a href="#e_not_an_output_stream">121</a>
+error-id. sample <a href="#pervasive_error_types">12</a>
 error-id. unbound-variable 12, 22, 37, 38, 121
 error-id. undefined-entity 12, 121
 error-id. undefined-function 12, 22, 23, 121
