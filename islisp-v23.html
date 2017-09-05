@@ -617,7 +617,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             <ol>
                 <li id="domain_error">Domain error: an error shall be signaled if the object given as argument of a standard function for which a class restriction is in effect is not an instance of the class which is required in the definition of the function (error-id. domain-error).</li>
                 <li id="arity_error"> Arity error: an error shall be signaled if a function is activated with a number of arguments which is different than the number of parameters as required in the function definition (error-id. arity-error).</li>
-                <li>Undefined entity error: an error shall be signaled if the entity denoted by an identifier does not exist when a reference to that entity is made (error-id. undefined-entity). Two commonly occuring examples of this type of error are undefined-function and unbound-variable.</li>
+                <li id="undefined_entity">Undefined entity error: an error shall be signaled if the entity denoted by an identifier does not exist when a reference to that entity is made (error-id. undefined-entity). Two commonly occuring examples of this type of error are undefined-function and unbound-variable.</li>
             </ol>
             <p>This list does not exhaust the space of error types. For a more complete list, see §29.4.</p>
             
@@ -864,7 +864,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
                 <li>with-standard-output</li>
             </ul>
             
-            <p>The bindings established by defining forms may have indefinite extent. Even in local binding constructs, bindings might not vanish upon activation end of the prepared block—if one or more function objects are created during execution of the prepared block that contain references to those bindings, the bindings will have a lifetime equal to the longest lifetime of those function objects.</p>
+            <p id="binding_established_disestablished">The bindings established by defining forms may have indefinite extent. Even in local binding constructs, bindings might not vanish upon activation end of the prepared block—if one or more function objects are created during execution of the prepared block that contain references to those bindings, the bindings will have a lifetime equal to the longest lifetime of those function objects.</p>
             
             
             <blockquote>
@@ -5596,15 +5596,15 @@ Output is: This is a tilde: ~
                 <dd>
                     Errors of this kind occur when an attempt is made to write to a stream which is not an output stream. Errors of this kind are represented as conditions of class <span class="class">domain-error</span>.
                 </dd>
-                <dt>unbound-variable</dt>
+                <dt id="e_unbound_variable">unbound-variable</dt>
                 <dd>
                     Errors of this kind occur when an attempt is made to access an unbound variable. Errors of this kind are represented as conditions of class <span class="class">unbound-variable</span>.
                 </dd>
-                <dt>undefined-entity</dt>
+                <dt id="e_undefined_entity">undefined-entity</dt>
                 <dd>
                     Errors of this kind occur when the entity denoted by an identifier does not exist when an access to that entity is made. Errors of this kind are represented as conditions of class <span class="class">undefined-entity</span>.
                 </dd>
-                <dt>undefined-function</dt>
+                <dt id="e_undefined_function">undefined-function</dt>
                 <dd>
                     Errors of this kind occur when a function does not exist at its activation point. Errors of this kind are represented as conditions of class <span class="class">undefined-function</span>.
                 </dd>
@@ -5840,12 +5840,12 @@ error-id. index-out-of-range <a href="#f_elt">100</a>, <a href="#f_subseq">101</
 error-id. not-an-input-stream <a href="#input_and_output">107</a>, <a href="#e_not_an_input_stream">121</a>
 error-id. not-an-output-stream <a href="#f_format">109</a>, <a href="#e_not_an_output_stream">121</a>
 error-id. sample <a href="#pervasive_error_types">12</a>
-error-id. unbound-variable 12, 22, 37, 38, 121
-error-id. undefined-entity 12, 121
-error-id. undefined-function 12, 22, 23, 121
-error-output 103
-establishing a binding 19
-evaluation 3, 19
+error-id. unbound-variable <a href="#undefined_entity">12</a>, <a href="#the_evaluation_model">22</a>, <a href="#s_dynamic">37</a>, <a href="#s_set_dynamic">38</a>, <a href="#e_unbound_variable">121</a>
+error-id. undefined-entity <a href="#undefined_entity">12</a>, <a href="#undefined_entity">121</a>
+error-id. undefined-function <a href="#undefined_entity">12</a>, <a href="#the_evaluation_model">22</a>, <a href="#s_function">23</a>, <a href="#e_undefined_function">121</a>
+error-output <a href="#f_error_output">103</a>
+establishing a binding <a href="#binding_established_disestablished">19</a>
+evaluation <a href="#td_evaluation">3</a>, <a href="#forms_and_evaluation">19</a>
 evaluation model 7, 21
 execution 4, 7
 exp 73
