@@ -435,9 +435,9 @@
             
             <p>For a clear definition of, and a distinction between, syntactic and semantic concepts, several levels of description abstraction are used in the following.</p>
             <p>There is a correspondence from ISLISP textual units to their ISLISP data structure representations. Throughout this document the text and the corresponding ISLISP objects (data structures) are addressed simultaneously. ISLISP text can be seen as an external specification of ISLISP data structures. To distinguish between the two representations different concepts are used. When textual representation is discussed, textual elements (such as identifiers, literals, and compound forms) are used; when ISLISP objects are discussed, objects (such as symbols and lists) are used.</p>
-            <p>The constituents of ISLISP text are called forms. A form can be an identifier, a literal, or a compound form. A compound form can be a function application form, a macro form, a special form, or a defining form.</p>
+            <p id="forms7">The constituents of ISLISP text are called forms. A form can be an identifier, a literal, or a compound form. A compound form can be a function application form, a macro form, a special form, or a defining form.</p>
             <p>An identifier is represented by a symbol. A compound form is represented by a non-null list. A literal is represented by neither a symbol nor a list, and so is neither an identifier nor a compound form; for example, a number is a literal.</p>
-            <p>An object is prepared for execution; this might include transformation or compilation, including macro expansion. The method of preparation for execution and its result are not defined in this document (with exception of the violations to be detected). After successful preparation for execution the result is ready for execution. The combination of preparation for execution and subsequent execution implements ISLISP's evaluation model. The term “evaluation” is used because ISLISP is an expression language—each form has a value which is used to compute the value of the containing form. The results obtained when an entity is prepared for execution are designated throughout this document by the construction <q>prepared entity</q>; e.g., <q>prepared form,</q> <q>prepared special form.</q></p>
+            <p id="evaluation_model">An object is prepared for execution; this might include transformation or compilation, including macro expansion. The method of preparation for execution and its result are not defined in this document (with exception of the violations to be detected). After successful preparation for execution the result is ready for execution. The combination of preparation for execution and subsequent execution implements ISLISP's evaluation model. The term “evaluation” is used because ISLISP is an expression language—each form has a value which is used to compute the value of the containing form. The results obtained when an entity is prepared for execution are designated throughout this document by the construction <q>prepared entity</q>; e.g., <q>prepared form,</q> <q>prepared special form.</q></p>
             <div class="example">Example: A “cond special form” becomes a “prepared cond” by preparation for execution.</div>
             <p>In the examples, the metasymbol “⇒” designates the result of an actual evaluation. For example:</p>
 <pre>
@@ -563,7 +563,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
                 <dd>A cons is expressed as (car . cdr), where the car and cdr are objects.</dd>
                 <dt>Integer</dt>
                 <dd>An integer (radix 10) is represented as a sequence of digits optionally preceded by a + or sign. If the number is represented in binary radix (or in octal or hexadecimal) then the textual representation is preceded by #b (or #o or #x, respectively).</dd>
-                <dt>Float</dt>
+                <dt id="float11">Float</dt>
                 <dd>
                     <p>A ﬂoating point number is written in one of the following formats:</p>
 <pre>
@@ -5846,74 +5846,74 @@ error-id. undefined-function <a href="#undefined_entity">12</a>, <a href="#the_e
 error-output <a href="#f_error_output">103</a>
 establishing a binding <a href="#binding_established_disestablished">19</a>
 evaluation <a href="#td_evaluation">3</a>, <a href="#forms_and_evaluation">19</a>
-evaluation model 7, 21
-execution 4, 7
-exp 73
-expander 61
-expected-class 118, 119
-expt 74
-extension 4
-extent 18
-file position 113
-file streams 103
-file-length 114
-file-position 113
-filename 104
-files 112
-finish-output 105
-flet 24
-ﬂoat 11, 77
-float 78
-floatp 78
-floor 78
-for 41
-form 4, 7
-format 109
-format-arguments 116, 119
-format-char 109
-format-float 109
-format-fresh-line 109
-format-integer 109
-format-object 109
-format-string 116, 119
-format-tab 109
-Forms and Evaluation 19
-funcall 26
-function 4
-function 23, 119, 120
-function application form 20
-function-name 20
-functionp 23
-garef 94
-gcd 81
-general array 92
-general-array*-p 93
-general-vector-p 95
-generic function 4, 52
-generic-function-name 20
-generic-function-p 52
-gensym 68
-get-internal-real-time 122
-get-internal-run-time 122
-get-output-stream-string 106, 116
-get-universal-time 122
-go 45
-handler 115
-handler, active 115
-identifier 4
-identity 122
-if 38
-ignore-errors 117
-immutable binding 4
-immutable object 4
+evaluation model <a href="#evaluation_model">7</a>, <a href="#the_evaluation_model">21</a>
+execution <a href="#td_execution">4</a>, <a href="#evaluation_model">7</a>
+exp <a href="#f_exp">73</a>
+expander <a href="#macros">61</a>
+expected-class <a href="#domain_errors">118</a>, <a href="#parse_errors">119</a>
+expt <a href="#f_expt">74</a>
+extension <a href="#td_extension">4</a>
+extent <a href="#extent">18</a>
+file position <a href="#f_file_position">113</a>
+file streams <a href="#streams_to_files">103</a>
+file-length <a href="#f_file_length">114</a>
+file-position <a href="#f_file_position">113</a>
+filename <a href="#streams_to_files">104</a>
+files <a href="#files">112</a>
+finish-output <a href="#f_finish_output">105</a>
+flet <a href="#s_flet">24</a>
+ﬂoat <a href="#float11">11</a>, <a href="#float_class">77</a>
+float <a href="#f_float">78</a>
+floatp <a href="#f_floatp">78</a>
+floor <a href="#f_floor">78</a>
+for <a href="#s_for">41</a>
+form <a href="#td_form">4</a>, <a href="#forms7">7</a>
+format <a href="#f_format">109</a>
+format-arguments <a href="#f_error">116</a>, <a href="#simple_errors">119</a>
+format-char <a href="#f_format_char">109</a>
+format-float <a href="#f_format_float">109</a>
+format-fresh-line <a href="#f_format_fresh_line">109</a>
+format-integer <a href="#f_format_integer">109</a>
+format-object <a href="#f_format_object">109</a>
+format-string <a href="#f_error">116</a>, <a href="#simple_errors">119</a>
+format-tab <a href="#f_format_tab">109</a>
+Forms and Evaluation <a href="#forms_and_evaluation">19</a>
+funcall <a href="#f_funcall">26</a>
+function <a href="#td_function">4</a>
+function <a href="#s_function">23</a>, <a href="#undefined_entity_errors">119</a>, <a href="#f_undefined_entity_name">120</a>
+function application form <a href="#function_application_forms">20</a>
+function-name <a href="#function_application_forms">20</a>
+functionp <a href="#f_functionp">23</a>
+garef <a href="#f_garef">94</a>
+gcd <a href="#f_gcd">81</a>
+general array <a href="#general_arrays">92</a>
+general-array*-p <a href="#f_general_array_s_p">93</a>
+general-vector-p <a href="#f_general_vector_p">95</a>
+generic function <a href="#td_generic_function">4</a>, <a href="#generic_functions">52</a>
+generic-function-name <a href="#function_application_forms">20</a>
+generic-function-p <a href="#f_generic_function_p">52</a>
+gensym <a href="#f_gensym">68</a>
+get-internal-real-time <a href="#f_get_internal_real_time">122</a>
+get-internal-run-time <a href="#f_get_internal_run_time">122</a>
+get-output-stream-string <a href="#f_create_string_output_stream">106</a>, <a href="#f_cerror">116</a>
+get-universal-time <a href="#f_get_universal_time">122</a>
+go <a href="#s_go">45</a>
+handler <a href="#signaling_and_handling">115</a>
+handler, active <a href="#signaling_and_handling">115</a>
+identifier <a href="#td_identifier">4</a>
+identity <a href="#f_identity">122</a>
+if <a href="#s_if">38</a>
+ignore-errors <a href="#s_ignore_errors">117</a>
+immutable binding <a href="#td_immutable_binding">4</a>
+immutable object <a href="#td_immutable_object">4</a>
 implementation defined <a href="#td_implementation_defined">4</a>
 implementation dependent <a href="#td_implementation_dependent">5</a>
-indefinite extent 18
-inheritance 5
-inheritance (of slots) 51
-initialize-object 60
-input-stream-p 102
-instance 5, 13
+indefinite extent <a href="#extent">18</a>
+inheritance <a href="#td_inheritance">5</a>
+inheritance (of slots) <a href="#inheritance_of_slots">51</a>
+initialize-object <a href="#gf_initialize_object">60</a>
+input-stream-p <a href="#f_input_stream_p">102</a>
+instance <a href="#td_instance">5</a>, 13
 instancep 61
 integer 10, 80
 integerp 80
