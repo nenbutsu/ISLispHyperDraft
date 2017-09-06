@@ -4075,7 +4075,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 </pre>
             
             <div id="f_create_list" class="definition-function">
-                (create-list i [initial-element]) → <span class="class">list</span>
+                (<span class="operator">create-list</span> <span class="arg">i</span> [<span class="arg">initial-element</span>]) → <span class="class">list</span>
             </div>
             
             <p>Returns a list of length i. If initial-element is given, the elements of the new list are initialized with this object; otherwise, the initialization is <a href="#td_implementation_defined">implementation defined</a>. An error shall be signaled if the requested list cannot be allocated (error-id. <span class="error_id">cannot-create-list</span>). An error shall be signaled if i is not a non-negative integer (error-id. <span class="error_id">domain-error</span>). initial-element may be any ISLISP object.</p>
@@ -4086,7 +4086,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 </pre>
             
             <div id="f_list" class="definition-function">
-                (list obj*) → <span class="class">list</span>
+                (<span class="operator">list</span> <span class="arg">obj</span>*) → <span class="class">list</span>
             </div>
             
             <p>Returns a new list whose length is the number of arguments and whose elements are the arguments in the same order as in the list-form. An error shall be signaled if the requested list cannot be allocated (error-id. <span class="error_id">cannot-create-list</span>). Each obj may be any ISLISP object.</p>
@@ -4097,12 +4097,12 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 (list)               ⇒ nil
 </pre>
             
-<pre id="f_reverse" class="definition-function">
-(reverse list) → <span class="class">list</span>
-</pre>
-<pre id="f_nreverse" class="definition-function">
-(nreverse list) → <span class="class">list</span>
-</pre>
+<div id="f_reverse" class="definition-function">
+(<span class="operator">reverse</span> <span class="arg">list</span>) → <span class="class">list</span>
+</div>
+<div id="f_nreverse" class="definition-function">
+(<span class="operator">nreverse</span> <span class="arg">list</span>) → <span class="class">list</span>
+</div>
             <p>These functions each return a list whose elements are those of the given list, but in reverse order. An error shall be signaled if list is not a list (error-id. <span class="error_id">domain-error</span>).</p>
             <p>For reverse, no side-effect to the given list occurs. The resulting list is permitted but not required to share structure with the input list.</p>
             <p>For nreverse, the conses which make up the top level of the given list are permitted, but not required, to be side-effected in order to produce this new list. nreverse should never be called on a literal object.</p>
@@ -4120,7 +4120,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 </pre>
             
             <div id="f_append" class="definition-function">
-                (append list*) → <span class="class">list</span>
+                (<span class="operator">append</span> <span class="arg">list</span>*) → <span class="class">list</span>
             </div>
             
             <p>Returns the result of appending all of the lists, or () if given no lists. An error shall be signaled if any list is not a list (error-id. <span class="error_id">domain-error</span>).</p>
@@ -4132,7 +4132,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 </pre>
             
             <div id="f_member" class="definition-function">
-                (member obj list) → <span class="class">list</span>
+                (<span class="operator">member</span> <span class="arg">obj</span> <span class="arg">list</span>) → <span class="class">list</span>
             </div>
             
             <p>If list contains at least one occurrence of obj (as determined by eql), the first sublist of list whose car is obj is returned. Otherwise, nil is returned. An error shall be signaled if list is not a list (error-id. <span class="error_id">domain-error</span>).</p>
@@ -4146,22 +4146,22 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 </pre>
             
             <div id="f_mapcar" class="definition-function">
-                (mapcar function list+) → <span class="class">list</span>
+                (<span class="operator">mapcar</span> <span class="arg">function</span> <span class="arg">list+</span>) → <span class="class">list</span>
             </div>
             <div id="f_mapc" class="definition-function">
-                (mapc function list+) → <span class="class">list</span>
+                (<span class="operator">mapc</span> <span class="arg">function</span> <span class="arg">list+</span>) → <span class="class">list</span>
             </div>
             <div id="f_mapcan" class="definition-function">
-                (mapcan function list+) → <span class="class">list</span>
+                (<span class="operator">mapcan</span> <span class="arg">function</span> <span class="arg">list+</span>) → <span class="class">list</span>
             </div>
             <div id="f_maplist" class="definition-function">
-                (maplist function list+) → <span class="class">list</span>
+                (<span class="operator">maplist</span> <span class="arg">function</span> <span class="arg">list+</span>) → <span class="class">list</span>
             </div>
             <div id="f_mapl" class="definition-function">
-                (mapl function list+) → <span class="class">list</span>
+                (<span class="operator">mapl</span> <span class="arg">function</span> <span class="arg">list+</span>) → <span class="class">list</span>
             </div>
             <div id="f_mapcon" class="definition-function">
-                (mapcon function list+) → <span class="class">list</span>
+                (<span class="operator">mapcon</span> <span class="arg">function</span> <span class="arg">list+</span>) → <span class="class">list</span>
             </div>
             
             <p>Successively applies the given function to sets of arguments determined by the given lists. The way in which the arguments are determined, and the way in which the result is accumulated are how these functions differ.</p>
@@ -4254,7 +4254,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 </pre>
             
             <div id="f_assoc" class="definition-function">
-                (assoc obj association-list) → <span class="class">list</span>
+                (<span class="operator">assoc</span> <span class="arg">obj</span> <span class="arg">association-list</span>) → <span class="class">list</span>
             </div>
             
             <p>If assocation-list contains at least one cons whose car is obj (as determined by eql), the first such cons is returned. Otherwise, nil is returned. An error shall be signaled if association-list is not a list of conses (error-id. <span class="error_id">domain-error</span>).</p>
@@ -4289,13 +4289,13 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
                 <dd>An object of class <span class="class">general-vector</span> is a one-dimensional array that is capable of holding elements of type <span class="class">object</span>. When the function create-array is asked to create a one-dimensional array, the resulting array is of this class.</dd>
                 <dt><span class="class">string</span></dt>
                 <dd>An object of class <span class="class">string</span> is a one-dimensional array that is capable only of holding elements of type <span class="class">character</span>. When the function create-string is used, the result is of this class.</dd>
-                <dt>&lt;basic-array*&gt;</dt>
+                <dt><span class="class">basic-array*</span></dt>
                 <dd>
                     <p>All non-one-dimensional arrays are of the abstract class &lt;basic-array*&gt;, but (as with all abstract classes) there are no direct instances of this class. It is provided for type discrimination purposes only.</p>
                     <p>ISLISP defines only one direct subclass of &lt;basic-array*&gt;: &lt;general-array*&gt;. There may be additional, <a href="#td_implementation_defined">implementation-defined</a> subclasses of &lt;basic-array*&gt;.</p>
                     <div class="note">Note: An implementation might provide specialized array representations for two-dimensional arrays of 1 or more bits to hold display information for a monochrome or color screen. If provided, such array representations would be subclasses of &lt;basic-array*&gt;.</div>
                 </dd>
-                <dt>&lt;general-array*&gt;</dt>
+                <dt><span class="class">general-array*</span></dt>
                 <dd>An object of class &lt;general-array*&gt; is a non-one-dimensional array that is capable of holding elements of type <span class="class">object</span>. When the function create-array is asked to create an array of dimensionality other than 1, the resulting array is of this class.</dd>
             </dl>
             
@@ -4313,13 +4313,13 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             <p>To manipulate arrays ISLISP provides the following functions.</p>
             
             <div id="f_basic_array_p" class="definition-function">
-                (basic-array-p obj) → boolean
+                (<span class="operator">basic-array-p</span> <span class="arg">obj</span>) → <span class="term1">boolean</span>
             </div>
             <div id="f_basic_array_s_p" class="definition-function">
-                (basic-array*-p obj) → boolean
+                (<span class="operator">basic-array*-p</span> <span class="arg">obj</span>) → <span class="term1">boolean</span>
             </div>
             <div id="f_general_array_s_p" class="definition-function">
-                (general-array*-p obj) → boolean
+                (<span class="operator">general-array*-p</span> <span class="arg">obj</span>) → <span class="term1">boolean</span>
             </div>
             
             <p>basic-array-p returns t if obj is a basic-array (instance of class <span class="class">basic-array</span>); otherwise, returns nil. obj may be any ISLISP object.</p>
@@ -4340,7 +4340,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 </pre>
             
             <div id="f_create_array" class="definition-function">
-                (create-array dimensions [initial-element]) → <span class="class">basic-array</span>
+                (<span class="operator">create-array</span> <span class="arg">dimensions</span> [<span class="arg">initial-element</span>]) → <span class="class">basic-array</span>
             </div>
             
             <p>This function creates an array of the given dimensions. The dimensions argument is a list of non-negative integers.</p>
@@ -4355,10 +4355,10 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 </pre>
             
             <div id="f_aref" class="definition-function">
-                (aref basic-array z *) → <span class="class">object</span>
+                (<span class="operator">aref</span> <span class="arg">basic-array</span> <span class="arg">z</span>*) → <span class="class">object</span>
             </div>
             <div id="f_garef" class="definition-function">
-                (garef general-array z *) → <span class="class">object</span>
+                (<span class="operator">garef</span> <span class="arg">general-array</span> <span class="arg">z</span>*) → <span class="class">object</span>
             </div>
             
             <p>aref returns the object stored in the component of the basic-array specified by the sequence of integers z. This sequence must have exactly as many elements as there are dimensions in the basic-array, and each one must satisfy 0 ≤ zi &lt; di , di the ith dimension and 0 ≤ i &lt; d, d the number of dimensions. Arrays are indexed 0 based, so the ith row is accessed via the index i − 1.</p>
@@ -4386,16 +4386,16 @@ array1
 </pre>
             
             <div id="s_setf_aref" class="definition-special-form">
-                (setf (aref basic-array z *) obj) → <span class="class">object</span>
+                (<span class="operator">setf</span> (<span class="operator">aref</span> <span class="arg">basic-array</span> <span class="arg">z</span>*) <span class="arg">obj</span>) → <span class="class">object</span>
             </div>
             <div id="f_set_aref" class="definition-function">
-                (set-aref obj basic-array z *) → <span class="class">object</span>
+                (<span class="operator">set-aref</span> <span class="arg">obj</span> <span class="arg">basic-array</span> <span class="arg">z</span>*) → <span class="class">object</span>
             </div>
             <div class="definition-special-form">
-                (setf (garef general-array z *) obj) → <span class="class">object</span>
+                (<span class="operator">setf</span> (<span class="operator">garef</span> <span class="arg">general-array</span> <span class="arg">z</span>*) obj) → <span class="class">object</span>
             </div>
             <div id="f_set_garef" class="definition-function">
-                (set-garef obj general-array z *) → <span class="class">object</span>
+                (<span class="operator">set-garef</span> <span class="arg">obj</span> <span class="arg">general-array</span> <span class="arg">z</span class="arg">*) → <span class="class">object</span>
             </div>
             
             <p>These replace the object obtainable by aref or garef with obj . The returned value is obj. The constraints on the basic-array, the general-array, and the sequence of indices z is the same as for aref and garef.</p>
@@ -4407,7 +4407,7 @@ array1
 </pre>
             
             <div id="f_array_dimensions" class="definition-function">
-                (array-dimensions basic-array) → <span class="class">list</span>
+                (<span class="operator">array-dimensions</span> <span class="arg">basic-array</span>) → <span class="class">list</span>
             </div>
             
             <p>Returns a list of the dimensions of a given basic-array. An error shall be signaled if basic-array is not a basic-array (error-id. <span class="error_id">domain-error</span>). The consequences are undefined if the returned list is modified.</p>
@@ -4430,10 +4430,10 @@ array1
 </pre>
             
             <div id="f_basic_vector_p" class="definition-function">
-                (basic-vector-p obj) → boolean
+                (<span class="operator">basic-vector-p</span> <span class="arg">obj</span>) → <span class="term1">boolean</span>
             </div>
             <div id="f_general_vector_p" class="definition-function">
-                (general-vector-p obj) → boolean
+                (<span class="operator">general-vector-p</span> <span class="arg">obj</span>) → <span class="term1">boolean</span>
             </div>
             
             <p>basic-vector-p returns t if obj is a basic-vector (instance of class <span class="class">basic-vector</span>); otherwise, returns nil. obj may be any ISLISP object.</p>
@@ -4452,7 +4452,7 @@ array1
 </pre>
             
             <div id="f_create_vector" class="definition-function">
-                (create-vector i [initial-element]) → <span class="class">general-vector</span>
+                (<span class="operator">create-vector</span> <span class="arg">i</span> [<span class="arg">initial-element</span>]) → <span class="class">general-vector</span>
             </div>
             
             <p>Returns a general-vector of length i. If initial-element is given, the elements of the new vector are initialized with this object, otherwise the initialization is <a href="#td_implementation_defined">implementation defined</a>. An error shall be signaled if the requested vector cannot be allocated (error-id. <span class="error_id">cannot-create-vector</span>). An error shall be signaled if i is not a non-negative integer (error-id. <span class="error_id">domain-error</span>). initial-element may be any ISLISP object.</p>
@@ -4464,7 +4464,7 @@ array1
 </pre>
             
             <div id="f_vector" class="definition-function">
-                (vector obj*) → <span class="class">general-vector</span>
+                (<span class="operator">vector</span> <span class="arg">obj</span>*) → <span class="class">general-vector</span>
             </div>
             
             <p>Returns a new general-vector whose elements are its obj arguments. The length of the newly created vector is, therefore, the number of objs passed as arguments. The vector is indexed by integers ranging from 0 to dimension−1. An error shall be signaled if the requested vector cannot be allocated (error-id. <span class="error_id">cannot-create-vector</span>). Each obj may be any ISLISP object.</p>
@@ -4481,7 +4481,7 @@ array1
             <p>Any <a href="#td_implementation_defined">implementation-defined</a> character can be a string element. In ISLISP, string indices are 0-based. Strings are written by listing all the element characters in order and by enclosing them with double quotes <q>&quot;</q>. If the string has a double quote as its element, the double quote must be preceded by a backslash <q>\</q>. If the string has a backslash as its element, the backslash must be preceded by another backslash. Strings contained in program text as literals are immutable objects. The representation of non-printing characters is <a href="#td_implementation_defined">implementation defined</a>.</p>
             
             <div id="f_stringp" class="definition-function">
-                (stringp obj) → boolean
+                (<span class="operator">stringp</span> <span class="arg">obj</span>) → <span class="term1">boolean</span>
             </div>
             
             <p>Returns t if obj is a string (instance of class <span class="class">string</span>); otherwise, returns nil. obj may be any ISLISP object.</p>
@@ -4493,7 +4493,7 @@ array1
 </pre>
             
             <div id="f_create_string" class="definition-function">
-                (create-string i [initial-character ]) → <span class="class">string</span>
+                (<span class="operator">create-string</span> <span class="arg">i</span> [<span class="arg">initial-character</span> ]) → <span class="class">string</span>
             </div>
             
             <p>Returns a string of length i. If initial-character is given, then the characters of the new string are initialized with this character, otherwise the initialization is <a href="#td_implementation_defined">implementation defined</a>. An error shall be signaled if the requested string cannot be allocated (error-id. <span class="error_id">cannot-create-string</span>). An error shall be signaled if i is not a non-negative integer or if initial-character is not a character (error-id. <span class="error_id">domain-error</span>).</p>
@@ -4505,22 +4505,22 @@ array1
 </pre>
             
             <div id="f_stringeq" class="definition-function">
-                (string= string<sub>1</sub> string<sub>2</sub>) → quasi-boolean
+                (<span class="operator">string=</span> <span class="arg">string<sub>1</sub></span> <span class="arg">string<sub>2</sub></span>) → <span class="term1">quasi-boolean</span>
             </div>
             <div id="f_stringneq" class="definition-function">
-                (string/= string<sub>1</sub> string<sub>2</sub>) → quasi-boolean
+                (<span class="operator">string/=</span> <span class="arg">string<sub>1</sub></span> <span class="arg">string<sub>2</sub></span>) → <span class="term1">quasi-boolean</span>
             </div>
             <div id="f_stringlt" class="definition-function">
-                (string&lt; string<sub>1</sub> string<sub>2</sub>) → quasi-boolean
+                (<span class="operator">string&lt;</span> <span class="arg">string<sub>1</sub></span> <span class="arg">string<sub>2</sub></span>) → <span class="term1">quasi-boolean</span>
             </div>
             <div id="f_stringgt" class="definition-function">
-                (string&gt; string<sub>1</sub> string<sub>2</sub>) → quasi-boolean
+                (<span class="operator">string&gt;</span> <span class="arg">string<sub>1</sub></span> <span class="arg">string<sub>2</sub></span>) → <span class="term1">quasi-boolean</span>
             </div>
             <div id="f_stringgteq" class="definition-function">
-                (string&gt;= string<sub>1</sub> string<sub>2</sub>) → quasi-boolean
+                (<span class="operator">string&gt;=</span> <span class="arg">string<sub>1</sub></span> <span class="arg">string<sub>2</sub></span>) → <span class="term1">quasi-boolean</span>
             </div>
             <div id="f_stringlteq" class="definition-function">
-                (string&lt;= string<sub>1</sub> string<sub>2</sub>) → quasi-boolean
+                (<span class="operator">string&lt;=</span> <span class="arg">string<sub>1</sub></span> <span class="arg">string<sub>2</sub></span>) → <span class="term1">quasi-boolean</span>
             </div>
             
             <p>The function string= tests whether string<sub>1</sub> is the same string as string<sub>2</sub>. The function string&lt; tests whether string<sub>1</sub> is less than string<sub>2</sub>. The function string&lt;= tests whether string<sub>1</sub> is less than or equal to string<sub>2</sub>.</p>
@@ -4564,7 +4564,7 @@ array1
 </pre>
             
             <div id="f_char_index" class="definition-function">
-                (char-index char string [start-position]) → <span class="class">object</span>
+                (<span class="operator">char-index</span> <span class="arg">char</span> <span class="arg">string</span> [<span class="arg">start-position</span>]) → <span class="class">object</span>
             </div>
             <p>Returns the position of char in string, The search starts from the position indicated by start-position (which is 0-based and defaults to 0). The value returned if the search succeeds is an offset from the beginning of the string, not from the starting point. If the char does not occur in the string, nil is returned. The function char= is used for the comparisons.</p>
             <p>An error shall be signaled if char is not a character or if string is not a string (error-id. <span class="error_id">domain-error</span>).</p>
@@ -4582,7 +4582,7 @@ array1
 </pre>
             
             <div id="f_string_index" class="definition-function">
-                (string-index substring string [start-position]) → <span class="class">object</span>
+                (<span class="operator">string-index</span> <span class="arg">substring</span> <span class="arg">string</span> [<span class="arg">start-position</span>]) → <span class="class">object</span>
             </div>
             
             <p>Returns the position of the given substring within string. The search starts from the position indicated by start-position (which is 0-based and defaults to 0). The value returned if the search succeeds is an offset from the beginning of the string, not from the starting point. If that substring does not occur in the string, nil is returned. Presence of the substring is done by sequential use of char= on corresponding elements of the two strings.</p>
@@ -4605,7 +4605,7 @@ array1
 </pre>
             
             <div id="f_string_append" class="definition-function">
-                (string-append string*) → <span class="class">string</span>
+                (<span class="operator">string-append</span> <span class="arg">string*</span>) → <span class="class">string</span>
             </div>
             
             <p>Returns a single string containing a sequence of characters that results from appending the sequences of characters of each of the strings, or "" if given no strings. An error shall be signaled if any string is not a string (error-id. <span class="error_id">domain-error</span>).</p>
@@ -4629,7 +4629,7 @@ array1
             <p>Objects that are either of class <span class="class">basic-vector</span> or of class <span class="class">list</span> are sometimes called <q>sequences</q>. The operations upon sequences are called <q>sequence functions.</q></p>
             
             <div id="f_length" class="definition-function">
-                (length sequence) → <span class="class">integer</span>
+                (<span class="operator">length</span> <span class="arg">sequence</span>) → <span class="class">integer</span>
             </div>
             
             <p>Returns the length of sequence as an integer greater than or equal to 0.</p>
@@ -4648,7 +4648,7 @@ array1
 </pre>
             
             <div id="f_elt" class="definition-function">
-                (elt sequence z) → <span class="class">object</span>
+                (<span class="operator">elt</span> <span class="arg">sequence</span> <span class="arg">z</span>) → <span class="class">object</span>
             </div>
             
             <p>Given a sequence and an integer z satisfying 0 ≤ z &lt; (length sequence), elt returns the element of sequence that has index z. Indexing is 0-based; <span class="latin">i.e.</span>, z = 0 designates the first element. An error shall be signaled if z is an integer outside of the mentioned range (error-id. <span class="error_id">index-out-of-range</span>).</p>
@@ -4662,11 +4662,11 @@ array1
 </pre>
             
             <div id="s_setf_elt" class="definition-special-form">
-                (setf (elt sequence z) obj) → <span class="class">object</span>
+                (<span class="operator">setf</span> (<span class="operator">elt</span> <span class="arg">sequence</span> <span class="arg">z</span>) <span class="arg">obj</span>) → <span class="class">object</span>
             </div>
             
             <div id="f_set_elt" class="definition-function">
-                (set-elt obj sequence z) → <span class="class">object</span>
+                (<span class="operator">set-elt</span> <span class="arg">obj</span> <span class="arg">sequence</span> <span class="arg">z</span>) → <span class="class">object</span>
             </div>
             
             <p>These replace the object obtainable by elt with obj. The returned value is obj.</p>
@@ -4680,7 +4680,7 @@ array1
 </pre>
             
             <div id="f_subseq" class="definition-function">
-                (subseq sequence z1 z2) → sequence
+                (<span class="operator">subseq</span> <span class="arg">sequence</span> <span class="arg">z1</span> <span class="arg">z2</span>) → <span class="class">sequence</span>
             </div>
             
             <p>Given a sequence sequence and two integers z1 and z2 satisfying 0 ≤ z1 ≤ z2 ≤ (length sequence), this function returns the subsequence of length z2 − z1, containing the elements with indices from z<sub>1</sub> (inclusive) to z<sub>2</sub> (exclusive). The subsequence is newly allocated, and has the same class as sequence.</p>
@@ -4695,7 +4695,7 @@ array1
 </pre>
             
             <div id="f_map_into" class="definition-function">
-                (map-into destination function sequence*) → sequence
+                (<span class="operator">map-into</span> <span class="arg">destination</span> <span class="arg">function</span> <span class="arg">sequence</span>*) → <span class="class">sequence</span>
             </div>
             
             <p>Destructively modifies destination to contain the results of applying function to successive elements in the sequences. The destination is returned.</p>
@@ -4732,7 +4732,7 @@ a                           ⇒ (2 4 6 8)
             <p>Streams are instances of the <span class="class">stream</span> class. They are objects that serve as sources or sinks of data.</p>
             
             <div id="f_streamp" class="definition-function">
-                (streamp obj) → boolean
+                (<span class="operator">streamp</span> <span class="arg">obj</span>) → <span class="term1">boolean</span>
             </div>
             
             <p>Returns t if obj is a stream (instance of class <span class="class">stream</span>); otherwise, returns nil. obj may be any ISLISP object. streamp is unaffected by whether its argument, if an instance of the class <span class="class">stream</span>, is open or closed.</p>
@@ -4744,13 +4744,13 @@ a                           ⇒ (2 4 6 8)
 </pre>
             
             <div id="f_open_stream_p" class="definition-function">
-                (open-stream-p obj) → boolean
+                (<span class="operator">open-stream-p</span> <span class="arg">obj</span>) → <span class="term1">boolean</span>
             </div>
             
             <p>Returns t if obj is an open stream; otherwise, returns nil.</p>
             
             <div id="f_input_stream_p" class="definition-function">
-                (input-stream-p obj) → boolean
+                (<span class="operator">input-stream-p</span> <span class="arg">obj</span>) → <span class="term1">boolean</span>
             </div>
             
             <p>Returns t if obj is a stream that can handle input operations; otherwise, returns nil.</p>
