@@ -555,13 +555,13 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             <dl>
                 <dt>Null</dt>
                 <dd>The object nil is the only object whose class is <span class="class">null</span>. Upon input, it may be written as nil or (). It is <a href="#td_implementation_defined">implementation defined</a> whether nil prints as nil or ().</dd>
-                <dt>List</dt>
+                <dt id="list10">List</dt>
                 <dd>Proper lists are those lists terminated by nil. Usually they are denoted as (obj<sub>1</sub> obj<sub>2</sub> ...obj<sub>n</sub>). A dotted list (i.e., a list whose last tail is not nil) appears as (obj<sub>1</sub> obj<sub>2</sub> ...obj<sub>n</sub> . obj<sub>n+1</sub>).</dd>
                 <dt id="character">Character</dt>
                 <dd>An instance of the <span class="class">character</span> class is represented by #\?, where <q>?</q> is the character in question. There are two special standard characters that are not represented in this way, namely newline and space, whose representations are #\newline and #\space, respectively.</dd>
                 <dt id="cons10">Cons</dt>
                 <dd>A cons is expressed as (car . cdr), where the car and cdr are objects.</dd>
-                <dt>Integer</dt>
+                <dt id="integer10">Integer</dt>
                 <dd>An integer (radix 10) is represented as a sequence of digits optionally preceded by a + or sign. If the number is represented in binary radix (or in octal or hexadecimal) then the textual representation is preceded by #b (or #o or #x, respectively).</dd>
                 <dt id="float11">Float</dt>
                 <dd>
@@ -2340,7 +2340,7 @@ abstract-flag        ::= t | nil
             <p>An ISLISP processor may be extended to cover situations where these rules are not obeyed. These extensions shall be <a href="#td_implementation_defined">implementation defined</a>.</p>
             <p>Some slot options are inherited by a class from its superclasses, and some can be shadowed or altered by providing a local slot description. No class options are inherited. For a detailed description of how slots and slot options are inherited, see the section §15.1.3.</p>
             <p>If no slot accessors are specified for a slot, the slot cannot be accessed.</p>
-            <p>When a class is defined, the order in which its direct superclasses are mentioned in the defining form is important. The new class has a local precedence order, which is a list consisting of the class followed by its direct superclasses in the order mentioned in its defclass defining form.</p>
+            <p id="local_precedence_order">When a class is defined, the order in which its direct superclasses are mentioned in the defining form is important. The new class has a local precedence order, which is a list consisting of the class followed by its direct superclasses in the order mentioned in its defclass defining form.</p>
             
             <h5 id="determining_the_class_precedence">Determining the class precedence list</h5>
             
@@ -5914,40 +5914,40 @@ inheritance (of slots) <a href="#inheritance_of_slots">51</a>
 initialize-object <a href="#gf_initialize_object">60</a>
 input-stream-p <a href="#f_input_stream_p">102</a>
 instance <a href="#td_instance">5</a>, 13
-instancep 61
-integer 10, 80
-integerp 80
-internal-time-units-per-second 122
-isqrt 82
-keyword 11
-labels 24
-lambda 23
-lcm 82
-length 99
-let 35
-let* 36
-lexical exit 43
-Lexical Principle 17
-lexical transfer of control 43
-lexical visibility 17
-list 10, 84, 87
-list 88
-listp 87
-literal 5
-local precedence order 50
-local-function-name 20
-log 73
-macro expansion 45
-map-into 101
-mapc 89
-mapcan 89
-mapcar 89
-mapcon 89
-mapl 89
-maplist 89
-max 72
-member 89
-metaclass 5, 13
+instancep <a href="#f_instancep">61</a>
+integer <a href="#integer10">10</a>, <a href="#integer_class">80</a>
+integerp <a href="#f_integerp">80</a>
+internal-time-units-per-second <a href="#f_internal_time_units_per_second">122</a>
+isqrt <a href="#f_isqrt">82</a>
+keyword <a href="#reserved_identifiers">11</a>
+labels <a href="#s_labels">24</a>
+lambda <a href="#s_lambda">23</a>
+lcm <a href="#f_lcm">82</a>
+length <a href="#f_length">99</a>
+let <a href="#s_let">35</a>
+let* <a href="#s_let_s">36</a>
+lexical exit <a href="#establishing_and_invoking_non_local_exits">43</a>
+Lexical Principle <a href="#the_lexical_principle">17</a>
+lexical transfer of control <a href="#non_local_exits">43</a>
+lexical visibility <a href="#the_lexical_principle">17</a>
+list <a href="#list10">10</a>, <a href="#list_class">84</a>, <a href="#list_operations">87</a>
+list <a href="#f_list">88</a>
+listp <a href="#f_listp">87</a>
+literal <a href="#td_literal">5</a>
+local precedence order <a href="#local_precedence_order">50</a>
+local-function-name <a href="#function_application_forms">20</a>
+log <a href="#f_log">73</a>
+macro expansion <a href="#s_tagbody">45</a>
+map-into <a href="#f_map_into">101</a>
+mapc <a href="#f_mapc">89</a>
+mapcan <a href="#f_mapcan">89</a>
+mapcar <a href="#f_mapcar">89</a>
+mapcon <a href="#f_mapcon">89</a>
+mapl <a href="#f_mapl">89</a>
+maplist <a href="#f_maplist">89</a>
+max <a href="#f_max">72</a>
+member <a href="#f_member">89</a>
+metaclass <a href="#td_metaclass">5</a>, <a href="#metaclasses">13</a>
 method 5, 52
 min 72
 mod 81
