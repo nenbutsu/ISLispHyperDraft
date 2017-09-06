@@ -988,7 +988,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             
             <p>This document describes defining forms in the following format:</p>
             <div class="definition-defining">
-                (<span class="operator">defining-form-name name</span> <span class="arg">argument</span>*) → <span class="class">symbol</span>
+                (<span class="operator">defining-form-name</span> <span class="arg">name</span> <span class="arg">argument</span>*) → <span class="class">symbol</span>
             </div>
             
             <h4 id="macro_forms">Macro forms</h4>
@@ -2390,7 +2390,7 @@ abstract-flag        ::= t | nil
             <p>Some forms define methods for a generic function. These forms will be referred to as <q>method-defining forms.</q> These forms are the defmethod and defclass defining forms.</p>
             <p id="reader_writer_accessor2">During preparation for execution, a defmethod form must be preceded by the defgeneric form for the generic function to be specialized. (Methods implicitly defined by defclass due to :reader, :writer, or :accessor options do not need a preceding defgeneric.)</p>
             <div id="def_defgeneric" class="definition-defining">
-                (defgeneric func-spec lambda-list {option | method-desc}*) → <span class="class">symbol</span>
+                (<span class="operator">defgeneric</span> <span class="arg">func-spec</span> <span class="arg">lambda-list</span> {<span class="arg">option</span> | <span class="arg">method-desc</span>}*) → <span class="class">symbol</span>
             </div>
 <pre>
 Where:
@@ -2432,7 +2432,7 @@ var                        ::= identifier
             <h5 id="defining_methods">Defining methods for generic functions</h5>
             
             <div id="def_defmethod" class="definition-defining">
-                (defmethod func-spec method-qualifier* parameter-profile form*) → <span class="class">symbol</span>
+                (<span class="operator">defmethod</span> <span class="arg">func-spec</span> <span class="arg">method-qualifier</span>* <span class="arg">parameter-profile</arg> <span class="arg">form</span>*) → <span class="class">symbol</span>
             </div>
 <pre>
 Where:
@@ -2544,7 +2544,7 @@ var                        ::= identifier
             
             <h5 id="calling_more_general_methods">Calling more general methods</h5>
             <div id="l_call_next_method" class="definition-local">
-                (call-next-method) → <span class="class">object</span>
+                (<span class="operator">call-next-method</span>) → <span class="class">object</span>
             </div>
             
             <p>The call-next-method function can be used within the body of a method to call the next method.</p>
@@ -2556,14 +2556,14 @@ var                        ::= identifier
             <p>The functional binding of call-next-method is lexical within the body of the method-defining form; <span class="latin">i.e.</span>, it is as if it were established by labels. The function object to which the binding refers has indefinite extent.</p>
             <p>An error shall be signaled if call-next-method is used in methods that do not support it. An error shall be signaled if call-next-method is executed and there is no next method.</p>
             <div id="l_next_method_p" class="definition-local">
-                (next-method-p) → boolean
+                (<span class="operator">next-method-p</span>) → <span class="term1">boolean</span>
             </div>
             <p>The next-method-p function can be used within the body of a method defined by a method-defining form to determine whether a next method exists. The next-method-p function takes no arguments and returns t or nil.</p>
             <p>The functional binding of next-method-p is lexical within the body of the method-defining form; <span class="latin">i.e.</span>, it is as if it were established by labels. The function object to which the binding refers has indefinite extent.</p>
             
             <h4 id="object_creation">Object creation and initialization</h4>
             <div id="gf_create" class="definition-generic">
-                (create class {initarg initval }*) → <span class="class">object</span>
+                (<span class="operator">create</span> <span class="arg">class</arg> {<span class="arg">initarg</span> <span class="arg">initval</span> }*) → <span class="class">object</span>
             </div>
             
             <p>The function create creates and returns a new instance of a class. The argument is a class object.</p>
@@ -2581,7 +2581,7 @@ var                        ::= identifier
             </ul>
             
             <div id="gf_initialize_object" class="definition-generic">
-                (initialize-object instance initialization-arguments) → <span class="class">object</span>
+                (<span class="operator">initialize-object</span> <span class="arg">instance</span> <span class="arg">initialization-arguments</span>) → <span class="class">object</span>
             </div>
             
             <p>The generic function initialize-object is called by create to initialize a newly created instance. The generic function initialize-object is called with the new instance and a list of initialization arguments.</p>
@@ -2591,22 +2591,22 @@ var                        ::= identifier
             
             <h4 id="class_enquiry">Class enquiry</h4>
             <div id="f_class_of" class="definition-function">
-                (class-of obj) → <span class="class">class</span>
+                (<span class="operator">class-of</span> <span class="arg">obj</span>) → <span class="class">class</span>
             </div>
             
             <p>Returns the class of which the given obj is a direct instance. obj may be any ISLISP object.</p>
             <div id="f_instancep" class="definition-function">
-                (instancep obj class) → boolean
+                (<span class="operator">instancep</span> <span class="arg">obj</span> <span class="arg">class</arg>) → <span class="term1">boolean</span>
             </div>
             <p>Returns t if obj is an instance (directly or otherwise) of the class class; otherwise, returns nil obj may be any ISLISP object. An error shall be signaled if class is not a class object (error-id. <span class="error_id">domain-error</span>).</p>
             
             <div id="f_subclassp" class="definition-function">
-                (subclassp class1 class2) → boolean
+                (<span class="operator">subclassp</span> <span class="arg">class1</span> <span class="arg">class2</span>) → <span class="term1">boolean</span>
             </div>
             
             <p>Returns t if the class class1 is a subclass of the class class2 ; otherwise, returns nil. An error shall be signaled if either class1 or class2 is not a class object (error-id. <span class="error_id">domain-error</span>).</p>
             <div id="s_class" class="definition-special">
-                (class class-name) → <span class="class">class</span>
+                (<span class="operator">class</span> <span class="arg">class-name</span>) → <span class="class">class</span>
             </div>
             <p>Returns the class object that corresponds to the class named class-name.</p>
             
@@ -2621,7 +2621,7 @@ var                        ::= identifier
             <p>When a toplevel form is a macro form, its resulting macro expansion is also considered to be a toplevel form.</p>
             <p>A macro form can appear as the place specified in a setf special form. See setf on page 35.</p>
             <div id="def_defmacro" class="definition-defining">
-                (defmacro macro-name lambda-list form*) → <span class="class">symbol</span>
+                (<span class="operator">defmacro</span> <span class="arg">macro-name</span> <span class="arg">lambda-list</span> <span class="arg">form</span>*) → <span class="class">symbol</span>
             </div>
             
             <p>Defines a named (toplevel) macro. No implicit block with the macro name is established when the macro-expansion function is invoked. macro-name must be an identifier whose scope is the current toplevel scope in which the defmacro form appears. lambda-list is as defined in page 23. The definition point of macro-name is the closing parenthesis of the lambda-list.</p>
@@ -2631,13 +2631,13 @@ var                        ::= identifier
 </pre>
             
             <div id="syn_backquote" class="definition-syntax">
-                `form → <span class="class">object</span>
+                `<span class="operator">form</span> → <span class="class">object</span>
             </div>
             <div id="syn_comma" class="definition-syntax">
-                ,form → <span class="class">object</span>
+                ,<span class="operator">form</span> → <span class="class">object</span>
             </div>
             <div id="syn_comma_at" class="definition-syntax">
-                ,@form → <span class="class">object</span>
+                ,@<span class="operator">form</span> → <span class="class">object</span>
             </div>
             
             <p id="quasiquote">` or quasiquote constructs a list structure. quasiquote, like quote, returns its argument unevaluated if no commas or the syntax , (unquote) or ,@ (unquote-splicing) appear within the form.</p>
@@ -2669,10 +2669,10 @@ var                        ::= identifier
             
             <h3 id="declarations_and_coercions">Declarations and coercions</h3>
             <div id="s_the" class="definition-special">
-                (the class-name form) → <span class="class">object</span>
+                (<span class="operator">the</span> <span class="arg">class-name</span> <span class="arg">form</span>) → <span class="class">object</span>
             </div>
             <div id="s_assure" class="definition-special">
-                (assure class-name form) → <span class="class">object</span>
+                (<span class="operator">assure</span> <span class="arg">class-name</span> <span class="arg">form</span>) → <span class="class">object</span>
             </div>
             <p>These forms evaluate form. If form returns, the returned value is returned by the the or assure form. In addition, these forms specify that the value of form is of the class specified by class-name (which must be the name of an existing class).</p>
             <p>In a the special form, the consequences are undefined if the value of form is not of the class or a subclass of the class designated by class-name. In an assure special form, an error shall be signaled if the value of form is not of the class or a subclass of the class designated by class-name (error-id. <span class="error_id">domain-error</span>).</p>
@@ -2690,7 +2690,7 @@ var                        ::= identifier
 (assure <span class="class">float</span> 10)   an error shall be signaled
 </pre>
             <div id="s_convert" class="definition-special">
-                (convert obj class-name) → <span class="class">object</span>
+                (<span class="operator">convert</span> <span class="arg">obj</span> <span class="arg">class-name</span>) → <span class="class">object</span>
             </div>
             
             <p>Returns an object of class class-name which corresponds to the object obj according to one of the following projections, called a coercion function. The table shows obj along the left-hand column and class-name along the top row (with &lt;&gt;'s in class names omitted here only for textual brevity):</p>
@@ -2822,7 +2822,7 @@ var                        ::= identifier
             <h3 id="symbol_class">Symbol class</h3>
             <p>A symbol (an instance of class <span class="class">symbol</span>) is an object. Symbols can be named or unnamed. A symbol's name is sometimes called a print name because it is used to identify the symbol during reading and printing. Symbols can have associated properties.</p>
             <div id="f_symbolp" class="definition-function">
-                (symbolp obj) → boolean
+                (<span class="operator">symbolp</span> <span class="arg">obj</span>) → <span class="term1">boolean</span>
             </div>
             
             <p>Returns t if obj is a symbol (instance of class <span class="class">symbol</span>); otherwise, returns nil. The obj may be any ISLISP object.</p>
@@ -2908,7 +2908,7 @@ var                        ::= identifier
             
             <p>A property of a symbol is a named association between a property indicator and a property value. A symbol s is said to have a property p if a property indicator p is associated with s.</p>
             <div id="f_property" class="definition-function">
-                (property symbol property-name [obj]) → <span class="class">object</span>
+                (<span class="operator">property</span> <span class="arg">symbol</span> <span class="arg">property-name</span> [<span class="arg">obj</span>]) → <span class="class">object</span>
             </div>
             <p>Returns the value of the property named property-name associated with the symbol symbol . If symbol has no property named property-name, obj (which defaults to nil) is returned.</p>
             <p>An error shall be signaled if either symbol or property-name is not a symbol (error-id. <span class="error_id">domain-error</span>). obj may be any ISLISP object</p>
@@ -2916,10 +2916,10 @@ var                        ::= identifier
 (property 'zeus 'daughter) ⇒ athena
 </pre>
             <div id="s_setf_property" class="definition-special-form">
-                (setf (property symbol property-name) obj) → <span class="class">object</span>
+                (<span class="operator">setf</span> (<span class="operator">property</span> <span class="arg">symbol</span> <span class="arg">property-name</span>) <span class="arg">obj</span>) → <span class="class">object</span>
             </div>
             <div id="f_set_property" class="definition-function">
-                (set-property obj symbol property-name) → <span class="class">object</span>
+                (<span class="operator">set-property</span> <span class="arg">obj</span> <span class="arg">symbol</span> <span class="arg">property-name</span>) → <span class="class">object</span>
             </div>
             <p>Causes obj to be the new value of the property named property-name asssociated with the symbol symbol . If the property named property-name already exists, its corresponding property value is replaced; otherwise, a new property is created. obj is returned.</p>
             <p>An error shall be signaled if either symbol or property-name is not a symbol (error-id. <span class="error_id">domain-error</span>). obj may be any ISLISP object</p>
@@ -2932,7 +2932,7 @@ var                        ::= identifier
 ⇒ athena
 </pre>
             <div id="f_remove_property" class="definition-function">
-                (remove-property symbol property-name) → <span class="class">object</span>
+                (<span class="operator">remove-property</span> <span class="arg">symbol</span> <span class="arg">property-name</span>) → <span class="class">object</span>
             </div>
             
             <p>Removes the property property-name associated with symbol and returns the property value of the removed property if there is such a property. If there is no such property, nil is returned.</p>
@@ -2943,7 +2943,7 @@ var                        ::= identifier
             
             <h4 id="unnamed_symbols">Unnamed symbols</h4>
             <div id="f_gensym" class="definition-function">
-                (gensym) → <span class="class">symbol</span>
+                (<span class="operator">gensym</span>) → <span class="class">symbol</span>
             </div>
             
             <p>Returns an unnamed symbol. gensym is useful for writing macros. It is impossible for an identifier to name an unnamed symbol.</p>
@@ -2960,7 +2960,7 @@ var                        ::= identifier
             
             <h4 id="number_class_2">Number class</h4>
             <div id="f_numberp" class="definition-function">
-                (numberp obj) → boolean
+                (<span class="operator">numberp</span> <span class="arg">obj</span>) → boolean
             </div>
             
             <p>Returns t if obj is a number (instance of class <span class="class">number</span>); otherwise, returns nil. The obj may be any ISLISP object.</p>
@@ -2975,7 +2975,7 @@ var                        ::= identifier
 </pre>
             
             <div id="f_parse_number" class="definition-function">
-                (parse-number string) → <span class="class">number</span>
+                (<span class="operator">parse-number</span> <span class="arg">string</span>) → <span class="class">number</span>
             </div>
             
             <p>The characters belonging to string are scanned (as if by read) and if the resulting lexeme is the textual representation of a number, the number it represents is returned.</p>
@@ -2995,7 +2995,7 @@ one mantissa digit after the decimal point.
 </pre>
             
             <div id="f_math_eq" class="definition-function">
-                (= x<sub>1</sub> x<sub>2</sub>) → boolean
+                (<span class="operator">=</span> <span class="arg">x<sub>1</sub></span> <span class="arg">x<sub>2</sub></span>) → <span class="term1">boolean</span>
             </div>
             
             <p>Returns t if x<sub>1</sub> has the same mathematical value as x<sub>2</sub> ; otherwise, returns nil. An error shall be signaled if either x<sub>1</sub> or x<sub>2</sub> is not a number (error-id. <span class="error_id">domain-error</span>).</p>
@@ -3011,7 +3011,7 @@ one mantissa digit after the decimal point.
 </pre>
             
             <div id="f_math_neq" class="definition-function">
-                (/= x1 x2) → boolean
+                (<span class="operator">/=</span> <span class="arg">x1</span> <span class="arg">x2</span>) → <span class="term1">boolean</span>
             </div>
             
             <p>Returns t if x1 and x2 have mathematically distinct values; otherwise, returns nil. An error shall be signaled if either x1 or x2 is not a number (error-id. <span class="error_id">domain-error</span>).</p>
@@ -3024,16 +3024,16 @@ one mantissa digit after the decimal point.
 </pre>
             
             <div id="f_gteq" class="definition-function">
-                (&gt;= x<sub>1</sub> x<sub>2</sub>) → boolean
+                (<span class="operator">&gt;=</span> <span class="arg">x<sub>1</sub></span> <span class="arg">x<sub>2</sub></span>) → <span class="term1">boolean</span>
             </div>
             <div id="f_lteq" class="definition-function">
-                (&lt;= x<sub>1</sub> x<sub>2</sub>) → boolean
+                (<span class="operator">&lt;=</span> <span class="arg">x<sub>1</sub></span> <span class="arg">x<sub>2</sub></span>) → <span class="term1">boolean</span>
             </div>
             <div id="f_gt" class="definition-function">
-                (&gt; x<sub>1</sub> x<sub>2</sub>) → boolean
+                (<span class="operator">&gt;</span> <span class="arg">x<sub>1</sub></span> <span class="arg">x<sub>2</sub>)</span> → <span class="term1">boolean</span>
             </div>
             <div id="f_lt" class="definition-function">
-                (&lt; x<sub>1</sub> x<sub>2</sub>) → boolean
+                (<span class="operator">&lt;</span> <span class="arg">x<sub>1</sub></span> <span class="arg">x<sub>2</sub></span>) → <span class="term1">boolean</span>
             </div>
             
             <p>&gt;= returns t if x<sub>1</sub> is greater than or = x<sub>2</sub> . &lt;= returns t if x<sub>1</sub> is less than or = x<sub>2</sub> . &gt; returns t if x<sub>1</sub> is greater than x<sub>2</sub>. &lt; returns t if x<sub>1</sub> is less than x<sub>2</sub>.</p>
