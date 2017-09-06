@@ -735,7 +735,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             <ul>
                 <li><span class="class">arithmetic-error</span></li>
                 <li><span class="class">basic-array</span></li>
-                <li>&lt;basic-array*&gt;</li>
+                <li><span class="class">basic-array*</span></li>
                 <li><span class="class">basic-vector</span></li>
                 <li><span class="class">character</span></li>
                 <li><span class="class">cons</span></li>
@@ -749,7 +749,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
                 
                 <li><span class="class">floating-point-underflow</span></li>
                 <li><span class="class">function</span></li>
-                <li>&lt;general-array*&gt;</li>
+                <li><span class="class">general-array*</span></li>
                 <li><span class="class">general-vector</span></li>
                 <li><span class="class">generic-function</span></li>
                 <li><span class="class">integer</span></li>
@@ -3064,10 +3064,10 @@ one mantissa digit after the decimal point.
             
             <p>In the remaining definitions in this section, any noted coercion to <span class="class">float</span> is done as if by float or by (convert z <span class="class">float</span>).</p>
             <div id="f_plus" class="definition-function">
-                (+ x*) → <span class="class">number</span>
+                (<span class="operator">+</span> <span class="arg">x</span>*) → <span class="class">number</span>
             </div>
             <div id="f_muptiply" class="definition-function">
-                (* x*) → <span class="class">number</span>
+                (<span class="operator">*</span> <span class="arg">x</span>*) → <span class="class">number</span>
             </div>
             
             <p>The functions + and * return the sum and the product, respectively, of their arguments. If all arguments are integers, the result is an integer. If any argument is a ﬂoat, the result is a ﬂoat. When given no arguments, + returns 0 and * returns 1. An error shall be signaled if any x is not a number (error-id. <span class="error_id">domain-error</span>).</p>
@@ -3095,7 +3095,7 @@ one mantissa digit after the decimal point.
 </pre>
             
             <div id="f_minus" class="definition-function">
-                (- x+) → <span class="class">number</span>
+                (<span class="operator">-</span> <span class="arg">x</span>+) → <span class="class">number</span>
             </div>
             
             <p>Given one argument, x , this function returns its additive inverse. An error shall be signaled if x is not a number (error-id. <span class="error_id">domain-error</span>).</p>
@@ -3128,10 +3128,10 @@ one mantissa digit after the decimal point.
 </pre>
             
             <div id="f_quotient" class="definition-function">
-                (quotient dividend divisor +) → <span class="class">number</span>
+                (<span class="operator">quotient</span> <span class="arg">dividend</span> <span class="arg">divisor</span>+) → <span class="class">number</span>
             </div>
             <div id="f_reciprocal" class="definition-function">
-                (reciprocal x) → <span class="class">number</span>
+                (<span class="operator">reciprocal</span> <span class="arg">x</span>) → <span class="class">number</span>
             </div>
             
             <p>The function reciprocal returns the reciprocal of its argument x ; that is, 1/x . An error shall be signaled if x is zero (error-id. <span class="error_id">division-by-zero</span>).</p>
@@ -3157,10 +3157,10 @@ one mantissa digit after the decimal point.
 </pre>
             
             <div id="f_max" class="definition-function">
-                (max x+) → <span class="class">number</span>
+                (<span class="operator">max</span> <span class="arg">x</span>+) → <span class="class">number</span>
             </div>
             <div id="f_min" class="definition-function">
-                (min x+) → <span class="class">number</span>
+                (<span class="operator">min</span> <span class="arg">x</span>+) → <span class="class">number</span>
             </div>
             
             <p>The function min returns the least (closest to negative infinity) of its arguments. The comparison is done by &lt;.</p>
@@ -3184,7 +3184,7 @@ one mantissa digit after the decimal point.
 (min 1 5 2 5 3)  ⇒ 1
 </pre>
             <div id="f_abs" class="definition-function">
-                (abs x) → <span class="class">number</span>
+                (<span class="operator">abs</span> <span class="arg">x</span>) → <span class="class">number</span>
             </div>
             
             <p>The function abs returns the absolute value of its argument. An error shall be signaled if x is not a number (error-id. <span class="error_id">domain-error</span>).</p>
@@ -3198,7 +3198,7 @@ one mantissa digit after the decimal point.
 </pre>
             
             <div id="f_exp" class="definition-function">
-                (exp x) → <span class="class">number</span>
+                (<span class="operator">exp</span> <span class="arg">x</span>) → <span class="class">number</span>
             </div>
             
             <p>Returns e raised to the power x , where e is the base of the natural logarithm. An error shall be signaled if x is not a number (error-id. <span class="error_id">domain-error</span>).</p>
@@ -3213,7 +3213,7 @@ one mantissa digit after the decimal point.
 </pre>
             
             <div id="f_log" class="definition-function">
-                (log x) → <span class="class">number</span>
+                (<span class="operator">log</span> <span class="arg">x</span>) → <span class="class">number</span>
             </div>
             
             <p>Returns the natural logarithm of x . An error shall be signaled if x is not a positive number (error-id. <span class="error_id">domain-error</span>).</p>
@@ -3227,7 +3227,7 @@ one mantissa digit after the decimal point.
 </pre>
             
             <div id="f_expt" class="definition-function">
-                (expt x<sub>1</sub> x<sub>2</sub>) → <span class="class">number</span>
+                (<span class="operator">expt</span> <span class="arg">x<sub>1</sub></span> <span class="arg">x<sub>2</sub></span>) → <span class="class">number</span>
             </div>
             
             <p>Returns x<sub>1</sub> raised to the power x<sub>2</sub>. The result will be an integer if x<sub>1</sub> is an integer and x<sub>2</sub> is a non-negative integer. An error shall be signaled if x<sub>1</sub> is zero and x<sub>2</sub> is negative, or if x<sub>1</sub> is zero and x<sub>2</sub> is a zero ﬂoat, or if x<sub>1</sub> is negative and x<sub>2</sub> is not an integer.</p>
@@ -3257,7 +3257,7 @@ one mantissa digit after the decimal point.
 </pre>
             
             <div id="f_sqrt" class="definition-function">
-                (sqrt x) → <span class="class">number</span>
+                (<span class="operator">sqrt</span> <span class="arg">x</span>) → <span class="class">number</span>
             </div>
             <p>Returns the non-negative square root of x. An error shall be signaled if x is not a non-negative number (error-id. <span class="error_id">domain-error</span>).</p>
 <pre class="example">
@@ -3269,7 +3269,7 @@ one mantissa digit after the decimal point.
 </pre>
             
             <div id="c_pi" class="definition-constant">
-                *pi* → <span class="class">float</span>
+                <span class="symbol">*pi*</span> → <span class="class">float</span>
             </div>
             <p>The value of this constant is an approximation of π.</p>
             
@@ -3278,13 +3278,13 @@ one mantissa digit after the decimal point.
 </pre>
             
             <div id="f_sin" class="definition-function">
-                (sin x) → <span class="class">number</span>
+                (<span class="operator">sin</span> <span class="arg">x</span>) → <span class="class">number</span>
             </div>
             <div id="f_cos" class="definition-function">
-                (cos x) → <span class="class">number</span>
+                (<span class="operator">cos</span> <span class="arg">x</span>) → <span class="class">number</span>
             </div>
             <div id="f_tan" class="definition-function">
-                (tan x) → <span class="class">number</span>
+                (<span class="operator">tan</span> <span class="arg">x</span>) → <span class="class">number</span>
             </div>
             
             <p>The function sin returns the sine of x . The function cos returns the cosine of x . The function tan returns the tangent of x . In each case, x must be given in radians.</p>
@@ -3313,7 +3313,7 @@ one mantissa digit after the decimal point.
 </pre>
             
             <div id="f_atan" class="definition-function">
-                (atan x) → <span class="class">number</span>
+                (<span class="operator">atan</span> <span class="arg">x</span>) → <span class="class">number</span>
             </div>
             
             <p>Returns the arc tangent of x.</p>
@@ -3340,7 +3340,7 @@ one mantissa digit after the decimal point.
             <p>An error shall be signaled if x is not a number (error-id. <span class="error_id">domain-error</span>).</p>
             
             <div id="f_atan2" class="definition-function">
-                (atan2 x1 x2) → <span class="class">number</span>
+                (<span class="operator">atan2</span> <span class="arg">x1</span> <span class="arg">x2</span>) → <span class="class">number</span>
             </div>
             
             <p>Given a point (x<sub>2</sub>, x<sub>1</sub>) in rectangular coordinates, this function returns the phase of its representation in polar coordinates. If x<sub>1</sub> is zero and x<sub>2</sub> is negative, the result is positive. If x<sub>1</sub> and x<sub>2</sub> are both zero, the result is <a href="#td_implementation_defined">implementation defined</a>.</p>
@@ -3483,13 +3483,13 @@ one mantissa digit after the decimal point.
 </pre>
             
             <div id="f_sinh" class="definition-function">
-                (sinh x) → <span class="class">number</span>
+                (<span class="operator">sinh</span> <span class="arg">x</span>) → <span class="class">number</span>
             </div>
             <div id="f_cosh" class="definition-function">
-                (cosh x) → <span class="class">number</span>
+                (<span class="operator">cosh</span> <span class="arg">x</span>) → <span class="class">number</span>
             </div>
             <div id="f_tanh" class="definition-function">
-                (tanh x) → <span class="class">number</span>
+                (<span class="operator">tanh</span> <span class="arg">x</span>) → <span class="class">number</span>
             </div>
             
             <p>The function sinh returns the hyperbolic sine of x . The function cosh returns the hyperbolic cosine of x . The function tanh returns the hyperbolic tangent of x.</p>
@@ -3515,7 +3515,7 @@ one mantissa digit after the decimal point.
 </pre>
             
             <div id="f_atanh" class="definition-function">
-                (atanh x) → <span class="class">number</span>
+                (<span class="operator">atanh</span> <span class="arg">x</span>) → <span class="class">number</span>
             </div>
             
             <p>Returns the hyperbolic arc tangent of x . An error shall be signaled if x is not a number with absolute value less than 1 (error-id. <span class="error_id">domain-error</span>).</p>
@@ -3547,17 +3547,17 @@ one mantissa digit after the decimal point.
             <p>There must be at least one digit before the decimal point and at least one mantissa digit after the decimal point.</p>
             
             <div id="c_most_positive_float" class="definition-constant">
-                *most-positive-float* → <span class="class">float</span>
+                <span class="symbol">*most-positive-float*</span> → <span class="class">float</span>
             </div>
             <div id="c_most_negative_float" class="definition-constant">
-                *most-negative-float* → <span class="class">float</span>
+                <span class="symbol">*most-negative-float*</span> → <span class="class">float</span>
             </div>
             
             <p>The value of *most-positive-float* is the <a href="#td_implementation_dependent">implementation-dependent</a> ﬂoating-point number closest to positive infinity.</p>
             <p>The value of *most-negative-float* is the <a href="#td_implementation_dependent">implementation-dependent</a> ﬂoating-point number closest to negative infinity.</p>
             
             <div id="f_floatp" class="definition-function">
-                (floatp obj) → boolean
+                (<span class="operator">floatp</span> <span class="arg">obj</span>) → boolean
             </div>
             
             <p>Returns t if obj is a ﬂoat (instance of class <span class="class">float</span>); otherwise, returns nil. The obj may be any ISLISP object.</p>
@@ -3571,7 +3571,7 @@ one mantissa digit after the decimal point.
 </pre>
             
             <div id="f_float" class="definition-function">
-                (float x) → <span class="class">float</span>
+                (<span class="operator">float</span> <span class="arg">x</span>) → <span class="class">float</span>
             </div>
             
             <p>Returns x itself if it is an instance of the class <span class="class">float</span> and returns a ﬂoating-point approximation of x otherwise. An error shall be signaled if x is not a number (error-id. <span class="error_id">domain-error</span>).</p>
@@ -3586,7 +3586,7 @@ one mantissa digit after the decimal point.
 </pre>
             
             <div id="f_floor" class="definition-function">
-                (floor x) → <span class="class">integer</span>
+                (<span class="operator">floor</span> <span class="arg">x</span>) → <span class="class">integer</span>
             </div>
             
             <p>Returns the greatest integer less than or equal to x . That is, x is truncated towards negative infinity. An error shall be signaled if x is not a number (error-id. <span class="error_id">domain-error</span>).</p>
@@ -3606,7 +3606,7 @@ one mantissa digit after the decimal point.
 </pre>
             
             <div id="f_ceiling" class="definition-function">
-                (ceiling x) → <span class="class">integer</span>
+                (<span class="operator">ceiling</span> <span class="arg">x</span>) → <span class="class">integer</span>
             </div>
             
             <p>Returns the smallest integer that is not smaller than x. That is, x is truncated towards positive infinity. An error shall be signaled if x is not a number (error-id. <span class="error_id">domain-error</span>).</p>
@@ -3626,7 +3626,7 @@ one mantissa digit after the decimal point.
 </pre>
             
             <div id="f_truncate" class="definition-function">
-                (truncate x) → <span class="class">integer</span>
+                (<span class="operator">truncate</span> <span class="arg">x</span>) → <span class="class">integer</span>
             </div>
             
             <p>Returns the integer between 0 and x (inclusive) that is nearest to x. That is, x is truncated towards zero. An error shall be signaled if x is not a number (error-id. <span class="error_id">domain-error</span>).</p>
@@ -3646,7 +3646,7 @@ one mantissa digit after the decimal point.
 </pre>
             
             <div id="f_round" class="definition-function">
-                (round x) → <span class="class">integer</span>
+                (<span class="operator">round</span> <span class="arg">x</span>) → <span class="class">integer</span>
             </div>
             
             <p>Returns the integer nearest to x. If x is exactly halfway between two integers, the even one is chosen. An error shall be signaled if x is not a number (error-id. <span class="error_id">domain-error</span>).</p>
@@ -3691,7 +3691,7 @@ one mantissa digit after the decimal point.
             <p>where s is either <q>+</q> or <q>-</q>.</p>
             <div class="note">Note: In ISLISP, there is no variable that controls the reader. Thus the above notations are exactly the notations for integers.</div>
             <div id="f_integerp" class="definition-function">
-                (integerp obj) → boolean
+                (<span class="operator">integerp</span> <span class="arg">obj</span>) → <span class="term1">boolean</span>
             </div>
             
             <p>Returns t if obj is an integer (instance of class <span class="class">integer</span>); otherwise, returns nil. obj may be any ISLISP object.</p>
@@ -3707,10 +3707,10 @@ one mantissa digit after the decimal point.
 </pre>
             
             <div id="f_div" class="definition-function">
-                (div z<sub>1</sub> z<sub>2</sub>) → <span class="class">integer</span>
+                (<span class="operator">div</span> <span class="arg">z<sub>1</sub></span> <span class="arg">z<sub>2</sub>)</span> → <span class="class">integer</span>
             </div>
             <div id="f_mod" class="definition-function">
-                (mod z<sub>1</sub> z<sub>2</sub>) → <span class="class">integer</span>
+                (<span class="operator">mod</span> <span class="arg">z<sub>1</sub></span> <span class="arg">z<sub>2</sub>)</span> → <span class="class">integer</span>
             </div>
             
             <p>div returns the greatest integer less than or equal to the quotient of z<sub>1</sub> and z<sub>2</sub>. An error shall be signaled if z<sub>2</sub> is zero (error-id. <span class="error_id">division-by-zero</span>).</p>
@@ -3760,7 +3760,7 @@ one mantissa digit after the decimal point.
 </pre>
             
             <div id="f_gcd" class="definition-function">
-                (gcd z<sub>1</sub> z<sub>2</sub>) → <span class="class">integer</span>
+                (<span class="operator">gcd</span> <span class="arg">z<sub>1</sub></span> <span class="arg">z<sub>2</sub></span>) → <span class="class">integer</span>
             </div>
             
             <p>gcd returns the greatest common divisor of its integer arguments. The result is a non-negative integer. For nonzero arguments the greatest common divisor is the largest integer z such that z<sub>1</sub> and z<sub>2</sub> are integral multiples of z.</p>
@@ -3782,7 +3782,7 @@ one mantissa digit after the decimal point.
 </pre>
             
             <div id="f_lcm" class="definition-function">
-                (lcm z<sub>1</sub> z<sub>2</sub>) → <span class="class">integer</span>
+                (<span class="operator">lcm</span> <span class="arg">z<sub>1</sub></span> <span class="arg">z<sub>2</sub></span>) → <span class="class">integer</span>
             </div>
             <p>lcm returns the least common multiple of its integer arguments. gcd and lcm satisfies:</p>
 <pre>
@@ -3808,7 +3808,7 @@ one mantissa digit after the decimal point.
 </pre>
             
             <div id="f_isqrt" class="definition-function">
-                (isqrt z) → <span class="class">integer</span>
+                (<span class="operator">isqrt</span> <span class="arg">z</span>) → <span class="class">integer</span>
             </div>
             
             <p>Returns the greatest integer less than or equal to the exact positive square root of z . An error shall be signaled if z is not a non-negative integer (error-id. <span class="error_id">domain-error</span>).</p>
@@ -3842,7 +3842,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             <p>where char1 &lt; char2 means that (char&lt; char1 char2) is true.</p>
             
             <div id="f_characterp" class="definition-function">
-                (characterp obj) → boolean
+                (<span class="operator">characterp</span> <span class="arg">obj</span>) → boolean
             </div>
             
             <p>Returns t if obj is a character (instance of class <span class="class">character</span>); otherwise, returns nil. obj may be any ISLISP object.</p>
@@ -3856,22 +3856,22 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 </pre>
             
             <div id="f_char_eq" class="definition-function">
-                (char= char<sub>1</sub> char<sub>2</sub>) → boolean
+                (<span class="operator">char=</span> <span class="arg">char<sub>1</sub></span> <span class="arg">char<sub>2</sub></span>) → <span class="term1">boolean</span>
             </div>
             <div id="f_char_neq" class="definition-function">
-                (char/= char<sub>1</sub> char<sub>2</sub>) → boolean
+                (<span class="operator">char/=</span> <span class="arg">char<sub>1</sub></span> <span class="arg">char<sub>2</sub></span>) → <span class="term1">boolean</span>
             </div>
             <div id="f_char_lt" class="definition-function">
-                (char&lt; char<sub>1</sub> char<sub>2</sub>) → boolean
+                (<span class="operator">char&lt;</span> <span class="arg">char<sub>1</sub></span> <span class="arg">char<sub>2</sub>)</span> → <span class="term1">boolean</span>
             </div>
             <div id="f_char_gt" class="definition-function">
-                (char&gt; char<sub>1</sub> char<sub>2</sub>) → boolean
+                (<span class="operator">char&gt;</span> <span class="arg">char<sub>1</sub></span> <span class="arg">char<sub>2</sub></span>) → <span class="term1">boolean</span>
             </div>
             <div id="f_char_lteq" class="definition-function">
-                (char&lt;= char<sub>1</sub> char<sub>2</sub>) → boolean
+                (<span class="operator">char&lt;=</span> <span class="arg">char<sub>1</sub></span> <span class="arg">char<sub>2</sub></span>) → <span class="term1">boolean</span>
             </div>
             <div id="f_char_gteq" class="definition-function">
-                (char&gt;= char<sub>1</sub> char<sub>2</sub>) → boolean
+                (<span class="operator">char&gt;=</span> <span class="arg">char<sub>1</sub></span> <span class="arg">char<sub>2</sub></span>) → <span class="term1">boolean</span>
             </div>
             
             <p>The function char= tests whether char<sub>1</sub> is the same character as char<sub>2</sub>. The function char&lt; tests whether char<sub>1</sub> is less than char<sub>2</sub>. The function char&lt;= tests whether char<sub>1</sub> is less than or equal to char<sub>2</sub>. The ordering used is the partial order defined above, extended to a total order on all characters in an <a href="#td_implementation_defined">implementation-defined</a> manner. If the test is satisfied, t is returned; otherwise, nil is returned.</p>
@@ -3931,7 +3931,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 (x<sub>1</sub> x<sub>2</sub> … x<sub>n−1</sub>)
 </pre>
             <div id="f_consp" class="definition-function">
-                (consp obj) → boolean
+                (<span class="operator">consp</span> <span class="arg">obj</span>) → <span class="term1">boolean</span>
             </div>
             
             <p>Returns t if obj is a cons (instance of class <span class="class">cons</span>); otherwise, returns nil. obj may be any ISLISP object.</p>
@@ -3946,7 +3946,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 </pre>
             
             <div id="f_cons" class="definition-function">
-                (cons obj<sub>1</sub> obj<sub>2</sub>) → <span class="class">cons</span>
+                (<span class="operator">cons</span> <span class="arg">obj<sub>1</sub></span> <span class="arg">obj<sub>2</sub></span>) → <span class="class">cons</span>
             </div>
             
             <p>This function builds a cons from two objects, with obj<sub>1</sub> as its car (or `left') part and with obj2 as its cdr (or `right') part. An error shall be signaled if the requested cons cannot be allocated (error-id. <span class="error_id">cannot-create-cons</span>). Both obj1 and obj2 may be any ISLISP object.</p>
@@ -3964,7 +3964,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 </pre>
             
             <div id="f_car" class="definition-function">
-                (car cons) → <span class="class">object</span>
+                (<span class="operator">car</span> <span class="arg">cons</span>) → <span class="class">object</span>
             </div>
             
             <p>The function car returns the left component of the cons. An error shall be signaled if cons is not a cons (error-id. <span class="error_id">domain-error</span>).</p>
@@ -3980,7 +3980,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 </pre>
             
             <div id="f_cdr" class="definition-function">
-                (cdr cons) → <span class="class">object</span>
+                (<span class="operator">cdr</span> <span class="arg">cons</span>) → <span class="class">object</span>
             </div>
             
             <p>The function cdr returns the right component of the cons. An error shall be signaled if cons is not a cons (error-id. <span class="error_id">domain-error</span>).</p>
@@ -3994,11 +3994,11 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 </pre>
             
             <div class="definition-special-form">
-                (setf (car cons) obj) → <span class="class">object</span>
+                (<span class="operator">setf</span> (<span class="operator">car</span> <span class="arg">cons</span>) <span class="arg">obj</span>) → <span class="class">object</span>
             </div>
             
             <div id="f_set_car" class="definition-function">
-                (set-car obj cons) → <span class="class">object</span>
+                (<span class="operator">set-car</span> <span class="arg">obj</span> <span class="arg">cons</span>) → <span class="class">object</span>
             </div>
             
             <p>Updates the left component of cons with obj. The returned value is obj . An error shall be signaled if cons is not a cons (error-id. <span class="error_id">domain-error</span>). obj may be any ISLISP object.</p>
@@ -4012,11 +4012,11 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 </pre>
             
             <div id="s_setf_cdr" class="definition-special-form">
-                (setf (cdr cons) obj) → <span class="class">object</span>
+                (<span class="operator">setf</span> (<span class="operator">cdr</span> <span class="arg">cons</span>) <span class="arg">obj</span>) → <span class="class">object</span>
             </div>
             
             <div id="f_set_cdr" class="definition-function">
-                (set-cdr obj cons) → <span class="class">object</span>
+                (<span class="operator">set-cdr</span> <span class="arg">obj</span> <span class="arg">cons</span>) → <span class="class">object</span>
             </div>
             
             <p>Updates the right component of cons with obj. The returned value is obj . An error shall be signaled if cons is not a cons (error-id. <span class="error_id">domain-error</span>). obj may be any ISLISP object.</p>
@@ -4033,7 +4033,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             
             <p>This class consists of only one element, the object called nil. This object is the false value in boolean expressions. The length of the sequence nil is 0.</p>
             <div id="f_null" class="definition-function">
-                (null obj) → boolean
+                (<span class="operator">null</span> <span class="arg">obj</span>) → boolean
             </div>
             
             <p><span title="If the naming conventions were strictly observed, null would be named nullp; it is named null for historical and compatibility reasons.">Returns t if obj is nil; otherwise, returns nil</span> obj may be any ISLISP object.</p>
@@ -4049,7 +4049,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             <h4 id="list_operations">List operations</h4>
             
             <div id="f_listp" class="definition-function">
-                (listp obj) → boolean
+                (<span class="operator">listp</span> <span class="arg">obj</span>) → boolean
             </div>
             
             <p>Returns t if obj is a list (instance of class <span class="class">list</span>); otherwise, returns nil. obj may be any ISLISP object.</p>
