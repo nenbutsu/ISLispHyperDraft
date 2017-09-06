@@ -238,3 +238,12 @@ pre {
     padding: 0 0.4em;
     font-family: monospace;
 }
+
+.term {
+    font-style: italic;
+    font-weight: bold;
+}
+
+.term1 {
+    font-style: italic;
+}
