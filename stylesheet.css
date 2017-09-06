@@ -67,6 +67,11 @@ q:after {
     content: ">";
 }
 
+.class {
+    font-style: italic;
+}
+
+
 h2:before {
     margin: 0.5em;
     width: 2em;
@@ -115,7 +120,7 @@ h6:before {
 .definition-syntax,
 .definition-constant,
 .definition-defining {
-    border: black solid thin;
+    border: black outset thin;
 }
 
 .definition-special::after,
@@ -246,4 +251,24 @@ pre {
 
 .term1 {
     font-style: italic;
+}
+
+.error_id {
+    font-style: italic;
+}
+
+.symbol {
+    font-family: monospace;
+}
+
+.latin {
+    font-style: italic;
+}
+
+.arg {
+    font-style: italic;
+}
+
+.operator {
+    font-weight: bold;
 }
