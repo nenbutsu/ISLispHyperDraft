@@ -1658,7 +1658,7 @@ x               ⇒ 0
 </pre>
             
             <div id="s_setf" class="definition-special">
-                (setf place form) → <span class="class">object</span>
+                (<span class="operator">setf</span> <span class="arg">place</span> <span class="arg">form</span>) → <span class="class">object</span>
             </div>
             
             <p>This macro is used for generalized assignment.</p>
@@ -1720,7 +1720,7 @@ In the cons x, the car now is 2.
 </pre>
             
             <div id="s_let" class="definition-special">
-                (let ((var form)*) body-form*) → <span class="class">object</span>
+                (<span class="operator">let</span> ((<span class="arg">var</span> <span class="arg">form</span>)*) <span class="arg">body-form</span>*) → <span class="class">object</span>
             </div>
             
             <p>The let special form is used to define a scope for a group of identifiers for a sequence of forms body-form* (collectively referred to as the body). The list of pairs (var form)* is called the let variable list. The scope of the identifier var is the body.</p>
@@ -1767,7 +1767,7 @@ In the cons x, the car now is 2.
 </pre>
             
             <div id="s_let_s" class="definition-special">
-                (let* ((var form)*) body-form*) → <span class="class">object</span>
+                (<span class="operator">let*</span> ((<span class="arg">var</span> <span class="arg">form</span>)*) <span class="arg">body-form</span>*) → <span class="class">object</span>
             </div>
             
             <p>The let* form is used to define a scope for a group of identifiers for a sequence of forms body-form* (collectively referred to as the body). The first subform (the let* variable list) is a list of pairs (var form). The scope of an identifier var is the body along with all form forms following the pair (var form) in the let* variable list.</p>
@@ -1812,17 +1812,17 @@ In the cons x, the car now is 2.
             <p>The value of a dynamic variable can be accessed by (dynamic var).</p>
             
             <div id="s_dynamic" class="definition-special">
-                (dynamic var) → <span class="class">object</span>
+                (<span class="operator">dynamic</span> <span class="arg">var</span>) → <span class="class">object</span>
             </div>
             
             <p>This special form denotes a reference to the identifier denoting a dynamic variable. This special form is not allowed in the scope of a definition of var which is not done by defdynamic or dynamic-let.</p>
             <p>During activation, the current dynamic binding of the variable var is returned that was established most recently and is still in effect. An error shall be signaled if such a binding does not exist (error-id. <span class="error_id">unbound-variable</span>).</p>
             
             <div id="s_setf_dynamic" class="definition-special-form">
-                (setf (dynamic var) form) → <span class="class">object</span>
+                (<span class="operator">setf</span> (<span class="operator">dynamic</span> <span class="arg">var</span>) <span class="arg">form</span>) → <span class="class">object</span>
             </div>
             <div id="s_set_dynamic" class="definition-special">
-                (set-dynamic form var) → <span class="class">object</span>
+                (<span class="operator">set-dynamic</span> <span class="arg">form</span> <span class="arg">var</span>) → <span class="class">object</span>
             </div>
             
             <p>This special form denotes an assignment to a dynamic variable. This form can appear anywhere that (dynamic var) can appear.</p>
@@ -1830,7 +1830,7 @@ In the cons x, the car now is 2.
             <p>An error shall be signaled if var has no dynamic value (error-id. <span class="error_id">unbound-variable</span>). setf of dynamic can be used only for modifying bindings, and not for establishing them.
             </p>
             <div id="s_dynamic_let" class="definition-special">
-                (dynamic-let ((var form)*) body-form*) → <span class="class">object</span>
+                (<span class="operator">dynamic-let</span> ((<span class="arg">var</span> <span class="arg">form</span>)*) <span class="arg">body-form</span>*) → <span class="class">object</span>
             </div>
             
             <p>The dynamic-let special form is used to establish dynamic variable bindings. The first subform (the dynamic-let variable list) is a list of pairs (var form). The scope of an identifier var defined by dynamic-let is the current toplevel scope. The extent of the bindings of each var is the extent of the body of the dynamic-let. The dynamic-let special form establishes dynamic variables for all vars.</p>
@@ -1849,7 +1849,7 @@ In the cons x, the car now is 2.
             
             <h4 id="conditional_expressions">Conditional expressions</h4>
             <div id="s_if" class="definition-special">
-                (if test-form then-form [else-form]) → <span class="class">object</span>
+                (<span class="operator">if</span> <span class="arg">test-form</span> <span class="arg">then-form</span> [<span class="arg">else-form</span>]) → <span class="class">object</span>
             </div>
             
             <p>The test-form is evaluated. If its result is anything non-nil, the then-form is evaluated and its value is returned; otherwise (if the test-form returned nil), the else-form is evaluated and its value is returned.</p>
@@ -1869,7 +1869,7 @@ In the cons x, the car now is 2.
 </pre>
             
             <div id="s_cond" class="definition-special">
-                (cond (test form*)*) → <span class="class">object</span>
+                (<span class="operator">cond</span> (<span class="arg">test</span> <span class="arg">form</span>*)*) → <span class="class">object</span>
             </div>
             
             <p>Executing the prepared cond, the clauses (test form*) are scanned sequentially and in each case the test is evaluated; when a test delivers a non-nil value the scanning process stops and all forms associated with the corresponding clause are sequentially evaluated and the value of the last one is returned. If no test is true, then nil is returned. If no form exists for the successful test then the value of this test is returned.</p>
@@ -1926,10 +1926,10 @@ In the cons x, the car now is 2.
 </pre>
             
             <div id="s_case" class="definition-special">
-                (case keyform ((key*) form*)* [(t form*)]) → <span class="class">object</span>
+                (<span class="operator">case</span> <span class="arg">keyform</span> ((<span class="arg">key</span>*) <span class="arg">form</span>*)* [(<span class="symbol">t</span> <span class="arg">form</span>*)]) → <span class="class">object</span>
             </div>
             <div id="s_case_using" class="definition-special">
-                (case-using predform keyform ((key*) form*)* [(t form*)]) → <span class="class">object</span>
+                (<span class="operator">case-using</span> <span class="arg">predform</span> <span class="arg">keyform</span> ((<span class="arg">key</span>*) <span class="arg">form</span>*)* [(<span class="symbol">t</span> <span class="arg">form</span>*)]) → <span class="class">object</span>
             </div>
             
             <p>The case and case-using special forms, called case forms, provide a mechanism to execute a matching clause from a series of clauses based on the value of a dispatching form keyform.</p>
@@ -1968,7 +1968,7 @@ In the cons x, the car now is 2.
             <h4 id="sequencing_forms">Sequencing forms</h4>
             
             <div id="s_progn" class="definition-special">
-                (progn form*) → <span class="class">object</span>
+                (<span class="operator">progn</span> <span class="arg">form</span>*) → <span class="class">object</span>
             </div>
             
             <p>This special form allows a series of forms to be evaluated, where normally only one could be used.</p>
@@ -1992,7 +1992,7 @@ prints  4 plus 1 equals 5
             <h4 id="iteration">Iteration</h4>
             
             <div id="s_while" class="definition-special">
-                (while test-form body-form*) → <span class="class">null</span>
+                (<span class="operator">while</span> <span class="arg">test-form</span> <span class="arg">body-form</span>*) → <span class="class">null</span>
             </div>
             
             <p>Iterates while the test-form returns a true value. Specifically:</p>
@@ -2013,7 +2013,7 @@ prints  4 plus 1 equals 5
 </pre>
             
             <div id="s_for" class="definition-special">
-                (for (iteration-spec*) (end-test result *) form*) → <span class="class">object</span>
+                (<span class="operator">for</span> (<span class="arg">iteration-spec</span>*) (<span class="arg">end-test</span> <span class="arg">result*</span>) <span class="arg">form</span>*) → <span class="class">object</span>
             </div>
             
 <pre>
@@ -2078,10 +2078,10 @@ iteration-spec ::= (var init [step])
             <p>When a non-local exit is initiated, any potential destination that was established more recently than the destination to which control is being transferred is immediately considered invalid.</p>
             
             <div id="s_block" class="definition-special">
-                (block name form*) → <span class="class">object</span>
+                (<span class="operator">block</span> <span class="arg">name</span> <span class="arg">form</span>*) → <span class="class">object</span>
             </div>
             <div id="s_return_from" class="definition-special">
-                (return-from name result-form) transfers control and data
+                (<span class="operator">return-from</span> <span class="arg">name</span> <span class="arg">result-form</span> <span class="comment">transfers control and data</span>
             </div>
             
             <p>The block special form executes each form sequentially from left to right. If the last form exits normally, whatever it returns is returned by the block form.</p>
@@ -2135,10 +2135,10 @@ iteration-spec ::= (var init [step])
 </pre>
             
             <div id="s_catch" class="definition-special">
-                (catch tag-form form*) → <span class="class">object</span>
+                (<span class="operator">catch</span> <span class="arg">tag-form</span> <span class="arg">form</span>*) → <span class="class">object</span>
             </div>
             <div id="s_throw" class="definition-special">
-                (throw tag-form result-form) transfers control and data
+                (<span class="operator">throw</span> <span class="arg">tag-form</span> <span class="arg">result-form</span>) <span class="comment">transfers control and data</span>
             </div>
             
             <p id="dynamic_exits">The special forms catch and throw provide a facility for programming of structured non-local dynamic exits. A catch form and a throw form are said to correspond if the tag-form of the catch and the tag-form of the throw evaluate to the same object, a catch tag. A catch tag may be any object other than a number or a character; the comparison of catch tags uses eq.</p>
@@ -2163,10 +2163,10 @@ iteration-spec ::= (var init [step])
 (foo '(1 2 a 4)) ⇒ 0
 </pre>
             <div id="s_tagbody" class="definition-special">
-                (tagbody {tagbody-tag | form}*) → <span class="class">object</span>
+                (<span class="operator">tagbody</span> {<span class="arg">tagbody-tag</span> | <span class="arg">form</span>}*) → <span class="class">object</span>
             </div>
             <div id="s_go" class="definition-special">
-                (go tagbody-tag) transfers control
+                (<span class="operator">go</span> <span class="arg">tagbody-tag</span>) <span class="comment">transfers control</span>
             </div>
             
             <p>tagbody executes the forms sequentially from left to right, discarding their values. If the execution of the last form completes normally, nil is returned by the tagbody special form.</p>
@@ -2199,7 +2199,7 @@ iteration-spec ::= (var init [step])
             
             <h5 id="assuring_data_consistency">Assuring data consistency during non-local exits</h5>
             <div id="s_unwind_protect" class="definition-special">
-                (unwind-protect form cleanup-form*) → <span class="class">object</span>
+                (<span class="operator">unwind-protect</span> <span class="arg">form</span> <span class="arg">cleanup-form</span>*) → <span class="class">object</span>
             </div>
             
             <p>unwind-protect first evaluates form. Evaluation of the cleanup-forms always occurs, regardless of whether the exit is normal or non-local.</p>
@@ -2276,7 +2276,7 @@ iteration-spec ::= (var init [step])
             </ul>
             
             <div id="def_defclass" class="definition-defining">
-                (defclass class-name (sc-name*) (slot-spec*) class-opt*) → <span class="class">symbol</span>
+                (<span class="operator">defclass</span> <span class="arg">class-name</span> (<span class="arg">sc-name</span>*) (<span class="arg">slot-spec</span>*) <span class="arg">class-opt</span>*) → <span class="class">symbol</span>
             </div>
 <pre>
 Where:
@@ -2376,7 +2376,7 @@ abstract-flag        ::= t | nil
             <p>Like an ordinary ISLISP function, a generic function takes arguments, performs a series of operations, and returns a value. An ordinary function has a single body of code that is always executed when the function is called. A generic function has a set of bodies of code of which a non-empty subset is selected for execution. The selected bodies of code and the manner of their combination are determined by the classes of the arguments to the generic function and by its method combination type.</p>
             
             <div id="f_generic_function_p" class="definition-function">
-                (generic-function-p obj) → boolean
+                (<span class="operator">generic-function-p</span> <span class="arg">obj</span>) → <span class="term1">boolean</span>
             </div>
             
             <p>Returns t if obj is a generic function; otherwise, returns nil. obj may be any ISLISP object.</p>
