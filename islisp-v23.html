@@ -1229,7 +1229,7 @@ today                          ⇒ wednesday
 </pre>
             
             <div id="def_defun" class="definition-defining">
-                (defun function-name lambda-list form*) → <span class="class">symbol</span>
+                (<span class="operator">defun</span> <span class="arg">function-name</span> <span class="arg">lambda-list</span> <span class="arg">form</span>*) → <span class="class">symbol</span>
             </div>
             
             <p>The defun-form defines function-name as an identifier in the function namespace; function-name is bound to a function object equivalent to (lambda lambda-list form*).</p>
@@ -1250,10 +1250,10 @@ today                          ⇒ wednesday
             <p>Like boolean functions, the and and or special forms return truth values; however, these truth values are nil when the test is not satisfied and a non-nil value otherwise. The result of and and or are quasi-booleans.</p>
             
             <div id="c_t" class="definition-constant">
-                t → <span class="class">symbol</span>
+              <span class="symbol">t</span> → <span class="class">symbol</span>
             </div>
             <div id="c_nil" class="definition-constant">
-                nil → <span class="class">null</span>
+              <span class="symbol">nil</span> → <span class="class">null</span>
             </div>
             <p>t is a named constant whose value is the symbol t itself. nil is a named constant whose value is the symbol nil itself.</p>
             
@@ -1287,10 +1287,10 @@ today                          ⇒ wednesday
             <h4 id="equality">Equality</h4>
             
             <div id="f_eq" class="definition-function">
-                (eq obj<sub>1</sub> obj<sub>2</sub>) → boolean
+                (<span class="operator">eq</span> <span class="arg">obj<sub>1</sub></span> <span class="arg">obj<sub>2</sub>)</span> → <span class="term1">boolean</span>
             </div>
             <div id="f_eql" class="definition-function">
-                (eql obj<sub>1</sub> obj<sub>2</sub>) → boolean
+                (<span class="operator">eql</span> <span class="arg">obj<sub>1</sub></span> <span class="arg">obj<sub>2</sub></span>) → <span class="term1">boolean</span>
             </div>
             
             <p>eq and eql test whether obj<sub>1</sub> and obj<sub>2</sub> are same identical object. They return t if the objects are the same; otherwise, they return nil. Two objects are the same if there is no operation that could distinguish them (without modifying them), and if modifying one would modify the other the same way.</p>
@@ -1413,7 +1413,7 @@ today                          ⇒ wednesday
 </pre>
             
             <div id="f_equal" class="definition-function">
-                (equal obj<sub>1</sub> obj<sub>2</sub>) → boolean
+                (<span class="operator">equal</span> <span class="arg">obj<sub>1</sub></span> <span class="arg">obj<sub>2</sub>)</span> → <span class="term1">boolean</span>
             </div>
             
             <p>This function tests whether obj<sub>1</sub> and obj<sub>2</sub> are isomorphic—<span class="latin">i.e.</span>, whether obj1 and obj2 denote the same structure with equivalent values. equal returns t if the test was satisfied, and nil if not. Specifically:</p>
@@ -1471,7 +1471,7 @@ today                          ⇒ wednesday
             
             <h4 id="logical_connectives">Logical connectives</h4>
             <div id="f_not" class="definition-function">
-                (not obj) → boolean
+                (<span class="operator">not</span> <span class="arg">obj</span>) → <span class="term1">boolean</span>
             </div>
             <p>This predicate is the logical “not” (or “¬”). It returns t if obj is nil and nil otherwise. obj may be any ISLISP object.</p>
 <pre class="example">
@@ -1491,7 +1491,7 @@ today                          ⇒ wednesday
 </pre>
             
             <div id="s_and" class="definition-sepcial">
-                (and form*) → <span class="class">object</span>
+                (<span class="operator">and</span> <span class="arg">form</span>*) → <span class="class">object</span>
             </div>
             
             <p>and is the sequential logical “and” (or “∧”). forms are evaluated from left to right until either one of them evaluates to nil or else none are left. If one of them evaluates to nil, then nil is returned from the and; otherwise, the value of the last evaluated form is returned. The form and is equivalent to the following:</p>
@@ -1530,7 +1530,7 @@ today                          ⇒ wednesday
 </pre>
             
             <div id="s_or" class="definition-special">
-                (or form*) → <span class="class">object</span>
+                (<span class="operator">or</span> <span class="arg">form</span>*) → <span class="class">object</span>
             </div>
             
             <p>or is the sequential logical <q>or</q> (or <q>∨</q>). forms are evaluated from left to right until either one of them evaluates to a non-nil value or else none are left. If one of them evaluates to a non-nil value, then this non-nil value is returned, otherwise nil is returned. The form or is equivalent to the following:</p>
@@ -1558,7 +1558,7 @@ where var does not occur in form<sub>2</sub> … form<sub>n</sub>
             <h3 id="control_structure">Control structure</h3>
             <h4 id="constants">Constants</h4>
             
-            <div class="definition-syntax">constant → <span class="class">object</span></div>
+            <div class="definition-syntax"><span class="syntax">constant</span> → <span class="class">object</span></div>
             
             <p>There are three kinds of constants: literals, quoted expressions, and named constants. Quoted expressions are described below.</p>
             <p>The consequences are undefined if an attempt is made to alter the value of a constant.</p>
@@ -1576,10 +1576,10 @@ where var does not occur in form<sub>2</sub> … form<sub>n</sub>
 </pre>
             
             <div id="s_quote" class="definition-special">
-                (quote obj) → <span class="class">object</span>
+                (<span class="operator">quote</span> <span class="arg">obj</span>) → <span class="class">object</span>
             </div>
             <div class="definition-syntax">
-                'obj → <span class="class">object</span>
+                '<span class="syntax">obj</span> → <span class="class">object</span>
             </div>
             
             <p>A quoted expression denotes a reference to an object. This notation is used to include any object in an ISLISP text.</p>
@@ -1622,7 +1622,7 @@ where var does not occur in form<sub>2</sub> … form<sub>n</sub>
                 <li><a href="#s_let_s">let*</a></li>
             </ul>
             <div class="definition-syntax">
-                var → <span class="class">object</span>
+                <span class="syntax">var</span> → <span class="class">object</span>
             </div>
             <p>The value of var is the object associated with var in its variable binding.</p>
 <pre class="example">
@@ -1636,7 +1636,7 @@ x               ⇒ 0
 </pre>
             
             <div id="s_setq" class="definition-special">
-                (setq var form) → <span class="class">object</span>
+                (<span class="operator">setq</span> <span class="arg">var</span> <span class="arg">form</span>) → <span class="class">object</span>
             </div>
             
             <p>This form represents an assignment to the variable denoted by the identifier. In consequence, the identifier may designate a different object than before, the value of form.</p>

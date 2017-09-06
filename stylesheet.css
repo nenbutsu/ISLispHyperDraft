@@ -272,3 +272,7 @@ pre {
 .operator {
     font-weight: bold;
 }
+
+.syntax {
+    font-style: italic;
+}
