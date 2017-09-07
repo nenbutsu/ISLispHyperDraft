@@ -142,7 +142,7 @@
                     <li><a href="#unnamed_symbols">Unnamed symbols</a></li>
                 </ol>
             </li>
-            <li><a href="#number_class_1">Number class</a>
+            <li><a href="#number_class">Number class</a>
                 <ol>
                     <li><a href="#number_class_2">Number class</a></li>
                     <li><a href="#float_class">Float class</a></li>
@@ -266,8 +266,8 @@
         
         <p>The following referenced documents are indispensable for the application of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
         <ul>
-            <li>ISO/IEC TR 10034:1990, Guidelines for the preparation of conformity clauses in programming language standards.</li>
-            <li>IEEE standard 754-1985. Standard for binary floating point arithmetic.</li>
+            <li>ISO/IEC TR 10034:1990, <span class="standard_title">Guidelines for the preparation of conformity clauses in programming language standards.</span></li>
+            <li>IEEE standard 754-1985. <span class="standard_title">Standard for binary floating point arithmetic.</span></li>
         </ul>
         
         <h3 id="compliance">Compliance of ISLisp processors and text</h3>
@@ -275,7 +275,7 @@
         <p>An ISLISP processor complying with the requirements of this document shall</p>
         <ul>
             <li>accept and implement all features of ISLISP specified in this document.</li>
-            <li>reject any text that contains any textual usage which this document explicitly defines to be a violation (see §9).</li>
+            <li>reject any text that contains any textual usage which this document explicitly defines to be a violation (see <a href="#errors">§9</a>).</li>
             <li>be accompanied by a document that provides the definitions of all <a href="#td_implementation_defined">implementation-defined</a> features.</li>
             <li>be accompanied by a document that separately describes any features accepted by the processor that are not specified in this document; these extensions shall be described as being <q>extensions to ISLISP as
                 specified by ISLISP Working Draft 23.0.</q></li>
@@ -459,61 +459,61 @@
             <p>Notes, appearing as Note: note-text, in this document have no effect on the language. They are for better understanding by the human reader.</p>
             <p>Regarding the pattern variables and the extensions of above, the following conventions are also adopted:</p>
             <dl>
-                <dt>term+</dt>
+                <dt><span class="arg">term</span>+</dt>
                 <dd>denotes one or more occurrences of term;</dd>
-                <dt>term*</dt>
+                <dt><span class="arg">term</span>*</dt>
                 <dd>denotes zero or more occurrences of term;</dd>
-                <dt>[term]</dt>
+                <dt>[<span class="arg">term</span>]</dt>
                 <dd>denotes at most one occurrence of term, commonly one says that term is optional;</dd>
-                <dt>{term<sub>1</sub> term<sub>2</sub> …}</dt>
+                <dt>{<span class="arg">term<sub>1</sub></span> <span class="arg">term<sub>2</sub></span> …}</dt>
                 <dd>denotes grouping of terms.</dd>
-                <dt>term<sub>1</sub> | term<sub>2</sub> | …</dt>
+                <dt><span class="arg">term<sub>1</sub></span> | <span class="arg">term<sub>2</sub></span> | …</dt>
                 <dd>denotes grouping of alternative terms.</dd>
             </dl>
             <p>The following naming conventions are used to denote forms whose arguments obey the respective class restrictions:</p>
             <dl>
-                <dt>array, array<sub>1</sub> , … array<sub>j</sub> , …</dt>
+                <dt><span class="arg">array</span>, <span class="arg">array<sub>1</sub></span> , … <span class="arg">array<sub>j</sub></span> , …</dt>
                 <dd><span class="class">basic-array</span></dd>
-                <dt>cons, cons<sub>1</sub> , … cons<sub>j</sub> , …</dt>
+                <dt><span class="arg">cons</span>, <span class="arg">cons<sub>1</sub></span> , … <span class="arg">cons<sub>j</sub></span> , …</dt>
                 <dd><span class="class">cons</span></dd>
-                <dt>list, list<sub>1</sub> , … list<sub>j</sub> , …</dt>
+                <dt><span class="arg">list</span>, <span class="arg">list<sub>1</sub></span> , … <span class="arg">list<sub>j</sub></span> , …</dt>
                 <dd><span class="class">list</span></dd>
-                <dt>obj , obj<sub>1</sub> , … obj<sub>j</sub> , …</dt>
+                <dt><span class="arg">obj</span> , <span class="arg">obj<sub>1</sub></span> , … <span class="arg">obj<sub>j</sub></span> , …</dt>
                 <dd><span class="class">object</span></dd>
-                <dt>sequence, sequence<sub>1</sub> , … sequence<sub>j</sub> , …</dt>
-                <dd><span class="class">basic-vector</span> or <span class="class">list</span> (see §25)</dd>
-                <dt>stream, stream<sub>1</sub> , … stream<sub>j</sub> , …</dt>
+                <dt><span class="arg">sequence</span>, <span class="arg">sequence<sub>1</sub></span> , … <span class="arg">sequence<sub>j</sub></span> , …</dt>
+                <dd><span class="class">basic-vector</span> or <span class="class">list</span> (see <a href="#sequence_functions">§25</a>)</dd>
+                <dt><span class="arg">stream</span>, <span class="arg">stream<sub>1</sub></span> , … <span class="arg">stream<sub>j</sub></span> , …</dt>
                 <dd><span class="class">stream</span></dd>
-                <dt>string, string<sub>1</sub> , … string<sub>j</sub> , …</dt>
+                <dt><span class="arg">string</span>, <span class="arg">string<sub>1</sub></span> , … <span class="arg">string<sub>j</sub></span> , …</dt>
                 <dd><span class="class">string</span></dd>
-                <dt>char , char<sub>1</sub> , … char<sub>j</sub> , …</dt>
+                <dt><span class="arg">char</span> , <span class="arg">char<sub>1</sub></span> , … <span class="arg">char<sub>j</sub></span> , …</dt>
                 <dd><span class="class">character</span></dd>
-                <dt>function, function<sub>1</sub> , … function<sub>j</sub> , …</dt>
+                <dt><span class="arg">function</span>, <span class="arg">function<sub>1</sub></span> , … <span class="arg">function<sub>j</sub></span> , …</dt>
                 <dd><span class="class">function</span></dd>
-                <dt>class, class<sub>1</sub> , … class<sub>j</sub> , …</dt>
+                <dt><span class="arg">class</span>, <span class="arg">class<sub>1</sub></span> , … <span class="arg">class<sub>j</sub></span> , …</dt>
                 <dd><span class="class">class</span></dd>
-                <dt>symbol , symbol<sub>1</sub> , … symbol<sub>j</sub> , …</dt>
+                <dt><span class="arg">symbol</span> , <span class="arg">symbol<sub>1</sub></span> , … <span class="arg">symbol<sub>j</sub></span> , …</dt>
                 <dd><span class="class">symbol</span></dd>
-                <dt>x , x<sub>1</sub> , … x<sub>j</sub> , …</dt>
+                <dt><span class="arg">x</span> , <span class="arg">x<sub>1</sub></span> , … <span class="arg">x<sub>j</sub></span> , …</dt>
                 <dd><span class="class">number</span></dd>
-                <dt>z , z<sub>1</sub> , … z<sub>j</sub> , …</dt>
+                <dt><span class="arg">z</span> , <span class="arg">z<sub>1</sub></span> , … <span class="arg">z<sub>j</sub></span> , …</dt>
                 <dd><span class="class">integer</span></dd>
             </dl>
             <p id="conventions">In this document the conventions detailed below are used, except where noted:</p>
             <dl>
-                <dt>-p</dt>
+                <dt class="symbol">-p</dt>
                 <dd>
                     <p>Predicates—sometimes called <q>boolean functions</q>—usually have names that end in a -p.</p>
-                    <p>Usually every class <span class="class">name</span> has a characteristic function, whose name is built as name-p if name is hyphenated (generic-function-p), or namep if name is not hyphenated (symbolp). Note that not all functions whose names end with <q>p</q> are predicates.</p>
+                    <p>Usually every class <span class="class">name</span> has a characteristic function, whose name is built as <span class="term1">name</span>-p if <span class="term1">name</span> is hyphenated (<span class="symbol">generic-function-p</span>), or <span class="term1">name</span>p if <span class="term1">name</span> is not hyphenated (<span class="symbol">symbolp</span>). Note that not all functions whose names end with <q><span class="symbol">p</span></q> are predicates.</p>
                 </dd>
-                <dt id="create_">create-</dt>
-                <dd>Usually a built-in class <span class="class">name</span> has a constructor function, which is called create-name.</dd>
-                <dt id="def_">def</dt>
+                <dt class="symbol" id="create_">create-</dt>
+                <dd>Usually a built-in class <span class="class">name</span> has a constructor function, which is called create-<span class="term1">name</span>.</dd>
+                <dt class="symbol" id="def_">def</dt>
                 <dd>This is used as the prefix of the defining operators.</dd>
-                <dt>set-</dt>
-                <dd>Within this document, any functions named set-name are writers for a place, for which there is a corresponding reader named name.</dd>
+                <dt class="symbol">set-</dt>
+                <dd>Within this document, any functions named set-<span class="term1">name</span> are writers for a place, for which there is a corresponding reader named <span class="term1">name</span>.</dd>
             </dl>
-            <p>For any kind of entity in the language, the phrase <q>entity-kind name</q> refers to the entity of kind entity-kind denoted by name. For example, the phrases <q>function name</q>, <q>constant name</q>, or <q>class name</q> respectively mean the function, constant, or class denoted by name.</p>
+            <p>For any kind of entity in the language, the phrase <q><span class="term1">entity-kind name</span></q> refers to the entity of kind <span class="term1">entity-kind</span> denoted by <span class="term1">name</span>. For example, the phrases <q>function <span class="term1">name</span></q>, <q>constant <span class="term1">name</span></q>, or <q>class <span class="term1">name</span></q> respectively mean the function, constant, or class denoted by <span class="term1">name</span>.</p>
             
             <h3 id="lexemes">Lexemes</h3>
             
@@ -528,19 +528,19 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
 <pre>
 ( ) , ' `
 </pre>
-            <p>The following character tuples (where n is a sequence of digits) are individual lexemes (see §12.7, §16, and §22.1):</p>
+            <p>The following character tuples (where <span class="syntax">n</span> is a sequence of digits) are individual lexemes (see <a href="#functions">§12.7</a>, <a href="#macros">§16</a>, and <a href="#array_classes">§22.1</a>):</p>
 <pre>
-#' #( ,@ #B #b #O #o #X #x #na #nA
+#' #( ,@ #B #b #O #o #X #x #<span class="syntax">n</span>a #<span class="syntax">n</span>A
 </pre>
             <p>
-                The textual representations of symbols (see §18), numbers (see §19), characters (see §20), and strings (see §24) are lexemes.
+                The textual representations of symbols (see <a href="#symbol_class">§18</a>), numbers (see <a href="#number_class">§19</a>), characters (see <a href="#character_class">§20</a>), and strings (see <a href="#string_class">§24</a>) are lexemes.
             </p>
             <p>\ (single escape) and | (multiple escape) are special characters. They may occur in some lexemes (identifiers and string literals).</p>
             <p>Other lexemes are separated by delimiters. Delimiters are separators along with the following characters:</p>
 <pre>
 ( ) ` , '
 </pre>
-            <p>The effect of delimiting is disestablished inside a string (see §24) or inside a corresponding pair of multiple escape characters (see §18) or for the character immediately following #\.</p>
+            <p>The effect of delimiting is disestablished inside a string (see <a href="#string_class">§24</a>) or inside a corresponding pair of multiple escape characters (see <a href="#symbol_class">§18</a>) or for the character immediately following #\.</p>
             
             <h4 id="separators">Separators</h4>
             <p>Separators are as follows: blank, comments, newline, and an <a href="#td_implementation_defined">implementation-defined</a> set of characters, (<span class="latin">e.g.</span>, tabs). Separators have no meaning and can be replaced by each other without changing the meaning of the ISLISP text.</p>
@@ -553,17 +553,17 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             <h3 id="textual_representation">Textual representation</h3>
             <p>The textual representation of an object is machine independent. The following are some of the textual representations of the ISLISP objects. This representation is readable by the read function. Lexemes are described in §6</p>
             <dl>
-                <dt id="null10">Null</dt>
+                <dt class="term2" id="null10">Null</dt>
                 <dd>The object nil is the only object whose class is <span class="class">null</span>. Upon input, it may be written as nil or (). It is <a href="#td_implementation_defined">implementation defined</a> whether nil prints as nil or ().</dd>
-                <dt id="list10">List</dt>
+                <dt class="term2" id="list10">List</dt>
                 <dd>Proper lists are those lists terminated by nil. Usually they are denoted as (obj<sub>1</sub> obj<sub>2</sub> ...obj<sub>n</sub>). A dotted list (<span class="latin">i.e.</span>, a list whose last tail is not nil) appears as (obj<sub>1</sub> obj<sub>2</sub> ...obj<sub>n</sub> . obj<sub>n+1</sub>).</dd>
-                <dt id="character">Character</dt>
+                <dt class="term2" id="character">Character</dt>
                 <dd>An instance of the <span class="class">character</span> class is represented by #\?, where <q>?</q> is the character in question. There are two special standard characters that are not represented in this way, namely newline and space, whose representations are #\newline and #\space, respectively.</dd>
-                <dt id="cons10">Cons</dt>
+                <dt class="term2" id="cons10">Cons</dt>
                 <dd>A cons is expressed as (car . cdr), where the car and cdr are objects.</dd>
-                <dt id="integer10">Integer</dt>
+                <dt class="term2" id="integer10">Integer</dt>
                 <dd>An integer (radix 10) is represented as a sequence of digits optionally preceded by a + or sign. If the number is represented in binary radix (or in octal or hexadecimal) then the textual representation is preceded by #b (or #o or #x, respectively).</dd>
-                <dt id="float11">Float</dt>
+                <dt class="term2" id="float11">Float</dt>
                 <dd>
                     <p>A ﬂoating point number is written in one of the following formats:</p>
 <pre>
@@ -575,9 +575,9 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
 </pre>
                     <p>where s is either <q>+</q> or <q>-</q>, and d is one of <q>0</q> – <q>9</q>. <span title="This number, although belonging to the set of natural numbers, usually is considered as only a floating point number because of its representation.">For example: 987.12, +12.5E-13, -1.5E12, 1E32</span></p>
                 </dd>
-                <dt id="vector11">Vector</dt>
+                <dt class="term2" id="vector11">Vector</dt>
                 <dd>A vector of class <span class="class">general-vector</span> is written as #(obj<sub>1</sub> … obj<sub>n</sub>).</dd>
-                <dt id="array">Array</dt>
+                <dt class="term2" id="array">Array</dt>
                 <dd>
                     <p>An array of class &lt;general-array*&gt; or <span class="class">general-vector</span> can be written on input as #na (where n is an integer indicating the number of dimensions of the array) followed by a nested structure of sequences denoting the contents of the array. This structure is defined as follows. If n = 1 the structure is simply (obj<sub>1</sub> ... obj<sub>n</sub>). If n > 1 and the dimensions are n<sub>1</sub> n<sub>2</sub> ..., the structure is (str<sub>1</sub> ... strn<sub>1</sub>), where the stri are the structures of the n<sub>1</sub> subarrays, each of which has dimensions (n<sub>2</sub> ...). As an example, the representation of (create-array '(2 3 4) 5) is as follows:</p>
 <pre>
@@ -585,9 +585,9 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
 </pre>
                     <p>On output (see format), arrays of class <span class="class">general-vector</span> will be printed using #(...) notation.</p>
                 </dd>
-                <dt id="string11">String</dt>
+                <dt class="term2" id="string11">String</dt>
                 <dd>A string is represented by the sequence of its characters enclosed in a pair of "'s. For example: "abc". Special characters are preceded with a backslash as an escape character.</dd>
-                <dt id="symbol11">Symbol</dt>
+                <dt class="term2" id="symbol11">Symbol</dt>
                 <dd>A named symbol is represented by its print name. Vertical bars (|) might need to enclose the symbol if it contains certain special characters; see §18. The notation, if any, used for unnamed symbols is <a href="#td_implementation_defined">implementation defined</a>.</dd>
             </dl>
             <p>There are objects which do not have a textual representation, such as a class or an instance of the <span class="class">function</span> class.</p>
@@ -2432,7 +2432,7 @@ var                        ::= identifier
             <h5 id="defining_methods">Defining methods for generic functions</h5>
             
             <div id="def_defmethod" class="definition-defining">
-                (<span class="operator">defmethod</span> <span class="arg">func-spec</span> <span class="arg">method-qualifier</span>* <span class="arg">parameter-profile</arg> <span class="arg">form</span>*) → <span class="class">symbol</span>
+                (<span class="operator">defmethod</span> <span class="arg">func-spec</span> <span class="arg">method-qualifier</span>* <span class="arg">parameter-profile</span> <span class="arg">form</span>*) → <span class="class">symbol</span>
             </div>
 <pre>
 Where:
@@ -2563,7 +2563,7 @@ var                        ::= identifier
             
             <h4 id="object_creation">Object creation and initialization</h4>
             <div id="gf_create" class="definition-generic">
-                (<span class="operator">create</span> <span class="arg">class</arg> {<span class="arg">initarg</span> <span class="arg">initval</span> }*) → <span class="class">object</span>
+                (<span class="operator">create</span> <span class="arg">class</span> {<span class="arg">initarg</span> <span class="arg">initval</span> }*) → <span class="class">object</span>
             </div>
             
             <p>The function create creates and returns a new instance of a class. The argument is a class object.</p>
@@ -2596,7 +2596,7 @@ var                        ::= identifier
             
             <p>Returns the class of which the given obj is a direct instance. obj may be any ISLISP object.</p>
             <div id="f_instancep" class="definition-function">
-                (<span class="operator">instancep</span> <span class="arg">obj</span> <span class="arg">class</arg>) → <span class="term1">boolean</span>
+                (<span class="operator">instancep</span> <span class="arg">obj</span> <span class="arg">class</span>) → <span class="term1">boolean</span>
             </div>
             <p>Returns t if obj is an instance (directly or otherwise) of the class class; otherwise, returns nil obj may be any ISLISP object. An error shall be signaled if class is not a class object (error-id. <span class="error_id">domain-error</span>).</p>
             
@@ -2955,7 +2955,7 @@ var                        ::= identifier
 (twice 5)                        ⇒ 10
 </pre>
             
-            <h3 id="number_class_1">Number class</h3>
+            <h3 id="number_class">Number class</h3>
             <p>The class <span class="class">number</span> has the disjoint subclasses <span class="class">float</span> and <span class="class">integer</span>.</p>
             
             <h4 id="number_class_2">Number class</h4>
@@ -4395,7 +4395,7 @@ array1
                 (<span class="operator">setf</span> (<span class="operator">garef</span> <span class="arg">general-array</span> <span class="arg">z</span>*) obj) → <span class="class">object</span>
             </div>
             <div id="f_set_garef" class="definition-function">
-                (<span class="operator">set-garef</span> <span class="arg">obj</span> <span class="arg">general-array</span> <span class="arg">z</span class="arg">*) → <span class="class">object</span>
+                (<span class="operator">set-garef</span> <span class="arg">obj</span> <span class="arg">general-array</span> <span class="arg">z</span>*) → <span class="class">object</span>
             </div>
             
             <p>These replace the object obtainable by aref or garef with obj . The returned value is obj. The constraints on the basic-array, the general-array, and the sequence of indices z is the same as for aref and garef.</p>
@@ -5534,77 +5534,76 @@ Output is: This is a tilde: ~
             <p>The following is a summary of all named errors in the language and the semantics associated with each error.</p>
             
             <dl>
-                <dt id="e_arity_error">arity-error</dt>
+                <dt id="e_arity_error" class="error_id">arity-error</dt>
                 <dd>Errors of this kind occur when a function is activated with a number of arguments that is not compatible with the number of parameters permitted by the function's definition. Errors of this kind are represented as conditions of class <span class="class">program-error</span>.</dd>
-                <dt id="e_cannot_create_array">cannot-create-array</dt>
+                <dt id="e_cannot_create_array" class="error_id">cannot-create-array</dt>
                 <dd>Errors of this kind occur when a request is made to allocate an array that cannot be allocated. Errors of this kind are represented as conditions of class <span class="class">storage-exhausted</span>.</dd>
-                <dt id="e_cannot_create_cons">cannot-create-cons</dt>
+                <dt id="e_cannot_create_cons" class="error_id">cannot-create-cons</dt>
                 <dd>Errors of this kind occur when a request is made to allocate a cons that cannot be allocated. Errors of this kind are represented as conditions of class <span class="class">storage-exhausted</span>.</dd>
-                <dt id="e_cannot_create_list">cannot-create-list</dt>
+                <dt id="e_cannot_create_list" class="error_id">cannot-create-list</dt>
                 <dd>Errors of this kind occur when a request is made to allocate a list that cannot be allocated. Errors of this kind are represented as conditions of class <span class="class">storage-exhausted</span>.</dd>
-                <dt id="e_cannot_create_sequence">cannot-create-sequence</dt>
+                <dt id="e_cannot_create_sequence" class="error_id">cannot-create-sequence</dt>
                 <dd>
                     Errors of this kind occur if a function that produces a sequence (<span class="latin">e.g.</span>, subseq) cannot allocate that sequence. Errors of this kind are represented as conditions of class <span class="class">storage-exhausted</span>.
                 </dd>
-                <dt id="e_cannot_create_string">cannot-create-string</dt>
+                <dt id="e_cannot_create_string" class="error_id">cannot-create-string</dt>
                 <dd>
                     Errors of this kind occur when a request is made to allocate a string that cannot be allocated. Errors of this kind are represented as conditions of class <span class="class">storage-exhausted</span>.
                 </dd>
-                <dt id="e_cannot_create_vector">cannot-create-vector</dt>
+                <dt id="e_cannot_create_vector" class="error_id">cannot-create-vector</dt>
                 <dd>
                     Errors of this kind occur when a request is made to allocate a vector that cannot be allocated. Errors of this kind are represented as conditions of class <span class="class">storage-exhausted</span>.
                 </dd>
                 
-                <dt id="e_cannot_parse_number">cannot-parse-number</dt>
+                <dt id="e_cannot_parse_number" class="error_id">cannot-parse-number</dt>
                 <dd>
                     Errors of this kind occur when the string parameter received by the parse-number function cannot be classified as the textual representation of a number. Errors of this kind are represented as conditions of class <span class="class">parse-error</span>.
                 </dd>
-                <dt id="e_control_error">control-error</dt>
+                <dt id="e_control_error" class="error_id">control-error</dt>
                 <dd>
-                    Errors of this kind occur when an attempt is made to leave a block more than once or when there is no outstanding catcher for a catch tag. Errors of this kind are represented as conditions of class
-                    <span class="class">control-error</span>.
+                    Errors of this kind occur when an attempt is made to leave a block more than once or when there is no outstanding catcher for a catch tag. Errors of this kind are represented as conditions of class <span class="class">control-error</span>.
                 </dd>
                 
-                <dt id="e_division_by_zero">division-by-zero</dt>
+                <dt id="e_division_by_zero" class="error_id">division-by-zero</dt>
                 <dd>
                     Errors of this kind occur when an attempt is made to divide by zero. Errors of this kind are represented as conditions of class
                     <span class="class">division-by-zero</span>.
                 </dd>
-                <dt id="e_domain_error">domain-error</dt>
+                <dt id="e_domain_error" class="error_id">domain-error</dt>
                 <dd>
                     Errors of this kind occur when the object given as argument to a standard function for which an argument class restriction is in effect is not an instance of the class to which the argument is restricted. Errors of this kind are represented as conditions of class
                     <span class="class">domain-error</span>.
                 </dd>
                 
-                <dt id="e_end_of_stream">end-of-stream</dt>
+                <dt id="e_end_of_stream" class="error_id">end-of-stream</dt>
                 <dd>
                     Errors of this kind occur when an attempt to read a character or byte at the end-of-stream when eos-error-p argument is true, or when an attempt to read a more complex object is about to begin (<span class="latin">e.g.</span>, by read or read-line) but the end-of-stream is seen before parsing of that object has finished. Errors of this kind are represented as conditions of class <span class="class">end-of-stream</span>.
                 </dd>
-                <dt id="e_immutable_binding">immutable-binding</dt>
+                <dt id="e_immutable_binding" class="error_id">immutable-binding</dt>
                 <dd>Errors of this kind occur when an attempt is made to change an immutable binding. Errors of this kind are represented as conditions of class <span class="class">program-error</span>.
                 </dd>
-                <dt id="e_improper_argument_list">improper-argument-list</dt>
+                <dt id="e_improper_argument_list" class="error_id">improper-argument-list</dt>
                 <dd>
                     Errors of this kind occur when the last argument given to the apply function is not a proper list. Errors of this kind are represented as conditions of class <span class="class">program-error</span>.
                 </dd>
-                <dt id="e_index_out_of_range">index-out-of-range</dt>
+                <dt id="e_index_out_of_range" class="error_id">index-out-of-range</dt>
                 <dd>Errors of this kind occur when the index given to a function that accesses an element in a sequence (such as elt) is an integer outside the range of the sequence. Errors of this kind are represented as conditions of class <span class="class">program-error</span>.
                 </dd>
-                <dt id="e_not_an_input_stream">not-an-input-stream</dt>
+                <dt id="e_not_an_input_stream" class="error_id">not-an-input-stream</dt>
                 <dd>Errors of this kind occur when an attempt is made to read from a stream which is not an input stream. Errors of this kind are represented as conditions of class <span class="class">domain-error</span>.</dd>
-                <dt id="e_not_an_output_stream">not-an-output-stream</dt>
+                <dt id="e_not_an_output_stream" class="error_id">not-an-output-stream</dt>
                 <dd>
                     Errors of this kind occur when an attempt is made to write to a stream which is not an output stream. Errors of this kind are represented as conditions of class <span class="class">domain-error</span>.
                 </dd>
-                <dt id="e_unbound_variable">unbound-variable</dt>
+                <dt id="e_unbound_variable" class="error_id">unbound-variable</dt>
                 <dd>
                     Errors of this kind occur when an attempt is made to access an unbound variable. Errors of this kind are represented as conditions of class <span class="class">unbound-variable</span>.
                 </dd>
-                <dt id="e_undefined_entity">undefined-entity</dt>
+                <dt id="e_undefined_entity" class="error_id">undefined-entity</dt>
                 <dd>
                     Errors of this kind occur when the entity denoted by an identifier does not exist when an access to that entity is made. Errors of this kind are represented as conditions of class <span class="class">undefined-entity</span>.
                 </dd>
-                <dt id="e_undefined_function">undefined-function</dt>
+                <dt id="e_undefined_function" class="error_id">undefined-function</dt>
                 <dd>
                     Errors of this kind occur when a function does not exist at its activation point. Errors of this kind are represented as conditions of class <span class="class">undefined-function</span>.
                 </dd>
@@ -5966,7 +5965,7 @@ not <a href="#f_not">31</a>
 nreverse <a href="#f_nreverse">88</a>
 null <a href="#null10">10</a>, <a href="#null_class">87</a>
 null <a href="#f_null">87</a>
-number <a href="#number_class_1">68</a>
+number <a href="#number_class">68</a>
 numberp <a href="#f_numberp">69</a>
 object <a href="#td_object">5</a>
 object <a href="#f_domain_error_object">118</a>

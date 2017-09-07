@@ -253,6 +253,10 @@ pre {
     font-style: italic;
 }
 
+.term2 {
+    font-weight: bold;
+}
+
 .error_id {
     font-style: italic;
 }
@@ -278,5 +282,9 @@ pre {
 }
 
 .comment {
+    font-style: italic;
+}
+
+.standard_title {
     font-style: italic;
 }
