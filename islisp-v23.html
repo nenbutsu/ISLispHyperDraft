@@ -530,7 +530,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
 </pre>
             <p>The following character tuples (where <span class="syntax">n</span> is a sequence of digits) are individual lexemes (see <a href="#functions">§12.7</a>, <a href="#macros">§16</a>, and <a href="#array_classes">§22.1</a>):</p>
 <pre>
-#' #( ,@ #B #b #O #o #X #x #<span class="syntax">n</span>a #<span class="syntax">n</span>A
+#' #( ,@ #B #b #O #o #X #x #na #nA
 </pre>
             <p>
                 The textual representations of symbols (see <a href="#symbol_class">§18</a>), numbers (see <a href="#number_class">§19</a>), characters (see <a href="#character_class">§20</a>), and strings (see <a href="#string_class">§24</a>) are lexemes.
@@ -4261,8 +4261,6 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             
 <pre class="example">
 (assoc 'a '((a . 1) (b . 2))) ⇒ (a . 1)
-
-(assoc 'a '((a . 1) (a . 2))) ⇒ (a . 1)
 
 (assoc 'c '((a . 1) (b . 2))) ⇒ nil
 </pre>
