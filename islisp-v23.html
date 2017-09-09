@@ -3913,28 +3913,28 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             
             <h4 id="cons">Cons</h4>
             <p>A cons (sometimes also called <q>dotted pair</q>) consists of two components; the left component is called car and the right component is called cdr. The constructor of this class is cons. Conses are written as</p>
-<pre>(car . cdr)</pre>
-            <p>where car and cdr denote the values in the car and cdr components, respectively, of the cons object. As a special case, if the cdr value is nil, then the cons object is written as</p>
+<pre>(<span class="nonterminal">car</span> . <span class="nonterminal">cdr</span>)</pre>
+            <p>where <span class="nonterminal">car</span> and <span class="nonterminal">cdr</span> denote the values in the car and cdr components, respectively, of the cons object. As a special case, if the <span class="nonterminal">cdr</span> value is <span class="symbol">nil</span>, then the cons object is written as</p>
 <pre>
-(car)
+(<span class="nonterminal">car</span>)
 </pre>
             <p>Thus, in general, a data structure that consists of cons objects will be written in either of the following formats:</p>
 <pre>
-(x<sub>1</sub> . (x<sub>2</sub> . … (x<sub>n−1</sub> . x<sub>n</sub>)))
+(<span class="nonterminal">x<sub>1</sub></span> . (<span class="nonterminal">x<sub>2</sub></span> . … (<span class="nonterminal">x<sub>n−1</sub></span> . <span class="nonterminal">x<sub>n</sub></span>)))
 
-(x<sub>1</sub> . (x<sub>2</sub> . … (x<sub>n−1</sub>)))
+(<span class="nonterminal">x<sub>1</sub></span> . (<span class="nonterminal">x<sub>2</sub></span> . … (<span class="nonterminal">x<sub>n−1</sub>)</span>))
 </pre>
             <p>These may be written, respectively, as</p>
 <pre>
-(x<sub>1</sub> x<sub>2</sub> … x<sub>n−1</sub> . x<sub>n</sub>)
+(<span class="nonterminal">x<sub>1</sub></span> <span class="nonterminal">x<sub>2</sub></span> … <span class="nonterminal">x<sub>n−1</sub></span> . <span class="nonterminal">x<sub>n</sub></span>)
 
-(x<sub>1</sub> x<sub>2</sub> … x<sub>n−1</sub>)
+(<span class="nonterminal">x<sub>1</sub></span> <span class="nonterminal">x<sub>2</sub></span> … <span class="nonterminal">x<sub>n−1</sub></span>)
 </pre>
             <div id="f_consp" class="definition-function">
                 (<span class="operator">consp</span> <span class="arg">obj</span>) → <span class="term1">boolean</span>
             </div>
             
-            <p>Returns t if obj is a cons (instance of class <span class="class">cons</span>); otherwise, returns nil. obj may be any ISLISP object.</p>
+            <p>Returns <span class="symbol">t</span> if <span class="nonterminal">obj</span> is a cons (instance of class <span class="class">cons</span>); otherwise, returns <span class="symbol">nil</span>. <span class="nonterminal">obj</span> may be any ISLISP object.</p>
 <pre class="example">
 (consp '(a . b)) ⇒ t
 
@@ -3949,7 +3949,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
                 (<span class="operator">cons</span> <span class="arg">obj<sub>1</sub></span> <span class="arg">obj<sub>2</sub></span>) → <span class="class">cons</span>
             </div>
             
-            <p>This function builds a cons from two objects, with obj<sub>1</sub> as its car (or `left') part and with obj2 as its cdr (or `right') part. An error shall be signaled if the requested cons cannot be allocated (error-id. <span class="error_id">cannot-create-cons</span>). Both obj1 and obj2 may be any ISLISP object.</p>
+            <p>This function builds a cons from two objects, with <span class="nonterminal">obj<sub>1</sub></span> as its car (or `left') part and with <span class="nonterminal">obj<sub>2</sub></span> as its cdr (or `right') part. An error shall be signaled if the requested cons cannot be allocated (error-id. <span class="error_id">cannot-create-cons</span>). Both <span class="nonterminal">obj<sub>1</sub></span> and <span class="nonterminal">obj<sub>2</sub></span> may be any ISLISP object.</p>
             
 <pre class="example">
 (cons 'a '())        ⇒ (a)
@@ -3967,10 +3967,10 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
                 (<span class="operator">car</span> <span class="arg">cons</span>) → <span class="class">object</span>
             </div>
             
-            <p>The function car returns the left component of the cons. An error shall be signaled if cons is not a cons (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>The function <span class="symbol">car</span> returns the left component of the <span class="nonterminal">cons</span>. An error shall be signaled if <span class="nonterminal">cons</span> is not a cons (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
-(car '())          an error shall be signaled
+(car '())          <span class="comment">an error shall be signaled</span>
 
 (car '(a b c))     ⇒ a
 
@@ -3983,10 +3983,10 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
                 (<span class="operator">cdr</span> <span class="arg">cons</span>) → <span class="class">object</span>
             </div>
             
-            <p>The function cdr returns the right component of the cons. An error shall be signaled if cons is not a cons (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>The function <span class="symbol">cdr</span> returns the right component of the <span class="nonterminal">cons</span>. An error shall be signaled if <span class="nonterminal">cons</span> is not a cons (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
-(cdr '())          an error shall be signaled
+(cdr '())          <span class="comment">an error shall be signaled</span>
 
 (cdr '((a) b c d)) ⇒ (b c d)
 
@@ -4001,7 +4001,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
                 (<span class="operator">set-car</span> <span class="arg">obj</span> <span class="arg">cons</span>) → <span class="class">object</span>
             </div>
             
-            <p>Updates the left component of cons with obj. The returned value is obj . An error shall be signaled if cons is not a cons (error-id. <span class="error_id">domain-error</span>). obj may be any ISLISP object.</p>
+            <p>Updates the left component of <span class="nonterminal">cons</span> with <span class="nonterminal">obj</span>. The returned value is <span class="nonterminal">obj</span>. An error shall be signaled if <span class="nonterminal">cons</span> is not a cons (error-id. <span class="error_id">domain-error</span>). <span class="nonterminal">obj</span> may be any ISLISP object.</p>
             
 <pre class="example">
 (let ((x (list 'apple 'orange)))
@@ -4019,7 +4019,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
                 (<span class="operator">set-cdr</span> <span class="arg">obj</span> <span class="arg">cons</span>) → <span class="class">object</span>
             </div>
             
-            <p>Updates the right component of cons with obj. The returned value is obj . An error shall be signaled if cons is not a cons (error-id. <span class="error_id">domain-error</span>). obj may be any ISLISP object.</p>
+            <p>Updates the right component of <span class="nonterminal">cons</span> with <span class="nonterminal">obj</span>. The returned value is <span class="nonterminal">obj</span> . An error shall be signaled if <span class="nonterminal">cons</span> is not a cons (error-id. <span class="error_id">domain-error</span>). <span class="nonterminal">obj</span> may be any ISLISP object.</p>
             
 <pre class="example">
 (let ((x (list 'apple 'orange)))
