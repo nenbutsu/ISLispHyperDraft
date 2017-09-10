@@ -625,7 +625,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             <p>In ISLISP, data types are covered by the class system. A class is an object that determines the structure and behavior of a set of other objects, which are called its instances. Every ISLISP object is an instance of a class. The behavior is the set of operations that can be performed on an instance.</p>
             <p>A class can inherit structure and behavior from other classes. A class whose definition refers to other classes for the purpose of inheriting from them is said to be a subclass of each of those classes. The classes that are designated for purposes of inheritance are said to be superclasses of the inheriting class.</p>
             <p>A class can be named by an identifier. For example, this identifier can be used as a parameter specializer in method definitions. The class special form can be used to refer to access the class object corresponding to its name.</p>
-            <p>A class C<sub>1</sub> is a direct superclass of a class C<sub>2</sub> if C<sub>2</sub> explicitly designates C<sub>1</sub> as a superclass in its definition, or if C<sub>1</sub> is defined by this document to be a direct superclass of C<sub>2</sub> (for example, by use of a directed arrow from C<sub>1</sub> to C<sub>2</sub> in Figure 1). In this case C<sub>2</sub> is a direct subclass of C<sub>1</sub> . A class C<sub>n</sub> is a superclass of a class C<sub>1</sub> if there exists a series of classes C<sub>2</sub> , … , C<sub>n−1</sub> such that C<sub>i+1</sub> is a direct superclass of C<sub>i</sub> for 1 ≤ i &lt; n. In this case, C<sub>1</sub> is a subclass of C<sub>n</sub> . A class is considered neither a superclass nor a subclass of itself. That is, if C<sub>1</sub> is a superclass of C<sub>2</sub> , then C1 ≠ C2 . The set of classes consisting of some given class C along with all of its superclasses is called <q>C and its superclasses.</q></p>
+            <p>A class C<sub>1</sub> is a direct superclass of a class C<sub>2</sub> if C<sub>2</sub> explicitly designates C<sub>1</sub> as a superclass in its definition, or if C<sub>1</sub> is defined by this document to be a direct superclass of C<sub>2</sub> (for example, by use of a directed arrow from C<sub>1</sub> to C<sub>2</sub> in <a href="#figure_1">Figure 1</a>). In this case C<sub>2</sub> is a direct subclass of C<sub>1</sub> . A class C<sub>n</sub> is a superclass of a class C<sub>1</sub> if there exists a series of classes C<sub>2</sub> , … , C<sub>n−1</sub> such that C<sub>i+1</sub> is a direct superclass of C<sub>i</sub> for 1 ≤ i &lt; n. In this case, C<sub>1</sub> is a subclass of C<sub>n</sub> . A class is considered neither a superclass nor a subclass of itself. That is, if C<sub>1</sub> is a superclass of C<sub>2</sub> , then C1 ≠ C2 . The set of classes consisting of some given class C along with all of its superclasses is called <q>C and its superclasses.</q></p>
             <p>If a user-defined class C inherits from two classes, C<sub>1</sub> and C<sub>2</sub> , the only superclasses that C<sub>1</sub> and C<sub>2</sub> may have in common are <span class="class">standard-object</span> or <span class="class">object</span>. This allows a restricted form of multiple inheritance.</p>
             <p>Every ISLISP object is a direct instance of exactly one class which is called <q>its</q> class.</p>
             <p>An instance of a class is either a direct instance of that class or an instance of one of its subclasses.</p>
@@ -636,7 +636,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             <h4 id="metaclasses">Metaclasses</h4>
             <p>Classes are represented by objects that are themselves instances of classes. The class of the class of an object is termed the metaclass of that object. The term metaclass is used to refer to a class that has instances that are themselves classes.</p>
             
-            <div>
+            <div id="figure_1">
                 Figure 1. Class Inheritance
                 <ul>
                     <li><span class="class">object</span>
@@ -776,10 +776,10 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             
             <p>The classes <span class="class">standard-class</span> and <span class="class">built-in-class</span> are predefined metaclasses.</p>
             <p>A user-defined class, defined by defclass, must be implemented as an instance of <span class="class">standard-class</span>. A predefined class can be implemented either as an instance of <span class="class">standard-class</span> (as if defined by defclass) or as an instance of <span class="class">built-in-class</span>.</p>
-            <p>Figure 1 shows the required inheritance relationships among the classes defined by ISLISP. For each pair of classes C<sub>1</sub> and C<sub>2</sub> in this figure, if C<sub>1</sub> is linked directly by an arrow to C<sub>2</sub> , C<sub>1</sub> is a direct superclass of C<sub>2</sub> (and C<sub>2</sub> is a direct subclass of C<sub>1</sub>). Additional relationships might exist, subject to the following constraints:</p>
+            <p><a href="#figure_1">Figure 1</a> shows the required inheritance relationships among the classes defined by ISLISP. For each pair of classes C<sub>1</sub> and C<sub>2</sub> in this figure, if C<sub>1</sub> is linked directly by an arrow to C<sub>2</sub> , C<sub>1</sub> is a direct superclass of C<sub>2</sub> (and C<sub>2</sub> is a direct subclass of C<sub>1</sub>). Additional relationships might exist, subject to the following constraints:</p>
             <ul>
                 <li>It is <a href="#td_implementation_defined">implementation defined</a> whether <span class="class">standard-generic-function</span> is a subclass of the class <span class="class">standard-object</span>.</li>
-                <li>Except as described in Figure 1 and the above constraint on <span class="class">standard-generic-function</span>, no other subclass relationships exist among the classes defined in this document. However, additional implementation-specific subclass relationships may exist between implementation-specific classes and classes defined in this document.</li>
+                <li>Except as described in <a href="#figure_1">Figure 1</a> and the above constraint on <span class="class">standard-generic-function</span>, no other subclass relationships exist among the classes defined in this document. However, additional implementation-specific subclass relationships may exist between implementation-specific classes and classes defined in this document.</li>
                 <li>The class precedence list for <span class="class">null</span> observes the partial order <span class="class">null</span>, <span class="class">symbol</span>, <span class="class">list</span>, <span class="class">object</span>.</li>
                 <li>Users may define additional classes using defclass.</li>
             </ul>
@@ -4268,9 +4268,9 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             <h3 id="arrays">Arrays</h3>
             <h4 id="array_classes">Array classes</h4>
             
-            <p>Arrays store data in array components, which are indexed by a tuple of non-negative integers called indices.</p>
+            <p>Arrays store data in array components, which are indexed by a tuple of non-negative integers called <span class="nonterminal">indices</span>.</p>
             <p>The total number of elements in the array is the product of the dimensions. Zero-dimensional arrays are permissible and, as a consequence of this rule, can store exactly one element, indexed by an empty tuple of indices.</p>
-            <p>There are several array classes. For a pictorial representation of their inheritance relationship, see Figure 1. The following is an explanation of the purpose of each of these classes:</p>
+            <p>There are several array classes. For a pictorial representation of their inheritance relationship, see <a href="#figure_1">Figure 1</a>. The following is an explanation of the purpose of each of these classes:</p>
             <dl>
                 <dt><span class="class">basic-array</span></dt>
                 <dd>
@@ -4300,7 +4300,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             <h4 id="general_arrays">General arrays</h4>
             <p>An object that is either of class <span class="class">general-vector</span> or of class &lt;general-array*&gt; is sometimes called a <q>general array.</q></p>
             <p>General arrays are capable of storing any object of class <span class="class">object</span>. Those arrays that are not general arrays are the ones restricted to storage objects of more specialized classes.</p>
-            <p>A general array can be expressed as a textual literal using #na notation (where n is an integer indicating the number of dimensions of the array) followed by a nested list of sequences denoting the contents of the array. This structure can be defined as follows. If n = 1 the structure is simply (obj<sub>1</sub> … obj<sub>n</sub>). If n &gt; 1 and the dimensions are (n<sub>1</sub> n<sub>2</sub> …), the structure is (str<sub>1</sub> … str<sub>n1</sub>), where the str<sub>i</sub> are the structures of the n<sub>1</sub> subarrays, each of which has dimensions (n<sub>2</sub> …). For example, the textual representation of (create-array '(2 3 4) 5) is as follows:
+            <p>A general array can be expressed as a textual literal using #<span class="nonterminal">n</span>a notation (where <span class="nonterminal">n</span> is an integer indicating the number of dimensions of the array) followed by a nested list of sequences denoting the contents of the array. This structure can be defined as follows. If <span class="nonterminal">n</span> = 1 the structure is simply (<span class="nonterminal">obj<sub>1</sub></span> … <span class="nonterminal">obj<sub>n</sub></span>). If <span class="nonterminal">n</span> &gt; 1 and the dimensions are (<span class="nonterminal">n<sub>1</sub></span> <span class="nonterminal">n<sub>2</sub></span> …), the structure is (<span class="nonterminal">str<sub>1</sub></span> … <span class="nonterminal">str<sub>n1</sub></span>), where the <span class="nonterminal">str<sub>i</sub></span> are the structures of the <span class="nonterminal">n<sub>1</sub></span> subarrays, each of which has dimensions (<span class="nonterminal">n<sub>2</sub></span> …). For example, the textual representation of (create-array '(2 3 4) 5) is as follows:
             </p>
 <pre>
 #3a(((5 5 5 5) (5 5 5 5) (5 5 5 5)) ((5 5 5 5) (5 5 5 5) (5 5 5 5))).
@@ -4320,9 +4320,9 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
                 (<span class="operator">general-array*-p</span> <span class="arg">obj</span>) → <span class="nonterminal">boolean</span>
             </div>
             
-            <p>basic-array-p returns t if obj is a basic-array (instance of class <span class="class">basic-array</span>); otherwise, returns nil. obj may be any ISLISP object.</p>
-            <p>basic-array*-p returns t if obj is a basic-array* (instance of class &lt;basic-array*&gt;); otherwise, returns nil. obj may be any ISLISP object.</p>
-            <p>general-array*-p returns t if obj is a general-array* (instance of class &lt;general-array*&gt;); otherwise, returns nil. obj may be any ISLISP object.</p>
+            <p><span class="terminal">basic-array-p</span> returns <span class="terminal">t</span> if <span class="nonterminal">obj</span> is a basic-array (instance of class <span class="class">basic-array</span>); otherwise, returns <span class="terminal">nil</span>. <span class="nonterminal">obj</span> may be any ISLISP object.</p>
+            <p><span class="terminal">basic-array*-p</span> returns <span class="terminal">t</span> if <span class="nonterminal">obj</span> is a basic-array* (instance of class <span class="class">basic-array*</span>); otherwise, returns <span class="terminal">nil</span>. <span class="nonterminal">obj</span> may be any ISLISP object.</p>
+            <p><span class="terminal">general-array*-p</span> returns <span class="terminal">t</span> if <span class="nonterminal">obj</span> is a general-array* (instance of class <span class="class">general-array*</span>); otherwise, returns <span class="terminal">nil</span>. <span class="nonterminal">obj</span> may be any ISLISP object.</p>
             
 <pre class="example">
 (mapcar (lambda (x)
@@ -4341,11 +4341,11 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
                 (<span class="operator">create-array</span> <span class="arg">dimensions</span> [<span class="arg">initial-element</span>]) → <span class="class">basic-array</span>
             </div>
             
-            <p>This function creates an array of the given dimensions. The dimensions argument is a list of non-negative integers.</p>
-            <p>The result is of class <span class="class">general-vector</span> if there is only one dimension, or of class &lt;general-array*&gt; otherwise.</p>
-            <p>If initial-element is given, the elements of the new array are initialized with this object, otherwise the initialization is <a href="#td_implementation_defined">implementation defined</a>.</p>
+            <p>This function creates an array of the given <span class="nonterminal">dimensions</span>. The <span class="nonterminal">dimensions</span> argument is a list of non-negative integers.</p>
+            <p>The result is of class <span class="class">general-vector</span> if there is only one dimension, or of class <span class="class">general-array*</span> otherwise.</p>
+            <p>If <span class="nonterminal">initial-element</span> is given, the elements of the new array are initialized with this object, otherwise the initialization is <a href="#td_implementation_defined">implementation defined</a>.</p>
             <p>An error shall be signaled if the requested array cannot be allocated (error-id. <span class="error_id">cannot-create-array</span>).</p>
-            <p>An error shall be signaled if dimensions is not a proper list of non-negative integers (error-id. <span class="error_id">domain-error</span>). initial-element may be any ISLISP object.</p>
+            <p>An error shall be signaled if <span class="nonterminal">dimensions</span> is not a proper list of non-negative integers (error-id. <span class="error_id">domain-error</span>). <span class="nonterminal">initial-element</span> may be any ISLISP object.</p>
 <pre class="example">
 (create-array '(2 3) 0.0) ⇒ #2a((0.0 0.0 0.0) (0.0 0.0 0.0))
 
@@ -4359,9 +4359,9 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
                 (<span class="operator">garef</span> <span class="arg">general-array</span> <span class="arg">z</span>*) → <span class="class">object</span>
             </div>
             
-            <p>aref returns the object stored in the component of the basic-array specified by the sequence of integers z. This sequence must have exactly as many elements as there are dimensions in the basic-array, and each one must satisfy 0 ≤ zi &lt; di , di the ith dimension and 0 ≤ i &lt; d, d the number of dimensions. Arrays are indexed 0 based, so the ith row is accessed via the index i − 1.</p>
-            <p>An error shall be signaled if basic-array is not a basic-array (error-id. <span class="error_id">domain-error</span>). An error shall be signaled if any z is not a non-negative integer (error-id. <span class="error_id">domain-error</span>).</p>
-            <p>garef is like aref but an error shall be signaled if its first argument, general-array, is not an object of class <span class="class">general-vector</span> or of class &lt;general-array*&gt; (error-id. <span class="error_id">domain-error</span>).</p>
+            <p><span class="terminal">aref</span> returns the object stored in the component of the <span class="nonterminal">basic-array</span> specified by the sequence of integers <span class="nonterminal">z</span>. This sequence must have exactly as many elements as there are dimensions in the <span class="nonterminal">basic-array</span>, and each one must satisfy 0 ≤ <span class="nonterminal">zi</span> &lt; <span class="nonterminal">di</span> , <span class="nonterminal">di</span> the <span class="nonterminal">i</span>th dimension and 0 ≤ <span class="nonterminal">i</span> &lt; <span class="nonterminal">d</span>, <span class="nonterminal">d</span> the number of dimensions. Arrays are indexed 0 based, so the ith row is accessed via the index <span class="nonterminal">i</span> − 1.</p>
+            <p>An error shall be signaled if <span class="nonterminal">basic-array</span> is not a basic-array (error-id. <span class="error_id">domain-error</span>). An error shall be signaled if any <span class="nonterminal">z</span> is not a non-negative integer (error-id. <span class="error_id">domain-error</span>).</p>
+            <p><span class="terminal">garef</span> is like <span class="terminal">aref</span> but an error shall be signaled if its first argument, <span class="nonterminal">general-array</span>, is not an object of class <span class="class">general-vector</span> or of class <span class="class">general-array*</span> (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
 (defglobal array1 (create-array '(3 3 3) 0))
@@ -4396,7 +4396,7 @@ array1
                 (<span class="operator">set-garef</span> <span class="arg">obj</span> <span class="arg">general-array</span> <span class="arg">z</span>*) → <span class="class">object</span>
             </div>
             
-            <p>These replace the object obtainable by aref or garef with obj . The returned value is obj. The constraints on the basic-array, the general-array, and the sequence of indices z is the same as for aref and garef.</p>
+            <p>These replace the object obtainable by <span class="terminal">aref</span> or <span class="terminal">garef</span> with <span class="nonterminal">obj</span>. The returned value is <span class="nonterminal">obj</span>. The constraints on the <span class="nonterminal">basic-array</span>, the <span class="nonterminal">general-array</span>, and the sequence of indices <span class="nonterminal">z</span> is the same as for <span class="terminal">aref</span> and <span class="terminal">garef</span>.</p>
             
 <pre class="example">
 (setf (aref array1 0 1 2) 3.15) ⇒ 3.15
@@ -4408,7 +4408,7 @@ array1
                 (<span class="operator">array-dimensions</span> <span class="arg">basic-array</span>) → <span class="class">list</span>
             </div>
             
-            <p>Returns a list of the dimensions of a given basic-array. An error shall be signaled if basic-array is not a basic-array (error-id. <span class="error_id">domain-error</span>). The consequences are undefined if the returned list is modified.</p>
+            <p>Returns a list of the dimensions of a given <span class="nonterminal">basic-array</span>. An error shall be signaled if <span class="nonterminal">basic-array</span> is not a basic-array (error-id. <span class="error_id">domain-error</span>). The consequences are undefined if the returned list is modified.</p>
             
 <pre class="example">
 (array-dimensions
@@ -5319,7 +5319,7 @@ Output is: This is a tilde: ~
             
             <h4 id="conditions">Conditions</h4>
             <p>When a problem situation is detected, a representation of that situation called a condition (or sometimes a <q>condition object</q> to emphasize its nature as an ordinary ISLISP object) is constructed and the situation represented by the condition is announced by a process called signaling. This signaling process allows a dynamically established handler an opportunity to resolve the problem.</p>
-            <p>Figure 1 shows an inheritance graph for the various condition classes.</p>
+            <p><a href="#figure_1">Figure 1</a> shows an inheritance graph for the various condition classes.</p>
             <p>Some condition classes require initialization arguments when using create so that associated data can be provided. For more information, see §29.3.</p>
             <p id="error_conditions">Conditions that represent situations involving dynamically detected program errors are called error conditions. Error conditions and those conditions that represent implementation limitations that may not be symptomatic of program errors are collectively called serious conditions.</p>
             <div class="note">Note: In some dialects of LISP a meaning is assigned to the idea of conditions that are not serious. Such conditions are beyond the scope of this document; hence the use of the class name <span class="class">serious-condition</span> as the most general kind of condition defined herein.</div>
