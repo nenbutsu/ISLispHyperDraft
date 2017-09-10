@@ -3920,9 +3920,9 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 </pre>
             <p>Thus, in general, a data structure that consists of cons objects will be written in either of the following formats:</p>
 <pre>
-(<span class="nonterminal">x<sub>1</sub></span> . (<span class="nonterminal">x<sub>2</sub></span> . … (<span class="nonterminal">x<sub>n−1</sub></span> . <span class="nonterminal">x<sub>n</sub></span>)))
+(<span class="nonterminal">x<sub>1</sub></span> . (<span class="nonterminal">x<sub>2</sub></span> . … (<span class="nonterminal">x<sub>n−1</sub></span> . <span class="nonterminal">x<sub>n</sub></span>)…))
 
-(<span class="nonterminal">x<sub>1</sub></span> . (<span class="nonterminal">x<sub>2</sub></span> . … (<span class="nonterminal">x<sub>n−1</sub>)</span>))
+(<span class="nonterminal">x<sub>1</sub></span> . (<span class="nonterminal">x<sub>2</sub></span> . … (<span class="nonterminal">x<sub>n−1</sub>)</span>)…)
 </pre>
             <p>These may be written, respectively, as</p>
 <pre>
@@ -4421,10 +4421,10 @@ array1
             
             <h3 id="vectors">Vectors</h3>
             
-            <p>A vector is a one dimensional array. See §22.1 for detailed information about the relationship of arrays and vectors.</p>
+            <p>A vector is a one dimensional array. See <a href="#array_classes">§22.1</a> for detailed information about the relationship of arrays and vectors.</p>
             <p>General vectors are written as follows:</p>
 <pre>
-#(x<sub>1</sub> x<sub>2</sub> … x<sub>n</sub>)
+#(<span class="nonterminal">x<sub>1</sub></span> <span class="nonterminal">x<sub>2</sub></span> … <span class="nonterminal">x<sub>n</sub></span>)
 </pre>
             
             <div id="f_basic_vector_p" class="definition-function">
@@ -4434,8 +4434,8 @@ array1
                 (<span class="operator">general-vector-p</span> <span class="arg">obj</span>) → <span class="nonterminal">boolean</span>
             </div>
             
-            <p>basic-vector-p returns t if obj is a basic-vector (instance of class <span class="class">basic-vector</span>); otherwise, returns nil. obj may be any ISLISP object.</p>
-            <p>general-vector-p returns t if obj is a general-vector (instance of class <span class="class">general-vector</span>); otherwise, returns nil. obj may be any ISLISP object.</p>
+            <p><span class="terminal">basic-vector-p</span> returns <span class="terminal">t</span> if <span class="nonterminal">obj</span> is a basic-vector (instance of class <span class="class">basic-vector</span>); otherwise, returns <span class="terminal">nil</span>. <span class="nonterminal">obj</span> may be any ISLISP object.</p>
+            <p><span class="terminal">general-vector-p</span> returns <span class="terminal">t</span> if <span class="nonterminal">obj</span> is a general-vector (instance of class <span class="class">general-vector</span>); otherwise, returns <span class="terminal">nil</span>. <span class="nonterminal">obj</span> may be any ISLISP object.</p>
             
 <pre class="example">
 (mapcar (lambda (x)
@@ -4453,7 +4453,7 @@ array1
                 (<span class="operator">create-vector</span> <span class="arg">i</span> [<span class="arg">initial-element</span>]) → <span class="class">general-vector</span>
             </div>
             
-            <p>Returns a general-vector of length i. If initial-element is given, the elements of the new vector are initialized with this object, otherwise the initialization is <a href="#td_implementation_defined">implementation defined</a>. An error shall be signaled if the requested vector cannot be allocated (error-id. <span class="error_id">cannot-create-vector</span>). An error shall be signaled if i is not a non-negative integer (error-id. <span class="error_id">domain-error</span>). initial-element may be any ISLISP object.</p>
+            <p>Returns a general-vector of length <span class="nonterminal">i</span>. If <span class="nonterminal">initial-element</span> is given, the elements of the new vector are initialized with this object, otherwise the initialization is <a href="#td_implementation_defined">implementation defined</a>. An error shall be signaled if the requested vector cannot be allocated (error-id. <span class="error_id">cannot-create-vector</span>). An error shall be signaled if <span class="nonterminal">i</span> is not a non-negative integer (error-id. <span class="error_id">domain-error</span>). <span class="nonterminal">initial-element</span> may be any ISLISP object.</p>
             
 <pre class="example">
 (create-vector 3 17)  ⇒ #(17 17 17)
@@ -4465,7 +4465,7 @@ array1
                 (<span class="operator">vector</span> <span class="arg">obj</span>*) → <span class="class">general-vector</span>
             </div>
             
-            <p>Returns a new general-vector whose elements are its obj arguments. The length of the newly created vector is, therefore, the number of objs passed as arguments. The vector is indexed by integers ranging from 0 to dimension−1. An error shall be signaled if the requested vector cannot be allocated (error-id. <span class="error_id">cannot-create-vector</span>). Each obj may be any ISLISP object.</p>
+            <p>Returns a new general-vector whose elements are its <span class="nonterminal">obj</span> arguments. The length of the newly created vector is, therefore, the number of <span class="nonterminal">objs</span> passed as arguments. The vector is indexed by integers ranging from 0 to dimension−1. An error shall be signaled if the requested vector cannot be allocated (error-id. <span class="error_id">cannot-create-vector</span>). Each <span class="nonterminal">obj</span> may be any ISLISP object.</p>
             
 <pre class="example">
 (vector 'a 'b 'c) ⇒ #(a b c)
