@@ -249,20 +249,12 @@ pre {
     font-weight: bold;
 }
 
-.term1 {
-    font-style: italic;
-}
-
-.term2 {
+.classname {
     font-weight: bold;
 }
 
 .error_id {
     font-style: italic;
-}
-
-.symbol {
-    font-family: monospace;
 }
 
 .latin {
@@ -283,6 +275,11 @@ pre {
 
 .standard_title {
     font-style: italic;
+}
+
+.terminal {
+    font-family: monospace;
+    font-weight: bold;
 }
 
 .nonterminal {

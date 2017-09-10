@@ -400,7 +400,7 @@
             
             <h4 id="td_place" class="term">place</h4>
             <p>location where objects can be stored and retrieved later</p>
-            <div class="note">Note: Places are designated by forms which are permitted as the first argument of <span class="symbol">setf</span>. If used this way an object is stored in the place. If the form is not used as first argument of <span class="symbol">setf</span> the stored object is retrieved. The cases are listed in the description of <a href="#s_setf" class="symbol">setf</a>.</div>
+            <div class="note">Note: Places are designated by forms which are permitted as the first argument of <span class="terminal">setf</span>. If used this way an object is stored in the place. If the form is not used as first argument of <span class="terminal">setf</span> the stored object is retrieved. The cases are listed in the description of <a href="#s_setf" class="terminal">setf</a>.</div>
             
             <h4 id="td_process" class="term">process</h4>
             <p>execution of an ISLISP text prepared for execution</p>
@@ -434,9 +434,9 @@
             <h3 id="notation_and_conventions">Notation and conventions</h3>
             
             <p>For a clear definition of, and a distinction between, syntactic and semantic concepts, several levels of description abstraction are used in the following.</p>
-            <p>There is a correspondence from ISLISP textual units to their ISLISP data structure representations. Throughout this document the text and the corresponding ISLISP objects (data structures) are addressed simultaneously. ISLISP text can be seen as an external specification of ISLISP data structures. To distinguish between the two representations different concepts are used. When textual representation is discussed, textual elements (such as <span class="term1">identifiers</span>, <span class="term1">literals</span>, and <span class="term1">compound forms</span>) are used; when ISLISP objects are discussed, <span class="term1">objects</span> (such as <span class="term1">symbols</span> and <span class="term1">lists</span>) are used.</p>
-            <p id="forms7">The constituents of ISLISP text are called <a href="#td_form" class="term">forms</a>. A <a href="#td_form" class="term">form</a> can be an <a href="#td_identifier" class="term1">identifier</a>, a <a href="#td_literal" class="term1">literal</a>, or a <span class="term1">compound form</span>. A <span class="term1">compound form</span> can be a <span class="term1">function application form</span>, a <span class="term1">macro form</span>, a <span class="term1">special form</span>, or a <span class="term1">defining form</span>.</p>
-            <p>An <a href="#td_identifier" class="term1">identifier</a> is represented by a <span class="term1">symbol</span>. A <span class="term1">compound form</span> is represented by a non-null <span class="term1">list</span>. A <a href="#td_literal" class="term1">literal</a> is represented by neither a <span class="term1">symbol</span> nor a <span class="term1">list</span>, and so is neither an <a href="#td_identifier" class="term1">identifier</a> nor a <span class="term1">compound form</span>; for example, a number is a literal.</p>
+            <p>There is a correspondence from ISLISP textual units to their ISLISP data structure representations. Throughout this document the text and the corresponding ISLISP objects (data structures) are addressed simultaneously. ISLISP text can be seen as an external specification of ISLISP data structures. To distinguish between the two representations different concepts are used. When textual representation is discussed, textual elements (such as <span class="nonterminal">identifiers</span>, <span class="nonterminal">literals</span>, and <span class="nonterminal">compound forms</span>) are used; when ISLISP objects are discussed, <span class="nonterminal">objects</span> (such as <span class="nonterminal">symbols</span> and <span class="nonterminal">lists</span>) are used.</p>
+            <p id="forms7">The constituents of ISLISP text are called <a href="#td_form" class="term">forms</a>. A <a href="#td_form" class="term">form</a> can be an <a href="#td_identifier" class="nonterminal">identifier</a>, a <a href="#td_literal" class="nonterminal">literal</a>, or a <span class="nonterminal">compound form</span>. A <span class="nonterminal">compound form</span> can be a <span class="nonterminal">function application form</span>, a <span class="nonterminal">macro form</span>, a <span class="nonterminal">special form</span>, or a <span class="nonterminal">defining form</span>.</p>
+            <p>An <a href="#td_identifier" class="nonterminal">identifier</a> is represented by a <span class="nonterminal">symbol</span>. A <span class="nonterminal">compound form</span> is represented by a non-null <span class="nonterminal">list</span>. A <a href="#td_literal" class="nonterminal">literal</a> is represented by neither a <span class="nonterminal">symbol</span> nor a <span class="nonterminal">list</span>, and so is neither an <a href="#td_identifier" class="nonterminal">identifier</a> nor a <span class="nonterminal">compound form</span>; for example, a number is a literal.</p>
             <p id="evaluation_model">An object is <span class="term">prepared for execution</span>; this might include transformation or compilation, including macro expansion. The method of preparation for <span class="term">execution</span> and its result are not defined in this document (with exception of the violations to be detected). After successful preparation for execution the result is ready for execution. The combination of preparation for execution and subsequent execution implements ISLISP's <span class="term">evaluation model</span>. The term “evaluation” is used because ISLISP is an expression language—each form has a value which is used to compute the value of the containing form. The results obtained when an entity is prepared for execution are designated throughout this document by the construction <q>prepared entity</q>; <span class="latin">e.g.</span>, <q>prepared form,</q> <q>prepared special form.</q></p>
             <div class="example">A “cond special form” becomes a “prepared cond” by preparation for execution.</div>
             <p>In the examples, the metasymbol “⇒” designates the result of an actual evaluation. For example:</p>
@@ -501,19 +501,19 @@
             </dl>
             <p id="conventions">In this document the conventions detailed below are used, except where noted:</p>
             <dl>
-                <dt class="symbol">-p</dt>
+                <dt class="terminal">-p</dt>
                 <dd>
                     <p>Predicates—sometimes called <q>boolean functions</q>—usually have names that end in a -p.</p>
-                    <p>Usually every class <span class="class">name</span> has a characteristic function, whose name is built as <span class="term1">name</span>-p if <span class="term1">name</span> is hyphenated (<span class="symbol">generic-function-p</span>), or <span class="term1">name</span>p if <span class="term1">name</span> is not hyphenated (<span class="symbol">symbolp</span>). Note that not all functions whose names end with <q><span class="symbol">p</span></q> are predicates.</p>
+                    <p>Usually every class <span class="class">name</span> has a characteristic function, whose name is built as <span class="nonterminal">name</span>-p if <span class="nonterminal">name</span> is hyphenated (<span class="terminal">generic-function-p</span>), or <span class="nonterminal">name</span>p if <span class="nonterminal">name</span> is not hyphenated (<span class="terminal">symbolp</span>). Note that not all functions whose names end with <q><span class="terminal">p</span></q> are predicates.</p>
                 </dd>
-                <dt class="symbol" id="create_">create-</dt>
-                <dd>Usually a built-in class <span class="class">name</span> has a constructor function, which is called create-<span class="term1">name</span>.</dd>
-                <dt class="symbol" id="def_">def</dt>
+                <dt class="terminal" id="create_">create-</dt>
+                <dd>Usually a built-in class <span class="class">name</span> has a constructor function, which is called create-<span class="nonterminal">name</span>.</dd>
+                <dt class="terminal" id="def_">def</dt>
                 <dd>This is used as the prefix of the defining operators.</dd>
-                <dt class="symbol">set-</dt>
-                <dd>Within this document, any functions named set-<span class="term1">name</span> are writers for a place, for which there is a corresponding reader named <span class="term1">name</span>.</dd>
+                <dt class="terminal">set-</dt>
+                <dd>Within this document, any functions named set-<span class="nonterminal">name</span> are writers for a place, for which there is a corresponding reader named <span class="nonterminal">name</span>.</dd>
             </dl>
-            <p>For any kind of entity in the language, the phrase <q><span class="term1">entity-kind name</span></q> refers to the entity of kind <span class="term1">entity-kind</span> denoted by <span class="term1">name</span>. For example, the phrases <q>function <span class="term1">name</span></q>, <q>constant <span class="term1">name</span></q>, or <q>class <span class="term1">name</span></q> respectively mean the function, constant, or class denoted by <span class="term1">name</span>.</p>
+            <p>For any kind of entity in the language, the phrase <q><span class="nonterminal">entity-kind name</span></q> refers to the entity of kind <span class="nonterminal">entity-kind</span> denoted by <span class="nonterminal">name</span>. For example, the phrases <q>function <span class="nonterminal">name</span></q>, <q>constant <span class="nonterminal">name</span></q>, or <q>class <span class="nonterminal">name</span></q> respectively mean the function, constant, or class denoted by <span class="nonterminal">name</span>.</p>
             
             <h3 id="lexemes">Lexemes</h3>
             
@@ -553,17 +553,17 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             <h3 id="textual_representation">Textual representation</h3>
             <p>The textual representation of an object is machine independent. The following are some of the textual representations of the ISLISP objects. This representation is readable by the read function. Lexemes are described in §6</p>
             <dl>
-                <dt class="term2" id="null10">Null</dt>
+                <dt class="classname" id="null10">Null</dt>
                 <dd>The object nil is the only object whose class is <span class="class">null</span>. Upon input, it may be written as nil or (). It is <a href="#td_implementation_defined">implementation defined</a> whether nil prints as nil or ().</dd>
-                <dt class="term2" id="list10">List</dt>
+                <dt class="classname" id="list10">List</dt>
                 <dd>Proper lists are those lists terminated by nil. Usually they are denoted as (obj<sub>1</sub> obj<sub>2</sub> ...obj<sub>n</sub>). A dotted list (<span class="latin">i.e.</span>, a list whose last tail is not nil) appears as (obj<sub>1</sub> obj<sub>2</sub> ...obj<sub>n</sub> . obj<sub>n+1</sub>).</dd>
-                <dt class="term2" id="character">Character</dt>
+                <dt class="classname" id="character">Character</dt>
                 <dd>An instance of the <span class="class">character</span> class is represented by #\?, where <q>?</q> is the character in question. There are two special standard characters that are not represented in this way, namely newline and space, whose representations are #\newline and #\space, respectively.</dd>
-                <dt class="term2" id="cons10">Cons</dt>
+                <dt class="classname" id="cons10">Cons</dt>
                 <dd>A cons is expressed as (car . cdr), where the car and cdr are objects.</dd>
-                <dt class="term2" id="integer10">Integer</dt>
+                <dt class="classname" id="integer10">Integer</dt>
                 <dd>An integer (radix 10) is represented as a sequence of digits optionally preceded by a + or sign. If the number is represented in binary radix (or in octal or hexadecimal) then the textual representation is preceded by #b (or #o or #x, respectively).</dd>
-                <dt class="term2" id="float11">Float</dt>
+                <dt class="classname" id="float11">Float</dt>
                 <dd>
                     <p>A ﬂoating point number is written in one of the following formats:</p>
 <pre>
@@ -575,9 +575,9 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
 </pre>
                     <p>where s is either <q>+</q> or <q>-</q>, and d is one of <q>0</q> – <q>9</q>. <span title="This number, although belonging to the set of natural numbers, usually is considered as only a floating point number because of its representation.">For example: 987.12, +12.5E-13, -1.5E12, 1E32</span></p>
                 </dd>
-                <dt class="term2" id="vector11">Vector</dt>
+                <dt class="classname" id="vector11">Vector</dt>
                 <dd>A vector of class <span class="class">general-vector</span> is written as #(obj<sub>1</sub> … obj<sub>n</sub>).</dd>
-                <dt class="term2" id="array">Array</dt>
+                <dt class="classname" id="array">Array</dt>
                 <dd>
                     <p>An array of class &lt;general-array*&gt; or <span class="class">general-vector</span> can be written on input as #na (where n is an integer indicating the number of dimensions of the array) followed by a nested structure of sequences denoting the contents of the array. This structure is defined as follows. If n = 1 the structure is simply (obj<sub>1</sub> ... obj<sub>n</sub>). If n > 1 and the dimensions are n<sub>1</sub> n<sub>2</sub> ..., the structure is (str<sub>1</sub> ... strn<sub>1</sub>), where the stri are the structures of the n<sub>1</sub> subarrays, each of which has dimensions (n<sub>2</sub> ...). As an example, the representation of (create-array '(2 3 4) 5) is as follows:</p>
 <pre>
@@ -585,9 +585,9 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
 </pre>
                     <p>On output (see format), arrays of class <span class="class">general-vector</span> will be printed using #(...) notation.</p>
                 </dd>
-                <dt class="term2" id="string11">String</dt>
+                <dt class="classname" id="string11">String</dt>
                 <dd>A string is represented by the sequence of its characters enclosed in a pair of "'s. For example: "abc". Special characters are preceded with a backslash as an escape character.</dd>
-                <dt class="term2" id="symbol11">Symbol</dt>
+                <dt class="classname" id="symbol11">Symbol</dt>
                 <dd>A named symbol is represented by its print name. Vertical bars (|) might need to enclose the symbol if it contains certain special characters; see §18. The notation, if any, used for unnamed symbols is <a href="#td_implementation_defined">implementation defined</a>.</dd>
             </dl>
             <p>There are objects which do not have a textual representation, such as a class or an instance of the <span class="class">function</span> class.</p>
@@ -1030,7 +1030,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             </ul>
             
             <div id="f_functionp" class="definition-function">
-                (<span class="operator">functionp</span> <span class="arg">obj</span>) → <span class="class">boolean</span>
+                (<span class="operator">functionp</span> <span class="arg">obj</span>) → <span class="nonterminal">boolean</span>
             </div>
             <p>Returns t if obj is a (normal or generic) function; otherwise, returns nil. obj may be any ISLISP object.</p>
 <pre class="example">
@@ -1250,10 +1250,10 @@ today                          ⇒ wednesday
             <p>Like boolean functions, the and and or special forms return truth values; however, these truth values are nil when the test is not satisfied and a non-nil value otherwise. The result of and and or are quasi-booleans.</p>
             
             <div id="c_t" class="definition-constant">
-              <span class="symbol">t</span> → <span class="class">symbol</span>
+              <span class="terminal">t</span> → <span class="class">symbol</span>
             </div>
             <div id="c_nil" class="definition-constant">
-              <span class="symbol">nil</span> → <span class="class">null</span>
+              <span class="terminal">nil</span> → <span class="class">null</span>
             </div>
             <p>t is a named constant whose value is the symbol t itself. nil is a named constant whose value is the symbol nil itself.</p>
             
@@ -1287,10 +1287,10 @@ today                          ⇒ wednesday
             <h4 id="equality">Equality</h4>
             
             <div id="f_eq" class="definition-function">
-                (<span class="operator">eq</span> <span class="arg">obj<sub>1</sub></span> <span class="arg">obj<sub>2</sub>)</span> → <span class="term1">boolean</span>
+                (<span class="operator">eq</span> <span class="arg">obj<sub>1</sub></span> <span class="arg">obj<sub>2</sub>)</span> → <span class="nonterminal">boolean</span>
             </div>
             <div id="f_eql" class="definition-function">
-                (<span class="operator">eql</span> <span class="arg">obj<sub>1</sub></span> <span class="arg">obj<sub>2</sub></span>) → <span class="term1">boolean</span>
+                (<span class="operator">eql</span> <span class="arg">obj<sub>1</sub></span> <span class="arg">obj<sub>2</sub></span>) → <span class="nonterminal">boolean</span>
             </div>
             
             <p>eq and eql test whether obj<sub>1</sub> and obj<sub>2</sub> are same identical object. They return t if the objects are the same; otherwise, they return nil. Two objects are the same if there is no operation that could distinguish them (without modifying them), and if modifying one would modify the other the same way.</p>
@@ -1413,7 +1413,7 @@ today                          ⇒ wednesday
 </pre>
             
             <div id="f_equal" class="definition-function">
-                (<span class="operator">equal</span> <span class="arg">obj<sub>1</sub></span> <span class="arg">obj<sub>2</sub>)</span> → <span class="term1">boolean</span>
+                (<span class="operator">equal</span> <span class="arg">obj<sub>1</sub></span> <span class="arg">obj<sub>2</sub>)</span> → <span class="nonterminal">boolean</span>
             </div>
             
             <p>This function tests whether obj<sub>1</sub> and obj<sub>2</sub> are isomorphic—<span class="latin">i.e.</span>, whether obj1 and obj2 denote the same structure with equivalent values. equal returns t if the test was satisfied, and nil if not. Specifically:</p>
@@ -1471,7 +1471,7 @@ today                          ⇒ wednesday
             
             <h4 id="logical_connectives">Logical connectives</h4>
             <div id="f_not" class="definition-function">
-                (<span class="operator">not</span> <span class="arg">obj</span>) → <span class="term1">boolean</span>
+                (<span class="operator">not</span> <span class="arg">obj</span>) → <span class="nonterminal">boolean</span>
             </div>
             <p>This predicate is the logical “not” (or “¬”). It returns t if obj is nil and nil otherwise. obj may be any ISLISP object.</p>
 <pre class="example">
@@ -1663,7 +1663,7 @@ x               ⇒ 0
             
             <p>This macro is used for generalized assignment.</p>
             <p>setf takes a place and stores in this place the result of the evaluation of the form form. The place form is not evaluated as a whole entity, but subforms of place are evaluated sequentially from left to right to determine a place to be assigned a value. When place is denoted by an identifier, setf behaves exactly as setq. The returned value is the result of the evaluation of form. The valid places for the setf special form are as follows:</p>
-            <table>
+            <table border="1">
                 <tr>
                     <th>variables</th>
                     <th>var</th>
@@ -1926,10 +1926,10 @@ In the cons x, the car now is 2.
 </pre>
             
             <div id="s_case" class="definition-special">
-                (<span class="operator">case</span> <span class="arg">keyform</span> ((<span class="arg">key</span>*) <span class="arg">form</span>*)* [(<span class="symbol">t</span> <span class="arg">form</span>*)]) → <span class="class">object</span>
+                (<span class="operator">case</span> <span class="arg">keyform</span> ((<span class="arg">key</span>*) <span class="arg">form</span>*)* [(<span class="terminal">t</span> <span class="arg">form</span>*)]) → <span class="class">object</span>
             </div>
             <div id="s_case_using" class="definition-special">
-                (<span class="operator">case-using</span> <span class="arg">predform</span> <span class="arg">keyform</span> ((<span class="arg">key</span>*) <span class="arg">form</span>*)* [(<span class="symbol">t</span> <span class="arg">form</span>*)]) → <span class="class">object</span>
+                (<span class="operator">case-using</span> <span class="arg">predform</span> <span class="arg">keyform</span> ((<span class="arg">key</span>*) <span class="arg">form</span>*)* [(<span class="terminal">t</span> <span class="arg">form</span>*)]) → <span class="class">object</span>
             </div>
             
             <p>The case and case-using special forms, called case forms, provide a mechanism to execute a matching clause from a series of clauses based on the value of a dispatching form keyform.</p>
@@ -2042,7 +2042,7 @@ iteration-spec ::= (var init [step])
             <h5 id="establishing_and_invoking_non_local_exits">Establishing and invoking non-local exits</h5>
             
             <p>ISLISP defines three ways in which to perform non-local exits:</p>
-            <table>
+            <table border="1">
                 <tr>
                     <th>Destination Kind</th>
                     <th>Established by</th>
@@ -2376,7 +2376,7 @@ abstract-flag        ::= t | nil
             <p>Like an ordinary ISLISP function, a generic function takes arguments, performs a series of operations, and returns a value. An ordinary function has a single body of code that is always executed when the function is called. A generic function has a set of bodies of code of which a non-empty subset is selected for execution. The selected bodies of code and the manner of their combination are determined by the classes of the arguments to the generic function and by its method combination type.</p>
             
             <div id="f_generic_function_p" class="definition-function">
-                (<span class="operator">generic-function-p</span> <span class="arg">obj</span>) → <span class="term1">boolean</span>
+                (<span class="operator">generic-function-p</span> <span class="arg">obj</span>) → <span class="nonterminal">boolean</span>
             </div>
             
             <p>Returns t if obj is a generic function; otherwise, returns nil. obj may be any ISLISP object.</p>
@@ -2556,7 +2556,7 @@ var                        ::= identifier
             <p>The functional binding of call-next-method is lexical within the body of the method-defining form; <span class="latin">i.e.</span>, it is as if it were established by labels. The function object to which the binding refers has indefinite extent.</p>
             <p>An error shall be signaled if call-next-method is used in methods that do not support it. An error shall be signaled if call-next-method is executed and there is no next method.</p>
             <div id="l_next_method_p" class="definition-local">
-                (<span class="operator">next-method-p</span>) → <span class="term1">boolean</span>
+                (<span class="operator">next-method-p</span>) → <span class="nonterminal">boolean</span>
             </div>
             <p>The next-method-p function can be used within the body of a method defined by a method-defining form to determine whether a next method exists. The next-method-p function takes no arguments and returns t or nil.</p>
             <p>The functional binding of next-method-p is lexical within the body of the method-defining form; <span class="latin">i.e.</span>, it is as if it were established by labels. The function object to which the binding refers has indefinite extent.</p>
@@ -2596,12 +2596,12 @@ var                        ::= identifier
             
             <p>Returns the class of which the given obj is a direct instance. obj may be any ISLISP object.</p>
             <div id="f_instancep" class="definition-function">
-                (<span class="operator">instancep</span> <span class="arg">obj</span> <span class="arg">class</span>) → <span class="term1">boolean</span>
+                (<span class="operator">instancep</span> <span class="arg">obj</span> <span class="arg">class</span>) → <span class="nonterminal">boolean</span>
             </div>
             <p>Returns t if obj is an instance (directly or otherwise) of the class class; otherwise, returns nil obj may be any ISLISP object. An error shall be signaled if class is not a class object (error-id. <span class="error_id">domain-error</span>).</p>
             
             <div id="f_subclassp" class="definition-function">
-                (<span class="operator">subclassp</span> <span class="arg">class1</span> <span class="arg">class2</span>) → <span class="term1">boolean</span>
+                (<span class="operator">subclassp</span> <span class="arg">class1</span> <span class="arg">class2</span>) → <span class="nonterminal">boolean</span>
             </div>
             
             <p>Returns t if the class class1 is a subclass of the class class2 ; otherwise, returns nil. An error shall be signaled if either class1 or class2 is not a class object (error-id. <span class="error_id">domain-error</span>).</p>
@@ -2695,7 +2695,7 @@ var                        ::= identifier
             
             <p>Returns an object of class class-name which corresponds to the object obj according to one of the following projections, called a coercion function. The table shows obj along the left-hand column and class-name along the top row (with &lt;&gt;'s in class names omitted here only for textual brevity):</p>
             
-            <table>
+            <table border="1">
                 <tr>
                     <th>character</th>
                     <th>integer</th>
@@ -2822,7 +2822,7 @@ var                        ::= identifier
             <h3 id="symbol_class">Symbol class</h3>
             <p>A symbol (an instance of class <span class="class">symbol</span>) is an object. Symbols can be named or unnamed. A symbol's name is sometimes called a print name because it is used to identify the symbol during reading and printing. Symbols can have associated properties.</p>
             <div id="f_symbolp" class="definition-function">
-                (<span class="operator">symbolp</span> <span class="arg">obj</span>) → <span class="term1">boolean</span>
+                (<span class="operator">symbolp</span> <span class="arg">obj</span>) → <span class="nonterminal">boolean</span>
             </div>
             
             <p>Returns t if obj is a symbol (instance of class <span class="class">symbol</span>); otherwise, returns nil. The obj may be any ISLISP object.</p>
@@ -2960,7 +2960,7 @@ var                        ::= identifier
             
             <h4 id="number_class_2">Number class</h4>
             <div id="f_numberp" class="definition-function">
-                (<span class="operator">numberp</span> <span class="arg">obj</span>) → boolean
+                (<span class="operator">numberp</span> <span class="arg">obj</span>) → <span class="nonterminal">boolean</span>
             </div>
             
             <p>Returns t if obj is a number (instance of class <span class="class">number</span>); otherwise, returns nil. The obj may be any ISLISP object.</p>
@@ -2995,7 +2995,7 @@ one mantissa digit after the decimal point.
 </pre>
             
             <div id="f_math_eq" class="definition-function">
-                (<span class="operator">=</span> <span class="arg">x<sub>1</sub></span> <span class="arg">x<sub>2</sub></span>) → <span class="term1">boolean</span>
+                (<span class="operator">=</span> <span class="arg">x<sub>1</sub></span> <span class="arg">x<sub>2</sub></span>) → <span class="nonterminal">boolean</span>
             </div>
             
             <p>Returns t if x<sub>1</sub> has the same mathematical value as x<sub>2</sub> ; otherwise, returns nil. An error shall be signaled if either x<sub>1</sub> or x<sub>2</sub> is not a number (error-id. <span class="error_id">domain-error</span>).</p>
@@ -3011,7 +3011,7 @@ one mantissa digit after the decimal point.
 </pre>
             
             <div id="f_math_neq" class="definition-function">
-                (<span class="operator">/=</span> <span class="arg">x1</span> <span class="arg">x2</span>) → <span class="term1">boolean</span>
+                (<span class="operator">/=</span> <span class="arg">x1</span> <span class="arg">x2</span>) → <span class="nonterminal">boolean</span>
             </div>
             
             <p>Returns t if x1 and x2 have mathematically distinct values; otherwise, returns nil. An error shall be signaled if either x1 or x2 is not a number (error-id. <span class="error_id">domain-error</span>).</p>
@@ -3024,16 +3024,16 @@ one mantissa digit after the decimal point.
 </pre>
             
             <div id="f_gteq" class="definition-function">
-                (<span class="operator">&gt;=</span> <span class="arg">x<sub>1</sub></span> <span class="arg">x<sub>2</sub></span>) → <span class="term1">boolean</span>
+                (<span class="operator">&gt;=</span> <span class="arg">x<sub>1</sub></span> <span class="arg">x<sub>2</sub></span>) → <span class="nonterminal">boolean</span>
             </div>
             <div id="f_lteq" class="definition-function">
-                (<span class="operator">&lt;=</span> <span class="arg">x<sub>1</sub></span> <span class="arg">x<sub>2</sub></span>) → <span class="term1">boolean</span>
+                (<span class="operator">&lt;=</span> <span class="arg">x<sub>1</sub></span> <span class="arg">x<sub>2</sub></span>) → <span class="nonterminal">boolean</span>
             </div>
             <div id="f_gt" class="definition-function">
-                (<span class="operator">&gt;</span> <span class="arg">x<sub>1</sub></span> <span class="arg">x<sub>2</sub>)</span> → <span class="term1">boolean</span>
+                (<span class="operator">&gt;</span> <span class="arg">x<sub>1</sub></span> <span class="arg">x<sub>2</sub>)</span> → <span class="nonterminal">boolean</span>
             </div>
             <div id="f_lt" class="definition-function">
-                (<span class="operator">&lt;</span> <span class="arg">x<sub>1</sub></span> <span class="arg">x<sub>2</sub></span>) → <span class="term1">boolean</span>
+                (<span class="operator">&lt;</span> <span class="arg">x<sub>1</sub></span> <span class="arg">x<sub>2</sub></span>) → <span class="nonterminal">boolean</span>
             </div>
             
             <p>&gt;= returns t if x<sub>1</sub> is greater than or = x<sub>2</sub> . &lt;= returns t if x<sub>1</sub> is less than or = x<sub>2</sub> . &gt; returns t if x<sub>1</sub> is greater than x<sub>2</sub>. &lt; returns t if x<sub>1</sub> is less than x<sub>2</sub>.</p>
@@ -3269,7 +3269,7 @@ one mantissa digit after the decimal point.
 </pre>
             
             <div id="c_pi" class="definition-constant">
-                <span class="symbol">*pi*</span> → <span class="class">float</span>
+                <span class="terminal">*pi*</span> → <span class="class">float</span>
             </div>
             <p>The value of this constant is an approximation of π.</p>
             
@@ -3320,12 +3320,12 @@ one mantissa digit after the decimal point.
             <p>The result is a (real) number that lies between −π/2 and π/2 (both exclusive).</p>
             <p>The following definition for (one-argument) arc tangent determines the range and branch cuts:</p>
             
-            <table>
+            <table border="1">
                 <tr>
                     <td>arctan x</td>
                     <td>=</td>
                     <td>
-                        <table>
+                        <table border="1">
                             <tr>
                                 <td style="border-bottom: black thin solid">log (1 + ix) - log (1 - ix)</td>
                             </tr>
@@ -3347,7 +3347,7 @@ one mantissa digit after the decimal point.
             <p>An error shall be signaled if x is not a number (error-id. <span class="error_id">domain-error</span>).</p>
             <p>The value of atan2 is always between −π (exclusive) and π (inclusive) when minus zero is not supported; when minus zero is supported, the range includes −π.</p>
             
-            <table>
+            <table border="1">
                 <caption>Figure 3. Quadrant information for atan2</caption>
                 <tr>
                     <th>y Condition</th>
@@ -3547,17 +3547,17 @@ one mantissa digit after the decimal point.
             <p>There must be at least one digit before the decimal point and at least one mantissa digit after the decimal point.</p>
             
             <div id="c_most_positive_float" class="definition-constant">
-                <span class="symbol">*most-positive-float*</span> → <span class="class">float</span>
+                <span class="terminal">*most-positive-float*</span> → <span class="class">float</span>
             </div>
             <div id="c_most_negative_float" class="definition-constant">
-                <span class="symbol">*most-negative-float*</span> → <span class="class">float</span>
+                <span class="terminal">*most-negative-float*</span> → <span class="class">float</span>
             </div>
             
             <p>The value of *most-positive-float* is the <a href="#td_implementation_dependent">implementation-dependent</a> ﬂoating-point number closest to positive infinity.</p>
             <p>The value of *most-negative-float* is the <a href="#td_implementation_dependent">implementation-dependent</a> ﬂoating-point number closest to negative infinity.</p>
             
             <div id="f_floatp" class="definition-function">
-                (<span class="operator">floatp</span> <span class="arg">obj</span>) → boolean
+                (<span class="operator">floatp</span> <span class="arg">obj</span>) → <span class="nonterminal">boolean</span>
             </div>
             
             <p>Returns t if obj is a ﬂoat (instance of class <span class="class">float</span>); otherwise, returns nil. The obj may be any ISLISP object.</p>
@@ -3691,7 +3691,7 @@ one mantissa digit after the decimal point.
             <p>where s is either <q>+</q> or <q>-</q>.</p>
             <div class="note">Note: In ISLISP, there is no variable that controls the reader. Thus the above notations are exactly the notations for integers.</div>
             <div id="f_integerp" class="definition-function">
-                (<span class="operator">integerp</span> <span class="arg">obj</span>) → <span class="term1">boolean</span>
+                (<span class="operator">integerp</span> <span class="arg">obj</span>) → <span class="nonterminal">boolean</span>
             </div>
             
             <p>Returns t if obj is an integer (instance of class <span class="class">integer</span>); otherwise, returns nil. obj may be any ISLISP object.</p>
@@ -3842,7 +3842,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             <p>where char1 &lt; char2 means that (char&lt; char1 char2) is true.</p>
             
             <div id="f_characterp" class="definition-function">
-                (<span class="operator">characterp</span> <span class="arg">obj</span>) → boolean
+                (<span class="operator">characterp</span> <span class="arg">obj</span>) → <span class="nonterminal">boolean</span>
             </div>
             
             <p>Returns t if obj is a character (instance of class <span class="class">character</span>); otherwise, returns nil. obj may be any ISLISP object.</p>
@@ -3856,22 +3856,22 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 </pre>
             
             <div id="f_char_eq" class="definition-function">
-                (<span class="operator">char=</span> <span class="arg">char<sub>1</sub></span> <span class="arg">char<sub>2</sub></span>) → <span class="term1">boolean</span>
+                (<span class="operator">char=</span> <span class="arg">char<sub>1</sub></span> <span class="arg">char<sub>2</sub></span>) → <span class="nonterminal">boolean</span>
             </div>
             <div id="f_char_neq" class="definition-function">
-                (<span class="operator">char/=</span> <span class="arg">char<sub>1</sub></span> <span class="arg">char<sub>2</sub></span>) → <span class="term1">boolean</span>
+                (<span class="operator">char/=</span> <span class="arg">char<sub>1</sub></span> <span class="arg">char<sub>2</sub></span>) → <span class="nonterminal">boolean</span>
             </div>
             <div id="f_char_lt" class="definition-function">
-                (<span class="operator">char&lt;</span> <span class="arg">char<sub>1</sub></span> <span class="arg">char<sub>2</sub>)</span> → <span class="term1">boolean</span>
+                (<span class="operator">char&lt;</span> <span class="arg">char<sub>1</sub></span> <span class="arg">char<sub>2</sub>)</span> → <span class="nonterminal">boolean</span>
             </div>
             <div id="f_char_gt" class="definition-function">
-                (<span class="operator">char&gt;</span> <span class="arg">char<sub>1</sub></span> <span class="arg">char<sub>2</sub></span>) → <span class="term1">boolean</span>
+                (<span class="operator">char&gt;</span> <span class="arg">char<sub>1</sub></span> <span class="arg">char<sub>2</sub></span>) → <span class="nonterminal">boolean</span>
             </div>
             <div id="f_char_lteq" class="definition-function">
-                (<span class="operator">char&lt;=</span> <span class="arg">char<sub>1</sub></span> <span class="arg">char<sub>2</sub></span>) → <span class="term1">boolean</span>
+                (<span class="operator">char&lt;=</span> <span class="arg">char<sub>1</sub></span> <span class="arg">char<sub>2</sub></span>) → <span class="nonterminal">boolean</span>
             </div>
             <div id="f_char_gteq" class="definition-function">
-                (<span class="operator">char&gt;=</span> <span class="arg">char<sub>1</sub></span> <span class="arg">char<sub>2</sub></span>) → <span class="term1">boolean</span>
+                (<span class="operator">char&gt;=</span> <span class="arg">char<sub>1</sub></span> <span class="arg">char<sub>2</sub></span>) → <span class="nonterminal">boolean</span>
             </div>
             
             <p>The function char= tests whether char<sub>1</sub> is the same character as char<sub>2</sub>. The function char&lt; tests whether char<sub>1</sub> is less than char<sub>2</sub>. The function char&lt;= tests whether char<sub>1</sub> is less than or equal to char<sub>2</sub>. The ordering used is the partial order defined above, extended to a total order on all characters in an <a href="#td_implementation_defined">implementation-defined</a> manner. If the test is satisfied, t is returned; otherwise, nil is returned.</p>
@@ -3914,7 +3914,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             <h4 id="cons">Cons</h4>
             <p>A cons (sometimes also called <q>dotted pair</q>) consists of two components; the left component is called car and the right component is called cdr. The constructor of this class is cons. Conses are written as</p>
 <pre>(<span class="nonterminal">car</span> . <span class="nonterminal">cdr</span>)</pre>
-            <p>where <span class="nonterminal">car</span> and <span class="nonterminal">cdr</span> denote the values in the car and cdr components, respectively, of the cons object. As a special case, if the <span class="nonterminal">cdr</span> value is <span class="symbol">nil</span>, then the cons object is written as</p>
+            <p>where <span class="nonterminal">car</span> and <span class="nonterminal">cdr</span> denote the values in the car and cdr components, respectively, of the cons object. As a special case, if the <span class="nonterminal">cdr</span> value is <span class="terminal">nil</span>, then the cons object is written as</p>
 <pre>
 (<span class="nonterminal">car</span>)
 </pre>
@@ -3931,10 +3931,10 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 (<span class="nonterminal">x<sub>1</sub></span> <span class="nonterminal">x<sub>2</sub></span> … <span class="nonterminal">x<sub>n−1</sub></span>)
 </pre>
             <div id="f_consp" class="definition-function">
-                (<span class="operator">consp</span> <span class="arg">obj</span>) → <span class="term1">boolean</span>
+                (<span class="operator">consp</span> <span class="arg">obj</span>) → <span class="nonterminal">boolean</span>
             </div>
             
-            <p>Returns <span class="symbol">t</span> if <span class="nonterminal">obj</span> is a cons (instance of class <span class="class">cons</span>); otherwise, returns <span class="symbol">nil</span>. <span class="nonterminal">obj</span> may be any ISLISP object.</p>
+            <p>Returns <span class="terminal">t</span> if <span class="nonterminal">obj</span> is a cons (instance of class <span class="class">cons</span>); otherwise, returns <span class="terminal">nil</span>. <span class="nonterminal">obj</span> may be any ISLISP object.</p>
 <pre class="example">
 (consp '(a . b)) ⇒ t
 
@@ -3967,7 +3967,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
                 (<span class="operator">car</span> <span class="arg">cons</span>) → <span class="class">object</span>
             </div>
             
-            <p>The function <span class="symbol">car</span> returns the left component of the <span class="nonterminal">cons</span>. An error shall be signaled if <span class="nonterminal">cons</span> is not a cons (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>The function <span class="terminal">car</span> returns the left component of the <span class="nonterminal">cons</span>. An error shall be signaled if <span class="nonterminal">cons</span> is not a cons (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
 (car '())          <span class="comment">an error shall be signaled</span>
@@ -3983,7 +3983,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
                 (<span class="operator">cdr</span> <span class="arg">cons</span>) → <span class="class">object</span>
             </div>
             
-            <p>The function <span class="symbol">cdr</span> returns the right component of the <span class="nonterminal">cons</span>. An error shall be signaled if <span class="nonterminal">cons</span> is not a cons (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>The function <span class="terminal">cdr</span> returns the right component of the <span class="nonterminal">cons</span>. An error shall be signaled if <span class="nonterminal">cons</span> is not a cons (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
 (cdr '())          <span class="comment">an error shall be signaled</span>
@@ -4031,12 +4031,12 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             
             <h4 id="null_class">Null class</h4>
             
-            <p>This class consists of only one element, the object called nil. This object is the false value in boolean expressions. The length of the sequence nil is 0.</p>
+            <p>This class consists of only one element, the object called <span class="terminal">nil</span>. This object is the false value in boolean expressions. The length of the sequence <span class="terminal">nil</span> is 0.</p>
             <div id="f_null" class="definition-function">
-                (<span class="operator">null</span> <span class="arg">obj</span>) → boolean
+                (<span class="operator">null</span> <span class="arg">obj</span>) → <span class="nonterminal">boolean</span>
             </div>
             
-            <p><span title="If the naming conventions were strictly observed, null would be named nullp; it is named null for historical and compatibility reasons.">Returns t if obj is nil; otherwise, returns nil</span> obj may be any ISLISP object.</p>
+            <p><span title="If the naming conventions were strictly observed, null would be named nullp; it is named null for historical and compatibility reasons.">Returns t if <span class="nonterminal">obj</span> is <span class="terminal">nil</span>; otherwise, returns <span class="terminal">nil</span></span>. <span class="nonterminal">obj</span> may be any ISLISP object.</p>
             
 <pre class="example">
 (null '(a b c)) ⇒ nil
@@ -4049,10 +4049,10 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             <h4 id="list_operations">List operations</h4>
             
             <div id="f_listp" class="definition-function">
-                (<span class="operator">listp</span> <span class="arg">obj</span>) → boolean
+                (<span class="operator">listp</span> <span class="arg">obj</span>) → <span class="nonterminal">boolean</span>
             </div>
             
-            <p>Returns t if obj is a list (instance of class <span class="class">list</span>); otherwise, returns nil. obj may be any ISLISP object.</p>
+            <p>Returns <span class="terminal">t</span> if <span class="nonterminal">obj</span> is a list (instance of class <span class="class">list</span>); otherwise, returns <span class="terminal">nil</span>. <span class="nonterminal">obj</span> may be any ISLISP object.</p>
             
 <pre class="example">
 (listp '(a b c))     ⇒ t
@@ -4078,7 +4078,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
                 (<span class="operator">create-list</span> <span class="arg">i</span> [<span class="arg">initial-element</span>]) → <span class="class">list</span>
             </div>
             
-            <p>Returns a list of length i. If initial-element is given, the elements of the new list are initialized with this object; otherwise, the initialization is <a href="#td_implementation_defined">implementation defined</a>. An error shall be signaled if the requested list cannot be allocated (error-id. <span class="error_id">cannot-create-list</span>). An error shall be signaled if i is not a non-negative integer (error-id. <span class="error_id">domain-error</span>). initial-element may be any ISLISP object.</p>
+            <p>Returns a list of length <span class="nonterminal">i</span>. If <span class="nonterminal">initial-element</span> is given, the elements of the new list are initialized with this object; otherwise, the initialization is <a href="#td_implementation_defined">implementation defined</a>. An error shall be signaled if the requested list cannot be allocated (error-id. <span class="error_id">cannot-create-list</span>). An error shall be signaled if <span class="nonterminal">i</span> is not a non-negative integer (error-id. <span class="error_id">domain-error</span>). <span class="nonterminal">initial-element</span> may be any ISLISP object.</p>
 <pre class="example">
 (create-list 3 17)  ⇒ (17 17 17)
 
@@ -4089,7 +4089,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
                 (<span class="operator">list</span> <span class="arg">obj</span>*) → <span class="class">list</span>
             </div>
             
-            <p>Returns a new list whose length is the number of arguments and whose elements are the arguments in the same order as in the list-form. An error shall be signaled if the requested list cannot be allocated (error-id. <span class="error_id">cannot-create-list</span>). Each obj may be any ISLISP object.</p>
+            <p>Returns a new list whose length is the number of arguments and whose elements are the arguments in the same order as in the list-form. An error shall be signaled if the requested list cannot be allocated (error-id. <span class="error_id">cannot-create-list</span>). Each <span class="nonterminal">obj</span> may be any ISLISP object.</p>
             
 <pre class="example">
 (list 'a (+ 3 4) 'c) ⇒ (a 7 c)
@@ -4103,9 +4103,9 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 <div id="f_nreverse" class="definition-function">
 (<span class="operator">nreverse</span> <span class="arg">list</span>) → <span class="class">list</span>
 </div>
-            <p>These functions each return a list whose elements are those of the given list, but in reverse order. An error shall be signaled if list is not a list (error-id. <span class="error_id">domain-error</span>).</p>
-            <p>For reverse, no side-effect to the given list occurs. The resulting list is permitted but not required to share structure with the input list.</p>
-            <p>For nreverse, the conses which make up the top level of the given list are permitted, but not required, to be side-effected in order to produce this new list. nreverse should never be called on a literal object.</p>
+            <p>These functions each return a list whose elements are those of the given <span class="nonterminal">list</span>, but in reverse order. An error shall be signaled if <span class="nonterminal">list</span> is not a list (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>For <span class="terminal">reverse</span>, no side-effect to the given <span class="nonterminal">list</span> occurs. The resulting list is permitted but not required to share structure with the input <span class="nonterminal">list</span>.</p>
+            <p>For <span class="terminal">nreverse</span>, the conses which make up the top level of the given <span class="nonterminal">list</span> are permitted, but not required, to be side-effected in order to produce this new list. <span class="terminal">nreverse</span> should never be called on a literal object.</p>
 <pre class="example">
 (reverse '(a b c d e))            ⇒ (e d c b a)
 
@@ -4123,8 +4123,8 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
                 (<span class="operator">append</span> <span class="arg">list</span>*) → <span class="class">list</span>
             </div>
             
-            <p>Returns the result of appending all of the lists, or () if given no lists. An error shall be signaled if any list is not a list (error-id. <span class="error_id">domain-error</span>).</p>
-            <p>This function does not modify its arguments. It is <a href="#td_implementation_defined">implementation defined</a> whether and when the result shares structure with its list arguments.</p>
+            <p>Returns the result of appending all of the <span class="nonterminal">lists</span>, or <span class="terminal">()</span> if given no lists. An error shall be signaled if any <span class="nonterminal">list</span> is not a list (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>This function does not modify its arguments. It is <a href="#td_implementation_defined">implementation defined</a> whether and when the result shares structure with its <span class="nonterminal">list</span> arguments.</p>
             <p>An error shall be signaled if the list cannot be allocated (error-id. <span class="error_id">cannot-create-list</span>).</p>
             
 <pre class="example">
@@ -4135,7 +4135,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
                 (<span class="operator">member</span> <span class="arg">obj</span> <span class="arg">list</span>) → <span class="class">list</span>
             </div>
             
-            <p>If list contains at least one occurrence of obj (as determined by eql), the first sublist of list whose car is obj is returned. Otherwise, nil is returned. An error shall be signaled if list is not a list (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>If <span class="nonterminal">list</span> contains at least one occurrence of <span class="nonterminal">obj</span> (as determined by <span class="terminal">eql</span>), the first sublist of <span class="nonterminal">list</span> whose car is <span class="nonterminal">obj</span> is returned. Otherwise, <span class="terminal">nil</span> is returned. An error shall be signaled if <span class="nonterminal">list</span> is not a list (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
 (member 'c '(a b c d e f)) ⇒ (c d e f)
@@ -4164,52 +4164,52 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
                 (<span class="operator">mapcon</span> <span class="arg">function</span> <span class="arg">list+</span>) → <span class="class">list</span>
             </div>
             
-            <p>Successively applies the given function to sets of arguments determined by the given lists. The way in which the arguments are determined, and the way in which the result is accumulated are how these functions differ.</p>
-            <table>
+            <p>Successively applies the given <span class="nonterminal">function</span> to sets of arguments determined by the given <span class="nonterminal">lists</span>. The way in which the arguments are determined, and the way in which the result is accumulated are how these functions differ.</p>
+            <table border="1">
                 <tr>
                     <th>Function</th>
-                    <th>Argument</th>
-                    <th>Result</th>
+                    <th align="center">Argument</th>
+                    <th align="center">Result</th>
                 </tr>
                 <tr>
-                    <td>mapcar</td>
-                    <td>successive elements</td>
-                    <td>successive cons</td>
+                    <td><span class="terminal">mapcar</span></td>
+                    <td align="center">successive elements</td>
+                    <td align="center">successive cons</td>
                 </tr>
                 <tr>
-                    <td>mapc</td>
-                    <td>successive elements</td>
-                    <td>none (<span class="latin">i.e.</span>, list<sub>1</sub> returned)</td>
+                    <td><span class="terminal">mapc</span></td>
+                    <td align="center">successive elements</td>
+                    <td align="center">none (<span class="latin">i.e.</span>, <span class="nonterminal">list<sub>1</sub></span> returned)</td>
                 </tr>
                 <tr>
-                    <td>mapcan</td>
-                    <td>successive elements</td>
-                    <td>successive <q>destructive append</q></td>
+                    <td><span class="terminal">mapcan</span></td>
+                    <td align="center">successive elements</td>
+                    <td align="center">successive <q>destructive append</q></td>
                 </tr>
                 <tr>
-                    <td>maplist</td>
-                    <td>successive sublists</td>
-                    <td>successive cons</td>
+                    <td><span class="terminal">maplist</span></td>
+                    <td align="center">successive sublists</td>
+                    <td align="center">successive cons</td>
                 </tr>
                 <tr>
-                    <td>mapl</td>
-                    <td>successive sublists</td>
-                    <td>none (<span class="latin">i.e.</span>, list<sub>1</sub> returned)</td>
+                    <td><span class="terminal">mapl</span></td>
+                    <td align="center">successive sublists</td>
+                    <td align="center">none (<span class="latin">i.e.</span>, <span class="nonterminal">list<sub>1</sub></span> returned)</td>
                 </tr>
                 <tr>
-                    <td>mapcon</td>
-                    <td>successive sublists</td>
-                    <td>successive <q>destructive append</q></td>
+                    <td><span class="terminal">mapcon</span></td>
+                    <td align="center">successive sublists</td>
+                    <td align="center">successive <q>destructive append</q></td>
                 </tr>
             </table>
             
-            <p>mapcar operates on successive elements of the lists. function is applied to the first element of each list, then to the second element of each list, and so on. The iteration terminates when the shortest list runs out, and excess elements in other lists are ignored. The value returned by mapcar is a list of the results of successive calls to function.</p>
-            <p>mapc is like mapcar except that the results of applying function are not accumulated; list<sub>1</sub> is returned.</p>
-            <p>maplist is like mapcar except that function is applied to successive sublists of the lists. function is first applied to the lists themselves, and then to the cdr of each list, and then to the cdr of the cdr of each list, and so on.</p>
-            <p>mapl is like maplist except that the results of applying function are not accumulated; list<sub>1</sub> is returned.</p>
-            <p>mapcan and mapcon are like mapcar and maplist respectively, except that the results of applying function are combined into a list by the use of an operation that performs a destructive form of append rather than list.</p>
-            <p>An error shall be signaled if function is not a function (error-id. <span class="error_id">domain-error</span>). An error shall be signaled if any list is not a list (error-id. <span class="error_id">domain-error</span>).</p>
-            <p>In all cases, the calls to function proceed from left to right, so that if function has side-effects, it can rely upon being called first on all of the elements with index 0, then on all of those numbered 1, and so on.</p>
+            <p><span class="terminal">mapcar</span> operates on successive elements of the <span class="nonterminal">lists</span>. <span class="nonterminal">function</span> is applied to the first element of each <span class="nonterminal">list</span>, then to the second element of each <span class="nonterminal">list</span>, and so on. The iteration terminates when the shortest <span class="nonterminal">list</span> runs out, and excess elements in other <span class="nonterminal">lists</span> are ignored. The value returned by <span class="terminal">mapcar</span> is a list of the results of successive calls to <span class="nonterminal">function</span>.</p>
+            <p><span class="terminal">mapc</span> is like <span class="terminal">mapcar</span> except that the results of applying <span class="nonterminal">function</span> are not accumulated; <span class="nonterminal">list<sub>1</sub></span> is returned.</p>
+            <p><span class="terminal">maplist</span> is like <span class="terminal">mapcar</span> except that <span class="nonterminal">function</span> is applied to successive sublists of the <span class="nonterminal">lists</span>. <span class="nonterminal">function</span> is first applied to the <span class="nonterminal">lists</span> themselves, and then to the cdr of each <span class="nonterminal">list</span>, and then to the cdr of the cdr of each <span class="nonterminal">list</span>, and so on.</p>
+            <p><span class="terminal">mapl</span> is like <span class="terminal">maplist</span> except that the results of applying <span class="nonterminal">function</span> are not accumulated; <span class="nonterminal">list<sub>1</sub></span> is returned.</p>
+            <p><span class="terminal">mapcan</span> and <span class="terminal">mapcon</span> are like <span class="terminal">mapcar</span> and <span class="terminal">maplist</span> respectively, except that the results of applying <span class="nonterminal">function</span> are combined into a list by the use of an operation that performs a destructive form of append rather than list.</p>
+            <p>An error shall be signaled if <span class="nonterminal">function</span> is not a function (error-id. <span class="error_id">domain-error</span>). An error shall be signaled if any <span class="nonterminal">list</span> is not a list (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>In all cases, the calls to <span class="nonterminal">function</span> proceed from left to right, so that if <span class="nonterminal">function</span> has side-effects, it can rely upon being called first on all of the elements with index 0, then on all of those numbered 1, and so on.</p>
 <pre class="example">
 (mapcar #'car '((1 a) (2 b) (3 c))) ⇒ (1 2 3)
 
@@ -4257,7 +4257,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
                 (<span class="operator">assoc</span> <span class="arg">obj</span> <span class="arg">association-list</span>) → <span class="class">list</span>
             </div>
             
-            <p>If assocation-list contains at least one cons whose car is obj (as determined by eql), the first such cons is returned. Otherwise, nil is returned. An error shall be signaled if association-list is not a list of conses (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>If <span class="nonterminal">assocation-list</span> contains at least one cons whose car is <span class="nonterminal">obj</span> (as determined by <span class="terminal">eql</span>), the first such cons is returned. Otherwise, <span class="terminal">nil</span> is returned. An error shall be signaled if <span class="nonterminal">association-list</span> is not a list of conses (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
 (assoc 'a '((a . 1) (b . 2))) ⇒ (a . 1)
@@ -4311,13 +4311,13 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             <p>To manipulate arrays ISLISP provides the following functions.</p>
             
             <div id="f_basic_array_p" class="definition-function">
-                (<span class="operator">basic-array-p</span> <span class="arg">obj</span>) → <span class="term1">boolean</span>
+                (<span class="operator">basic-array-p</span> <span class="arg">obj</span>) → <span class="nonterminal">boolean</span>
             </div>
             <div id="f_basic_array_s_p" class="definition-function">
-                (<span class="operator">basic-array*-p</span> <span class="arg">obj</span>) → <span class="term1">boolean</span>
+                (<span class="operator">basic-array*-p</span> <span class="arg">obj</span>) → <span class="nonterminal">boolean</span>
             </div>
             <div id="f_general_array_s_p" class="definition-function">
-                (<span class="operator">general-array*-p</span> <span class="arg">obj</span>) → <span class="term1">boolean</span>
+                (<span class="operator">general-array*-p</span> <span class="arg">obj</span>) → <span class="nonterminal">boolean</span>
             </div>
             
             <p>basic-array-p returns t if obj is a basic-array (instance of class <span class="class">basic-array</span>); otherwise, returns nil. obj may be any ISLISP object.</p>
@@ -4428,10 +4428,10 @@ array1
 </pre>
             
             <div id="f_basic_vector_p" class="definition-function">
-                (<span class="operator">basic-vector-p</span> <span class="arg">obj</span>) → <span class="term1">boolean</span>
+                (<span class="operator">basic-vector-p</span> <span class="arg">obj</span>) → <span class="nonterminal">boolean</span>
             </div>
             <div id="f_general_vector_p" class="definition-function">
-                (<span class="operator">general-vector-p</span> <span class="arg">obj</span>) → <span class="term1">boolean</span>
+                (<span class="operator">general-vector-p</span> <span class="arg">obj</span>) → <span class="nonterminal">boolean</span>
             </div>
             
             <p>basic-vector-p returns t if obj is a basic-vector (instance of class <span class="class">basic-vector</span>); otherwise, returns nil. obj may be any ISLISP object.</p>
@@ -4479,7 +4479,7 @@ array1
             <p>Any <a href="#td_implementation_defined">implementation-defined</a> character can be a string element. In ISLISP, string indices are 0-based. Strings are written by listing all the element characters in order and by enclosing them with double quotes <q>&quot;</q>. If the string has a double quote as its element, the double quote must be preceded by a backslash <q>\</q>. If the string has a backslash as its element, the backslash must be preceded by another backslash. Strings contained in program text as literals are immutable objects. The representation of non-printing characters is <a href="#td_implementation_defined">implementation defined</a>.</p>
             
             <div id="f_stringp" class="definition-function">
-                (<span class="operator">stringp</span> <span class="arg">obj</span>) → <span class="term1">boolean</span>
+                (<span class="operator">stringp</span> <span class="arg">obj</span>) → <span class="nonterminal">boolean</span>
             </div>
             
             <p>Returns t if obj is a string (instance of class <span class="class">string</span>); otherwise, returns nil. obj may be any ISLISP object.</p>
@@ -4503,22 +4503,22 @@ array1
 </pre>
             
             <div id="f_stringeq" class="definition-function">
-                (<span class="operator">string=</span> <span class="arg">string<sub>1</sub></span> <span class="arg">string<sub>2</sub></span>) → <span class="term1">quasi-boolean</span>
+                (<span class="operator">string=</span> <span class="arg">string<sub>1</sub></span> <span class="arg">string<sub>2</sub></span>) → <span class="nonterminal">quasi-boolean</span>
             </div>
             <div id="f_stringneq" class="definition-function">
-                (<span class="operator">string/=</span> <span class="arg">string<sub>1</sub></span> <span class="arg">string<sub>2</sub></span>) → <span class="term1">quasi-boolean</span>
+                (<span class="operator">string/=</span> <span class="arg">string<sub>1</sub></span> <span class="arg">string<sub>2</sub></span>) → <span class="nonterminal">quasi-boolean</span>
             </div>
             <div id="f_stringlt" class="definition-function">
-                (<span class="operator">string&lt;</span> <span class="arg">string<sub>1</sub></span> <span class="arg">string<sub>2</sub></span>) → <span class="term1">quasi-boolean</span>
+                (<span class="operator">string&lt;</span> <span class="arg">string<sub>1</sub></span> <span class="arg">string<sub>2</sub></span>) → <span class="nonterminal">quasi-boolean</span>
             </div>
             <div id="f_stringgt" class="definition-function">
-                (<span class="operator">string&gt;</span> <span class="arg">string<sub>1</sub></span> <span class="arg">string<sub>2</sub></span>) → <span class="term1">quasi-boolean</span>
+                (<span class="operator">string&gt;</span> <span class="arg">string<sub>1</sub></span> <span class="arg">string<sub>2</sub></span>) → <span class="nonterminal">quasi-boolean</span>
             </div>
             <div id="f_stringgteq" class="definition-function">
-                (<span class="operator">string&gt;=</span> <span class="arg">string<sub>1</sub></span> <span class="arg">string<sub>2</sub></span>) → <span class="term1">quasi-boolean</span>
+                (<span class="operator">string&gt;=</span> <span class="arg">string<sub>1</sub></span> <span class="arg">string<sub>2</sub></span>) → <span class="nonterminal">quasi-boolean</span>
             </div>
             <div id="f_stringlteq" class="definition-function">
-                (<span class="operator">string&lt;=</span> <span class="arg">string<sub>1</sub></span> <span class="arg">string<sub>2</sub></span>) → <span class="term1">quasi-boolean</span>
+                (<span class="operator">string&lt;=</span> <span class="arg">string<sub>1</sub></span> <span class="arg">string<sub>2</sub></span>) → <span class="nonterminal">quasi-boolean</span>
             </div>
             
             <p>The function string= tests whether string<sub>1</sub> is the same string as string<sub>2</sub>. The function string&lt; tests whether string<sub>1</sub> is less than string<sub>2</sub>. The function string&lt;= tests whether string<sub>1</sub> is less than or equal to string<sub>2</sub>.</p>
@@ -4730,7 +4730,7 @@ a                           ⇒ (2 4 6 8)
             <p>Streams are instances of the <span class="class">stream</span> class. They are objects that serve as sources or sinks of data.</p>
             
             <div id="f_streamp" class="definition-function">
-                (<span class="operator">streamp</span> <span class="arg">obj</span>) → <span class="term1">boolean</span>
+                (<span class="operator">streamp</span> <span class="arg">obj</span>) → <span class="nonterminal">boolean</span>
             </div>
             
             <p>Returns t if obj is a stream (instance of class <span class="class">stream</span>); otherwise, returns nil. obj may be any ISLISP object. streamp is unaffected by whether its argument, if an instance of the class <span class="class">stream</span>, is open or closed.</p>
@@ -4742,13 +4742,13 @@ a                           ⇒ (2 4 6 8)
 </pre>
             
             <div id="f_open_stream_p" class="definition-function">
-                (<span class="operator">open-stream-p</span> <span class="arg">obj</span>) → <span class="term1">boolean</span>
+                (<span class="operator">open-stream-p</span> <span class="arg">obj</span>) → <span class="nonterminal">boolean</span>
             </div>
             
             <p>Returns t if obj is an open stream; otherwise, returns nil.</p>
             
             <div id="f_input_stream_p" class="definition-function">
-                (<span class="operator">input-stream-p</span> <span class="arg">obj</span>) → <span class="term1">boolean</span>
+                (<span class="operator">input-stream-p</span> <span class="arg">obj</span>) → <span class="nonterminal">boolean</span>
             </div>
             
             <p>Returns t if obj is a stream that can handle input operations; otherwise, returns nil.</p>
@@ -4761,7 +4761,7 @@ a                           ⇒ (2 4 6 8)
 </pre>
             
             <div id="f_output_stream_p" class="definition-function">
-                (<span class="operator">output-stream-p</span> <span class="arg">obj</span>) → <span class="term1">boolean</span>
+                (<span class="operator">output-stream-p</span> <span class="arg">obj</span>) → <span class="nonterminal">boolean</span>
             </div>
             
             <p>Returns t if obj is a stream that can handle output operations; otherwise, returns nil.</p>
@@ -5019,7 +5019,7 @@ a                           ⇒ (2 4 6 8)
 </pre>
             
             <div id="f_stream_ready_p" class="definition-function">
-                (<span class="operator">stream-ready-p</span> <span class="arg">input-stream</span>) → boolean
+                (<span class="operator">stream-ready-p</span> <span class="arg">input-stream</span>) → <span class="nonterminal">boolean</span>
             </div>
             
             <p>Returns t if an attempt to obtain the next element from the stream will not cause the processor to have to wait; otherwise, returns nil. An error shall be signaled if stream is not a stream that can handle input operations (error-id. <span class="error_id">domain-error</span>).</p>
@@ -5218,7 +5218,7 @@ Output is: This is a tilde: ~
             <h3 id="files">Files</h3>
             
             <div id="f_probe_file" class="definition-function">
-                (<span class="operator">probe-file</span> <span class="arg">filename</span>) → boolean
+                (<span class="operator">probe-file</span> <span class="arg">filename</span>) → <span class="nonterminal">boolean</span>
             </div>
             
             <p>Returns t if the file specified by filename exists; otherwise, returns nil. An error shall be signaled if filename is not a string (error-id. <span class="error_id">domain-error</span>).</p>
@@ -5681,7 +5681,7 @@ Output is: This is a tilde: ~
 &gt; <a href="#f_gt">70</a>
 &gt;= <a href="#f_gteq">70</a>
 ` <a href="#syn_backquote">62</a>
-|# 10
+|# <a href="#comments">10</a>
 abs <a href="#f_abs">73</a>
 abstract class <a href="#td_abstract_class">2</a>
 accessible (of a slot) <a href="#accesible_slots">16</a>
