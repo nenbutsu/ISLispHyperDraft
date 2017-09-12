@@ -622,19 +622,19 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             <p>This list does not exhaust the space of error types. For a more complete list, see §29.4.</p>
             
             <h3 id="classes">Classes</h3>
-            <p>In ISLISP, data types are covered by the class system. A class is an object that determines the structure and behavior of a set of other objects, which are called its instances. Every ISLISP object is an instance of a class. The behavior is the set of operations that can be performed on an instance.</p>
-            <p>A class can inherit structure and behavior from other classes. A class whose definition refers to other classes for the purpose of inheriting from them is said to be a subclass of each of those classes. The classes that are designated for purposes of inheritance are said to be superclasses of the inheriting class.</p>
-            <p>A class can be named by an identifier. For example, this identifier can be used as a parameter specializer in method definitions. The class special form can be used to refer to access the class object corresponding to its name.</p>
-            <p>A class C<sub>1</sub> is a direct superclass of a class C<sub>2</sub> if C<sub>2</sub> explicitly designates C<sub>1</sub> as a superclass in its definition, or if C<sub>1</sub> is defined by this document to be a direct superclass of C<sub>2</sub> (for example, by use of a directed arrow from C<sub>1</sub> to C<sub>2</sub> in <a href="#figure_1">Figure 1</a>). In this case C<sub>2</sub> is a direct subclass of C<sub>1</sub> . A class C<sub>n</sub> is a superclass of a class C<sub>1</sub> if there exists a series of classes C<sub>2</sub> , … , C<sub>n−1</sub> such that C<sub>i+1</sub> is a direct superclass of C<sub>i</sub> for 1 ≤ i &lt; n. In this case, C<sub>1</sub> is a subclass of C<sub>n</sub> . A class is considered neither a superclass nor a subclass of itself. That is, if C<sub>1</sub> is a superclass of C<sub>2</sub> , then C1 ≠ C2 . The set of classes consisting of some given class C along with all of its superclasses is called <q>C and its superclasses.</q></p>
-            <p>If a user-defined class C inherits from two classes, C<sub>1</sub> and C<sub>2</sub> , the only superclasses that C<sub>1</sub> and C<sub>2</sub> may have in common are <span class="class">standard-object</span> or <span class="class">object</span>. This allows a restricted form of multiple inheritance.</p>
-            <p>Every ISLISP object is a direct instance of exactly one class which is called <q>its</q> class.</p>
-            <p>An instance of a class is either a direct instance of that class or an instance of one of its subclasses.</p>
-            <p>Classes are organized into a directed acyclic graph defined by the subclass relation. The nodes are classes and there is an edge from C<sub>1</sub> to C<sub>2</sub> iff C<sub>2</sub> is direct subclass of C<sub>1</sub> . This graph is called the inheritance graph. It has as root the class <span class="class">object</span>, the only class with no superclass.</p>
+            <p>In ISLISP, data types are covered by the class system. A <span class="term">class</span> is an object that determines the structure and behavior of a set of other objects, which are called its <span class="term">instances</span>. Every ISLISP object is an instance of a class. The behavior is the set of operations that can be performed on an instance.</p>
+            <p>A class can inherit structure and behavior from other classes. A class whose definition refers to other classes for the purpose of inheriting from them is said to be a <span class="term">subclass</span> of each of those classes. The classes that are designated for purposes of inheritance are said to be <span class="term">superclasses</span> of the inheriting class.</p>
+            <p>A class can be named by an <span class="nonterminal">identifier</span>. For example, this <span class="nonterminal">identifier</span> can be used as a parameter specializer in method definitions. The <span class="terminal">class</span> special form can be used to refer to access the class object corresponding to its name.</p>
+            <p>A class <span class="nonterminal">C<sub>1</sub></span> is a <span class="term">direct superclass</span> of a class <span class="nonterminal">C<sub>2</sub></span> if <span class="nonterminal">C<sub>2</sub></span> explicitly designates <span class="nonterminal">C<sub>1</sub></span> as a superclass in its definition, or if <span class="nonterminal">C<sub>1</sub></span> is defined by this document to be a direct superclass of <span class="nonterminal">C<sub>2</sub></span> (for example, by use of a directed arrow from <span class="nonterminal">C<sub>1</sub></span> to <span class="nonterminal">C<sub>2</sub></span> in <a href="#figure_1">Figure 1</a>). In this case <span class="nonterminal">C<sub>2</sub></span> is a <span class="term">direct subclass</span> of <span class="nonterminal">C<sub>1</sub></span>. A class <span class="nonterminal">C<sub>n</sub></span> is a <span class="term">superclass</span> of a class <span class="nonterminal">C<sub>1</sub></span> if there exists a series of classes <span class="nonterminal">C<sub>2</sub></span> , … , <span class="nonterminal">C<sub>n−1</sub></span> such that <span class="nonterminal">C<sub>i+1</sub></span> is a direct superclass of <span class="nonterminal">C<sub>i</sub></span> for 1 ≤ <span class="nonterminal">i</span> &lt; <span class="nonterminal">n</span>. In this case, <span class="nonterminal">C<sub>1</sub></span> is a subclass of <span class="nonterminal">C<sub>n</sub></span>. A class is considered neither a superclass nor a subclass of itself. That is, if <span class="nonterminal">C<sub>1</sub></span> is a superclass of <span class="nonterminal">C<sub>2</sub></span>, then <span class="nonterminal">C<sub>1</sub></span> ≠ <span class="nonterminal">C<sub>2</sub></span>. The set of classes consisting of some given class <span class="nonterminal">C</span> along with all of its superclasses is called <q><span class="nonterminal">C</span> and its superclasses.</q></p>
+            <p>If a user-defined class <span class="nonterminal">C</span> inherits from two classes, <span class="nonterminal">C<sub>1</sub></span> and <span class="nonterminal">C<sub>2</sub></span>, the only superclasses that <span class="nonterminal">C<sub>1</sub></span> and <span class="nonterminal">C<sub>2</sub></span> may have in common are <span class="class">standard-object</span> or <span class="class">object</span>. This allows a restricted form of multiple inheritance.</p>
+            <p>Every ISLISP object is a <span class="nonterminal">direct instance</span> of exactly one class which is called <q>its</q> class.</p>
+            <p>An <span class="nonterminal">instance</span> of a class is either a direct instance of that class or an instance of one of its subclasses.</p>
+            <p>Classes are organized into a <span class="term">directed acyclic graph</span> defined by the subclass relation. The nodes are classes and there is an edge from C<sub>1</sub> to C<sub>2</sub> iff C<sub>2</sub> is direct subclass of C<sub>1</sub> . This graph is called the inheritance graph. It has as root the class <span class="class">object</span>, the only class with no superclass.</p>
             <p>Therefore it is the superclass of every class except itself. The class named <span class="class">standard-object</span> is an instance of the class <span class="class">standard-class</span> and is a superclass of every class that is an instance of <span class="class">standard-class</span> except itself.</p>
-            <p id="class_precedence_list">Each class has a class precedence list, which is a total ordering on the set of the given class and its superclasses. The total ordering is expressed as a list ordered from most specific to least specific. The class precedence list is used in several ways. In general, more specific classes can shadow, or override, features that would otherwise be inherited from less specific classes. The method selection and combination process uses the class precedence list to order methods from most specific to least specific.</p>
+            <p id="class_precedence_list">Each class has a class precedence list, which is a total ordering on the set of the given class and its superclasses. The total ordering is expressed as a list ordered from most specific to least specific. The class precedence list is used in several ways. In general, more specific classes can <span class="term">shadow</span>, or override, features that would otherwise be inherited from less specific classes. The method selection and combination process uses the class precedence list to order methods from most specific to least specific.</p>
             
             <h4 id="metaclasses">Metaclasses</h4>
-            <p>Classes are represented by objects that are themselves instances of classes. The class of the class of an object is termed the metaclass of that object. The term metaclass is used to refer to a class that has instances that are themselves classes.</p>
+            <p>Classes are represented by objects that are themselves instances of classes. The class of the class of an object is termed the <span class="term">metaclass</span> of that object. The term <span class="nonterminal">metaclass</span> is used to refer to a class that has instances that are themselves classes.</p>
             
             <div id="figure_1">
                 Figure 1. Class Inheritance
@@ -775,15 +775,15 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             </ul>
             
             <p>The classes <span class="class">standard-class</span> and <span class="class">built-in-class</span> are predefined metaclasses.</p>
-            <p>A user-defined class, defined by defclass, must be implemented as an instance of <span class="class">standard-class</span>. A predefined class can be implemented either as an instance of <span class="class">standard-class</span> (as if defined by defclass) or as an instance of <span class="class">built-in-class</span>.</p>
-            <p><a href="#figure_1">Figure 1</a> shows the required inheritance relationships among the classes defined by ISLISP. For each pair of classes C<sub>1</sub> and C<sub>2</sub> in this figure, if C<sub>1</sub> is linked directly by an arrow to C<sub>2</sub> , C<sub>1</sub> is a direct superclass of C<sub>2</sub> (and C<sub>2</sub> is a direct subclass of C<sub>1</sub>). Additional relationships might exist, subject to the following constraints:</p>
+            <p>A user-defined class, defined by <span class="terminal">defclass</span>, must be implemented as an instance of <span class="class">standard-class</span>. A predefined class can be implemented either as an instance of <span class="class">standard-class</span> (as if defined by <span class="terminal">defclass</span>) or as an instance of <span class="class">built-in-class</span>.</p>
+            <p><a href="#figure_1">Figure 1</a> shows the required inheritance relationships among the classes defined by ISLISP. For each pair of classes <span class="nonterminal">C<sub>1</sub></span> and <span class="nonterminal">C<sub>2</sub></span> in this figure, if <span class="nonterminal">C<sub>1</sub></span> is linked directly by an arrow to <span class="nonterminal">C<sub>2</sub></span>, <span class="nonterminal">C<sub>1</sub></span> is a direct superclass of <span class="nonterminal">C<sub>2</sub></span> (and <span class="nonterminal">C<sub>2</sub></span> is a direct subclass of <span class="nonterminal">C<sub>1</sub></span>). Additional relationships might exist, subject to the following constraints:</p>
             <ul>
                 <li>It is <a href="#td_implementation_defined">implementation defined</a> whether <span class="class">standard-generic-function</span> is a subclass of the class <span class="class">standard-object</span>.</li>
                 <li>Except as described in <a href="#figure_1">Figure 1</a> and the above constraint on <span class="class">standard-generic-function</span>, no other subclass relationships exist among the classes defined in this document. However, additional implementation-specific subclass relationships may exist between implementation-specific classes and classes defined in this document.</li>
                 <li>The class precedence list for <span class="class">null</span> observes the partial order <span class="class">null</span>, <span class="class">symbol</span>, <span class="class">list</span>, <span class="class">object</span>.</li>
-                <li>Users may define additional classes using defclass.</li>
+                <li>Users may define additional classes using <span class="terminal">defclass</span>.</li>
             </ul>
-            <p>A built-in class is one whose instances have restricted capabilities or special representations. The defclass defining form must not be used to define subclasses of a built-in class. An error shall be signaled if create is called to create an instance of a built-in class.</p>
+            <p>A built-in class is one whose instances have restricted capabilities or special representations. The <span class="terminal">defclass</span> defining form must not be used to define subclasses of a built-in class. An error shall be signaled if create is called to create an instance of a built-in class.</p>
             <p>A standard class is an instance of <span class="class">standard-class</span>, and a built-in class is an instance of <span class="class">built-in-class</span>.</p>
             <p>A standard class defined with no direct superclasses is guaranteed to be disjoint from all of the classes in the figure, except for the classes named <span class="class">standard-object</span> and <span class="class">object</span>.</p>
             <p>The class <span class="class">function</span> is the class of all functions. The class <span class="class">standard-generic-function</span> is the default class of all generic functions.</p>
@@ -791,15 +791,15 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             <h4 id="standard_classes">Standard classes</h4>
             <h5 id="slots">Slots</h5>
             <p>An object that has <span class="class">standard-class</span> as its metaclass has zero or more named slots. The slots of an object are determined by the class of the object. Each slot can hold one object as its value. The name of a slot is an identifier.</p>
-            <p>When a slot does not have a value, the slot is said to be unbound. The consequences are undefined if an attempt is made to retrieve the value of an unbound slot.</p>
-            <p>Storing and retrieving the value of a slot is done by generic functions defined by the defclass defining form.</p>
+            <p>When a slot does not have a value, the slot is said to be <span class="term">unbound</span>. The consequences are undefined if an attempt is made to retrieve the value of an unbound slot.</p>
+            <p>Storing and retrieving the value of a slot is done by generic functions defined by the <span class="terminal">defclass</span> defining form.</p>
             <p>All slots are local; <span class="latin">i.e.</span>, there are no shared slots accessible by several instances.</p>
-            <p id="define_a_slot">A class is said to define a slot with a given name when the defclass defining form for that class contains a slot specifier with that name. Defining a slot does not immediately create a slot; it causes a slot to be created each time an instance of the class is created.</p>
-            <p id="accesible_slots">A slot is said to be accessible in an instance of a class if the slot is defined by the class of the instance or is inherited from a superclass of that class. At most one slot of a given name can be accessible in an instance. A detailed explanation of the inheritance of slots is given in the section §15.1.3.</p>
+            <p id="define_a_slot">A class is said to <span class="term">define</span> a slot with a given name when the <span class="terminal">defclass</span> defining form for that class contains a slot specifier with that name. Defining a slot does not immediately create a slot; it causes a slot to be created each time an instance of the class is created.</p>
+            <p id="accesible_slots">A slot is said to be <span class="term">accessible</span> in an instance of a class if the slot is defined by the class of the instance or is inherited from a superclass of that class. At most one slot of a given name can be accessible in an instance. A detailed explanation of the inheritance of slots is given in the section §<a href="#inheritance_of_slots">15.1.3</a>.</p>
             
             <h5 id="creating_instances">Creating instances of classes</h5>
             
-            <p>The generic function create creates and returns a new instance of a class. ISLISP provides several mechanisms for specifying how a new instance is to be initialized. For example, it is possible to specify the initial values for slots in newly created instances by providing default initial values. Further initialization activities can be performed by methods written for generic functions that are part of the initialization protocol.</p>
+            <p>The generic function <span class="terminal">create</span> creates and returns a new instance of a class. ISLISP provides several mechanisms for specifying how a new instance is to be initialized. For example, it is possible to specify the initial values for slots in newly created instances by providing default initial values. Further initialization activities can be performed by methods written for generic functions that are part of the initialization protocol.</p>
             
             <h3 id="scope_and_extent">Scope and extent</h3>
             <p>In describing ISLISP, the notions of scope and extent are useful. The first is a syntactic concept, the latter is a semantic concept. Although syntactic constructs, especially identifiers, are used to refer to runtime entities (<span class="latin">i.e.</span>, objects arising during execution), a single entity cannot have both scope and extent. Scope is a feature of an identifier, referring to that textual part of an ISLISP text (see §4.38 and §5) within which this identifier occurs with unique meaning. Extent refers to the interval of execution time during which a certain object exists.</p>
@@ -4475,14 +4475,14 @@ array1
             
             <h3 id="string_class">String class</h3>
             
-            <p>A string is a vector that is capable only of holding elements of type <span class="class">character</span>. See §22.1 for detailed information about the relationship of arrays, vectors, and strings.</p>
+            <p>A string is a vector that is capable only of holding elements of type <span class="class">character</span>. See <a href="#array_classes">§22.1</a> for detailed information about the relationship of arrays, vectors, and strings.</p>
             <p>Any <a href="#td_implementation_defined">implementation-defined</a> character can be a string element. In ISLISP, string indices are 0-based. Strings are written by listing all the element characters in order and by enclosing them with double quotes <q>&quot;</q>. If the string has a double quote as its element, the double quote must be preceded by a backslash <q>\</q>. If the string has a backslash as its element, the backslash must be preceded by another backslash. Strings contained in program text as literals are immutable objects. The representation of non-printing characters is <a href="#td_implementation_defined">implementation defined</a>.</p>
             
             <div id="f_stringp" class="definition-function">
                 (<span class="operator">stringp</span> <span class="arg">obj</span>) → <span class="nonterminal">boolean</span>
             </div>
             
-            <p>Returns t if obj is a string (instance of class <span class="class">string</span>); otherwise, returns nil. obj may be any ISLISP object.</p>
+            <p>Returns <span class="terminal">t</span> if <span class="nonterminal">obj</span> is a string (instance of class <span class="class">string</span>); otherwise, returns <span class="terminal">nil</span>. <span class="nonterminal">obj</span> may be any ISLISP object.</p>
             
 <pre class="example">
 (stringp "abc") ⇒ t
@@ -4494,7 +4494,7 @@ array1
                 (<span class="operator">create-string</span> <span class="arg">i</span> [<span class="arg">initial-character</span> ]) → <span class="class">string</span>
             </div>
             
-            <p>Returns a string of length i. If initial-character is given, then the characters of the new string are initialized with this character, otherwise the initialization is <a href="#td_implementation_defined">implementation defined</a>. An error shall be signaled if the requested string cannot be allocated (error-id. <span class="error_id">cannot-create-string</span>). An error shall be signaled if i is not a non-negative integer or if initial-character is not a character (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>Returns a string of length <span class="nonterminal">i</span>. If <span class="nonterminal">initial-character</span> is given, then the characters of the new string are initialized with this character, otherwise the initialization is <a href="#td_implementation_defined">implementation defined</a>. An error shall be signaled if the requested string cannot be allocated (error-id. <span class="error_id">cannot-create-string</span>). An error shall be signaled if <span class="nonterminal">i</span> is not a non-negative integer or if <span class="nonterminal">initial-character</span> is not a character (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
 (create-string 3 #\a) ⇒ "aaa"
@@ -4521,14 +4521,14 @@ array1
                 (<span class="operator">string&lt;=</span> <span class="arg">string<sub>1</sub></span> <span class="arg">string<sub>2</sub></span>) → <span class="nonterminal">quasi-boolean</span>
             </div>
             
-            <p>The function string= tests whether string<sub>1</sub> is the same string as string<sub>2</sub>. The function string&lt; tests whether string<sub>1</sub> is less than string<sub>2</sub>. The function string&lt;= tests whether string<sub>1</sub> is less than or equal to string<sub>2</sub>.</p>
+            <p>The function <span class="terminal">string=</span> tests whether <span class="nonterminal">string<sub>1</sub></span> is the same string as <span class="nonterminal">string<sub>2</sub></span>. The function <span class="terminal">string&lt;</span> tests whether <span class="nonterminal">string<sub>1</sub></span> is less than <span class="nonterminal">string<sub>2</sub></span>. The function <span class="terminal">string&lt;=</span> tests whether <span class="nonterminal">string<sub>1</sub></span> is less than or equal to <span class="nonterminal">string<sub>2</sub></span>.</p>
             <p>The ordering used is based on character comparisons.</p>
-            <p>Two strings are string= if they are of the same length, l , and if for every i, where 0 ≤ i &lt; l, (char= (elt string<sub>1</sub> i) (elt string<sub>2</sub> i)) holds.</p>
-            <p>Two strings string<sub>1</sub> and string<sub>2</sub> are in order (string&lt;) if in the first position in which they differ the character of string<sub>1</sub> is char&lt; the corresponding character of string<sub>2</sub>, or if the string<sub>1</sub> is a proper prefix of string<sub>2</sub> (of shorter length and matching in all the characters of string<sub>1</sub>).</p>
-            <p>Two strings are string&lt;= if they are either string&lt; or they are string=.</p>
-            <p>Two strings are string/= if and only if they are not string=. Two strings are string&gt; if and only if they are not string&lt;=. Two strings are string&gt;= if and only if they are not string&lt;.</p>
-            <p>For these 6 string comparison functions, if the test is satisfied, an <a href="#td_implementation_defined">implementation-defined</a> non-nil value is returned; otherwise, nil is returned.</p>
-            <p>An error shall be signaled if either string1 or string2 is not a string (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>Two strings are <span class="terminal">string=</span> if they are of the same length, <span class="nonterminal">l</span> , and if for every <span class="nonterminal">i</span>, where 0 ≤ <span class="nonterminal">i</span> &lt; <span class="nonterminal">l</span>, (<span class="terminal">char=</span> (<span class="terminal">elt</span> <span class="nonterminal">string<sub>1</sub></span> <span class="nonterminal">i</span>) (<span class="terminal">elt</span> <span class="nonterminal">string<sub>2</sub></span> <span class="nonterminal">i</span>)) holds.</p>
+            <p>Two strings <span class="nonterminal">string<sub>1</sub></span> and <span class="nonterminal">string<sub>2</sub></span> are in order (<span class="terminal">string&lt;</span>) if in the first position in which they differ the character of <span class="nonterminal">string<sub>1</sub></span> is <span class="terminal">char&lt;</span> the corresponding character of <span class="nonterminal">string<sub>2</sub></span>, or if the <span class="nonterminal">string<sub>1</sub></span> is a proper prefix of <span class="nonterminal">string<sub>2</sub></span> (of shorter length and matching in all the characters of <span class="nonterminal">string<sub>1</sub></span>).</p>
+            <p>Two strings are <span class="nonterminal">string&lt;=</span> if they are either <span class="terminal">string&lt;</span> or they are <span class="terminal">string=</span>.</p>
+            <p>Two strings are <span class="terminal">string/=</span> if and only if they are not <span class="terminal">string=</span>. Two strings are <span class="terminal">string&gt;</span> if and only if they are not <span class="terminal">string&lt;=</span>. Two strings are <span class="terminal">string&gt;=</span> if and only if they are not <span class="terminal">string&lt;</span>.</p>
+            <p>For these 6 string comparison functions, if the test is satisfied, an <a href="#td_implementation_defined">implementation-defined</a> non-nil value is returned; otherwise, <span class="terminal">nil</span> is returned.</p>
+            <p>An error shall be signaled if either <span class="nonterminal">string<sub>1</sub></span> or <span class="nonterminal">string<sub>2</sub></span> is not a string (error-id. <span class="error_id">domain-error</span>).</p>
 <pre class="example">
 (if (string= "abcd" "abcd") t nil)   ⇒ t
 
@@ -4564,8 +4564,8 @@ array1
             <div id="f_char_index" class="definition-function">
                 (<span class="operator">char-index</span> <span class="arg">char</span> <span class="arg">string</span> [<span class="arg">start-position</span>]) → <span class="class">object</span>
             </div>
-            <p>Returns the position of char in string, The search starts from the position indicated by start-position (which is 0-based and defaults to 0). The value returned if the search succeeds is an offset from the beginning of the string, not from the starting point. If the char does not occur in the string, nil is returned. The function char= is used for the comparisons.</p>
-            <p>An error shall be signaled if char is not a character or if string is not a string (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>Returns the position of <span class="nonterminal">char</span> in <span class="nonterminal">string</span>, The search starts from the position indicated by <span class="nonterminal">start-position</span> (which is 0-based and defaults to 0). The value returned if the search succeeds is an offset from the beginning of the string, not from the starting point. If the <span class="nonterminal">char</span> does not occur in the <span class="nonterminal">string</span>, <span class="terminal">nil</span> is returned. The function <span class="terminal">char=</span> is used for the comparisons.</p>
+            <p>An error shall be signaled if <span class="nonterminal">char</span> is not a character or if <span class="nonterminal">string</span> is not a string (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
 (char-index #\b "abcab")   ⇒ 1
@@ -4583,8 +4583,8 @@ array1
                 (<span class="operator">string-index</span> <span class="arg">substring</span> <span class="arg">string</span> [<span class="arg">start-position</span>]) → <span class="class">object</span>
             </div>
             
-            <p>Returns the position of the given substring within string. The search starts from the position indicated by start-position (which is 0-based and defaults to 0). The value returned if the search succeeds is an offset from the beginning of the string, not from the starting point. If that substring does not occur in the string, nil is returned. Presence of the substring is done by sequential use of char= on corresponding elements of the two strings.</p>
-            <p>An error shall be signaled if either substring or string is not a string (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>Returns the position of the given <span class="nonterminal">substring</span> within <span class="nonterminal">string</span>. The search starts from the position indicated by <span class="nonterminal">start-position</span> (which is 0-based and defaults to 0). The value returned if the search succeeds is an offset from the beginning of the string, not from the starting point. If that <span class="nonterminal">substring</span> does not occur in the <span class="nonterminal">string</span>, <span class="terminal">nil</span> is returned. Presence of the <span class="nonterminal">substring</span> is done by sequential use of <span class="terminal">char=</span> on corresponding elements of the two strings.</p>
+            <p>An error shall be signaled if either <span class="nonterminal">substring</span> or <span class="nonterminal">string</span> is not a string (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
 (string-index "foo" "foobar")   ⇒ 0
@@ -4606,8 +4606,8 @@ array1
                 (<span class="operator">string-append</span> <span class="arg">string*</span>) → <span class="class">string</span>
             </div>
             
-            <p>Returns a single string containing a sequence of characters that results from appending the sequences of characters of each of the strings, or "" if given no strings. An error shall be signaled if any string is not a string (error-id. <span class="error_id">domain-error</span>).</p>
-            <p>This function does not modify its arguments. It is <a href="#td_implementation_defined">implementation defined</a> whether and when the result shares structure with its string arguments.</p>
+            <p>Returns a single string containing a sequence of characters that results from appending the sequences of characters of each of the <span class="nonterminal">strings</span>, or "" if given no <span class="nonterminal">strings</span>. An error shall be signaled if any <span class="nonterminal">string</span> is not a string (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>This function does not modify its arguments. It is <a href="#td_implementation_defined">implementation defined</a> whether and when the result shares structure with its <span class="nonterminal">string</span> arguments.</p>
             <p>An error shall be signaled if the string cannot be allocated (error-id. <span class="error_id">cannot-create-string</span>).</p>
             
 <pre class="example">
@@ -4630,10 +4630,10 @@ array1
                 (<span class="operator">length</span> <span class="arg">sequence</span>) → <span class="class">integer</span>
             </div>
             
-            <p>Returns the length of sequence as an integer greater than or equal to 0.</p>
-            <p>When sequence is a basic-vector, length returns its dimension.</p>
-            <p>When sequence is a list, the result is the number of elements in the list; if an element is itself a list, the elements within this sublist are not counted. In the case of dotted lists, length returns the number of conses at the uppermost level of the list. For example, (length '(a b . c)) ⇒ 2, since '(a b . c) ≡ (cons 'a (cons 'b 'c)).</p>
-            <p>An error shall be signaled if sequence is not a basic-vector or a list (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>Returns the length of <span class="nonterminal">sequence</span> as an integer greater than or equal to 0.</p>
+            <p>When <span class="nonterminal">sequence</span> is a basic-vector, <span class="terminal">length</span> returns its dimension.</p>
+            <p>When <span class="nonterminal">sequence</span> is a list, the result is the number of elements in the list; if an element is itself a list, the elements within this sublist are not counted. In the case of dotted lists, <span class="terminal">length</span> returns the number of conses at the uppermost level of the list. For example, (<span class="terminal">length</span> '(a b . c)) ⇒ 2, since '(a b . c) ≡ (<span class="terminal">cons</span> 'a (cons 'b 'c)).</p>
+            <p>An error shall be signaled if <span class="nonterminal">sequence</span> is not a basic-vector or a list (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
 (length '(a b c))          ⇒ 3
@@ -4649,8 +4649,8 @@ array1
                 (<span class="operator">elt</span> <span class="arg">sequence</span> <span class="arg">z</span>) → <span class="class">object</span>
             </div>
             
-            <p>Given a sequence and an integer z satisfying 0 ≤ z &lt; (length sequence), elt returns the element of sequence that has index z. Indexing is 0-based; <span class="latin">i.e.</span>, z = 0 designates the first element. An error shall be signaled if z is an integer outside of the mentioned range (error-id. <span class="error_id">index-out-of-range</span>).</p>
-            <p>An error shall be signaled if sequence is not a basic-vector or a list or if z is not an integer (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>Given a <span class="nonterminal">sequence</span> and an integer <span class="nonterminal">z</span> satisfying 0 ≤ <span class="nonterminal">z</span> &lt; (<span class="terminal">length sequence</span>), <span class="terminal">elt</span> returns the element of <span class="nonterminal">sequence</span> that has index <span class="nonterminal">z</span>. Indexing is 0-based; <span class="latin">i.e.</span>, <span class="nonterminal">z</span> = 0 designates the first element. An error shall be signaled if <span class="nonterminal">z</span> is an integer outside of the mentioned range (error-id. <span class="error_id">index-out-of-range</span>).</p>
+            <p>An error shall be signaled if <span class="nonterminal">sequence</span> is not a basic-vector or a list or if <span class="nonterminal">z</span> is not an integer (error-id. <span class="error_id">domain-error</span>).</p>
 <pre class="example">
 (elt '(a b c) 2)          ⇒ c
 
@@ -4667,8 +4667,8 @@ array1
                 (<span class="operator">set-elt</span> <span class="arg">obj</span> <span class="arg">sequence</span> <span class="arg">z</span>) → <span class="class">object</span>
             </div>
             
-            <p>These replace the object obtainable by elt with obj. The returned value is obj.</p>
-            <p>An error shall be signaled if z is an integer outside of the valid range of indices (error-id. <span class="error_id">index-out-of-range</span>). An error shall be signaled if sequence is not a basic-vector or a list or if z is not an integer (error-id. <span class="error_id">domain-error</span>). obj may be any ISLISP object.</p>
+            <p>These replace the object obtainable by <span class="terminal">elt</span> with <span class="nonterminal">obj</span>. The returned value is <span class="nonterminal">obj</span>.</p>
+            <p>An error shall be signaled if <span class="nonterminal">z</span> is an integer outside of the valid range of indices (error-id. <span class="error_id">index-out-of-range</span>). An error shall be signaled if <span class="nonterminal">sequence</span> is not a basic-vector or a list or if <span class="nonterminal">z</span> is not an integer (error-id. <span class="error_id">domain-error</span>). obj may be any ISLISP object.</p>
             
 <pre class="example">
 (let ((string (create-string 5 #\x)))
@@ -4678,11 +4678,11 @@ array1
 </pre>
             
             <div id="f_subseq" class="definition-function">
-                (<span class="operator">subseq</span> <span class="arg">sequence</span> <span class="arg">z1</span> <span class="arg">z2</span>) → <span class="class">sequence</span>
+                (<span class="operator">subseq</span> <span class="arg">sequence</span> <span class="arg">z<sub>1</sub></span> <span class="arg">z<sub>2</sub></span>) → <span class="class">sequence</span>
             </div>
             
-            <p>Given a sequence sequence and two integers z1 and z2 satisfying 0 ≤ z1 ≤ z2 ≤ (length sequence), this function returns the subsequence of length z2 − z1, containing the elements with indices from z<sub>1</sub> (inclusive) to z<sub>2</sub> (exclusive). The subsequence is newly allocated, and has the same class as sequence.</p>
-            <p>An error shall be signaled if the requested subsequence cannot be allocated (error-id. <span class="error_id">cannot-create-sequence</span>). An error shall be signaled if z<sub>1</sub> or z<sub>2</sub> are outside of the bounds mentioned (error-id. <span class="error_id">index-out-of-range</span>). An error shall be signaled if sequence is not a basic-vector or a list, or if z<sub>1</sub> is not an integer, or if z<sub>2</sub> is not an integer (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>Given a sequence <span class="nonterminal">sequence</span> and two integers <span class="nonterminal">z<sub>1</sub></span> and <span class="nonterminal">z<sub>2</sub></span> satisfying 0 ≤ <span class="nonterminal">z<sub>1</sub></span> ≤ <span class="nonterminal">z<sub>2</sub></span> ≤ (<span class="terminal">length</span> <span class="nonterminal">sequence</span>), this function returns the subsequence of length <span class="nonterminal">z<sub>2</sub></span> − <span class="nonterminal">z<sub>1</sub></span>, containing the elements with indices from <span class="nonterminal">z<sub>1</sub></span> (inclusive) to <span class="nonterminal">z<sub>2</sub></span> (exclusive). The subsequence is newly allocated, and has the same class as <span class="nonterminal">sequence</span>.</p>
+            <p>An error shall be signaled if the requested subsequence cannot be allocated (error-id. <span class="error_id">cannot-create-sequence</span>). An error shall be signaled if <span class="nonterminal">z<sub>1</sub></span> or <span class="nonterminal">z<sub>2</sub></span> are outside of the bounds mentioned (error-id. <span class="error_id">index-out-of-range</span>). An error shall be signaled if <span class="nonterminal">sequence</span> is not a basic-vector or a list, or if <span class="nonterminal">z<sub>1</sub></span> is not an integer, or if <span class="nonterminal">z<sub>2</sub></span> is not an integer (error-id. <span class="error_id">domain-error</span>).</p>
 <pre class="example">
 (subseq "abcdef" 1 4)              ⇒ "bcd"
 
@@ -4696,11 +4696,11 @@ array1
                 (<span class="operator">map-into</span> <span class="arg">destination</span> <span class="arg">function</span> <span class="arg">sequence</span>*) → <span class="class">sequence</span>
             </div>
             
-            <p>Destructively modifies destination to contain the results of applying function to successive elements in the sequences. The destination is returned.</p>
-            <p>If destination and each element of sequences are not all the same length, the iteration terminates when the shortest sequence (of any of the sequences or the destination) is exhausted.</p>
-            <p>The calls to function proceed from left to right, so that if function has side-effects, it can rely upon being called first on all of the elements with index 0, then on all of those numbered 1, and so on.</p>
-            <p>An error shall be signaled if destination is not a basic-vector or a list (error-id. <span class="error_id">domain-error</span>).</p>
-            <p>An error shall be signaled if any sequence is not a basic-vector or a list (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>Destructively modifies destination to contain the results of applying <span class="nonterminal">function</span> to successive elements in the <span class="nonterminal">sequences</span>. The <span class="nonterminal">destination</span> is returned.</p>
+            <p>If <span class="nonterminal">destination</span> and each element of <span class="nonterminal">sequences</span> are not all the same length, the iteration terminates when the shortest <span class="nonterminal">sequence</span> (of any of the <span class="nonterminal">sequences</span> or the <span class="nonterminal">destination</span>) is exhausted.</p>
+            <p>The calls to <span class="nonterminal">function</span> proceed from left to right, so that if <span class="nonterminal">function</span> has side-effects, it can rely upon being called first on all of the elements with index 0, then on all of those numbered 1, and so on.</p>
+            <p>An error shall be signaled if <span class="nonterminal">destination</span> is not a basic-vector or a list (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>An error shall be signaled if any <span class="nonterminal">sequence</span> is not a basic-vector or a list (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
 (setq a (list 1 2 3 4))     ⇒ (1 2 3 4)
