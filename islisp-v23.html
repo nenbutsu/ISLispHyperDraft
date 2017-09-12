@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div id="sidebar">
+  <div id="sidebar">
         <h2>Contents</h2>
         <ol>
             <li><a href="#scope">Scope</a></li>
@@ -3936,13 +3936,18 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             
             <p>Returns <span class="terminal">t</span> if <span class="nonterminal">obj</span> is a cons (instance of class <span class="class">cons</span>); otherwise, returns <span class="terminal">nil</span>. <span class="nonterminal">obj</span> may be any ISLISP object.</p>
 <pre class="example">
+
 (consp '(a . b)) ⇒ t
+<input class="input" value="(consp '(a . b))"><button class="eval"> ⇒ </button> <span class="output">t</span>
 
 (consp '(a b c)) ⇒ t
+<input class="input" value="(consp '(a b c))"><button class="eval"> ⇒ </button> <span class="output">t</span>
 
 (consp '())      ⇒ nil
+<input class="input" value="(consp '())"><button class="eval"> ⇒ </button> <span class="output">nil</span>
 
 (consp #(a b))   ⇒ nil
+<input class="input" value="(consp #(a b))"><button class="eval"> ⇒ </button> <span class="output">nil</span>
 </pre>
             
             <div id="f_cons" class="definition-function">
@@ -6120,6 +6125,14 @@ writer <a href="#td_writer">7</a>
 writer (of a slot) <a href="#accessing_slots">51</a>
 </pre>
 </main>
+  <script type="text/javascript" src="https://islisp.js.org/api/eval.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script type="text/javascript">
+    $(".eval").on("click", function(e){
+    var s = $(e.target).prev().val()
+    $(e.target).next().html(islisp.eval(s))
+    })
+  </script>
 </body>
     
 </html>
