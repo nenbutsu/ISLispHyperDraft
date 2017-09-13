@@ -1036,7 +1036,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
 <pre class="example">
 <span class="input" contenteditable="true">(functionp (function car))</span><button class="eval"> ⇒ </button><span class="output">t</span>
 </pre>
-            <p>Function bindings are entities established during execution of a prepared labels or flet forms or by a function-defining form. A function binding is an association between an identifier, function-name, and a function object that is denoted by function-name—if in operator position—or by (function function-name) elsewhere.</p>
+            <p>Function bindings are entities established during execution of a prepared <span class="terminal">labels</span> or <span class="terminal">flet</span> forms or by a function-defining form. A function binding is an association between an identifier, <span class="nonterminal">function-name</span>, and a function object that is denoted by <span class="nonterminal">function-name</span>—if in operator position—or by (<span class="terminal">function</span> <span class="nonterminal">function-name</span>) elsewhere.</p>
             
             <div id="s_function" class="definition-special">
                 (<span class="operator">function</span> <span class="arg">function-name</span>) → <span class="class">function</span>
@@ -1045,10 +1045,10 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
                 #'<span class="arg">function-name</span> → <span class="class">function</span>
             </div>
             
-            <p>This special form denotes a reference to the function named by function-name. This special form is used to refer to identifiers defined by function-defining forms, labels, or flet which are not in operator position.</p>
-            <p>(function function-name) can be written as #'function-name.</p>
-            <p>It returns the function object named by function-name.</p>
-            <p>An error shall be signaled if no binding has been established for the identifier in the function namespace of current lexical environment (see §9.2) (error-id. <span class="error_id">undefined-function</span>). The consequences are undefined if the function-name names a macro or special form.</p>
+            <p>This special form denotes a reference to the function named by <span class="nonterminal">function-name</span>. This special form is used to refer to identifiers defined by function-defining forms, <span class="terminal">labels</span>, or <span class="terminal">flet</span> which are not in operator position.</p>
+            <p>(<span class="terminal">function</span> <span class="nonterminal">function-name</span>) can be written as #'<span class="nonterminal">function-name</span>.</p>
+            <p>It returns the function object named by <span class="nonterminal">function-name</span>.</p>
+            <p>An error shall be signaled if no binding has been established for the identifier in the function namespace of current lexical environment (see <a href="#pervasive_error_types">§9.2</a>) (error-id. <span class="error_id">undefined-function</span>). The consequences are undefined if the <span class="nonterminal">function-name</span> names a macro or special form.</p>
 <pre class="example">
 <span class="input" contenteditable="true">(funcall (function -) 3)</span><button class="eval"> ⇒ </button><span class="output">-3</span>
 
@@ -1061,16 +1061,16 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             
 <pre>
 Where:
-lambda-list ::= (identifier* [&amp;rest identifier]) |
-                (identifier* [:rest identifier])
+<span class="nonterminal">lambda-list</span> ::= (<span class="nonterminal">identifier*</span> [<span class="terminal">&amp;rest</span> <span class="nonterminal">identifier</span>]) |
+                (<span class="nonterminal">identifier*</span> [<span class="terminal">:rest</span> <span class="nonterminal">identifier</span>])
 </pre>
             
-            <p>and where no identifier may appear more than once in lambda-list.</p>
-            <p>Execution of the lambda special form creates a function object.</p>
-            <p>The scope of the identifiers of the lambda-list is the sequence of forms form*, collectively referred to as the body.</p>
-            <p>When the prepared function is activated later (even if transported as object to some other activation) with some arguments, the body of the function is evaluated as if it was at the same textual position where the lambda special form is located, but in a context where the lambda variables are bound in the variable namespace with the values of the corresponding arguments. A &amp;rest or :rest variable, if any, is bound to the list of the values of the remaining arguments. An error shall be signaled if the number of arguments received is incompatible with the specified lambda-list (error-id. <span class="error_id">arity-error</span>).</p>
-            <p>Once the lambda variables have been bound, the body is executed. If the body is empty, nil is returned otherwise the result of the evaluation of the last form of body is returned if the body was not left by a non-local exit (see §14.7.1).</p>
-            <p>If the function receives a &amp;rest or :rest parameter R, the list L<sub>1</sub> to which that parameter is bound has indefinite extent. L<sub>1</sub> is newly allocated unless the function was called with apply and R corresponds to the final argument, L<sub>2</sub> , to that call to apply (or some subtail of L<sub>2</sub>), in which case it is <a href="#td_implementation_defined">implementation defined</a> whether L<sub>1</sub> shares structure with L<sub>2</sub> .
+            <p>and where no <span class="nonterminal">identifier</span> may appear more than once in <span class="nonterminal">lambda-list</span>.</p>
+            <p>Execution of the <span class="terminal">lambda</span> special form creates a function object.</p>
+            <p>The scope of the identifiers of the <span class="nonterminal">lambda-list</span> is the sequence of forms <span class="nonterminal">form*</span>, collectively referred to as the <span class="nonterminal">body</span>.</p>
+            <p>When the prepared function is activated later (even if transported as object to some other activation) with some arguments, the body of the function is evaluated as if it was at the same textual position where the <span class="terminal">lambda</span> special form is located, but in a context where the lambda variables are bound in the variable namespace with the values of the corresponding arguments. A <span class="terminal">&amp;rest</span> or <span class="terminal">:rest</span> variable, if any, is bound to the list of the values of the remaining arguments. An error shall be signaled if the number of arguments received is incompatible with the specified <span class="nonterminal">lambda-list</span> (error-id. <span class="error_id">arity-error</span>).</p>
+            <p>Once the lambda variables have been bound, the body is executed. If the body is empty, <span class="terminal">nil</span> is returned otherwise the result of the evaluation of the last form of body is returned if the body was not left by a <i>non-local exit</i> (see <a href="#establishing_and_invoking_non_local_exits">§14.7.1</a>).</p>
+            <p>If the function receives a <span class="terminal">&amp;rest</span> or <span class="terminal">:rest</span> parameter <span class="nonterminal">R</span>, the list <span class="nonterminal">L<sub>1</sub></span> to which that parameter is bound has indefinite extent. <span class="nonterminal">L<sub>1</sub></span> is newly allocated unless the function was called with apply and <span class="nonterminal">R</span> corresponds to the final argument, <span class="nonterminal">L<sub>2</sub></span>, to that call to <span class="terminal">apply</span> (or some subtail of <span class="nonterminal">L<sub>2</sub>)</span>, in which case it is <a href="#td_implementation_defined">implementation defined</a> whether <span class="nonterminal">L<sub>1</sub></span> shares structure with <span class="nonterminal">L<sub>2</sub></span>.
             </p>
             
 <pre class="example">
@@ -1090,14 +1090,14 @@ lambda-list ::= (identifier* [&amp;rest identifier]) |
                 (<span class="operator">flet</span> ((<span class="arg">function-name</span> <span class="arg">lambda-list</span> <span class="arg">form</span>*)*) <span class="arg">body-form</span>*) → <span class="class">object</span>
             </div>
             
-            <p>The flet and labels special forms allow the definition of new identifiers in the function namespace for function objects.</p>
-            <p>In a labels special form the scope of an identifier function-name is the whole labels special form (excluding nested scopes, if any); for the flet special form, the scope of an identifier is only the body-form*. Within these scopes, each function-name is bound to a function object whose behavior is equivalent to (lambda lambda-list form*), where free identifier references are resolved as follows:</p>
+            <p>The <span class="terminal">flet</span> and <span class="terminal">labels</span> special forms allow the definition of new identifiers in the function namespace for function objects.</p>
+            <p>In a <span class="terminal">labels</span> special form the scope of an identifier <span class="nonterminal">function-name</span> is the whole <span class="terminal">labels</span> special form (excluding nested scopes, if any); for the <span class="terminal">flet</span> special form, the scope of an identifier is only the <span class="nonterminal">body-form*</span>. Within these scopes, each <span class="nonterminal">function-name</span> is bound to a function object whose behavior is equivalent to (<span class="terminal">lambda</span> <span class="nonterminal">lambda-list</span> <span class="nonterminal">form*</span>), where free identifier references are resolved as follows:</p>
             <ul>
-                <li>For a labels form, such free references are resolved in the lexical environment that was active immediately outside the labels form augmented by the function bindings for the given function-names (<span class="latin">i.e.</span>, any reference to a function function-name refers to a binding created by the labels).</li>
-                <li>For a flet form, free identifier references in the lambda-expression are resolved in the lexical environment that was active immediately outside the flet form (<span class="latin">i.e.</span>, any reference to a function function-name are not visible).</li>
+                <li>For a <span class="terminal">labels</span> form, such free references are resolved in the lexical environment that was active immediately outside the <span class="terminal">labels</span> form augmented by the function bindings for the given <span class="nonterminal">function-names</span> (<span class="latin">i.e.</span>, any reference to a function <span class="nonterminal">function-name</span> refers to a binding created by the <span class="terminal">labels</span>).</li>
+                <li>For a <span class="terminal">flet</span> form, free identifier references in the <span class="terminal">lambda</span>-expression are resolved in the lexical environment that was active immediately outside the <span class="terminal">flet</span> form (<span class="latin">i.e.</span>, any reference to a function <span class="nonterminal">function-name</span> are not visible).</li>
             </ul>
-            <p>During activation, the prepared labels or flet establishes function bindings and then evaluates each body-form in the body sequentially; the value of the last one (or nil if there is none) is the value returned by the special form activation.</p>
-            <p>No function-name may appear more than once in the function bindings.</p>
+            <p>During activation, the prepared <span class="terminal">labels</span> or <span class="terminal">flet</span> establishes function bindings and then evaluates each <span class="nonterminal">body-form</span> in the body sequentially; the value of the last one (or <span class="terminal">nil</span> if there is none) is the value returned by the special form activation.</p>
+            <p>No <span class="nonterminal">function-name</span> may appear more than once in the function bindings.</p>
 <pre class="example">
 
 (labels  ((evenp (n)
@@ -1119,8 +1119,8 @@ lambda-list ::= (identifier* [&amp;rest identifier]) |
                 (<span class="operator">apply</span> <span class="arg">function</span> <span class="arg">obj</span>* <span class="arg">list</span>) → <span class="class">object</span>
             </div>
             
-            <p>Applies function to the arguments, obj*, followed by the elements of list, if any. It returns the value returned by function.</p>
-            <p>An error shall be signaled if function is not a function (error-id. <span class="error_id">domain-error</span>). Each obj may be any ISLISP object. An error shall be signaled if list is not a proper list (see §7) (error-id. <span class="error_id">improper-argument-list</span>).</p>
+            <p>Applies <span class="nonterminal">function</span> to the arguments, <span class="nonterminal">obj*</span>, followed by the elements of <span class="nonterminal">list</span>, if any. It returns the value returned by <span class="nonterminal">function</span>.</p>
+            <p>An error shall be signaled if <span class="nonterminal">function</span> is not a function (error-id. <span class="error_id">domain-error</span>). Each <span class="nonterminal">obj</span> may be any ISLISP object. An error shall be signaled if <span class="nonterminal">list</span> is not a proper list (see §7) (error-id. <span class="error_id">improper-argument-list</span>).</p>
 <pre class="example">
 <span class="input" contenteditable="true">(apply (if (&lt; 1 2) (function max) (function min)) 1 2 (list 3 4))</span><button class="eval"> ⇒ </button><span class="output">4</span>
 
@@ -1136,13 +1136,13 @@ lambda-list ::= (identifier* [&amp;rest identifier]) |
                 (<span class="operator">funcall</span> <span class="arg">function</span> <span class="arg">obj</span>*) → <span class="class">object</span>
             </div>
             
-            <p>Activates the specified function function and returns the value that the function returns. The ith argument (2 ≤ i) of funcall becomes the (i − 1)th argument of the function. funcall could have been defined using apply as follows:</p>
+            <p>Activates the specified function <span class="nonterminal">function</span> and returns the value that the <span class="nonterminal">function</span> returns. The <i>i</i>th argument (2 ≤ <i>i</i>) of <span class="terminal">funcall</span> becomes the (<i>i</i> − 1)th argument of the <span class="terminal">function</span>. <span class="terminal">funcall</span> could have been defined using <span class="terminal">apply</span> as follows:</p>
 <pre>
 (defun funcall (function :rest arguments)
   (apply function arguments))
 </pre>
             <p>
-                An error shall be signaled if function is not a function (error-id. <span class="error_id">domain-error</span>). Each obj may be any ISLISP object.
+                An error shall be signaled if <span class="nonterminal">function</span> is not a function (error-id. <span class="error_id">domain-error</span>). Each <span class="nonterminal">obj</span> may be any ISLISP object.
             </p>
 <pre class="example">
 (let ((x '(1 2 3)))
@@ -2198,7 +2198,7 @@ iteration-spec ::= (var init [step])
             <p>If the form exits normally yielding a value R, then if all of the cleanup-forms exit normally the value R is returned by the unwind-protect form.</p>
             <p>If a non-local exit from form occurs, then the cleanup-forms are executed as part of that exit, and then if all of the cleanup-forms exit normally the original non-local exit continues.</p>
             <p>The cleanup-forms are evaluated from left to right, discarding the resulting values. If execution of the cleanup-forms finishes normally, exit from the unwind-protect form proceeds as described above. It is permissible for a cleanup-form to contain a non-local exit from the unwind-protect form, subject to the following constraint:</p>
-            <p>An error shall be signaled if during execution of the cleanup-forms of an unwind-protect form, a non-local exit is executed to a destination which has been marked as invalid due to some other non-local exit that is already in progress (see §14.7.1) (error-id. <span class="error_id">control-error</span>).</p>
+            <p>An error shall be signaled if during execution of the cleanup-forms of an unwind-protect form, a non-local exit is executed to a destination which has been marked as invalid due to some other non-local exit that is already in progress (see <a href="#establishing_and_invoking_non_local_exits">§14.7.1</a>) (error-id. <span class="error_id">control-error</span>).</p>
             <div class="note">Note: Because ISLISP does not specify an interactive debugger, it is unspecified whether or how error recovery can occur interactively if programmatic handling fails. The intent is that if the ISLISP processor does not terminate abnormally, normal mechanisms for non-local exit (return-from, throw, or go) would be used as necessary and would respect these cleanup-forms.</div>
             
 <pre class="example">
