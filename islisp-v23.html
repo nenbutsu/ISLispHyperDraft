@@ -3945,15 +3945,15 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             <p>This function builds a cons from two objects, with <span class="nonterminal">obj<sub>1</sub></span> as its car (or `left') part and with <span class="nonterminal">obj<sub>2</sub></span> as its cdr (or `right') part. An error shall be signaled if the requested cons cannot be allocated (error-id. <span class="error_id">cannot-create-cons</span>). Both <span class="nonterminal">obj<sub>1</sub></span> and <span class="nonterminal">obj<sub>2</sub></span> may be any ISLISP object.</p>
             
 <pre class="example">
-(cons 'a '())        ⇒ (a)
+<span class="input" contenteditable="true">(cons 'a '())</span><button class="eval"> ⇒ </button><span class="output">(a)</span>
 
-(cons '(a) '(b c d)) ⇒ ((a) b c d)
+<span class="input" contenteditable="true">(cons '(a) '(b c d))</span><button class="eval"> ⇒ </button><span class="output">((a) b c d)</span>
 
-(cons "a" '(b c))    ⇒ ("a" b c)
+<span class="input" contenteditable="true">(cons "a" '(b c))</span><button class="eval"> ⇒ </button><span class="output">("a" b c)</span>
 
-(cons 'a 3)          ⇒ (a . 3)
+<span class="input" contenteditable="true">(cons 'a 3)</span><button class="eval"> ⇒ </button><span class="output">(a . 3)</span>
 
-(cons '(a b) 'c)     ⇒ ((a b) . c)
+<span class="input" contenteditable="true">(cons '(a b) 'c)</span><button class="eval"> ⇒ </button><span class="output">((a b) . c)</span>
 </pre>
             
             <div id="f_car" class="definition-function">
@@ -3963,13 +3963,13 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             <p>The function <span class="terminal">car</span> returns the left component of the <span class="nonterminal">cons</span>. An error shall be signaled if <span class="nonterminal">cons</span> is not a cons (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
-(car '())          <span class="comment">an error shall be signaled</span>
+<span class="input" contenteditable="true">(car '())</span><button class="eval"> ⇒ </button><span class="output"><span class="comment">an error shall be signaled</span></span>
 
-(car '(a b c))     ⇒ a
+<span class="input" contenteditable="true">(car '(a b c))</span><button class="eval"> ⇒ </button><span class="output">a</span>
 
-(car '((a) b c d)) ⇒ (a)
+<span class="input" contenteditable="true">(car '((a) b c d))</span><button class="eval"> ⇒ </button><span class="output">(a)</span>
 
-(car '(1 . 2))     ⇒ 1
+<span class="input" contenteditable="true">(car '(1 . 2))</span><button class="eval"> ⇒ </button><span class="output">1</span>
 </pre>
             
             <div id="f_cdr" class="definition-function">
@@ -3979,11 +3979,11 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             <p>The function <span class="terminal">cdr</span> returns the right component of the <span class="nonterminal">cons</span>. An error shall be signaled if <span class="nonterminal">cons</span> is not a cons (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
-(cdr '())          <span class="comment">an error shall be signaled</span>
+<span class="input" contenteditable="true">(cdr '())</span><button class="eval"> ⇒ </button><span class="output"><span class="comment">an error shall be signaled</span></span>
 
-(cdr '((a) b c d)) ⇒ (b c d)
+<span class="input" contenteditable="true">(cdr '((a) b c d))</span><button class="eval"> ⇒ </button><span class="output">(b c d)</span>
 
-(cdr '(1 . 2))     ⇒ 2
+<span class="input" contenteditable="true">(cdr '(1 . 2))</span><button class="eval"> ⇒ </button><span class="output">2</span>
 </pre>
             
             <div class="definition-special-form">
@@ -4032,11 +4032,11 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             <p><span title="If the naming conventions were strictly observed, null would be named nullp; it is named null for historical and compatibility reasons.">Returns t if <span class="nonterminal">obj</span> is <span class="terminal">nil</span>; otherwise, returns <span class="terminal">nil</span></span>. <span class="nonterminal">obj</span> may be any ISLISP object.</p>
             
 <pre class="example">
-(null '(a b c)) ⇒ nil
+<span class="input" contenteditable="true">(null '(a b c))</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(null '())      ⇒ t
+<span class="input" contenteditable="true">(null '())</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(null (list))   ⇒ t
+<span class="input" contenteditable="true">(null (list))</span><button class="eval"> ⇒ </button><span class="output">t</span>
 </pre>
             
             <h4 id="list_operations">List operations</h4>
@@ -4048,23 +4048,21 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             <p>Returns <span class="terminal">t</span> if <span class="nonterminal">obj</span> is a list (instance of class <span class="class">list</span>); otherwise, returns <span class="terminal">nil</span>. <span class="nonterminal">obj</span> may be any ISLISP object.</p>
             
 <pre class="example">
-(listp '(a b c))     ⇒ t
+<span class="input" contenteditable="true">(listp '(a b c))</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(listp '())          ⇒ t
+<span class="input" contenteditable="true">(listp '())</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(listp '(a . b))     ⇒ t
+<span class="input" contenteditable="true">(listp '(a . b))</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
 (let ((x (list 'a)))
+  (setf (cdr x) x)
+  (listp x))  ⇒ t
 
-(setf (cdr x) x)
+<span class="input" contenteditable="true">(listp "abc")</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(listp x))           ⇒ t
+<span class="input" contenteditable="true">(listp #(1 2))</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(listp "abc")        ⇒ nil
-
-(listp #(1 2))       ⇒ nil
-
-(listp 'jerome)      ⇒ nil
+<span class="input" contenteditable="true">(listp 'jerome)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 </pre>
             
             <div id="f_create_list" class="definition-function">
@@ -4073,9 +4071,9 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             
             <p>Returns a list of length <span class="nonterminal">i</span>. If <span class="nonterminal">initial-element</span> is given, the elements of the new list are initialized with this object; otherwise, the initialization is <a href="#td_implementation_defined">implementation defined</a>. An error shall be signaled if the requested list cannot be allocated (error-id. <span class="error_id">cannot-create-list</span>). An error shall be signaled if <span class="nonterminal">i</span> is not a non-negative integer (error-id. <span class="error_id">domain-error</span>). <span class="nonterminal">initial-element</span> may be any ISLISP object.</p>
 <pre class="example">
-(create-list 3 17)  ⇒ (17 17 17)
+<span class="input" contenteditable="true">(create-list 3 17)</span><button class="eval"> ⇒ </button><span class="output">(17 17 17)</span>
 
-(create-list 2 #\a) ⇒ (#\a #\a)
+<span class="input" contenteditable="true">(create-list 2 #\a)</span><button class="eval"> ⇒ </button><span class="output">(#\a #\a)</span>
 </pre>
             
             <div id="f_list" class="definition-function">
@@ -4085,9 +4083,9 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             <p>Returns a new list whose length is the number of arguments and whose elements are the arguments in the same order as in the list-form. An error shall be signaled if the requested list cannot be allocated (error-id. <span class="error_id">cannot-create-list</span>). Each <span class="nonterminal">obj</span> may be any ISLISP object.</p>
             
 <pre class="example">
-(list 'a (+ 3 4) 'c) ⇒ (a 7 c)
+<span class="input" contenteditable="true">(list 'a (+ 3 4) 'c)</span><button class="eval"> ⇒ </button><span class="output">(a 7 c)</span>
 
-(list)               ⇒ nil
+<span class="input" contenteditable="true">(list)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 </pre>
             
 <div id="f_reverse" class="definition-function">
@@ -4100,11 +4098,11 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             <p>For <span class="terminal">reverse</span>, no side-effect to the given <span class="nonterminal">list</span> occurs. The resulting list is permitted but not required to share structure with the input <span class="nonterminal">list</span>.</p>
             <p>For <span class="terminal">nreverse</span>, the conses which make up the top level of the given <span class="nonterminal">list</span> are permitted, but not required, to be side-effected in order to produce this new list. <span class="terminal">nreverse</span> should never be called on a literal object.</p>
 <pre class="example">
-(reverse '(a b c d e))            ⇒ (e d c b a)
+<span class="input" contenteditable="true">(reverse '(a b c d e))</span><button class="eval"> ⇒ </button><span class="output">(e d c b a)</span>
 
-(reverse '(a))                    ⇒ (a)
+<span class="input" contenteditable="true">(reverse '(a))</span><button class="eval"> ⇒ </button><span class="output">(a)</span>
 
-(reverse '())                     ⇒ ()
+<span class="input" contenteditable="true">(reverse '())</span><button class="eval"> ⇒ </button><span class="output">()</span>
 
 (let* ((x (list 'a 'b))
        (y (nreverse x)))
@@ -4121,7 +4119,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             <p>An error shall be signaled if the list cannot be allocated (error-id. <span class="error_id">cannot-create-list</span>).</p>
             
 <pre class="example">
-(append '(a b c) '(d e f)) ⇒ (a b c d e f)
+<span class="input" contenteditable="true">(append '(a b c) '(d e f))</span><button class="eval"> ⇒ </button><span class="output">(a b c d e f)</span>
 </pre>
             
             <div id="f_member" class="definition-function">
@@ -4131,11 +4129,11 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             <p>If <span class="nonterminal">list</span> contains at least one occurrence of <span class="nonterminal">obj</span> (as determined by <span class="terminal">eql</span>), the first sublist of <span class="nonterminal">list</span> whose car is <span class="nonterminal">obj</span> is returned. Otherwise, <span class="terminal">nil</span> is returned. An error shall be signaled if <span class="nonterminal">list</span> is not a list (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
-(member 'c '(a b c d e f)) ⇒ (c d e f)
+<span class="input" contenteditable="true">(member 'c '(a b c d e f))</span><button class="eval"> ⇒ </button><span class="output">(c d e f)</span>
 
-(member 'g '(a b c d e f)) ⇒ nil
+<span class="input" contenteditable="true">(member 'g '(a b c d e f))</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(member 'c '(a b c a b c)) ⇒ (c a b c)
+<span class="input" contenteditable="true">(member 'c '(a b c a b c))</span><button class="eval"> ⇒ </button><span class="output">(c a b c)</span>
 </pre>
             
             <div id="f_mapcar" class="definition-function">
@@ -4204,27 +4202,23 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             <p>An error shall be signaled if <span class="nonterminal">function</span> is not a function (error-id. <span class="error_id">domain-error</span>). An error shall be signaled if any <span class="nonterminal">list</span> is not a list (error-id. <span class="error_id">domain-error</span>).</p>
             <p>In all cases, the calls to <span class="nonterminal">function</span> proceed from left to right, so that if <span class="nonterminal">function</span> has side-effects, it can rely upon being called first on all of the elements with index 0, then on all of those numbered 1, and so on.</p>
 <pre class="example">
-(mapcar #'car '((1 a) (2 b) (3 c))) ⇒ (1 2 3)
+<span class="input" contenteditable="true">(mapcar #'car '((1 a) (2 b) (3 c)))</span><button class="eval"> ⇒ </button><span class="output">(1 2 3)</span>
 
-(mapcar #'abs '(3 -4 2 -5 -6))      ⇒ (3 4 2 5 6)
+<span class="input" contenteditable="true">(mapcar #'abs '(3 -4 2 -5 -6))</span><button class="eval"> ⇒ </button><span class="output">(3 4 2 5 6)</span>
 
-(mapcar #'cons '(a b c) '(1 2 3))   ⇒ ((a . 1) (b . 2) (c . 3))
+<span class="input" contenteditable="true">(mapcar #'cons '(a b c) '(1 2 3))</span><button class="eval"> ⇒ </button><span class="output">((a . 1) (b . 2) (c . 3))</span>
                 
 (let ((x 0))
   (mapc (lambda (v) (setq x (+ x v))) '(3 5))
     x)
 ⇒ 8
 
-(maplist #'append
-  '(1 2 3 4) '(1 2) '(1 2 3))
-⇒ ((1 2 3 4 1 2 1 2 3) (2 3 4 2 2 3))
+<span class="input" contenteditable="true">(maplist #'append '(1 2 3 4) '(1 2) '(1 2 3))</span><button class="eval"> ⇒ </button><span class="output">((1 2 3 4 1 2 1 2 3) (2 3 4 2 2 3))</span>
 
-(maplist (lambda (x) (cons 'foo x))
-  '(a b c d))
-⇒ ((foo a b c d) (foo b c d) (foo c d) (foo d))
+<span class="input" contenteditable="true">(maplist (lambda (x) (cons 'foo x)) '(a b c d))</span><button class="eval"> ⇒ </button><span class="output">((foo a b c d) (foo b c d) (foo c d) (foo d))</span>
 
 (maplist (lambda (x) (if (member (car x) (cdr x)) 0 1))
-           '(a b a c d b c))
+         '(a b a c d b c))
 ⇒ (0 0 1 0 1 1 1)
                 
 (let ((k 0))
@@ -4242,8 +4236,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
   '(a b a c d b c b c))
 ⇒ (a b c b c)
                 
-(mapcon #'list
-  '(1 2 3 4)) ⇒ ((1 2 3 4) (2 3 4) (3 4) (4))
+<span class="input" contenteditable="true">(mapcon #'list '(1 2 3 4))</span><button class="eval"> ⇒ </button><span class="output">((1 2 3 4) (2 3 4) (3 4) (4))</span>
 </pre>
             
             <div id="f_assoc" class="definition-function">
@@ -4253,9 +4246,9 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             <p>If <span class="nonterminal">assocation-list</span> contains at least one cons whose car is <span class="nonterminal">obj</span> (as determined by <span class="terminal">eql</span>), the first such cons is returned. Otherwise, <span class="terminal">nil</span> is returned. An error shall be signaled if <span class="nonterminal">association-list</span> is not a list of conses (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
-(assoc 'a '((a . 1) (b . 2))) ⇒ (a . 1)
+<span class="input" contenteditable="true">(assoc 'a '((a . 1) (b . 2)))</span><button class="eval"> ⇒ </button><span class="output">(a . 1)</span>
 
-(assoc 'c '((a . 1) (b . 2))) ⇒ nil
+<span class="input" contenteditable="true">(assoc 'c '((a . 1) (b . 2)))</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 </pre>
             
             <h3 id="arrays">Arrays</h3>
