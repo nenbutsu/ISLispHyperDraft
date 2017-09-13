@@ -285,3 +285,7 @@ pre {
 .nonterminal {
     font-style: italic;
 }
+
+.input {
+    background-color: #e6e6fa;
+}

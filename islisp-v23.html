@@ -441,7 +441,7 @@
             <div class="example">A “cond special form” becomes a “prepared cond” by preparation for execution.</div>
             <p>In the examples, the metasymbol “⇒” designates the result of an actual evaluation. For example:</p>
 <pre>
-(+ 3 4) ⇒ 7
+<span class="input" contenteditable="true">(+ 3 4)</span><button class="eval"> ⇒ </button><span class="output">7</span>
 </pre>
             <p>The metasymbol <q>→</q> identifies the class that results from the evaluation of a form having a given pattern. For example:</p>
 <pre>
@@ -881,7 +881,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             
             <p>Execution presupposes successful preparation for execution of an ISLISP text subject to the evaluation model. Execution is an activation of a prepared text form that results in a value and perhaps in some side-effects.</p>
             <p>An ISLISP text is a sequence of forms.</p>
-            <p>Throughout this document the value a form returns is described, but in general a form might not return if one of its subforms executes a non-local exit (see §14.7.1). Therefore, it should be understood that all such descriptions implicitly include the provision that if the form returns, a particular value is returned.</p>
+            <p>Throughout this document the value a form returns is described, but in general a form might not return if one of its subforms executes a non-local exit (see <a href="#establishing_and_invoking_non_local_exits">§14.7.1</a>). Therefore, it should be understood that all such descriptions implicitly include the provision that <i>if the form returns</i>, a particular value is returned.</p>
             <p>The following are valid forms in ISLISP:</p>
             <ul>
                 <li id="compound_forms">Compound forms
@@ -896,13 +896,13 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
                 <li>Literals</li>
             </ul>
             
-            <p>A form, when evaluated, returns an object as its value, though some forms may not return (<span class="latin">e.g.</span>, return-from).</p>
-            <p>A compound form is written as (operator argument *). The operator must be a special operator, a defining operator, an identifier, or a lambda expression. The identifier names a function, a macro, or a generic function. It is a violation if operator is a literal.</p>
-            <p id="toplevel_form">A toplevel form is a form that is either not lexically nested within another form or is lexically nested only within one or more progn forms. Special forms and function application forms at toplevel are called set-up forms. It is a violation if a defining form is not a toplevel form.</p>
+            <p>A form, when evaluated, returns an object as its value, though some forms may not return (<span class="latin">e.g.</span>, <span class="terminal">return-from</span>).</p>
+            <p>A compound form is written as (<span class="term">operator</span> <span class="arg">argument*</span>). The <span class="nonterminal">operator</span> must be a special operator, a defining operator, an identifier, or a lambda expression. The identifier names a function, a macro, or a generic function. It is a violation if operator is a literal.</p>
+            <p id="toplevel_form">A <span class="term">toplevel form</span> is a form that is either not lexically nested within another form or is lexically nested only within one or more <span class="terminal">progn</span> forms. Special forms and function application forms at toplevel are called <span class="term">set-up forms</span>. It is a violation if a defining form is not a toplevel form.</p>
             
             <h4 id="function_application_forms">Function application forms</h4>
             
-            <p>A function application form is a compound form whose operator is an identifier (naming a function) or whose operator is a lambda expression. All of the arguments are evaluated, from left to right, and the function is called with (or “applied to”) arguments that are, in the same order, the objects resulting from these evaluations. This document describes a function application form in the following format:</p>
+            <p>A <span class="term">function application form</span> is a compound form whose operator is an identifier (naming a function) or whose operator is a lambda expression. All of the arguments are evaluated, from left to right, and the function is called with (or “applied to”) arguments that are, in the same order, the objects resulting from these evaluations. This document describes a function application form in the following format:</p>
             <div class="definition-function">
                 (<span class="operator">function-name</span> <span class="arg">argument</span>*) → <span class="class">result-class</span>
             </div>
@@ -917,7 +917,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             <p>This describes an ordinary function that is available only in a specified lexical scope.</p>
             
             <h4 id="special_forms">Special forms</h4>
-            <p>A special form is a form whose arguments are treated in a special way; for example, arguments are not evaluated or are evaluated in a special order. It is <a href="#td_implementation_defined">implementation defined</a> whether any special form is implemented as a macro (see §12.5 and §16). Special forms are recognized because they have a special operator in their operator position. The following are special operators:</p>
+            <p>A <span class="term">special form</span> is a form whose arguments are treated in a special way; for example, arguments are not evaluated or are evaluated in a special order. It is <a href="#td_implementation_defined">implementation defined</a> whether any special form is implemented as a macro (see <a href="#macro_forms">§12.5</a> and <a href="#macros">§16</a>). Special forms are recognized because they have a <span class="term">special operator</span> in their operator position. The following are special operators:</p>
             
             <ul>
                 <li><a href="#s_and">and</a></li>
@@ -973,7 +973,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             
             <h4 id="defining_forms">Defining forms</h4>
             
-            <p>A defining form is a toplevel special form (see §12.3) that establishes a binding between name and an object which is the result of handling the arguments according to the semantics implied by defining-form-name; it is a violation if a defining form is not a toplevel form. For each namespace, defining forms can occur at most once for the same name and, in case of method definitions for the same parameter profile. A defining form is a compound form whose operator is a defining operator. These are the defining operators:</p>
+            <p>A <span class="term">defining form</span> is a toplevel special form (see <a href="#special_forms">§12.3</a>) that establishes a binding between <span class="nonterminal">name</span> and an object which is the result of handling the <span class="nonterminal">arguments</span> according to the semantics implied by <span class="nonterminal">defining-form-name</span>; it is a violation if a defining form is not a toplevel form. For each namespace, defining forms can occur at most once for the same <span class="nonterminal">name</span> and, in case of method definitions for the same parameter profile. A defining form is a compound form whose operator is a <span class="term">defining operator</span>. These are the defining operators:</p>
             
             <ul>
                 <li><a href="#def_defclass">defclass</a></li>
@@ -994,47 +994,47 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             <h4 id="macro_forms">Macro forms</h4>
             
             <p>Macro forms are expanded during preparation for execution.</p>
-            <p>For information on how macros are processed, see §16.</p>
+            <p>For information on how macros are processed, see <a href="#macros">§16</a>.</p>
             
             <h4 id="the_evaluation_model">The evaluation model</h4>
             <p>This section provides an operational model of the process of evaluation.</p>
             
-            <p>The process of evaluation has two steps: A valid ISLISP text is first prepared for execution, and then the prepared text is executed. Both the process of preparing the text for execution and the properties of a prepared text are <a href="#td_implementation_dependent">implementation dependent</a>, except that all macros have been expanded in the prepared text (see §16). The process of execution which follows is described in terms of fully macroexpanded forms.</p>
+            <p>The process of evaluation has two steps: A valid ISLISP text is first prepared for execution, and then the prepared text is executed. Both the process of preparing the text for execution and the properties of a prepared text are <a href="#td_implementation_dependent">implementation dependent</a>, except that all macros have been expanded in the prepared text (see <a href="#macros">§16</a>). The process of execution which follows is described in terms of fully macroexpanded forms.</p>
             <p id="executed_as_follows">A prepared form is executed as follows:</p>
             <ul>
-                <li>If the form is a literal, the result is the form itself.</li>
-                <li>If the form is an identifier, the result is the object denoted by the identifier in the variable namespace of the current lexical environment. An error shall be signaled if no binding has been established for the identifier in the variable namespace of current lexical environment (see §9.2) (error-id. <span class="error_id">unbound-variable</span>).</li>
+                <li>If the form is a <span class="nonterminal">literal</span>, the result is the form itself.</li>
+                <li>If the form is an <span class="nonterminal">identifier</span>, the result is the object denoted by the <span class="nonterminal">identifier</span> in the variable namespace of the current lexical environment. An error shall be signaled if no binding has been established for the identifier in the variable namespace of current lexical environment (see <a href="#pervasive_error_types">§9.2</a>) (error-id. <span class="error_id">unbound-variable</span>).</li>
                 <li>If the form is a compound form, then one of the following cases must apply:
                     <ul>
-                        <li>If the operator is a special operator, then the form is a special form and its arguments are evaluated according to the definition of the special operator. For example, if first evaluates its condition expression and, depending on the result obtained, it then evaluates the “then” form or the “else” form.</li>
-                        <li>If the operator names a defining form, then the first argument is an identifier. The remaining arguments are handled according to the specification of the defining form and the resulting object is used to establish a binding between the identifier and that object in the appropriate namespace.</li>
+                        <li>If the <span class="nonterminal">operator</span> is a <span class="nonterminal">special operator</span>, then the form is a special form and its <span class="nonterminal">arguments</span> are evaluated according to the definition of the special operator. For example, <span class="terminal">if</span> first evaluates its condition expression and, depending on the result obtained, it then evaluates the “then” form or the “else” form.</li>
+                        <li>If the <span class="nonterminal">operator</span> names a <span class="term">defining</span> form, then the first argument is an identifier. The remaining <span class="nonterminal">arguments</span> are handled according to the specification of the defining form and the resulting object is used to establish a binding between the identifier and that object in the appropriate namespace.</li>
                         <li>
-                            <p>If the operator is a lambda-expression, then the arguments are evaluated. The order of evaluation of the arguments is sequentially from left to right. Then the function denoted by the lambda-expression is invoked with the evaluated arguments as actual parameters. The result is the value returned by the function, if it returns.</p>
+                            <p>If the operator is a <span class="terminal">lambda</span>-expression, then the arguments are evaluated. The order of evaluation of the <span class="nonterminal">arguments</span> is sequentially from left to right. Then the function denoted by the <span class="terminal">lambda</span>-expression is invoked with the evaluated arguments as actual parameters. The result is the value returned by the function, if it returns.</p>
 <pre class="example">
-((lambda (x) (+ x x)) 4) ⇒ 8
+<span class="input" contenteditable="true">((lambda (x) (+ x x)) 4)</span><button class="eval"> ⇒ </button><span class="output">8</span>
 </pre>
                         </li>
-                        <li>Otherwise, the compound form is a function application form. The operator position of the form is an identifier; it will be evaluated in the function namespace to produce a function to be called. An error shall be signaled if no binding has been established for the identifier in the function namespace of the current lexical environment (see §9.2) (error-id. <span class="error_id">undefined-function</span>). The arguments are evaluated in order from left to right. Then the function is invoked with the evaluated arguments as actual parameters. The result is the value returned by the function, if it returns.</li>
+                        <li>Otherwise, the compound form is a function application form. The operator position of the form is an identifier; it will be evaluated in the function namespace to produce a function to be called. An error shall be signaled if no binding has been established for the identifier in the function namespace of the current lexical environment (see <a href="#pervasive_error_types">§9.2</a>) (error-id. <span class="error_id">undefined-function</span>). The arguments are evaluated in order from left to right. Then the function is invoked with the evaluated arguments as actual parameters. The result is the value returned by the function, if it returns.</li>
                     </ul>
                 </li>
                 <li>Otherwise, an error shall be signaled (error-id. <span class="error_id">undefined-function</span>).</li>
             </ul>
-            <p>See §9.2 for descriptions of error situations that might occur during execution of the above cases.</p>
+            <p>See <a href="#pervasive_error_types">§9.2</a> for descriptions of error situations that might occur during execution of the above cases.</p>
             
             <h4 id="functions">Functions</h4>
             
-            <p>A function can receive some objects as arguments upon activation. If a function returns, it returns an object as its value. A function binding can be established in one of the following ways:</p>
+            <p>A function can <span class="term">receive</span> some objects as <span class="nonterminal">arguments</span> upon activation. If a function <span class="term">returns</span>, it returns an object as its <span class="term">value</span>. A function binding can be established in one of the following ways:</p>
             <ul>
-                <li>by using function defining forms; <span class="latin">i.e.</span>, the defun, defgeneric, and defclass defining forms</li>
-                <li>by using labels and flet special forms</li>
+                <li>by using function defining forms; <span class="latin">i.e.</span>, the <span class="terminal">defun</span>, <span class="terminal">defgeneric</span>, and <span class="terminal">defclass</span> defining forms</li>
+                <li>by using <span class="terminal">labels</span> and <span class="terminal">flet</span> special forms</li>
             </ul>
             
             <div id="f_functionp" class="definition-function">
                 (<span class="operator">functionp</span> <span class="arg">obj</span>) → <span class="nonterminal">boolean</span>
             </div>
-            <p>Returns t if obj is a (normal or generic) function; otherwise, returns nil. obj may be any ISLISP object.</p>
+            <p>Returns <span class="terminal">t</span> if <span class="nonterminal">obj</span> is a (normal or generic) function; otherwise, returns <span class="terminal">nil</span>. <span class="nonterminal">obj</span> may be any ISLISP object.</p>
 <pre class="example">
-(functionp (function car)) ⇒ t
+<span class="input" contenteditable="true">(functionp (function car))</span><button class="eval"> ⇒ </button><span class="output">t</span>
 </pre>
             <p>Function bindings are entities established during execution of a prepared labels or flet forms or by a function-defining form. A function binding is an association between an identifier, function-name, and a function object that is denoted by function-name—if in operator position—or by (function function-name) elsewhere.</p>
             
@@ -1050,9 +1050,9 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             <p>It returns the function object named by function-name.</p>
             <p>An error shall be signaled if no binding has been established for the identifier in the function namespace of current lexical environment (see §9.2) (error-id. <span class="error_id">undefined-function</span>). The consequences are undefined if the function-name names a macro or special form.</p>
 <pre class="example">
-(funcall (function -) 3) ⇒ -3
+<span class="input" contenteditable="true">(funcall (function -) 3)</span><button class="eval"> ⇒ </button><span class="output">-3</span>
 
-(apply #'- '(4 3)) ⇒ 1
+<span class="input" contenteditable="true">(apply #'- '(4 3))</span><button class="eval"> ⇒ </button><span class="output">1</span>
 </pre>
             
             <div id="s_lambda" class="definition-special">
@@ -1074,18 +1074,13 @@ lambda-list ::= (identifier* [&amp;rest identifier]) |
             </p>
             
 <pre class="example">
-Example:
-((lambda (x y) (+ (* x x) (* y y))) 3 4)
-⇒ 25
+<span class="input" contenteditable="true">((lambda (x y) (+ (* x x) (* y y))) 3 4)</span><button class="eval"> ⇒ </button><span class="output">25</span>
 
-((lambda (x y &amp;rest z) z) 3 4 5 6)
-⇒ (5 6)
+<span class="input" contenteditable="true">((lambda (x y &amp;rest z) z) 3 4 5 6)</span><button class="eval">⇒ </button><span class="output">(5 6)</span>
 
-((lambda (x y :rest z) z) 3 4 5 6)
-⇒ (5 6)
+<span class="input" contenteditable="true">((lambda (x y :rest z) z) 3 4 5 6)</span><button class="eval"> ⇒ </button><span class="output">(5 6)</span>
 
-(funcall (lambda (x y) (- y (* x y))) 7 3)
-⇒ -18
+<span class="input" contenteditable="true">(funcall (lambda (x y) (- y (* x y))) 7 3)</span><button class="eval">⇒ </button><span class="output">-18</span>
 </pre>
             
             <div id="s_labels" class="definition-special">
@@ -1127,17 +1122,14 @@ Example:
             <p>Applies function to the arguments, obj*, followed by the elements of list, if any. It returns the value returned by function.</p>
             <p>An error shall be signaled if function is not a function (error-id. <span class="error_id">domain-error</span>). Each obj may be any ISLISP object. An error shall be signaled if list is not a proper list (see §7) (error-id. <span class="error_id">improper-argument-list</span>).</p>
 <pre class="example">
-(apply (if (&lt; 1 2) (function max) (function min))
-       1 2 (list 3 4))
-⇒ 4
+<span class="input" contenteditable="true">(apply (if (&lt; 1 2) (function max) (function min)) 1 2 (list 3 4))</span><button class="eval"> ⇒ </button><span class="output">4</span>
 
 (defun compose (f g)
   (lambda (:rest args)
     (funcall f (apply g args)))))
 ⇒ compose
 
-(funcall (compose (function sqrt) (function *)) 12 75)
-⇒ 30
+(funcall (compose (function sqrt) (function *)) 12 75) ⇒ 30
 </pre>
             
             <div id="f_funcall" class="definition-function">
@@ -1303,9 +1295,9 @@ today                          ⇒ wednesday
                 <li>If obj<sub>1</sub> and obj<sub>2</sub> are characters, eql tests whether they are the same character (see char=).</li>
             </ul>
 <pre class="example">
-(eql () ())                 ⇒ t
+<span class="input" contenteditable="true">(eql () ())</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(eq  () ())                 ⇒ t
+<span class="input" contenteditable="true">(eq  () ())</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
 (eql '() '())               ⇒ t
 
