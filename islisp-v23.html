@@ -567,13 +567,13 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
                 <dd>
                     <p>A ﬂoating point number is written in one of the following formats:</p>
 <pre>
-[s]dd … d.dd … d
-[s]dd … d.dd … dE[s]dd … d
-[s]dd … d.dd … de[s]dd … d
-[s]dd … dE[s]dd … d
-[s]dd … de[s]dd … d
+[<span class="nonterminal">s</span>]<span class="nonterminal">dd</span> … <span class="nonterminal">d</span>.<span class="nonterminal">dd</span> … <span class="nonterminal">d</span>
+[<span class="nonterminal">s</span>]<span class="nonterminal">dd</span> … <span class="nonterminal">d</span>.<span class="nonterminal">dd</span> … <span class="nonterminal">d</span>E[<span class="nonterminal">s</span>]<span class="nonterminal">dd</span> … <span class="nonterminal">d</span>
+[<span class="nonterminal">s</span>]<span class="nonterminal">dd</span> … <span class="nonterminal">d</span>.<span class="nonterminal">dd</span> … <span class="nonterminal">d</span>e[<span class="nonterminal">s</span>]<span class="nonterminal">dd</span> … <span class="nonterminal">d</span>
+[<span class="nonterminal">s</span>]<span class="nonterminal">dd</span> … <span class="nonterminal">d</span>E[<span class="nonterminal">s</span>]<span class="nonterminal">dd</span> … <span class="nonterminal">d</span>
+[<span class="nonterminal">s</span>]<span class="nonterminal">dd</span> … <span class="nonterminal">d</span>e[<span class="nonterminal">s</span>]<span class="nonterminal">dd</span> … <span class="nonterminal">d</span>
 </pre>
-                    <p>where s is either <q>+</q> or <q>-</q>, and d is one of <q>0</q> – <q>9</q>. <span title="This number, although belonging to the set of natural numbers, usually is considered as only a floating point number because of its representation.">For example: 987.12, +12.5E-13, -1.5E12, 1E32</span></p>
+                    <p>where <span class="nonterminal">s</span> is either <q>+</q> or <q>-</q>, and <span class="nonterminal">d</span> is one of <q>0</q> – <q>9</q>. <span title="This number, although belonging to the set of natural numbers, usually is considered as only a floating point number because of its representation.">For example: 987.12, +12.5E-13, -1.5E12, 1E32</span></p>
                 </dd>
                 <dt class="classname" id="vector11">Vector</dt>
                 <dd>A vector of class <span class="class">general-vector</span> is written as #(obj<sub>1</sub> … obj<sub>n</sub>).</dd>
@@ -593,7 +593,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             <p>There are objects which do not have a textual representation, such as a class or an instance of the <span class="class">function</span> class.</p>
             
             <h3 id="reserved_identifiers">Reserved identifiers</h3>
-            <p>Symbols whose names contain a colon (:) or an ampersand (&amp;) are reserved and may not be used as identifiers. Symbols whose names start with colon (:) are called keywords.</p>
+            <p>Symbols whose names contain a colon (<span class="terminal">:</span>) or an ampersand (<span class="terminal">&amp;</span>) are reserved and may not be used as identifiers. Symbols whose names start with colon (<span class="terminal">:</span>) are called keywords.</p>
             
             <h3 id="errors">Errors</h3>
             <p>An <span class="term">error</span> is a situation arising during execution in which the processor is unable to continue correct execution according to the semantics defined in this document. The act of detecting and reporting such an error is called <span class="term">signaling</span> the error.</p>
@@ -602,12 +602,12 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             <h4 id="classes_of_error_specification">Classes of error specification</h4>
             <p>The wording of error specification in this document is as follows:</p>
             <dl>
-                <dt><q>an error shall be signaled</q></dt>
+                <dt><q><span class="term">an error shall be signaled</span></q></dt>
                 <dd>
                     <p>An implementation shall detect an error of this kind no later than the completion of execution of the form having the error, but might detect them sooner (<span class="latin">e.g.</span>, when the code is being prepared for execution).</p>
                     <p>Evaluation of the current form shall stop. If no active handler is established by <span class="terminal">with-handler</span>, it is <a href="#td_implementation_defined">implementation defined</a> whether the entire running process exits, a debugger is entered, or control is transferred elsewhere within the process.</p>
                 </dd>
-                <dt id="consequences_are_undefined"><q>the consequences are undefined</q></dt>
+                <dt id="consequences_are_undefined"><q><span class="term">the consequences are undefined</span></q></dt>
                 <dd>This means that the consequences are unpredictable. The consequences may range from harmless to fatal. No conforming ISLISP text may depend on the results or effects. A conforming ISLISP text must treat the consequences as unpredictable. In places where <q>must,</q> <q>must not,</q> or <q>may not</q> are used, then this is equivalent to stating that <q>the consequences are undefined</q> if the stated requirement is not met and no specific consequence is explicitly stated. An implementation is permitted to signal an error in this case.</dd>
             </dl>
             <p>For indexing and cross-referencing convenience, errors in this document have an associated <i>error identification</i> label, notated by text such as <q>(error-id. <span class="error_id">sample</span>).</q> The text of these labels has no formal significance to ISLISP texts or processors; the actual class of any object which might be used by the implementation to represent the error and the text of any error message that might be displayed is <a href="#td_implementation_dependent">implementation dependent</a>.</p>
@@ -1365,7 +1365,7 @@ today                          ⇒ wednesday
 (let ((p (lambda (x) x)))
   (eq p p)) ⇒ t
 
-<span class="input" contenteditable="true">(let ((x "a")) (eql x x))</span><button class="output"> ⇒ </button><span class="output">t</button>
+<span class="input" contenteditable="true">(let ((x "a")) (eql x x))</span><button class="output"> ⇒ </button><span class="output">t</span>
 
 <span class="input" contenteditable="true">(let ((x "a")) (eq x x))</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
@@ -1402,12 +1402,12 @@ today                          ⇒ wednesday
                 (<span class="operator">equal</span> <span class="arg">obj<sub>1</sub></span> <span class="arg">obj<sub>2</sub>)</span> → <span class="nonterminal">boolean</span>
             </div>
             
-            <p>This function tests whether obj<sub>1</sub> and obj<sub>2</sub> are isomorphic—<span class="latin">i.e.</span>, whether obj1 and obj2 denote the same structure with equivalent values. equal returns t if the test was satisfied, and nil if not. Specifically:</p>
+            <p>This function tests whether <span class="nonterminal">obj<sub>1</sub></span> and <span class="nonterminal">obj<sub>2</sub></span> are isomorphic—<span class="latin">i.e.</span>, whether <span class="nonterminal">obj<sub>1</sub></span> and <span class="nonterminal">obj<sub>2</sub></span> denote the same structure with equivalent values. <span class="terminal">equal</span> returns <span class="terminal">t</span> if the test was satisfied, and <span class="terminal">nil</span> if not. Specifically:</p>
             
-            <p>If obj<sub>1</sub> and obj<sub>2</sub> are direct instances of the same class, equal returns t if they are eql. Otherwise (if they are direct instances of the same class but not eql), the result is t if one of the following cases applies:</p>
+            <p>If <span class="nonterminal">obj<sub>1</sub></span> and <span class="nonterminal">obj<sub>2</sub></span> are direct instances of the same class, <span class="terminal">equal</span> returns <span class="terminal">t</span> if they are <span class="terminal">eql</span>. Otherwise (if they are direct instances of the same class but not <span class="terminal">eql</span>), the result is <span class="terminal">t</span> if one of the following cases applies:</p>
             <ul>
                 <li>
-                    <p>lists: either obj1 and obj2 are both the empty list (<span class="latin">i.e.</span>, nil), or</p>
+                    <p>lists: either <span class="nonterminal">obj<sub>1</sub></span> and <span class="nonterminal">obj<sub>2</sub></span> are both the empty list (<span class="latin">i.e.</span>, <span class="terminal">nil</span>), or</p>
 <pre>
 (and (equal (car obj1) (car obj2))
      (equal (cdr obj1) (cdr obj2))) holds;
@@ -1419,80 +1419,80 @@ today                          ⇒ wednesday
 (equal (array-dimensions obj<sub>1</sub>)
        (array-dimensions obj<sub>2</sub>))
 </pre>
-                    <p>holds and for every valid reference (aref obj<sub>1</sub> ind<sub>1</sub> ...ind<sub>n</sub>)</p>
+                    <p>holds and for every valid reference (<span class="terminal">aref</span> <span class="nonterminal">obj<sub>1</sub></span> <span class="nonterminal">ind<sub>1</sub></span> ...<span class="nonterminal">ind<sub>n</sub></span>)</p>
 <pre>
 (equal (aref obj<sub>1</sub> ind<sub>1</sub> … ind<sub>n</sub>)
        (aref obj<sub>2</sub> ind<sub>1</sub> … ind<sub>n</sub>)) is satisfied.
 </pre>
                 </li>
             </ul>
-            <p>Otherwise the value is nil.</p>
-            <p>obj<sub>1</sub> and obj<sub>2</sub> may be any ISLISP objects.</p>
+            <p>Otherwise the value is <span class="terminal">nil</span>.</p>
+            <p><span class="nonterminal">obj<sub>1</sub></span> and <span class="nonterminal">obj<sub>2</sub></span> may be any ISLISP objects.</p>
 <pre class="example">
-(equal 'a 'a)                     ⇒ t
+<span class="input" contenteditable="true">(equal 'a 'a)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(equal 2 2)                       ⇒ t
+<span class="input" contenteditable="true">(equal 2 2)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(equal 2 2.0)                     ⇒ nil
+<span class="input" contenteditable="true">(equal 2 2.0)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(equal '(a) '(a))                 ⇒ t
+<span class="input" contenteditable="true">(equal '(a) '(a))</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
 (equal '(a (b) c)
        '(a (b) c))                ⇒ t
 
-(equal (cons 1 2) (cons 1 2))     ⇒ t
+<span class="input" contenteditable="true">(equal (cons 1 2) (cons 1 2))</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(equal '(a) (list 'a))            ⇒ t
+<span class="input" contenteditable="true">(equal '(a) (list 'a))</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(equal "abc" "abc")               ⇒ t
+<span class="input" contenteditable="true">(equal "abc" "abc")</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(equal (vector 'a) (vector 'a))   ⇒ t
+<span class="input" contenteditable="true">(equal (vector 'a) (vector 'a))</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(equal #(a b) #(a b))             ⇒ t
+<span class="input" contenteditable="true">(equal #(a b) #(a b))</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(equal #(a b) #(a c))             ⇒ nil
+<span class="input" contenteditable="true">(equal #(a b) #(a c))</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(equal "a" "A")                   ⇒ nil
+<span class="input" contenteditable="true">(equal "a" "A")</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 </pre>
             
             <h4 id="logical_connectives">Logical connectives</h4>
             <div id="f_not" class="definition-function">
                 (<span class="operator">not</span> <span class="arg">obj</span>) → <span class="nonterminal">boolean</span>
             </div>
-            <p>This predicate is the logical “not” (or “¬”). It returns t if obj is nil and nil otherwise. obj may be any ISLISP object.</p>
+            <p>This predicate is the logical “not” (or “¬”). It returns <span class="terminal">t</span> if <span class="nonterminal">obj</span> is <span class="terminal">nil</span> and <span class="terminal">nil</span> otherwise. <span class="nonterminal">obj</span> may be any ISLISP object.</p>
 <pre class="example">
-(not t)           ⇒ nil
+<span class="input" contenteditable="true">(not t)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(not '())         ⇒ t
+<span class="input" contenteditable="true">(not '())</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(not 'nil)        ⇒ t
+<span class="input" contenteditable="true">(not 'nil)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(not nil)         ⇒ t
+<span class="input" contenteditable="true">(not nil)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(not 3)           ⇒ nil
+<span class="input" contenteditable="true">(not 3)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(not (list))      ⇒ t
+<span class="input" contenteditable="true">(not (list))</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(not (list 3))    ⇒ nil
+<span class="input" contenteditable="true">(not (list 3))</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 </pre>
             
             <div id="s_and" class="definition-sepcial">
                 (<span class="operator">and</span> <span class="arg">form</span>*) → <span class="class">object</span>
             </div>
             
-            <p>and is the sequential logical “and” (or “∧”). forms are evaluated from left to right until either one of them evaluates to nil or else none are left. If one of them evaluates to nil, then nil is returned from the and; otherwise, the value of the last evaluated form is returned. The form and is equivalent to the following:</p>
+            <p><span class="terminal">and</span> is the sequential logical “and” (or “∧”). <span class="nonterminal">forms</span> are evaluated from left to right until either one of them evaluates to <span class="terminal">nil</span> or else none are left. If one of them evaluates to <span class="terminal">nil</span>, then <span class="terminal">nil</span> is returned from the <span class="terminal">and</span>; otherwise, the value of the last evaluated <span class="nonterminal">form</span> is returned. The form <span class="terminal">and</span> is equivalent to the following:</p>
 <pre>
 (and)                      ≡ 't
-(and form)                 ≡ form
-<span title="For the definition of if, see §14.4 below.">(and form<sub>1</sub> form<sub>2</sub> … form<sub>n</sub>) ≡ (if form<sub>1</sub> (and form<sub>2</sub> … form<sub>n</sub>) 'nil)</span>
+(and <span class="nonterminal">form</span>)                 ≡ <span class="nonterminal">form</span>
+<span title="For the definition of if, see §14.4 below.">(and <span class="nonterminal">form<sub>1</sub></span> <span class="nonterminal">form<sub>2</sub></span> … <span class="nonterminal">form<sub>n</sub></span>) ≡ (if <span class="nonterminal">form<sub>1</sub></span> (and <span class="nonterminal">form<sub>2</sub></span> … <span class="nonterminal">form<sub>n</sub></span>) 'nil)</span>
 </pre>
             
 <pre class="example">
-(and (= 2 2) (&gt; 2 1))            ⇒ t
+<span class="input" contenteditable="true">(and (= 2 2) (&gt; 2 1))</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(and (= 2 2) (&lt; 2 1))            ⇒ nil
+<span class="input" contenteditable="true">(and (= 2 2) (&lt; 2 1))</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(and (eql 'a 'a) (not (&gt; 1 2)))  ⇒ t
+<span class="input" contenteditable="true">(and (eql 'a 'a) (not (&gt; 1 2)))</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
 (let ((x 'a))
   (and x (setq x 'b)))
@@ -1519,20 +1519,20 @@ today                          ⇒ wednesday
                 (<span class="operator">or</span> <span class="arg">form</span>*) → <span class="class">object</span>
             </div>
             
-            <p>or is the sequential logical <q>or</q> (or <q>∨</q>). forms are evaluated from left to right until either one of them evaluates to a non-nil value or else none are left. If one of them evaluates to a non-nil value, then this non-nil value is returned, otherwise nil is returned. The form or is equivalent to the following:</p>
+            <p><span class="terminal">or</span> is the sequential logical <q>or</q> (or <q>∨</q>). <span class="nonterminal">forms</span> are evaluated from left to right until either one of them evaluates to a non-nil value or else none are left. If one of them evaluates to a non-nil value, then this non-nil value is returned, otherwise <span class="terminal">nil</span> is returned. The form <span class="terminal">or</span> is equivalent to the following:</p>
 <pre>
 (or) ≡ 'nil
 
-(or form) ≡ form
+(or <span class="nonterminal">form</span>) ≡ <span class="nonterminal">form</span>
 
-(or form<sub>1</sub> form<sub>2</sub> … form<sub>n</sub>) ≡ ((lambda (var)
-                                (if var var (or form<sub>2</sub> … form<sub>n</sub>))) form<sub>1</sub>)
-where var does not occur in form<sub>2</sub> … form<sub>n</sub>
+(or <span class="nonterminal">form<sub>1</sub></span> <span class="nonterminal">form<sub>2</sub></span> … <span class="nonterminal">form<sub>n</sub></span>) ≡ ((lambda (var)
+                                (if var var (or <span class="nonterminal">form<sub>2</sub></span> … <span class="nonterminal">form<sub>n</sub></span>))) <span class="nonterminal">form<sub>1</sub></span>)
+where var does not occur in <span class="nonterminal">form<sub>2</sub></span> … <span class="nonterminal">form<sub>n</sub></span>
 </pre>
 <pre class="example">
-(or (= 2 2) (&gt; 2 1))            ⇒ t
+<span class="input" contenteditable="true">(or (= 2 2) (&gt; 2 1))</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(or (= 2 2) (&lt; 2 1))            ⇒ t
+<span class="input" contenteditable="true">(or (= 2 2) (&lt; 2 1))</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
 (let ((x 'a))
   (or x (setq x 'b)))           ⇒ a
