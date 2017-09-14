@@ -1285,14 +1285,14 @@ today                          ⇒ wednesday
                 (<span class="operator">eql</span> <span class="arg">obj<sub>1</sub></span> <span class="arg">obj<sub>2</sub></span>) → <span class="nonterminal">boolean</span>
             </div>
             
-            <p>eq and eql test whether obj<sub>1</sub> and obj<sub>2</sub> are same identical object. They return t if the objects are the same; otherwise, they return nil. Two objects are the same if there is no operation that could distinguish them (without modifying them), and if modifying one would modify the other the same way.</p>
-            <p>For eq, the consequences are <a href="#td_implementation_defined">implementation defined</a> if both obj<sub>1</sub> and obj<sub>2</sub> are numbers or both are characters. For eql the meaning for numbers and characters is defined as follows:</p>
+            <p><span class="terminal">eq</span> and <span class="terminal">eql</span> test whether <span class="nonterminal">obj<sub>1</sub></span> and <span class="nonterminal">obj<sub>2</sub></span> are same identical object. They return <span class="terminal">t</span> if the objects are the same; otherwise, they return <span class="terminal">nil</span>. Two objects are the same if there is no operation that could distinguish them (without modifying them), and if modifying one would modify the other the same way.</p>
+            <p>For <span class="terminal">eq</span>, the consequences are <a href="#td_implementation_defined">implementation defined</a> if both <span class="nonterminal">obj<sub>1</sub></span> and <span class="nonterminal">obj<sub>2</sub></span> are numbers or both are characters. For <span class="terminal">eql</span> the meaning for numbers and characters is defined as follows:</p>
             <ul>
                 <li>
-                    <p>If obj<sub>1</sub> and obj<sub>2</sub> are numbers, eql tests whether they are direct instances of the same class and have the same value.</p>
-                    <p>If an implementation supports positive and negative zeros as distinct values, then (eql 0.0 -0.0) returns nil. When the syntax -0.0 is read and it is interpreted as the value 0.0 then (eql 0.0 -0.0) returns t.</p>
+                    <p>If <span class="nonterminal">obj<sub>1</sub></span> and <span class="nonterminal">obj<sub>2</sub></span> are numbers, <span class="terminal">eql</span> tests whether they are direct instances of the same class and have the same value.</p>
+                    <p>If an implementation supports positive and negative zeros as distinct values, then (eql 0.0 -0.0) returns <span class="terminal">nil</span>. When the syntax -0.0 is read and it is interpreted as the value 0.0 then (eql 0.0 -0.0) returns <span class="terminal">t</span>.</p>
                 </li>
-                <li>If obj<sub>1</sub> and obj<sub>2</sub> are characters, eql tests whether they are the same character (see char=).</li>
+                <li>If <span class="nonterminal">obj<sub>1</sub></span> and <span class="nonterminal">obj<sub>2</sub></span> are characters, <span class="terminal">eql</span> tests whether they are the same character (see <a href="#f_char_eq"><span class="terminal">char=</span></a>).</li>
             </ul>
 <pre class="example">
 <span class="input" contenteditable="true">(eql () ())</span><button class="eval"> ⇒ </button><span class="output">t</span>
