@@ -1548,17 +1548,17 @@ where var does not occur in <span class="nonterminal">form<sub>2</sub></span> �
             
             <p>There are three kinds of constants: literals, quoted expressions, and named constants. Quoted expressions are described below.</p>
             <p>The consequences are undefined if an attempt is made to alter the value of a constant.</p>
-            <p>The result of evaluating the literal constant constant is constant itself. Instances of the following classes are literal constants: <span class="class">basic-array</span>, <span class="class">character</span>, and <span class="class">number</span></p>
+            <p>The result of evaluating the literal constant <span class="nonterminal">constant</span> is <span class="nonterminal">constant</span> itself. Instances of the following classes are literal constants: <span class="class">basic-array</span>, <span class="class">character</span>, and <span class="class">number</span></p>
 <pre class="example">
-#2A((a b c) (d e f))  ⇒ #2A((a b c) (d e f))
+<span class="input" contenteditable="true">#2A((a b c) (d e f))</span><button class="eval"> ⇒ </button><span class="output">#2A((a b c) (d e f))</span>
 
-#\a                   ⇒ #\a
+<span class="input" contenteditable="true">#\a</span><button class="eval"> ⇒ </button><span class="output">#\a</span>
 
-145932                ⇒ 145932
+<span class="input" contenteditable="true">145932</span><button class="eval"> ⇒ </button><span class="output">145932</span>
 
-"abc"                 ⇒ "abc"
+<span class="input" contenteditable="true">"abc"</span><button class="eval"> ⇒ </button><span class="output">"abc"</span>
 
-#(a b c)              ⇒ #(a b c)
+<span class="input" contenteditable="true">#(a b c)</span><button class="eval"> ⇒ </button><span class="output">#(a b c)</span>
 </pre>
             
             <div id="s_quote" class="definition-special">
@@ -1569,8 +1569,8 @@ where var does not occur in <span class="nonterminal">form<sub>2</sub></span> �
             </div>
             
             <p>A quoted expression denotes a reference to an object. This notation is used to include any object in an ISLISP text.</p>
-            <p>The character ' (apostrophe or single quote) is syntax for quotation. That is, (quote a) ≡ 'a.</p>
-            <p>The result of the evaluation of the quote special form is obj.</p>
+            <p>The character <span class="terminal">'</span> (apostrophe or single quote) is syntax for quotation. That is, (<span class="terminal">quote</span> a) ≡ <span class="terminal">'</span>a.</p>
+            <p>The result of the evaluation of the <span class="terminal">quote</span> special form is <span class="nonterminal">obj</span>.</p>
 <pre class="example">
 (quote a)         ⇒ a
 
