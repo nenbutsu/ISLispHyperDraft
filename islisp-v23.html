@@ -1550,7 +1550,7 @@ where var does not occur in <span class="nonterminal">form<sub>2</sub></span> �
             <p>The consequences are undefined if an attempt is made to alter the value of a constant.</p>
             <p>The result of evaluating the literal constant constant is constant itself. Instances of the following classes are literal constants: <span class="class">basic-array</span>, <span class="class">character</span>, and <span class="class">number</span></p>
 <pre class="example">
-<span class="input" contenteditable="true">#2A((a b c) (d e f))</span><button class="eval"> ⇒ </button><span class="output">#2A((a b c) (d e f))</span>
+#2A((a b c) (d e f))  ⇒ #2A((a b c) (d e f))
 
 #\a                   ⇒ #\a
 
@@ -6104,7 +6104,7 @@ writer (of a slot) <a href="#accessing_slots">51</a>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
   <script type="text/javascript">
     $(".eval").on("click", function(e){
-    var s = $(e.target).prev().html()
+    var s = $(e.target).prev().text()
     $(e.target).next().html(islisp.eval(s))
     })
   </script>
