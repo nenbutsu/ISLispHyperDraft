@@ -596,8 +596,8 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             <p>Symbols whose names contain a colon (:) or an ampersand (&amp;) are reserved and may not be used as identifiers. Symbols whose names start with colon (:) are called keywords.</p>
             
             <h3 id="errors">Errors</h3>
-            <p>An error is a situation arising during execution in which the processor is unable to continue correct execution according to the semantics defined in this document. The act of detecting and reporting such an error is called signaling the error.</p>
-            <p>A violation is a situation arising during preparation for execution in which the textual requirements of this document are not met. A violation shall be detected during preparation for execution.</p>
+            <p>An <span class="term">error</span> is a situation arising during execution in which the processor is unable to continue correct execution according to the semantics defined in this document. The act of detecting and reporting such an error is called <span class="term">signaling</span> the error.</p>
+            <p>A <span class="term">violation</span> is a situation arising during preparation for execution in which the textual requirements of this document are not met. A violation shall be detected during preparation for execution.</p>
             
             <h4 id="classes_of_error_specification">Classes of error specification</h4>
             <p>The wording of error specification in this document is as follows:</p>
@@ -605,21 +605,21 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
                 <dt><q>an error shall be signaled</q></dt>
                 <dd>
                     <p>An implementation shall detect an error of this kind no later than the completion of execution of the form having the error, but might detect them sooner (<span class="latin">e.g.</span>, when the code is being prepared for execution).</p>
-                    <p>Evaluation of the current form shall stop. If no active handler is established by with-handler, it is <a href="#td_implementation_defined">implementation defined</a> whether the entire running process exits, a debugger is entered, or control is transferred elsewhere within the process.</p>
+                    <p>Evaluation of the current form shall stop. If no active handler is established by <span class="terminal">with-handler</span>, it is <a href="#td_implementation_defined">implementation defined</a> whether the entire running process exits, a debugger is entered, or control is transferred elsewhere within the process.</p>
                 </dd>
                 <dt id="consequences_are_undefined"><q>the consequences are undefined</q></dt>
                 <dd>This means that the consequences are unpredictable. The consequences may range from harmless to fatal. No conforming ISLISP text may depend on the results or effects. A conforming ISLISP text must treat the consequences as unpredictable. In places where <q>must,</q> <q>must not,</q> or <q>may not</q> are used, then this is equivalent to stating that <q>the consequences are undefined</q> if the stated requirement is not met and no specific consequence is explicitly stated. An implementation is permitted to signal an error in this case.</dd>
             </dl>
-            <p>For indexing and cross-referencing convenience, errors in this document have an associated error identification label, notated by text such as <q>(error-id. <span class="error_id">sample</span>).</q> The text of these labels has no formal significance to ISLISP texts or processors; the actual class of any object which might be used by the implementation to represent the error and the text of any error message that might be displayed is <a href="#td_implementation_dependent">implementation dependent</a>.</p>
+            <p>For indexing and cross-referencing convenience, errors in this document have an associated <i>error identification</i> label, notated by text such as <q>(error-id. <span class="error_id">sample</span>).</q> The text of these labels has no formal significance to ISLISP texts or processors; the actual class of any object which might be used by the implementation to represent the error and the text of any error message that might be displayed is <a href="#td_implementation_dependent">implementation dependent</a>.</p>
             
             <h4 id="pervasive_error_types">Pervasive error types</h4>
             <p>Most errors are described in detail in the contect in which they occur. Some error types are so pervasive that their detailed descriptions are consolidated here rather than repeated in full detail upon each occurrence.</p>
             <ol>
                 <li id="domain_error">Domain error: an error shall be signaled if the object given as argument of a standard function for which a class restriction is in effect is not an instance of the class which is required in the definition of the function (error-id. <span class="error_id">domain-error</span>).</li>
                 <li id="arity_error"> Arity error: an error shall be signaled if a function is activated with a number of arguments which is different than the number of parameters as required in the function definition (error-id. <span class="error_id">arity-error</span>).</li>
-                <li id="undefined_entity">Undefined entity error: an error shall be signaled if the entity denoted by an identifier does not exist when a reference to that entity is made (error-id. <span class="error_id">undefined-entity</span>). Two commonly occuring examples of this type of error are undefined-function and unbound-variable.</li>
+                <li id="undefined_entity">Undefined entity error: an error shall be signaled if the entity denoted by an identifier does not exist when a reference to that entity is made (error-id. <span class="error_id">undefined-entity</span>). Two commonly occuring examples of this type of error are <span class="error_id">undefined-function</span> and <span class="error_id">unbound-variable</span>.</li>
             </ol>
-            <p>This list does not exhaust the space of error types. For a more complete list, see §29.4.</p>
+            <p>This list does not exhaust the space of error types. For a more complete list, see <a href="#error_identification">§29.4</a>.</p>
             
             <h3 id="classes">Classes</h3>
             <p>In ISLISP, data types are covered by the class system. A <span class="term">class</span> is an object that determines the structure and behavior of a set of other objects, which are called its <span class="term">instances</span>. Every ISLISP object is an instance of a class. The behavior is the set of operations that can be performed on an instance.</p>
@@ -1236,10 +1236,10 @@ today                          ⇒ wednesday
             <h3 id="predicates">Predicates</h3>
             <h4 id="boolean_values">Boolean values</h4>
             
-            <p>The values t and nil are called booleans. t denotes true, and nil is the only value denoting false. Predicates, also called boolean functions, are functions that return t when satisfied and nil otherwise.</p>
-            <p id="quasi_booleans">Any object other than nil is treated as true (not just t). When objects are treated as true or nil this way they are called quasi-booleans.</p>
-            <p>t is an identifier naming the symbol t, and nil is an identifier naming the symbol nil (which is also the empty list). nil is the unique instance of the <span class="class">null</span> class.</p>
-            <p>Like boolean functions, the and and or special forms return truth values; however, these truth values are nil when the test is not satisfied and a non-nil value otherwise. The result of and and or are quasi-booleans.</p>
+            <p>The values <span class="terminal">t</span> and <span class="terminal">nil</span> are called booleans. <span class="terminal">t</span> denotes true, and <span class="terminal">nil</span> is the only value denoting false. Predicates, also called boolean functions, are functions that return <span class="terminal">t</span> when satisfied and <span class="terminal">nil</span> otherwise.</p>
+            <p id="quasi_booleans">Any object other than <span class="terminal">nil</span> is treated as true (not just <span class="terminal">t</span>). When objects are treated as true or <span class="terminal">nil</span> this way they are called quasi-booleans.</p>
+            <p><span class="terminal">t</span> is an identifier naming the symbol <span class="terminal">t</span>, and <span class="terminal">nil</span> is an identifier naming the symbol <span class="terminal">nil</span> (which is also the empty list). <span class="terminal">nil</span> is the unique instance of the <span class="class">null</span> class.</p>
+            <p>Like boolean functions, the <span class="terminal">and</span> and <span class="terminal">or</span> special forms return truth values; however, these truth values are <span class="terminal">nil</span> when the test is not satisfied and a non-nil value otherwise. The result of <span class="terminal">and</span> and <span class="terminal">or</span> are quasi-booleans.</p>
             
             <div id="c_t" class="definition-constant">
               <span class="terminal">t</span> → <span class="class">symbol</span>
@@ -1247,7 +1247,7 @@ today                          ⇒ wednesday
             <div id="c_nil" class="definition-constant">
               <span class="terminal">nil</span> → <span class="class">null</span>
             </div>
-            <p>t is a named constant whose value is the symbol t itself. nil is a named constant whose value is the symbol nil itself.</p>
+            <p><span class="terminal">t</span> is a named constant whose value is the symbol <span class="terminal">t</span> itself. <span class="terminal">nil</span> is a named constant whose value is the symbol <span class="terminal">nil</span> itself.</p>
             
             <h4 id="class_predicates">Class predicates</h4>
             
@@ -1274,7 +1274,7 @@ today                          ⇒ wednesday
                 <li><a href="#f_symbolp">symbolp</a></li>
             </ul>
             
-            <p>In addition, the function instancep is a two-argument predicate that tests membership in an arbitrary class.</p>
+            <p>In addition, the function <span class="terminal">instancep</span> is a two-argument predicate that tests membership in an arbitrary class.</p>
             
             <h4 id="equality">Equality</h4>
             
@@ -1299,109 +1299,103 @@ today                          ⇒ wednesday
 
 <span class="input" contenteditable="true">(eq  () ())</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(eql '() '())               ⇒ t
+<span class="input" contenteditable="true">(eql '() '())</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(eq  '() '())               ⇒ t
+<span class="input" contenteditable="true">(eq  '() '())</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(eql 'a 'a)                 ⇒ t
+<span class="input" contenteditable="true">(eql 'a 'a)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(eq  'a 'a)                 ⇒ t
+<span class="input" contenteditable="true">(eq  'a 'a)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(eql 'a 'A)                 ⇒ t
+<span class="input" contenteditable="true">(eql 'a 'A)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(eq  'a 'A)                 ⇒ t
+<span class="input" contenteditable="true">(eq  'a 'A)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(eql 'a 'b)                 ⇒ nil
+<span class="input" contenteditable="true">(eql 'a 'b)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(eq  'a 'b)                 ⇒ nil
+<span class="input" contenteditable="true">(eq  'a 'b)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(eql 'f 'nil)               ⇒ nil
+<span class="input" contenteditable="true">(eql 'f 'nil)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(eq  'f 'nil)               ⇒ nil
+<span class="input" contenteditable="true">(eq  'f 'nil)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(eql 2 2)                   ⇒ t
+<span class="input" contenteditable="true">(eql 2 2)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(eq  2 2)                   ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+<span class="input" contenteditable="true">(eq  2 2)</span><button class="eval"> ⇒ </button><span class="output">nil or t</span>(<a href="#td_implementation_defined">implementation-defined</a>)
 
-(eql 2 2.0)                 ⇒ nil
+<span class="input" contenteditable="true">(eql 2 2.0)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(eq  2 2.0)                 ⇒ nil
+<span class="input" contenteditable="true">(eq  2 2.0)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(eql 100000000 100000000)   ⇒ t
+<span class="input" contenteditable="true">(eql 100000000 100000000)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(eq  100000000 100000000)   ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+<span class="input" contenteditable="true">(eq  100000000 100000000)</span><button class="eval"> ⇒ </button><span class="output">nil or t</span>(<a href="#td_implementation_defined">implementation-defined</a>)
 
-(eql 10.00000 10.0)         ⇒ t
+<span class="input" contenteditable="true">(eql 10.00000 10.0)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(eq  10.00000 10.0)         ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+<span class="input" contenteditable="true">(eq  10.00000 10.0)</span><button class="eval"> ⇒ </button><span class="output">nil or t</span>(<a href="#td_implementation_defined">implementation-defined</a>)
 
-(eql (cons 1 2) (cons 1 2)) ⇒ nil
+<span class="input" contenteditable="true">(eql (cons 1 2) (cons 1 2))</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(eq  (cons 1 2) (cons 1 2)) ⇒ nil
+<span class="input" contenteditable="true">(eq  (cons 1 2) (cons 1 2))</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(let ((x '(a))) (eql x x))  ⇒ t
+<span class="input" contenteditable="true">(let ((x '(a))) (eql x x))</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(let ((x '(a))) (eq x x))   ⇒ t
+<span class="input" contenteditable="true">(let ((x '(a))) (eq x x))</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(eql '(a) '(a))             ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+<span class="input" contenteditable="true">(eql '(a) '(a))</span><button class="eval"> ⇒ </button><span class="output">nil or t</span> (<a href="#td_implementation_defined">implementation-defined</a>)
 
-(eq '(a) '(a))              ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
-
-(let ((x '(b))
-
-(y '(a b)))
-
-(eql x (cdr y)))            ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+<span class="input" contenteditable="true">(eq '(a) '(a))</span><button class="eval"> ⇒ </button><span class="output">nil or t</span> (<a href="#td_implementation_defined">implementation-defined</a>)
 
 (let ((x '(b))
+      (y '(a b)))
+  (eql x (cdr y))) ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
 
-(y '(a b)))
+(let ((x '(b))
+      (y '(a b)))
+  (eq x (cdr y))) ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
 
-(eq x (cdr y)))             ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+<span class="input" contenteditable="true">(eql '(b) (cdr '(a b)))</span><button class="eval"> ⇒ </button><span class="output">nil or t</span> (<a href="#td_implementation_defined">implementation-defined</a>)
 
-(eql '(b) (cdr '(a b)))     ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
-
-(eq '(b) (cdr '(a b)))      ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
-
-(let ((p (lambda (x) x)))
-
-(eql p p))                  ⇒ t
+<span class="input" contenteditable="true">(eq '(b) (cdr '(a b)))</span><button class="eval"> ⇒ </button><span class="output">nil or t</span> (<a href="#td_implementation_defined">implementation-defined</a>)
 
 (let ((p (lambda (x) x)))
+  (eql p p)) ⇒ t
 
-(eq p p))                   ⇒ t
+(let ((p (lambda (x) x)))
+  (eq p p)) ⇒ t
 
-(let ((x "a")) (eql x x))   ⇒ t
+<span class="input" contenteditable="true">(let ((x "a")) (eql x x))</span><button class="output"> ⇒ </button><span class="output">t</button>
 
-(let ((x "a")) (eq x x))    ⇒ t
+<span class="input" contenteditable="true">(let ((x "a")) (eq x x))</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(eql "a" "a")               ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+<span class="input" contenteditable="true">(eql "a" "a")</span><button class="eval"> ⇒ </button><span class="output">nil or t</span> (<a href="#td_implementation_defined">implementation-defined</a>)
 
-(eq "a" "a")                ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+<span class="input" contenteditable="true">(eq "a" "a")</span><button class="eval"> ⇒ </button><span class="output">nil or t</span> (<a href="#td_implementation_defined">implementation-defined</a>)
 
-(let ((x "")) (eql x x))    ⇒ t
+<span class="input" contenteditable="true">(let ((x "")) (eql x x))</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(let ((x "")) (eq x x))     ⇒ t
+<span class="input" contenteditable="true">(let ((x "")) (eq x x))</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(eql "" "")                 ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+<span class="input" contenteditable="true">(eql "" "")</span><button class="eval"> ⇒ </button><span class="output">nil or t</span> (<a href="#td_implementation_defined">implementation-defined</a>)
 
-(eq "" "")                  ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+<span class="input" contenteditable="true">(eq "" "")</span><button class="eval"> ⇒ </button><span class="output">nil or t</span> (<a href="#td_implementation_defined">implementation-defined</a>)
 
-(eql #\a #\A)               ⇒ nil
+<span class="input" contenteditable="true">(eql #\a #\A)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(eq #\a #\A)                ⇒ nil
+<span class="input" contenteditable="true">(eq #\a #\A)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(eql #\a #\a)               ⇒ t
+<span class="input" contenteditable="true">(eql #\a #\a)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(eq #\a #\a)                ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+<span class="input" contenteditable="true">(eq #\a #\a)</span><button class="eval"> ⇒ </button><span class="output">nil or t</span> (<a href="#td_implementation_defined">implementation-defined</a>)
 
-(eql #\space #\Space)       ⇒ t
+<span class="input" contenteditable="true">(eql #\space #\Space)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(eq #\space #\Space)        ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+<span class="input" contenteditable="true">(eq #\space #\Space)</span><button class="eval"> ⇒ </button><span class="output">nil or t</span> (<a href="#td_implementation_defined">implementation-defined</a>)
 
-(eql #\space #\space)       ⇒ t
+<span class="input" contenteditable="true">(eql #\space #\space)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(eq #\space #\space)        ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+<span class="input" contenteditable="true">(eq #\space #\space)</span><button class="eval"> ⇒ </button><span class="output">nil or t</span> (<a href="#td_implementation_defined">implementation-defined</a>)
 </pre>
             
             <div id="f_equal" class="definition-function">
