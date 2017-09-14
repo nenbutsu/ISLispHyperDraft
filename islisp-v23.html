@@ -6110,7 +6110,7 @@ writer (of a slot) <a href="#accessing_slots">51</a>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
   <script type="text/javascript">
     $(".eval").on("click", function(e){
-    var s = $(e.target).prev().html()
+    var s = $(e.target).prev().text()
     $(e.target).next().html(islisp.eval(s))
     })
   </script>
