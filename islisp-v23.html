@@ -1091,7 +1091,7 @@ Where:
             </div>
             
             <p>The <span class="terminal">flet</span> and <span class="terminal">labels</span> special forms allow the definition of new identifiers in the function namespace for function objects.</p>
-            <p>In a <span class="terminal">labels</span> special form the scope of an identifier <span class="nonterminal">function-name</span> is the whole <span class="terminal">labels</span> special form (excluding nested scopes, if any); for the <span class="terminal">flet</span> special form, the scope of an identifier is only the <span class="nonterminal">body-form*</span>. Within these scopes, each <span class="nonterminal">function-name</span> is bound to a function object whose behavior is equivalent to (<span class="terminal">lambda</span> <span class="nonterminal">lambda-list</span> <span class="nonterminal">form*</span>), where free identifier references are resolved as follows:</p>
+            <p>In a <span class="terminal">labels</span> special form the scope of an identifier <span class="nonterminal">function-name</span> is the whole <span class="terminal">labels</span> special form (excluding nested scopes, if any); for the <span class="terminal">flet</span> special form, the scope of an identifier is only the <span class="nonterminal">body-form</span>*. Within these scopes, each <span class="nonterminal">function-name</span> is bound to a function object whose behavior is equivalent to (<span class="terminal">lambda</span> <span class="nonterminal">lambda-list</span> <span class="nonterminal">form*</span>), where free identifier references are resolved as follows:</p>
             <ul>
                 <li>For a <span class="terminal">labels</span> form, such free references are resolved in the lexical environment that was active immediately outside the <span class="terminal">labels</span> form augmented by the function bindings for the given <span class="nonterminal">function-names</span> (<span class="latin">i.e.</span>, any reference to a function <span class="nonterminal">function-name</span> refers to a binding created by the <span class="terminal">labels</span>).</li>
                 <li>For a <span class="terminal">flet</span> form, free identifier references in the <span class="terminal">lambda</span>-expression are resolved in the lexical environment that was active immediately outside the <span class="terminal">flet</span> form (<span class="latin">i.e.</span>, any reference to a function <span class="nonterminal">function-name</span> are not visible).</li>
@@ -1648,51 +1648,51 @@ x               ⇒ 0
             </div>
             
             <p>This macro is used for generalized assignment.</p>
-            <p>setf takes a place and stores in this place the result of the evaluation of the form form. The place form is not evaluated as a whole entity, but subforms of place are evaluated sequentially from left to right to determine a place to be assigned a value. When place is denoted by an identifier, setf behaves exactly as setq. The returned value is the result of the evaluation of form. The valid places for the setf special form are as follows:</p>
+            <p><span class="terminal">setf</span> takes a <span class="nonterminal">place</span> and stores in this place the result of the evaluation of the form <span class="nonterminal">form</span>. The <span class="nonterminal">place</span> form is not evaluated as a whole entity, but subforms of <span class="nonterminal">place</span> are evaluated sequentially from left to right to determine a place to be assigned a value. When <span class="nonterminal">place</span> is denoted by an identifier, <span class="terminal">setf</span> behaves exactly as <span class="terminal">setq</span>. The returned value is the result of the evaluation of <span class="nonterminal">form</span>. The valid places for the <span class="terminal">setf</span> special form are as follows:</p>
             <table border="1">
                 <tr>
                     <th>variables</th>
                     <th>var</th>
                 </tr>
                 <tr>
-                    <td>dynamic bindings</td>
-                    <td>(dynamic var)</td>
+                    <td align="center">dynamic bindings</td>
+                    <td align="center">(<a href="#s_dynamic"><span class="terminal">dynamic</span></a> <span class="nonterminal">var</span>)</td>
                 </tr>
                 <tr>
-                    <td>the components of a basic-array</td>
-                    <td>(aref basic-array z<sub>1</sub> … z<sub>n</sub>)</td>
+                    <td align="center">the components of a basic-array</td>
+                    <td align="center">(<a href="#f_aref"><span class="terminal">aref</span></a> <span class="nonterminal">basic-array</span> <span class="nonterminal">z<sub>1</sub></span> … <span class="nonterminal">z<sub>n</sub></span>)</td>
                 </tr>
                 <tr>
-                    <td>the components of a general array</td>
-                    <td>(garef general-array z<sub>1</sub> … z<sub>n</sub>)</td>
+                    <td align="center">the components of a general array</td>
+                    <td align="center">(<a href="#f_garef"><span class="terminal">garef</span></a> <span class="nonterminal">general-array</span> <span class="nonterminal">z<sub>1</sub></span> … <span class="nonterminal">z<sub>n</sub></span>)</td>
                 </tr>
                 <tr>
-                    <td>the components of a list</td>
-                    <td>(elt list z)</td>
+                    <td align="center">the components of a list</td>
+                    <td align="center">(<a href="#f_elt"><span class="terminal">elt</span></a> <span class="nonterminal">list</span> <span class="nonterminal">z</span>)</td>
                 </tr>
                 <tr>
-                    <td>the components of a vector</td>
-                    <td>(elt basic-vector z)</td>
+                    <td align="center">the components of a vector</td>
+                    <td align="center">(<a href="#f_elt"><span class="terminal">elt</span></a> <span class="nonterminal">basic-vector</span> <span class="nonterminal">z</span>)</td>
                 </tr>
                 <tr>
-                    <td>the left component of a cons</td>
-                    <td>(car cons)</td>
+                    <td align="center">the left component of a cons</td>
+                    <td align="center">(<a href="#f_car"><span class="terminal">car</span></a> <span class="nonterminal">cons</span>)</td>
                 </tr>
                 <tr>
-                    <td>the right component of a cons</td>
-                    <td>(cdr cons)</td>
+                    <td align="center">the right component of a cons</td>
+                    <td align="center">(<a href="#f_cdr"><span class="terminal">cdr</span></a> <span class="nonterminal">cons</span>)</td>
                 </tr>
                 <tr>
-                    <td>a property of a symbol</td>
-                    <td>(property symbol property)</td>
+                    <td align="center">a property of a symbol</td>
+                    <td align="center">(<a href="#f_property"><span class="terminal">property</span></a> <span class="nonterminal">symbol</span> <span class="nonterminal">property</span>)</td>
                 </tr>
                 <tr>
-                    <td>a slot of an instance of a class</td>
-                    <td>(reader-function-name instance)</td>
+                    <td align="center">a slot of an instance of a class</td>
+                    <td>(<span class="nonterminal">reader-function-name</span> <span class="nonterminal">instance</span>)</td>
                 </tr>
             </table>
             
-            <p>A place can also be a macro form that expands (during preparation for execution) into a place or a function application form with operator op for which setf is defined or for which a generic function named (setf op) has been defined. In these last two cases, that function will receive as arguments the new value to be assigned followed by the objects that resulted from evaluating the arguments of the function application form.</p>
+            <p>A place can also be a macro form that expands (during preparation for execution) into a place or a function application form with operator <span class="nonterminal">op</span> for which <span class="terminal">setf</span> is defined or for which a generic function named (<span class="terminal">setf</span> <span class="nonterminal">op</span>) has been defined. In these last two cases, that function will receive as arguments the new value to be assigned followed by the objects that resulted from evaluating the arguments of the function application form.</p>
             
 <pre class="example">
 (setf (car x) 2)                     ⇒ 2
@@ -1709,38 +1709,37 @@ In the cons x, the car now is 2.
                 (<span class="operator">let</span> ((<span class="arg">var</span> <span class="arg">form</span>)*) <span class="arg">body-form</span>*) → <span class="class">object</span>
             </div>
             
-            <p>The let special form is used to define a scope for a group of identifiers for a sequence of forms body-form* (collectively referred to as the body). The list of pairs (var form)* is called the let variable list. The scope of the identifier var is the body.</p>
-            <p>The forms are evaluated sequentially from left to right; then each variable denoted by the identifier var is initialized to the corresponding value. Using these bindings along with the already existing bindings of visible identifiers the body-forms are evaluated. The returned value of let is the result of the evaluation of the last body-form of its body (or nil if there is none).</p>
+            <p>The <span class="terminal">let</span> special form is used to define a scope for a group of identifiers for a sequence of forms <span class="nonterminal">body-form</span>* (collectively referred to as the <span class="nonterminal">body</span>). The list of pairs (<span class="nonterminal">var</span> <span class="nonterminal">form</span>)* is called the <span class="terminal">let</span> variable list. The scope of the identifier <span class="nonterminal">var</span> is the <span class="nonterminal">body</span>.</p>
+            <p>The <span class="nonterminal">forms</span> are evaluated sequentially from left to right; then each variable denoted by the identifier <span class="nonterminal">var</span> is initialized to the corresponding value. Using these bindings along with the already existing bindings of visible identifiers the <span class="nonterminal">body-forms</span> are evaluated. The returned value of <span class="terminal">let</span> is the result of the evaluation of the last <span class="nonterminal">body-form</span> of its body (or <span class="terminal">nil</span> if there is none).</p>
             
-            <p>No var may appear more than once in let variable list.</p>
+            <p>No <span class="nonterminal">var</span> may appear more than once in <span class="terminal">let</span> variable list.</p>
             <div class="note">Note: Although this form is a special form, one can think of it as a macro whose rewriting rules are as follows:</div>
             
             <table>
                 <tr>
-                    <td>(let () body-form*)</td>
+                    <td>(<span class="terminal">let</span> () <span class="nonterminal">body-form</span>*)</td>
                     <td>≡</td>
-                    <td><span title="For the definition of progn see §14.5 below.">(progn body-form*)</span></td>
+                    <td><span title="For the definition of progn see §14.5 below.">(<span class="terminal">progn</span> <span class="nonterminal">body-form</span>*)</span></td>
                 </tr>
                 <tr>
                     <td>
                         <span title="For the definition of lambda see §12.7.">
-                            (let ((var<sub>1</sub> form<sub>1</sub>)
-                            (var<sub>2</sub> form<sub>2</sub>)
+                            (<span class="terminal">let</span> ((<span class="nonterminal">var<sub>1</sub></span> <span class="nonterminal">form<sub>1</sub></span>)
+                            (<span class="nonterminal">var<sub>2</sub></span> <span class="nonterminal">form<sub>2</sub></span>)
                             …
-                            (var<sub>n</sub> form<sub>n</sub>))
-                            body-form*)
+                            (<span class="nonterminal">var<sub>n</sub></span> <span class="nonterminal">form<sub>n</sub></span>))
+                            <span class="nonterminal">body-form</span>*)
                         </span>
                     </td>
                     <td>≡</td>
                     <td>
-                        ((lambda (var<sub>1</sub> var<sub>2</sub> … var<sub>n</sub>) body-form* ) form<sub>1</sub> form<sub>2</sub> … form<sub>n</sub>)
+                        ((<span class="terminal">lambda</span> (<span class="nonterminal">var<sub>1</sub></span> <span class="nonterminal">var<sub>2</sub></span> … <span class="nonterminal">var<sub>n</sub></span>) <span class="nonterminal">body-form</span>* ) <span class="nonterminal">form<sub>1</sub></span> <span class="nonterminal">form<sub>2</sub></span> … <span class="nonterminal">form<sub>n</sub></span>)
                     </td>
                 </tr>
             </table>
             
 <pre class="example">
-(let ((x 2) (y 3))
-  (* x y))          ⇒ 6
+<span class="input" contenteditable="true">(let ((x 2) (y 3)) (* x y))</span><button class="eval"> ⇒ </button><span class="output">6</span>
 
 (let ((x 2) (y 3))
   (let ((x 7)
@@ -1756,25 +1755,23 @@ In the cons x, the car now is 2.
                 (<span class="operator">let*</span> ((<span class="arg">var</span> <span class="arg">form</span>)*) <span class="arg">body-form</span>*) → <span class="class">object</span>
             </div>
             
-            <p>The let* form is used to define a scope for a group of identifiers for a sequence of forms body-form* (collectively referred to as the body). The first subform (the let* variable list) is a list of pairs (var form). The scope of an identifier var is the body along with all form forms following the pair (var form) in the let* variable list.</p>
-            <p>For each pair (var form) the following is done: form is evaluated in the context of the bindings in effect at that point in the evaluation. The result of the evaluation is bound to its associated variable named by the identifier var . These variable bindings enlarge the set of current valid identifiers perhaps shadowing previous variable bindings (in case some var was defined outside), and in this enlarged or modified environment the body-forms are executed. The returned value of let* is the result of the evaluation of the last form of its body (or nil if there is none).</p>
+            <p>The <span class="terminal">let*</span> form is used to define a scope for a group of identifiers for a sequence of forms <span class="nonterminal">body-form</span>* (collectively referred to as the <span class="nonterminal">body</span>). The first subform (the <span class="terminal">let*</span> variable list) is a list of pairs (<span class="nonterminal">var</span> <span class="nonterminal">form</span>). The scope of an identifier <span class="nonterminal">var</span> is the <span class="nonterminal">body</span> along with all <span class="nonterminal">form</span> forms following the pair (<span class="nonterminal">var</span> <span class="nonterminal">form</span>) in the <span class="terminal">let*</span> variable list.</p>
+            <p>For each pair (<span class="nonterminal">var</span> <span class="nonterminal">form</span>) the following is done: <span class="nonterminal">form</span> is evaluated in the context of the bindings in effect at that point in the evaluation. The result of the evaluation is bound to its associated variable named by the identifier <span class="nonterminal">var</span>. These variable bindings enlarge the set of current valid identifiers perhaps shadowing previous variable bindings (in case some <span class="nonterminal">var</span> was defined outside), and in this enlarged or modified environment the <span class="nonterminal">body-forms</span> are executed. The returned value of <span class="terminal">let*</span> is the result of the evaluation of the last form of its body (or <span class="terminal">nil</span> if there is none).</p>
             <div class="note">Note: Although this form is a special form, one can think of it as a macro whose rewriting rules are as follows:</div>
             
             <table>
                 <tr>
-                    <td>(let* () body-form*)</td>
+                    <td>(<span class="terminal">let*</span> () <span class="nonterminal">body-form</span>*)</td>
                     <td>≡</td>
-                    <td>(progn body-form*)</td>
+                    <td>(<span class="terminal">progn</span> <span class="nonterminal">body-form</span>*)</td>
                 </tr>
                 <tr>
                     <td>
-                        (let* ((var<sub>1</sub> form<sub>1</sub>) (var
-                        <sub>2</sub> form<sub>2</sub>) … (var
-                        <sub>n</sub> form<sub>n</sub>)) body-form*)
+                        (<span class="terminal">let*</span> ((<span class="nonterminal">var<sub>1</sub></span> <span class="nonterminal">form<sub>1</sub></span>) (<span class="nonterminal">var<sub>2</sub></span> <span class="nonterminal">form<sub>2</sub></span>) … (<span class="nonterminal">var<sub>n</sub></span> <span class="nonterminal">form<sub>n</sub></span>)) <span class="nonterminal">body-form</span>*)
                     </td>
                     <td>≡</td>
                     <td>
-                        (let ((var<sub>1</sub> form<sub>1</sub>)) (let ((var<sub>2</sub> form<sub>2</sub>)) … (let ((var<sub>n</sub> form<sub>n</sub>)) body-form*)...))
+                        (<span class="terminal">let</span> ((<span class="nonterminal">var<sub>1</sub></span> <span class="nonterminal">form<sub>1</sub></span>)) (<span class="terminal">let</span> ((<span class="nonterminal">var<sub>2</sub></span> <span class="nonterminal">form<sub>2</sub></span>)) … (<span class="terminal">let</span> ((<span class="nonterminal">var<sub>n</sub></span> <span class="nonterminal">form<sub>n</sub></span>)) <span class="nonterminal">body-form</span>*)...))
                     </td>
                 </tr>
             </table>
@@ -1792,10 +1789,10 @@ In the cons x, the car now is 2.
             
             <h4 id="dynamic_variables">Dynamic variables</h4>
             
-            <p>A dynamic variable is an association between an identifier var and an ISLISP object in the dynamic variable namespace. Dynamic variables implement a form of dynamic binding.</p>
-            <p>Dynamic variables are defined globally by defdynamic and are established during the execution of a prepared dynamic-let.</p>
-            <p>Dynamic variable bindings defined by defdynamic persist indefinitely whereas those established by dynamic-let are disestablished upon end of execution of this special form.</p>
-            <p>The value of a dynamic variable can be accessed by (dynamic var).</p>
+            <p>A dynamic variable is an association between an identifier <span class="nonterminal">var</span> and an ISLISP object in the dynamic variable namespace. Dynamic variables implement a form of dynamic binding.</p>
+            <p>Dynamic variables are defined globally by <a href="#def_defdynamic"><span class="terminal">defdynamic</span></a> and are established during the execution of a prepared <a href="#s_dynamic_let"><span class="terminal">dynamic-let</span></a>.</p>
+            <p>Dynamic variable bindings defined by <span class="terminal">defdynamic</span> persist indefinitely whereas those established by <span class="terminal">dynamic-let</span> are disestablished upon end of execution of this special form.</p>
+            <p>The value of a dynamic variable can be accessed by (<span class="terminal">dynamic</span> <span class="nonterminal">var</span>).</p>
             
             <div id="s_dynamic" class="definition-special">
                 (<span class="operator">dynamic</span> <span class="arg">var</span>) → <span class="class">object</span>
@@ -1821,7 +1818,7 @@ In the cons x, the car now is 2.
             
             <p>The dynamic-let special form is used to establish dynamic variable bindings. The first subform (the dynamic-let variable list) is a list of pairs (var form). The scope of an identifier var defined by dynamic-let is the current toplevel scope. The extent of the bindings of each var is the extent of the body of the dynamic-let. The dynamic-let special form establishes dynamic variables for all vars.</p>
             <p>References to a dynamic variable named by var must be made through the dynamic special form.</p>
-            <p>All the initializing forms are evaluated sequentially from left to right, and then the values are associated with the corresponding vars. Using these additional dynamic bindings and the already existing bindings of visible identifiers, the forms body-form* are evaluated in sequential order. The returned value of dynamic-let is that of the last body-form of the body (or nil if there is none). The bindings are undone when control leaves the prepared dynamic-let special form.</p>
+            <p>All the initializing forms are evaluated sequentially from left to right, and then the values are associated with the corresponding vars. Using these additional dynamic bindings and the already existing bindings of visible identifiers, the forms <span class="nonterminal">body-form</span>* are evaluated in sequential order. The returned value of dynamic-let is that of the last body-form of the body (or nil if there is none). The bindings are undone when control leaves the prepared dynamic-let special form.</p>
 <pre class="example">
 (defun foo (x)
   (dynamic-let ((y x))
@@ -1985,7 +1982,7 @@ prints  4 plus 1 equals 5
             <ol>
                 <li>test-form is evaluated, producing a value V<sub>t</sub>.</li>
                 <li>If Vt is nil, then the while form immediately returns nil.</li>
-                <li>Otherwise, if Vt is non-nil, the forms body-form* are evaluated sequentially (from left to right).</li>
+                <li>Otherwise, if Vt is non-nil, the forms <span class="nonterminal">body-form</span>* are evaluated sequentially (from left to right).</li>
                 <li>Upon successful completion of the body-forms*, the while form begins again with step 1.</li>
             </ol>
             
@@ -4340,8 +4337,8 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             </div>
             
             <p><span class="terminal">aref</span> returns the object stored in the component of the <span class="nonterminal">basic-array</span> specified by the sequence of integers <span class="nonterminal">z</span>. This sequence must have exactly as many elements as there are dimensions in the <span class="nonterminal">basic-array</span>, and each one must satisfy 0 ≤ <span class="nonterminal">zi</span> &lt; <span class="nonterminal">di</span> , <span class="nonterminal">di</span> the <span class="nonterminal">i</span>th dimension and 0 ≤ <span class="nonterminal">i</span> &lt; <span class="nonterminal">d</span>, <span class="nonterminal">d</span> the number of dimensions. Arrays are indexed 0 based, so the ith row is accessed via the index <span class="nonterminal">i</span> − 1.</p>
-            <p>An error shall be signaled if <span class="nonterminal">basic-array</span> is not a basic-array (error-id. <span class="error_id">domain-error</span>). An error shall be signaled if any <span class="nonterminal">z</span> is not a non-negative integer (error-id. <span class="error_id">domain-error</span>).</p>
-            <p><span class="terminal">garef</span> is like <span class="terminal">aref</span> but an error shall be signaled if its first argument, <span class="nonterminal">general-array</span>, is not an object of class <span class="class">general-vector</span> or of class <span class="class">general-array*</span> (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>An error shall be signaled if <span class="nonterminal">basic-array</span> is not a <a href="#figure_1">basic-array</a> (error-id. <span class="error_id">domain-error</span>). An error shall be signaled if any <span class="nonterminal">z</span> is not a non-negative integer (error-id. <span class="error_id">domain-error</span>).</p>
+            <p><span class="terminal">garef</span> is like <span class="terminal">aref</span> but an error shall be signaled if its first argument, <span class="nonterminal">general-array</span>, is not an object of class <a href="#figure_1"><span class="class">general-vector</span></a> or of class <a href="#figure_1"><span class="class">general-array*</span></a> (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
 (defglobal array1 (create-array '(3 3 3) 0))
