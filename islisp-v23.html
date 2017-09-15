@@ -1572,40 +1572,40 @@ where var does not occur in <span class="nonterminal">form<sub>2</sub></span> �
             <p>The character <span class="terminal">'</span> (apostrophe or single quote) is syntax for quotation. That is, (<span class="terminal">quote</span> a) ≡ <span class="terminal">'</span>a.</p>
             <p>The result of the evaluation of the <span class="terminal">quote</span> special form is <span class="nonterminal">obj</span>.</p>
 <pre class="example">
-(quote a)         ⇒ a
+<span class="input" contenteditable="true">(quote a)</span><button class="eval"> ⇒ </button><span class="output">a</span>
 
-(quote #(a b c))  ⇒ #(a b c)
+<span class="input" contenteditable="true">(quote #(a b c))</span><button class="eval"> ⇒ </button><span class="output">#(a b c)</span>
 
-(quote (+ 1 2))   ⇒ (+ 1 2)
+<span class="input" contenteditable="true">(quote (+ 1 2))</span><button class="eval"> ⇒ </button><span class="output">(+ 1 2)</span>
 
-'()               ⇒ nil
+<span class="input" contenteditable="true">'()</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-'a                ⇒ a
+<span class="input" contenteditable="true">'a</span><button class="eval"> ⇒ </button><span class="output">a</span>
 
-'#(a b c)         ⇒ #(a b c)
+<span class="input" contenteditable="true">'#(a b c)</span><button class="eval"> ⇒ </button><span class="output">#(a b c)</span>
 
-'(car l)          ⇒ (car l)
+<span class="input" contenteditable="true">'(car l)</span><button class="eval"> ⇒ </button><span class="output">(car l)</span>
 
-'(+ 1 2)          ⇒ (+ 1 2)
+<span class="input" contenteditable="true">'(+ 1 2)</span><button class="eval"> ⇒ </button><span class="output">(+ 1 2)</span>
 
-'(quote a)        ⇒ (quote a)
+<span class="input" contenteditable="true">'(quote a)</span><button class="eval"> ⇒ </button><span class="output">(quote a)</span>
 
-''a               ⇒ (quote a)
+<span class="input" contenteditable="true">''a</span><button class="eval"> ⇒ </button><span class="output">(quote a)</span>
 
-(car ''a)         ⇒ quote
+<span class="input" contenteditable="true">(car ''a)</span><button class="eval"> ⇒ </button><span class="output">quote</span>
 </pre>
             
             <p>The consequences are undefined if an attempt is made to alter the value of a quoted expression.</p>
             
             <h4 id="variables">Variables</h4>
-            <p>Variable bindings are entities established during execution of the prepared variable-binding forms or by the activation of functions.</p>
-            <p>A variable is used to refer to an association between an identifier and an ISLISP object, and is denoted by that identifier. The association can be altered (by assignment) using the setf special form or setq special form.</p>
+            <p><span class="term">Variable bindings</span> are entities established during execution of the prepared variable-binding forms or by the activation of functions.</p>
+            <p>A <span class="term">variable</span> is used to refer to an association between an <span class="nonterminal">identifier</span> and an ISLISP object, and is denoted by that identifier. The association can be altered (by assignment) using the <span class="terminal">setf</span> special form or setq special form.</p>
             <p>The following are variable binding forms:</p>
             <ul>
-                <li><a href="#def_defglobal">defglobal</a></li>
-                <li><a href="#s_let">let</a></li>
-                <li><a href="#s_for">for</a></li>
-                <li><a href="#s_let_s">let*</a></li>
+                <li><a href="#def_defglobal"><span class="terminal">defglobal</span></a></li>
+                <li><a href="#s_let"><span class="terminal">let</span></a></li>
+                <li><a href="#s_for"><span class="terminal">for</span></a></li>
+                <li><a href="#s_let_s"><span class="terminal">let*</span></a></li>
             </ul>
             <div class="definition-syntax">
                 <span class="nonterminal">var</span> → <span class="class">object</span>
@@ -1625,8 +1625,8 @@ x               ⇒ 0
                 (<span class="operator">setq</span> <span class="arg">var</span> <span class="arg">form</span>) → <span class="class">object</span>
             </div>
             
-            <p>This form represents an assignment to the variable denoted by the identifier. In consequence, the identifier may designate a different object than before, the value of form.</p>
-            <p>The result of the evaluation of form is returned. This result is used to modify the variable binding denoted by the identifier var (if it is mutable). setq can be used only for modifying bindings, and not for establishing a variable. The setq special form must be contained in the scope of var , established by defglobal, let, let*, for, or a lambda expression.</p>
+            <p>This form represents an assignment to the variable denoted by the <span class="nonterminal">identifier</span>. In consequence, the <span class="nonterminal">identifier</span> may designate a different object than before, the value of <span class="nonterminal">form</span>.</p>
+            <p>The result of the evaluation of <span class="nonterminal">form</span> is returned. This result is used to modify the variable binding denoted by the identifier <span class="nonterminal">var</span> (if it is mutable). <span class="terminal">setq</span> can be used only for modifying bindings, and not for establishing a variable. The <span class="terminal">setq</span> special form must be contained in the scope of <span class="nonterminal">var</span> , established by <a href="#def_defglobal"><span class="terminal">defglobal</span></a>, <a href="#s_let"><span class="terminal">let</span></a>, <a href="#s_let_s"><span class="terminal">let*</span></a>, <a href="#s_for"><span class="terminal">for</span></a>, or a <a href="#s_lambda"><span class="terminal">lambda</span></a> expression.</p>
 <pre class="example">
 (defglobal x 2)            ⇒ x
 
