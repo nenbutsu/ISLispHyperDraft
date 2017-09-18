@@ -1835,17 +1835,17 @@ In the cons x, the car now is 2.
                 (<span class="operator">if</span> <span class="arg">test-form</span> <span class="arg">then-form</span> [<span class="arg">else-form</span>]) → <span class="class">object</span>
             </div>
             
-            <p>The test-form is evaluated. If its result is anything non-nil, the then-form is evaluated and its value is returned; otherwise (if the test-form returned nil), the else-form is evaluated and its value is returned.</p>
-            <p>If no else-form is provided, it defaults to nil.</p>
+            <p>The <span class="nonterminal">test-form</span> is evaluated. If its result is anything non-nil, the <span class="nonterminal">then-form</span> is evaluated and its value is returned; otherwise (if the <span class="nonterminal">test-form</span> returned <span class="terminal">nil</span>), the <span class="nonterminal">else-form</span> is evaluated and its value is returned.</p>
+            <p>If no <span class="nonterminal">else-form</span> is provided, it defaults to <span class="terminal">nil</span>.</p>
 <pre class="example">
 
-(if (&gt; 3 2) 'yes 'no)        ⇒ yes
+<span class="input" contenteditable="true">(if (&gt; 3 2) 'yes 'no)</span><button class="eval"> ⇒ </button><span class="output">yes</span>
 
-(if (&gt; 2 3) 'yes 'no)        ⇒ no
+<span class="input" contenteditable="true">(if (&gt; 2 3) 'yes 'no)</span><button class="eval"> ⇒ </button><span class="output">no</span>
 
-(if (&gt; 2 3) 'yes)            ⇒ nil
+<span class="input" contenteditable="true">(if (&gt; 2 3) 'yes)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(if (&gt; 3 2) (- 3 2) (+ 3 2)) ⇒ 1
+<span class="input" contenteditable="true">(if (&gt; 3 2) (- 3 2) (+ 3 2))</span><button class="eval"> ⇒ </button><span class="output">1</span>
                 
 (let ((x 7))
   (if (&lt; x 0) x (- x)))      ⇒ -7
@@ -1855,43 +1855,41 @@ In the cons x, the car now is 2.
                 (<span class="operator">cond</span> (<span class="arg">test</span> <span class="arg">form</span>*)*) → <span class="class">object</span>
             </div>
             
-            <p>Executing the prepared cond, the clauses (test form*) are scanned sequentially and in each case the test is evaluated; when a test delivers a non-nil value the scanning process stops and all forms associated with the corresponding clause are sequentially evaluated and the value of the last one is returned. If no test is true, then nil is returned. If no form exists for the successful test then the value of this test is returned.</p>
-            <p>cond obeys the following equivalences:</p>
+            <p>Executing the prepared <span class="terminal">cond</span>, the clauses (<span class="nonterminal">test</span> <span class="nonterminal">form</span>*) are scanned sequentially and in each case the <span class="nonterminal">test</span> is evaluated; when a <span class="nonterminal">test</span> delivers a non-nil value the scanning process stops and all forms associated with the corresponding clause are sequentially evaluated and the value of the last one is returned. If no test is true, then <span class="terminal">nil</span> is returned. If no <span class="nonterminal">form</span> exists for the successful <span class="nonterminal">test</span> then the value of this <span class="nonterminal">test</span> is returned.</p>
+            <p><span class="terminal">cond</span> obeys the following equivalences:</p>
             
             <table>
                 <tr>
                     <td>
-                        (cond)
+                        (<span class="terminal">cond</span>)
                     </td>
                     <td>
                         ≡
                     </td>
                     <td>
-                        nil
+                        <span class="terminal">nil</span>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        (cond (test<sub>1</sub>) (test
-                        <sub>2</sub> form<sub>2</sub>*) ...)
+                        (<span class="terminal">cond</span> (<span class="nonterminal">test<sub>1</sub></span>) (<span class="nonterminal">test<sub>2</sub></span> <span class="nonterminal">form<sub>2</sub></span>*) ...)
                     </td>
                     <td>
                         ≡
                     </td>
                     <td>
-                        (or test<sub>1</sub> (cond (test<sub>2</sub> form<sub>2</sub>*) ...))
+                        (<span class="terminal">or</span> <span class="nonterminal">test<sub>1</sub></span> (<span class="terminal">cond</span> (<span class="nonterminal">test<sub>2</sub></span> <span class="nonterminal">form<sub>2</sub></span>*) ...))
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        (cond (test<sub>1</sub> form<sub>1</sub>+) (test
-                        <sub>2</sub> form<sub>2</sub>*) ...)
+                        (<span class="terminal">cond</span> (<span class="nonterminal">test<sub>1</sub></span> <span class="nonterminal">form<sub>1</sub></span>+) (<span class="nonterminal">test<sub>2</sub></span> <span class="nonterminal">form<sub>2</sub></span>*) ...)
                     </td>
                     <td>
                         ≡
                     </td>
                     <td>
-                        (if test<sub>1</sub> (progn form<sub>1</sub>+) (cond (test<sub>2</sub> form<sub>2</sub>*) ...))
+                        (<span class="terminal">if</span> <span class="nonterminal">test<sub>1</sub></span> (<span class="terminal">progn</span> <span class="nonterminal">form<sub>1</sub></span>+) (<span class="terminal">cond</span> (<span class="nonterminal">test<sub>2</sub></span> <span class="nonterminal">form<sub>2</sub></span>*) ...))
                     </td>
                 </tr>
             </table>
