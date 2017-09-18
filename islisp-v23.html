@@ -1610,7 +1610,7 @@ where var does not occur in <span class="nonterminal">form<sub>2</sub></span> �
             <div class="definition-syntax">
                 <span class="nonterminal">var</span> → <span class="class">object</span>
             </div>
-            <p>The value of var is the object associated with var in its variable binding.</p>
+            <p>The value of <span class="nonterminal">var</span> is the object associated with <span class="nonterminal">var</span> in its variable binding.</p>
 <pre class="example">
 (defglobal x 0) ⇒ x 
 
@@ -1798,8 +1798,8 @@ In the cons x, the car now is 2.
                 (<span class="operator">dynamic</span> <span class="arg">var</span>) → <span class="class">object</span>
             </div>
             
-            <p>This special form denotes a reference to the identifier denoting a dynamic variable. This special form is not allowed in the scope of a definition of var which is not done by defdynamic or dynamic-let.</p>
-            <p>During activation, the current dynamic binding of the variable var is returned that was established most recently and is still in effect. An error shall be signaled if such a binding does not exist (error-id. <span class="error_id">unbound-variable</span>).</p>
+            <p>This special form denotes a reference to the identifier denoting a dynamic variable. This special form is not allowed in the scope of a definition of <span class="nonterminal">var</span> which is not done by <span class="terminal">defdynamic</span> or <span class="nonterminal">dynamic-let</span>.</p>
+            <p>During activation, the current dynamic binding of the variable <span class="nonterminal">var</span> is returned that was established most recently and is still in effect. An error shall be signaled if such a binding does not exist (error-id. <span class="error_id">unbound-variable</span>).</p>
             
             <div id="s_setf_dynamic" class="definition-special-form">
                 (<span class="operator">setf</span> (<span class="operator">dynamic</span> <span class="arg">var</span>) <span class="arg">form</span>) → <span class="class">object</span>
@@ -1808,17 +1808,17 @@ In the cons x, the car now is 2.
                 (<span class="operator">set-dynamic</span> <span class="arg">form</span> <span class="arg">var</span>) → <span class="class">object</span>
             </div>
             
-            <p>This special form denotes an assignment to a dynamic variable. This form can appear anywhere that (dynamic var) can appear.</p>
-            <p>form is evaluated and the result of the evaluation is used to change the dynamic binding of var.</p>
-            <p>An error shall be signaled if var has no dynamic value (error-id. <span class="error_id">unbound-variable</span>). setf of dynamic can be used only for modifying bindings, and not for establishing them.
+            <p>This special form denotes an assignment to a dynamic variable. This form can appear anywhere that (<span class="terminal">dynamic</span> <span class="nonterminal">var</span>) can appear.</p>
+            <p><span class="nonterminal">form</span> is evaluated and the result of the evaluation is used to change the dynamic binding of <span class="nonterminal">var</span>.</p>
+            <p>An error shall be signaled if <span class="nonterminal">var</span> has no dynamic value (error-id. <span class="error_id">unbound-variable</span>). <span class="terminal">setf</span> of <span class="terminal">dynamic</span> can be used only for modifying bindings, and not for establishing them.
             </p>
             <div id="s_dynamic_let" class="definition-special">
                 (<span class="operator">dynamic-let</span> ((<span class="arg">var</span> <span class="arg">form</span>)*) <span class="arg">body-form</span>*) → <span class="class">object</span>
             </div>
             
-            <p>The dynamic-let special form is used to establish dynamic variable bindings. The first subform (the dynamic-let variable list) is a list of pairs (var form). The scope of an identifier var defined by dynamic-let is the current toplevel scope. The extent of the bindings of each var is the extent of the body of the dynamic-let. The dynamic-let special form establishes dynamic variables for all vars.</p>
-            <p>References to a dynamic variable named by var must be made through the dynamic special form.</p>
-            <p>All the initializing forms are evaluated sequentially from left to right, and then the values are associated with the corresponding vars. Using these additional dynamic bindings and the already existing bindings of visible identifiers, the forms <span class="nonterminal">body-form</span>* are evaluated in sequential order. The returned value of dynamic-let is that of the last body-form of the body (or nil if there is none). The bindings are undone when control leaves the prepared dynamic-let special form.</p>
+            <p>The <span class="terminal">dynamic-let</span> special form is used to establish dynamic variable bindings. The first subform (the <span class="terminal">dynamic-let</span> variable list) is a list of pairs (<span class="nonterminal">var</span> <span class="nonterminal">form</span>). The scope of an identifier <span class="nonterminal">var</span> defined by <span class="terminal">dynamic-let</span> is the current toplevel scope. The extent of the bindings of each <span class="nonterminal">var</span> is the extent of the body of the <span class="terminal">dynamic-let</span>. The <span class="terminal">dynamic-let</span> special form establishes dynamic variables for all <span class="nonterminal">vars</span>.</p>
+            <p>References to a dynamic variable named by <span class="nonterminal">var</span> must be made through the <span class="terminal">dynamic</span> special form.</p>
+            <p>All the initializing forms are evaluated sequentially from left to right, and then the values are associated with the corresponding <span class="nonterminal">vars</span>. Using these additional dynamic bindings and the already existing bindings of visible identifiers, the forms <span class="nonterminal">body-form</span>* are evaluated in sequential order. The returned value of <span class="terminal">dynamic-let</span> is that of the last <span class="nonterminal">body-form</span> of the body (or <span class="terminal">nil</span> if there is none). The bindings are undone when control leaves the prepared <span class="terminal">dynamic-let</span> special form.</p>
 <pre class="example">
 (defun foo (x)
   (dynamic-let ((y x))
