@@ -1953,7 +1953,7 @@ In the cons x, the car now is 2.
             </div>
             
             <p>This special form allows a series of forms to be evaluated, where normally only one could be used.</p>
-            <p>The result of evaluation of the last form of form* is returned. All the forms are evaluated from left to right. The values of all the forms but the last are discarded, so they are executed only for their side-effects. progn without forms returns nil.</p>
+            <p>The result of evaluation of the last form of <span class="nonterminal">form</span>* is returned. All the <span class="nonterminal">forms</span> are evaluated from left to right. The values of all the <span class="nonterminal">forms</span> but the last are discarded, so they are executed only for their side-effects. <span class="terminal">progn</span> without forms returns <span class="terminal">nil</span>.</p>
             
 <pre class="example">
 (defglobal x 0) ⇒ x
@@ -1976,12 +1976,12 @@ prints  4 plus 1 equals 5
                 (<span class="operator">while</span> <span class="arg">test-form</span> <span class="arg">body-form</span>*) → <span class="class">null</span>
             </div>
             
-            <p>Iterates while the test-form returns a true value. Specifically:</p>
+            <p>Iterates while the <span class="nonterminal">test-form</span> returns a true value. Specifically:</p>
             <ol>
-                <li>test-form is evaluated, producing a value V<sub>t</sub>.</li>
-                <li>If Vt is nil, then the while form immediately returns nil.</li>
-                <li>Otherwise, if Vt is non-nil, the forms <span class="nonterminal">body-form</span>* are evaluated sequentially (from left to right).</li>
-                <li>Upon successful completion of the body-forms*, the while form begins again with step 1.</li>
+                <li><span class="nonterminal">test-form</span> is evaluated, producing a value <span class="nonterminal">V<sub>t</sub></span>.</li>
+                <li>If <span class="nonterminal">Vt</span> is <span class="terminal">nil</span>, then the <span class="terminal">while</span> form immediately returns <span class="terminal">nil</span>.</li>
+                <li>Otherwise, if <span class="nonterminal">Vt</span> is non-nil, the forms <span class="nonterminal">body-form</span>* are evaluated sequentially (from left to right).</li>
+                <li>Upon successful completion of the <span class="nonterminal">body-forms</span>*, the <span class="terminal">while</span> form begins again with step 1.</li>
             </ol>
             
 <pre class="example">
@@ -1999,13 +1999,13 @@ prints  4 plus 1 equals 5
             
 <pre>
 Where:
-iteration-spec ::= (var init [step])
+<span class="nonterminal">iteration-spec</span> ::= (<span class="nonterminal">var</span> <span class="nonterminal">init</span> [<span class="nonterminal">step</span>])
 </pre>
             
-            <p>for repeatedly executes a sequence of forms form*, called its body. It specifies a set of identifiers naming variables that will be local to the for form, their initialization, and their update for each iteration. When a termination condition is met, the iteration exits with a specified result value.</p>
-            <p>The scope of an identifier var is the body, the steps, the end-test , and the result *. A step might be omitted, in which case the effect is the same as if (var init var) had been written instead of (var init). It is a violation if more than one iteration-spec names the same var in the same for form.</p>
-            <p>The for special form is executed as follows: The init forms are evaluated sequentially from left to right. Then each value is used as the initial value of the variable denoted by the corresponding identifier var , and the iteration phase begins.</p>
-            <p>Each iteration begins by evaluating end-test . If the result is nil, the forms in the body are evaluated sequentially (for side-effects). Afterwards, the step-forms are evaluated sequentially order from left to right. Then their values are assigned to the corresponding variables and the next iteration begins. If end-test returns a non-nil value, then the result * are evaluated sequentially and the value of the last one is returned as value of the whole for macro. If no result is present, then the value of the for macro is nil.</p>
+            <p><span class="terminal">for</span> repeatedly executes a sequence of forms <span class="nonterminal">form</span>*, called its <span class="nonterminal">body</span>. It specifies a set of identifiers naming variables that will be local to the <span class="terminal">for</span> form, their initialization, and their update for each iteration. When a termination condition is met, the iteration exits with a specified result value.</p>
+            <p>The scope of an identifier <span class="nonterminal">var</span> is the <span class="nonterminal">body</span>, the <span class="nonterminal">steps</span>, the <span class="nonterminal">end-test</span>, and the <span class="nonterminal">result</span>*. A <span class="nonterminal">step</span> might be omitted, in which case the effect is the same as if (<span class="nonterminal">var</span> <span class="nonterminal">init</span> <span class="nonterminal">var</span>) had been written instead of (<span class="nonterminal">var</span> <span class="nonterminal">init</span>). It is a violation if more than one <span class="nonterminal">iteration-spec</span> names the same <span class="nonterminal">var</span> in the same <span class="terminal">for</span> form.</p>
+            <p>The <span class="terminal">for</span> special form is executed as follows: The <span class="nonterminal">init</span> forms are evaluated sequentially from left to right. Then each value is used as the initial value of the variable denoted by the corresponding identifier <span class="nonterminal">var</span>, and the iteration phase begins.</p>
+            <p>Each iteration begins by evaluating <span class="nonterminal">end-test</span>. If the result is <span class="terminal">nil</span>, the forms in the <span class="nonterminal">body</span> are evaluated sequentially (for side-effects). Afterwards, the <span class="nonterminal">step-forms</span> are evaluated sequentially order from left to right. Then their values are assigned to the corresponding variables and the next iteration begins. If <span class="nonterminal">end-test</span> returns a non-nil value, then the <span class="nonterminal">result</span>* are evaluated sequentially and the value of the last one is returned as value of the whole <span class="terminal">for</span> macro. If no result is present, then the value of the for macro is <span class="terminal">nil</span>.</p>
             
 <pre class="example">
 (for ((vec (vector 0 0 0 0 0))
@@ -2031,31 +2031,31 @@ iteration-spec ::= (var init [step])
                     <th>Operation Performed</th>
                 </tr>
                 <tr>
-                    <td>block name</td>
-                    <td>block</td>
-                    <td>return-from</td>
+                    <td><span class="nonterminal">block name</span></td>
+                    <td><span class="terminal">block</span></td>
+                    <td><span class="terminal">return-from</span></td>
                     <td>lexical exit</td>
                 </tr>
                 <tr>
-                    <td>tagbody tag</td>
-                    <td>tagbody</td>
-                    <td>go</td>
+                    <td><span class="nonterminal">tagbody tag</span></td>
+                    <td><span class="terminal">tagbody</span></td>
+                    <td><span class="terminal">go</span></td>
                     <td>lexical transfer of control</td>
                 </tr>
                 <tr>
-                    <td>catch tag</td>
-                    <td>catch</td>
-                    <td>throw</td>
+                    <td><span class="nonterminal">catch tag</span></td>
+                    <td><span class="terminal">catch</span></td>
+                    <td><span class="terminal">throw</span></td>
                     <td>dynamic exit</td>
                 </tr>
             </table>
-            <p>A non-local exit, is an operation that forces transfer of control and possibly data from an invoking special form to a previously established point in a program, called the destination of the exit.</p>
+            <p>A <span class="term">non-local exit</span>, is an operation that forces transfer of control and possibly data from an invoking special form to a previously established point in a program, called the <span class="term">destination</span> of the exit.</p>
             
-            <p>A lexical exit is a non-local exit from a return-from form to a block form which contains it both lexically and dynamically, forcing the block to return an object specified in the return-from form.</p>
+            <p>A <span class="term">lexical</span> exit is a non-local exit from a <span class="terminal">return-from</span> form to a <span class="terminal">block</span> form which contains it both lexically and dynamically, forcing the block to return an object specified in the <span class="terminal">return-from</span> form.</p>
             
-            <p>A dynamic exit is a non-local exit from a throw form to a catch form which contains it dynamically (but not necessarily lexically), forcing the catch to return an object specified in the throw form.</p>
+            <p>A <span class="term">dynamic</span> exit is a non-local exit from a <span class="terminal">throw</span> form to a <span class="terminal">catch</span> form which contains it dynamically (but not necessarily lexically), forcing the catch to return an object specified in the throw form.</p>
             
-            <p>A lexical transfer of control is a non-local exit from a go form to a tagged point in a tagbody form which contains it both lexically and dynamically.</p>
+            <p>A <span class="term">lexical transfer of control</span> is a non-local exit from a <span class="terminal">go</span> form to a tagged point in a <span class="terminal">tagbody</span> form which contains it both lexically and dynamically.</p>
             <p>When a non-local exit is initiated, any potential destination that was established more recently than the destination to which control is being transferred is immediately considered invalid.</p>
             
             <div id="s_block" class="definition-special">
@@ -2065,11 +2065,11 @@ iteration-spec ::= (var init [step])
                 (<span class="operator">return-from</span> <span class="arg">name</span> <span class="arg">result-form</span> <span class="comment">transfers control and data</span>
             </div>
             
-            <p>The block special form executes each form sequentially from left to right. If the last form exits normally, whatever it returns is returned by the block form.</p>
-            <p>The name in a block form is not evaluated; it must be an identifier. The scope of name is the body form*—only a return-from textually contained in some form can exit the block. The extent of name is dynamic.</p>
-            <p>If a return-from is executed, the result-form is evaluated. If this evaluation returns normally, the value it returns is immediately returned from the innermost lexically enclosing block form with the same name.</p>
-            <p>return-from is used to return from a block. name is not evaluated and must be an identifier. A block special form must lexically enclose the occurrence of return-from; the value produced by result-form is immediately returned from the block. The return-from form never returns and does not have a value.</p>
-            <p>An error shall be signaled if an attempt is made to exit a block after it has been exited (error-id. <span class="error_id">control-error</span>); It is a violation if name is not an identifier. It is a violation if a block with a corresponding name does not exist. See §14.7.2 for other errors.</p>
+            <p>The <span class="terminal">block</span> special form executes each <span class="nonterminal">form</span> sequentially from left to right. If the last form exits normally, whatever it returns is returned by the <span class="terminal">block</span> form.</p>
+            <p>The <span class="nonterminal">name</span> in a <span class="terminal">block</span> form is not evaluated; it must be an identifier. The scope of <span class="nonterminal">name</span> is the body <span class="nonterminal">form</span>*—only a <span class="terminal">return-from</span> textually contained in some form can exit the <span class="terminal">block</span>. The extent of <span class="nonterminal">name</span> is dynamic.</p>
+            <p>If a <span class="nonterminal">return-from</span> is executed, the <span class="terminal">result-form</span> is evaluated. If this evaluation returns normally, the value it returns is immediately returned from the innermost lexically enclosing <span class="terminal">block</span> form with the same name.</p>
+            <p><span class="terminal">return-from</span> is used to return from a <span class="terminal">block</span>. <span class="nonterminal">name</span> is not evaluated and must be an identifier. A <span class="terminal">block</span> special form must lexically enclose the occurrence of <span class="terminal">return-from</span>; the value produced by <span class="terminal">result-form</span> is immediately returned from the <span class="terminal">block</span>. The <span class="terminal">return-from</span> form never returns and does not have a value.</p>
+            <p>An error shall be signaled if an attempt is made to exit a <span class="terminal">block</span> after it has been exited (error-id. <span class="error_id">control-error</span>); It is a violation if <span class="nonterminal">name</span> is not an identifier. It is a violation if a <span class="terminal">block</span> with a corresponding <span class="nonterminal">name</span> does not exist. See <a href="#assuring_data_consistency">§14.7.2</a> for other errors.</p>
             
 <pre class="example">
 (block x
@@ -2122,11 +2122,11 @@ iteration-spec ::= (var init [step])
                 (<span class="operator">throw</span> <span class="arg">tag-form</span> <span class="arg">result-form</span>) <span class="comment">transfers control and data</span>
             </div>
             
-            <p id="dynamic_exits">The special forms catch and throw provide a facility for programming of structured non-local dynamic exits. A catch form and a throw form are said to correspond if the tag-form of the catch and the tag-form of the throw evaluate to the same object, a catch tag. A catch tag may be any object other than a number or a character; the comparison of catch tags uses eq.</p>
-            <p>The catch special form first evaluates the tag-form to produce a catch tag, and then executes each form sequentially from left to right. If execution of the forms finishes normally, whatever is returned by the last form is returned by the catch form.</p>
-            <p>Prior to execution of the forms of a catch form C<sub>0</sub> , an association between the catch tag T<sub>0</sub> and the executing form C<sub>0</sub> is dynamically established, upon exit from C<sub>0</sub> , the association is disestablished. If there was an outer association for the same catch tag T<sub>0</sub> , it is hidden during the execution of C<sub>0</sub> 's forms; only the most recently established (<span class="latin">i.e.</span>, innermost) association for T<sub>0</sub> is ever visible.</p>
-            <p>If a throw special form is executed, it evaluates the tag-form producing a catch tag T<sub>1</sub> , and then evaluates the result-form producing a result R<sub>1</sub> . If there is a corresponding association between T<sub>1</sub> and some catch form C<sub>1</sub> that is executing, R<sub>1</sub> is immediately returned as the value of C<sub>1</sub>. The throw form can be anywhere in the entire current toplevel scope; it need not be lexically contained within C<sub>1</sub>.</p>
-            <p>An error shall be signaled if there is no outstanding catcher for a T<sub>1</sub> (error-id. <span class="error_id">control-error</span>). See §14.7.2 for other errors.</p>
+            <p id="dynamic_exits">The special forms <span class="terminal">catch</span> and <span class="terminal">throw</span> provide a facility for programming of structured non-local dynamic exits. A <span class="terminal">catch</span> form and a <span class="terminal">throw</span> form are said to correspond if the <span class="nonterminal">tag-form</span> of the <span class="terminal">catch</span> and the <span class="nonterminal">tag-form</span> of the <span class="terminal">throw</span> evaluate to the same object, a <span class="term">catch tag</span>. A <span class="term">catch tag</span> may be any object other than a number or a character; the comparison of <span class="nonterminal">catch tags</span> uses <span class="terminal">eq</span>.</p>
+            <p>The <span class="terminal">catch</span> special form first evaluates the <span class="nonterminal">tag-form</span> to produce a <span class="nonterminal">catch tag</span>, and then executes each <span class="nonterminal">form</span> sequentially from left to right. If execution of the <span class="nonterminal">forms</span> finishes normally, whatever is returned by the last <span class="nonterminal">form</span> is returned by the <span class="terminal">catch</span> form.</p>
+            <p>Prior to execution of the forms of a <span class="terminal">catch</span> form <span class="nonterminal">C<sub>0</sub></span>, an association between the <span class="nonterminal">catch tag T<sub>0</sub></span> and the executing form <span class="nonterminal">C<sub>0</sub></span> is dynamically established, upon exit from <span class="nonterminal">C<sub>0</sub></span>, the association is disestablished. If there was an outer association for the same <span class="nonterminal">catch tag T<sub>0</sub></span>, it is hidden during the execution of <span class="nonterminal">C<sub>0</sub></span>'s <span class="nonterminal">forms</span>; only the most recently established (<span class="latin">i.e.</span>, innermost) association for <span class="nonterminal">T<sub>0</sub></span> is ever visible.</p>
+            <p>If a <span class="terminal">throw</span> special form is executed, it evaluates the <span class="nonterminal">tag-form</span> producing a <span class="nonterminal">catch tag T<sub>1</sub></span>, and then evaluates the <span class="nonterminal">result-form</span> producing a result <span class="nonterminal">R<sub>1</sub></span>. If there is a corresponding association between <span class="nonterminal">T<sub>1</sub></span> and some <span class="terminal">catch</span> form <span class="nonterminal">C<sub>1</sub></span> that is executing, <span class="nonterminal">R<sub>1</sub></span> is immediately returned as the value of <span class="nonterminal">C<sub>1</sub></span>. The <span class="terminal">throw</span> form can be anywhere in the entire current toplevel scope; it need not be lexically contained within <span class="nonterminal">C<sub>1</sub></span>.</p>
+            <p>An error shall be signaled if there is no outstanding catcher for a <span class="nonterminal">T<sub>1</sub></span> (error-id. <span class="error_id">control-error</span>). See <a href="#assuring_data_consistency">§14.7.2</a> for other errors.</p>
             
 <pre class="example">
 (defun foo (x)
@@ -2150,14 +2150,14 @@ iteration-spec ::= (var init [step])
                 (<span class="operator">go</span> <span class="arg">tagbody-tag</span>) <span class="comment">transfers control</span>
             </div>
             
-            <p>tagbody executes the forms sequentially from left to right, discarding their values. If the execution of the last form completes normally, nil is returned by the tagbody special form.</p>
-            <p>The series of tagbody-tags and forms is collectively referred to as the body of a tagbody form. An identifier tagbody-tag that appears at toplevel of the body denotes a tagbody tag that can be used with go to transfer control to that point in the body. Any compound form that appears is taken as a form. Literals are not permitted at the toplevel of a tagbody. No tagbody-tag may appear more than once in the tags in the body.</p>
-            <p>The namespace used for tagbody tags is distinct from that used for block tags.</p>
-            <p>At any point lexically contained in the tagbody a form (go tag) can be used to transfer control to a tag tag that appears among the tagbody-tags, except where a tag is shadowed according to the lexical principle (see §11.1).</p>
-            <p>A tagbody-tag established by tagbody has lexical scope, but the point in the program to which it refers has dynamic extent. Once tagbody has been exited, it is no longer valid to use go to transfer to any tag in its body.</p>
-            <p>The determination of which elements of the body are tagbody-tags and which are forms is made prior to any macro expansion of that element. If form is a macro form and its macro expansion is a symbol or literal, that atom is treated as a form, not as a tagbody-tag.</p>
-            <p>It is a violation if a tagbody tag is other than an identifier. See §14.7.2 for other errors.</p>
-            <div class="note">Note: As a stylistic matter, programmers are not encouraged to use tagbody and go in everyday programming. The primary uses for which these forms are intended are for implementing other control abstractions (using macros), and for the occassional real-world situation that uses unstructured imperative transfer of control (such as a finite state machine).</div>
+            <p><span class="terminal">tagbody</span> executes the <span class="nonterminal">forms</span> sequentially from left to right, discarding their values. If the execution of the last <span class="nonterminal">form</span> completes normally, <span class="terminal">nil</span> is returned by the <span class="terminal">tagbody</span> special form.</p>
+            <p>The series of <span class="nonterminal">tagbody-tags</span> and <span class="nonterminal">forms</span> is collectively referred to as the body of a <span class="terminal">tagbody</span> form. An identifier <span class="nonterminal">tagbody-tag</span> that appears at toplevel of the body denotes a <span class="term">tagbody tag</span> that can be used with <span class="terminal">go</span> to transfer control to that point in the body. Any compound form that appears is taken as a <span class="nonterminal">form</span>. Literals are not permitted at the toplevel of a <span class="terminal">tagbody</span>. No <span class="nonterminal">tagbody-tag</span> may appear more than once in the tags in the body.</p>
+            <p>The namespace used for tagbody tags is distinct from that used for <span class="terminal">block</span> tags.</p>
+            <p>At any point lexically contained in the <span class="terminal">tagbody</span> a form (<span class="terminal">go</span> <span class="nonterminal">tag</span>) can be used to transfer control to a tag <span class="nonterminal">tag</span> that appears among the <span class="nonterminal">tagbody-tags</span>, except where a <span class="nonterminal">tag</span> is shadowed according to the lexical principle (see <a href="#the_lexical_principle">§11.1</a>).</p>
+            <p>A <span class="nonterminal">tagbody-tag</span> established by <span class="terminal">tagbody</span> has lexical scope, but the point in the program to which it refers has dynamic extent. Once <span class="terminal">tagbody</span> has been exited, it is no longer valid to use <span class="terminal">go</span> to transfer to any tag in its body.</p>
+            <p>The determination of which elements of the body are <span class="nonterminal">tagbody-tags</span> and which are <span class="nonterminal">forms</span> is made prior to any macro expansion of that element. If <span class="nonterminal">form</span> is a macro form and its macro expansion is a symbol or literal, that atom is treated as a <span class="nonterminal">form</span>, not as a <span class="nonterminal">tagbody-tag</span>.</p>
+            <p>It is a violation if a <span class="nonterminal">tagbody tag</span> is other than an identifier. See <a href="#assuring_data_consistency">§14.7.2</a> for other errors.</p>
+            <div class="note">Note: As a stylistic matter, programmers are not encouraged to use <span class="terminal">tagbody</span> and <span class="terminal">go</span> in everyday programming. The primary uses for which these forms are intended are for implementing other control abstractions (using macros), and for the occassional real-world situation that uses unstructured imperative transfer of control (such as a finite state machine).</div>
 <pre class="example">
 (defmacro with-retry (:rest forms)
   (let ((tag (gensym)))
@@ -2183,12 +2183,12 @@ iteration-spec ::= (var init [step])
                 (<span class="operator">unwind-protect</span> <span class="arg">form</span> <span class="arg">cleanup-form</span>*) → <span class="class">object</span>
             </div>
             
-            <p>unwind-protect first evaluates form. Evaluation of the cleanup-forms always occurs, regardless of whether the exit is normal or non-local.</p>
-            <p>If the form exits normally yielding a value R, then if all of the cleanup-forms exit normally the value R is returned by the unwind-protect form.</p>
-            <p>If a non-local exit from form occurs, then the cleanup-forms are executed as part of that exit, and then if all of the cleanup-forms exit normally the original non-local exit continues.</p>
-            <p>The cleanup-forms are evaluated from left to right, discarding the resulting values. If execution of the cleanup-forms finishes normally, exit from the unwind-protect form proceeds as described above. It is permissible for a cleanup-form to contain a non-local exit from the unwind-protect form, subject to the following constraint:</p>
-            <p>An error shall be signaled if during execution of the cleanup-forms of an unwind-protect form, a non-local exit is executed to a destination which has been marked as invalid due to some other non-local exit that is already in progress (see <a href="#establishing_and_invoking_non_local_exits">§14.7.1</a>) (error-id. <span class="error_id">control-error</span>).</p>
-            <div class="note">Note: Because ISLISP does not specify an interactive debugger, it is unspecified whether or how error recovery can occur interactively if programmatic handling fails. The intent is that if the ISLISP processor does not terminate abnormally, normal mechanisms for non-local exit (return-from, throw, or go) would be used as necessary and would respect these cleanup-forms.</div>
+            <p><span class="terminal">unwind-protect</span> first evaluates <span class="nonterminal">form</span>. Evaluation of the <span class="nonterminal">cleanup-forms</span> always occurs, regardless of whether the exit is normal or non-local.</p>
+            <p>If the <span class="nonterminal">form</span> exits normally yielding a value <span class="nonterminal">R</span>, then if all of the <span class="nonterminal">cleanup-forms</span> exit normally the value <span class="nonterminal">R</span> is returned by the <span class="terminal">unwind-protect</span> form.</p>
+            <p>If a non-local exit from <span class="nonterminal">form</span> occurs, then the <span class="nonterminal">cleanup-forms</span> are executed as part of that exit, and then if all of the <span class="nonterminal">cleanup-forms</span> exit normally the original non-local exit continues.</p>
+            <p>The <span class="nonterminal">cleanup-forms</span> are evaluated from left to right, discarding the resulting values. If execution of the <span class="nonterminal">cleanup-forms</span> finishes normally, exit from the <span class="terminal">unwind-protect</span> form proceeds as described above. It is permissible for a <span class="nonterminal">cleanup-form</span> to contain a non-local exit from the <span class="terminal">unwind-protect</span> form, subject to the following constraint:</p>
+            <p>An error shall be signaled if during execution of the <span class="nonterminal">cleanup-forms</span> of an <span class="terminal">unwind-protect</span> form, a non-local exit is executed to a destination which has been marked as invalid due to some other non-local exit that is already in progress (see <a href="#establishing_and_invoking_non_local_exits">§14.7.1</a>) (error-id. <span class="error_id">control-error</span>).</p>
+            <div class="note">Note: Because ISLISP does not specify an interactive debugger, it is unspecified whether or how error recovery can occur interactively if programmatic handling fails. The intent is that if the ISLISP processor does not terminate abnormally, normal mechanisms for non-local exit (<span class="terminal">return-from</span>, <span class="terminal">throw</span>, or <span class="terminal">go</span>) would be used as necessary and would respect these <span class="nonterminal">cleanup-forms</span>.</div>
             
 <pre class="example">
 (defun foo (x)
@@ -2234,7 +2234,7 @@ iteration-spec ::= (var init [step])
 (test)                       ⇒ an error shall be signaled
 </pre>
             
-            <p>In the test example, the throw executed in test4 has as destination the catcher established in test. The unwind-protect in test3 intercepts the transfer of control and attempts to execute a return-from from the block in test2. Because this block is established within the dynamic extent of the destination catcher, an error is signaled.</p>
+            <p>In the test example, the <span class="terminal">throw</span> executed in test4 has as destination the catcher established in test. The <span class="terminal">unwind-protect</span> in test3 intercepts the transfer of control and attempts to execute a <span class="terminal">return-from</span> from the block in test2. Because this <span class="terminal">block</span> is established within the dynamic extent of the destination catcher, an error is signaled.</p>
             
             <h3 id="objects">Objects</h3>
             <h4 id="defining_classes">Defining classes</h4>
