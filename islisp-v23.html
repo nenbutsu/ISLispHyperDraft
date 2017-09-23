@@ -2239,16 +2239,16 @@ Where:
             <h3 id="objects">Objects</h3>
             <h4 id="defining_classes">Defining classes</h4>
             
-            <p>The defclass defining form is used to define a new named class.</p>
+            <p>The <span class="terminal">defclass</span> defining form is used to define a new named class.</p>
             
             <p id="definition_of_a_class">The definition of a class includes the following:</p>
             <ul>
                 <li>The name of the new class.</li>
                 <li>The list of the direct superclasses of the new class.</li>
-                <li>A set of slot specifiers. Each slot specifier includes the name of the slot and zero or more slot options. A slot option pertains only to a single slot. A class definition must not contain two slot specifiers with the same name.</li>
-                <li>A set of class options. Each class option pertains to the class as a whole.</li>
+                <li>A set of <span class="term">slot specifiers</span>. Each slot specifier includes the name of the slot and zero or more <span class="term">slot options</span>. A slot option pertains only to a single slot. A class definition must not contain two slot specifiers with the same name.</li>
+                <li>A set of <span class="term">class options</span>. Each class option pertains to the class as a whole.</li>
             </ul>
-            <p>The slot options and class options of the defclass defining form provide mechanisms for the following:</p>
+            <p>The slot options and class options of the <span class="terminal">defclass</span> defining form provide mechanisms for the following:</p>
             <ul>
                 <li>Supplying a default initial value form for a given slot.</li>
                 <li>Requesting that methods for generic functions be automatically generated for retrieving or storing slot values and inquiring whether a value is bound to the slot.</li>
@@ -2261,65 +2261,65 @@ Where:
             </div>
 <pre>
 Where:
-class-name           ::= identifier
+<span class="nonterminal">class-name</span>           ::= <span class="nonterminal">identifier</span>
 
-sc-name              ::= identifier
+<span class="nonterminal">sc-name</span>              ::= <span class="nonterminal">identifier</span>
 
-slot-spec            ::= slot-name | (slot-name slot-opt*)
+<span class="nonterminal">slot-spec</span>            ::= <span class="nonterminal">slot-name</span> | (<span class="nonterminal">slot-name</span> <span class="nonterminal">slot-opt</span>*)
 
-slot-name            ::= identifier
+<span class="nonterminal">slot-name</span>            ::= <span class="nonterminal">identifier</span>
 
-slot-opt             ::= :reader reader-function-name |
-                         :writer writer-function-name |
-                         :accessor reader-function-name |
-                         :boundp boundp-function-name |
-                         :initform form |
-                         :initarg initarg-name
+<span class="nonterminal">slot-opt</span>             ::= <span class="terminal">:reader</span> <span class="nonterminal">reader-function-name</span> |
+                         <span class="terminal">:writer</span> <span class="nonterminal">writer-function-name</span> |
+                         <span class="terminal">:accessor</span> <span class="nonterminal">reader-function-name</span> |
+                         <span class="terminal">:boundp</span> <span class="nonterminal">boundp-function-name</span> |
+                         <span class="terminal">:initform</span> <span class="nonterminal">form</span> |
+                         <span class="terminal">:initarg</span> <span class="nonterminal">initarg-name</span>
                 
                 
-initarg-name         ::= identifier
+<span class="nonterminal">initarg-name</span>         ::= <span class="nonterminal">identifier</span>
 
-reader-function-name ::= identifier
+<span class="nonterminal">reader-function-name</span> ::= <span class="nonterminal">identifier</span>
 
-writer-function-name ::= identifier
+<span class="nonterminal">writer-function-name</span> ::= <span class="nonterminal">identifier</span>
 
-boundp-function-name ::= identifier
+<span class="nonterminal">boundp-function-name</span> ::= <span class="nonterminal">identifier</span>
 
-class-opt            ::= (:metaclass class-name) |
-                         (:abstractp abstract-flag)
+<span class="nonterminal">class-opt</span>            ::= (<span class="terminal">:metaclass</span> <span class="nonterminal">class-name</span>) |
+                         (<span class="terminal">:abstractp</span> <span class="nonterminal">abstract-flag</span>)
 
-abstract-flag        ::= t | nil
+<span class="nonterminal">abstract-flag</span>        ::= <span class="terminal">t</span> | <span class="terminal">nil</span>
 </pre>
             
             <p>
-                The defclass defining form returns the symbol named class-name as its result.
+                The <span class="terminal">defclass</span> defining form returns the symbol named class-name as its result.
             </p>
-            <p>The class-name argument is an identifier which becomes the name of the new class. The defining point of the class-name is the end of the defclass defining form.</p>
-            <p>Each superclass name argument sc-name is an identifier that specifies a direct superclass of the new class. The new class will inherit slots and their :reader or :writer or :accessor methods from each of its superclasses. See §15.1.3 for a definition of how slots are inherited, and §15.2.3 for a definition of how methods are inherited. No sc-name may appear more than once in super class names. It is a violation if the superclasses of any two direct superclasses sc-name have superclasses other than <span class="class">standard-object</span> and <span class="class">object</span> in common unless a metaclass other than <span class="class">standard-class</span> is specified.</p>
-            <p>Each slot-spec argument is the name of the slot or a list consisting of the slot name followed by zero or more slot options. The slot-name argument is an identifier that is syntactically valid for use as an ISLISP variable name. No slot names may appear more than once in slot-spec The following slot options are available:</p>
+            <p>The <span class="nonterminal">class-name</span> argument is an identifier which becomes the name of the new class. The defining point of the <span class="nonterminal">class-name</span> is the end of the <span class="terminal">defclass</span> defining form.</p>
+            <p>Each superclass name argument <span class="nonterminal">sc-name</span> is an identifier that specifies a direct superclass of the new class. The new class will inherit slots and their :reader or <span class="terminal">:writer</span> or <span class="terminal">:accessor</span> methods from each of its superclasses. See <a href="#inheritance_of_slots">§15.1.3</a> for a definition of how slots are inherited, and <a href="#inheritance_of_methods">§15.2.3</a> for a definition of how methods are inherited. No <span class="nonterminal">sc-name</span> may appear more than once in super class names. It is a violation if the superclasses of any two direct superclasses <span class="nonterminal">sc-name</span> have superclasses other than <span class="class">standard-object</span> and <span class="class">object</span> in common unless a metaclass other than <span class="class">standard-class</span> is specified.</p>
+            <p>Each <span class="nonterminal">slot-spec</span> argument is the name of the slot or a list consisting of the slot name followed by zero or more slot options. The <span class="nonterminal">slot-name</span> argument is an identifier that is syntactically valid for use as an ISLISP variable name. No slot names may appear more than once in <span class="nonterminal">slot-spec</span> The following slot options are available:</p>
             <ul>
-                <li id="reader">The :reader slot option specifies that an unqualified method with the parameter profile ((x class-name)) is to be defined on the generic function named reader-function-name to retrieve the value of the given slot. The :reader slot option may be specified more than once for a given slot.</li>
-                <li id="writer">The :writer slot option specifies that an unqualified method with the parameter profile ((y <span class="class">object</span>) (x class-name)) is to be defined on the generic function named writer-function-name to store the value into the slot. The writer-function-name argument is an identifier. The :writer slot option may be specified more than once for a given slot.</li>
-                <li id="accessor">The :accessor slot option specifies that an unqualified method is to be defined on the generic function named reader-function-name to retrieve the value of the given slot. Furthermore, there is a generic function such that (setf (reader-function-name x) y) is equivalent to calling this generic function with first argument y and second argument x. This generic function is extended by a method with the parameter profile ((y <span class="class">object</span>) (x class-name)). The reader-function-name argument is an identifier. The :accessor slot option may be specified more than once for a given slot.</li>
-                <li id="boundp">The :boundp slot option specifies that an unqualified method with the parameter profile ((x class-name)) is to be defined on the generic function named boundp-function-name to test whether the given slot has been given a value. The :boundp slot option may be specified more than once for a given slot.</li>
-                <li id="initform">The :initform slot option is used to provide a default initial value form to be used in the initialization of the slot. The :initform slot option may be specified once at most for a given slot. This form is evaluated every time it is used to initialize the slot. The lexical scope of the identifiers used in the initialization of the slot is the lexical scope of those identifiers in the defclass form. Note that the lexical scope refers both to variable and to function identifiers. In contrast, the current dynamic bindings used are those existing during activation of create. For more information, see §15.4.1.</li>
-                <li id="initarg">The :initarg slot option declares an initialization argument named initarg-name and specifies that this initialization argument initializes the given slot. If the initialization argument and associated value are supplied in the call to initialize-object, the value will be stored into the given slot and the slot's :initform slot option, if any, is not evaluated. If none of the initialization arguments specified for a given slot has a value, the slot is initialized according to the :initform option, if specified. The consequences are undefined if more than one initialization argument for the same slot is supplied. For more information, see §15.4.1.</li>
+                <li id="reader">The <span class="terminal">:reader</span> slot option specifies that an unqualified method with the parameter profile ((<span class="terminal">x</span> <span class="nonterminal">class-name</span>)) is to be defined on the generic function named <span class="nonterminal">reader-function-name</span> to retrieve the value of the given slot. The <span class="terminal">:reader</span> slot option may be specified more than once for a given slot.</li>
+                <li id="writer">The <span class="terminal">:writer</span> slot option specifies that an unqualified method with the parameter profile ((<span class="terminal">y</span> <span class="class">object</span>) (<span class="terminal">x</span> <span class="nonterminal">class-name</span>)) is to be defined on the generic function named <span class="nonterminal">writer-function-name</span> to store the value into the slot. The <span class="nonterminal">writer-function-name</span> argument is an identifier. The <span class="terminal">:writer</span> slot option may be specified more than once for a given slot.</li>
+                <li id="accessor">The <span class="terminal">:accessor</span> slot option specifies that an unqualified method is to be defined on the generic function named <span class="nonterminal">reader-function-name</span> to retrieve the value of the given slot. Furthermore, there is a generic function such that (<span class="terminal">setf</span> (<span class="nonterminal">reader-function-name</span> <span class="nonterminal">x</span>) <span class="nonterminal">y</span>) is equivalent to calling this generic function with first argument <span class="nonterminal">y</span> and second argument <span class="nonterminal">x</span>. This generic function is extended by a method with the parameter profile ((<span class="nonterminal">y</span> <span class="class">object</span>) (<span class="nonterminal">x</span> <span class="nonterminal">class-name</span>)). The <span class="nonterminal">reader-function-name</span> argument is an identifier. The <span class="terminal">:accessor</span> slot option may be specified more than once for a given slot.</li>
+                <li id="boundp">The <span class="terminal">:boundp</span> slot option specifies that an unqualified method with the parameter profile ((<span class="nonterminal">x</span> <span class="nonterminal">class-name</span>)) is to be defined on the generic function named <span class="nonterminal">boundp-function-name</span> to test whether the given slot has been given a value. The <span class="terminal">:boundp</span> slot option may be specified more than once for a given slot.</li>
+                <li id="initform">The <span class="terminal">:initform</span> slot option is used to provide a default initial value form to be used in the initialization of the slot. The <span class="terminal">:initform</span> slot option may be specified once at most for a given slot. This form is evaluated every time it is used to initialize the slot. The lexical scope of the identifiers used in the initialization of the slot is the lexical scope of those identifiers in the defclass form. Note that the lexical scope refers both to variable and to function identifiers. In contrast, the current dynamic bindings used are those existing during activation of create. For more information, see <a href="#initialize_object">§15.4.1</a>.</li>
+                <li id="initarg">The <span class="terminal">:initarg</span> slot option declares an initialization argument named <span class="nonterminal">initarg-name</span> and specifies that this initialization argument initializes the given slot. If the initialization argument and associated value are supplied in the call to <span class="terminal">initialize-object</span>, the value will be stored into the given slot and the slot's <span class="terminal">:initform</span> slot option, if any, is not evaluated. If none of the initialization arguments specified for a given slot has a value, the slot is initialized according to the <span class="terminal">:initform</span> option, if specified. The consequences are undefined if more than one initialization argument for the same slot is supplied. For more information, see <a href="#initialize_object">§15.4.1</a>.</li>
             </ul>
-            <p id="slot_accessors">The generic functions, to which the methods created by the :reader, :writer, and :accessor slot options belong are called slot accessors.</p>
-            <p>No implementation is permitted to extend the syntax of defclass to allow (slot-name form) as an abbreviation for (slot-name :initform form).</p>
+            <p id="slot_accessors">The generic functions, to which the methods created by the <span class="terminal">:reader</span>, <span class="terminal">:writer</span>, and <span class="terminal">:accessor</span> slot options belong are called slot accessors.</p>
+            <p>No implementation is permitted to extend the syntax of <span class="terminal">defclass</span> to allow (<span class="terminal">slot-name</span> <span class="nonterminal">form</span>) as an abbreviation for (<span class="nonterminal">slot-name</span> <span class="terminal">:initform</span> <span class="nonterminal">form</span>).</p>
             <p>Each class option is an option that refers to the class as a whole. The following class options are available:</p>
             <ul>
-                <li id="metaclass">The :metaclass class option is used to specify that instances of the class being defined are to have a different metaclass than the default provided by the system, that is, different from the class <span class="class">standard-class</span>. The class-name argument is the name of the desired metaclass. The :metaclass class option may be specified once at most. It is a violation if <span class="class">built-in-class</span> is specified as the metaclass.</li>
-                <li id="abstractp">The :abstractp class option is used to specify that the class is an <a href="#td_abstract_class">abstract class</a>. If this option is supplied and abstract-flag is t, create will signal an error if an attempt is made to create an instance of this class. If the option is unsupplied, or if abstract-flag is nil, the class is not an <a href="#td_abstract_class">abstract class</a>. It is a violation if the abstract-flag is supplied but is neither t nor nil.</li>
+                <li id="metaclass">The <span class="terminal">:metaclass</span> class option is used to specify that instances of the class being defined are to have a different metaclass than the default provided by the system, that is, different from the class <span class="class">standard-class</span>. The <span class="nonterminal">class-name</span> argument is the name of the desired metaclass. The <span class="terminal">:metaclass</span> class option may be specified once at most. It is a violation if <span class="class">built-in-class</span> is specified as the metaclass.</li>
+                <li id="abstractp">The <span class="terminal">:abstractp</span> class option is used to specify that the class is an <a href="#td_abstract_class">abstract class</a>. If this option is supplied and <span class="nonterminal">abstract-flag</span> is <span class="terminal">t</span>, create will signal an error if an attempt is made to create an instance of this class. If the option is unsupplied, or if <span class="nonterminal">abstract-flag</span> is <span class="terminal">nil</span>, the class is not an <a href="#td_abstract_class">abstract class</a>. It is a violation if the <span class="nonterminal">abstract-flag</span> is supplied but is neither <span class="terminal">t</span> nor <span class="terminal">nil</span>.</li>
             </ul>
             <p>The following rules of defclass hold for standard classes:</p>
             <ul>
-                <li>The defclass defining form must be in the scope of any superclass identifier it refers to.</li>
+                <li>The <span class="terminal">defclass</span> defining form must be in the scope of any superclass identifier it refers to.</li>
                 <li>All the superclasses of a class must be defined before an instance of the class can be made.</li>
                 <li>Any reference to class-name as a parameter specializer in a defmethod form must be in the scope of class-name. That is, a defmethod form that names a class must textually follow the defclass form that defines that class.</li>
             </ul>
             <p>An ISLISP processor may be extended to cover situations where these rules are not obeyed. These extensions shall be <a href="#td_implementation_defined">implementation defined</a>.</p>
-            <p>Some slot options are inherited by a class from its superclasses, and some can be shadowed or altered by providing a local slot description. No class options are inherited. For a detailed description of how slots and slot options are inherited, see the section §15.1.3.</p>
+            <p>Some slot options are inherited by a class from its superclasses, and some can be shadowed or altered by providing a local slot description. No class options are inherited. For a detailed description of how slots and slot options are inherited, see the section <a href="#inheritance_of_slots">§15.1.3</a>.</p>
             <p>If no slot accessors are specified for a slot, the slot cannot be accessed.</p>
             <p id="local_precedence_order">When a class is defined, the order in which its direct superclasses are mentioned in the defining form is important. The new class has a local precedence order, which is a list consisting of the class followed by its direct superclasses in the order mentioned in its defclass defining form.</p>
             
@@ -2346,7 +2346,7 @@ abstract-flag        ::= t | nil
                 <li>All the slot specifiers for a given slot name are ordered from most specific to least specific, according to the order in C's class precedence list. All references to the specificity of slot specifiers immediately below refer to this ordering.</li>
                 <li>The default initial value form for a slot is the value of the :initform slot option in the most specific slot specifier that contains one. If no slot specifier contains an :initform slot option, the slot has no default initial value form.</li>
             </ul>
-            <p id="reader_writer_accessor">The :reader, :writer, and :accessor slot options create methods rather than define the characteristics of a slot. Reader and writer methods are inherited in the sense described in the section §15.2.3.</p>
+            <p id="reader_writer_accessor">The :reader, :writer, and :accessor slot options create methods rather than define the characteristics of a slot. Reader and writer methods are inherited in the sense described in the section <a href="#inheritance_of_methods">§15.2.3</a>.</p>
             
             <h4 id="generic_functions">Generic functions</h4>
             
