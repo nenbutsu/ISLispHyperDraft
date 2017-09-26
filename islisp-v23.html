@@ -2678,6 +2678,7 @@ var                        ::= identifier
             
             <table border="1">
                 <tr>
+                    <th></th>
                     <th>character</th>
                     <th>integer</th>
                     <th>ﬂoat</th>
@@ -2686,8 +2687,8 @@ var                        ::= identifier
                     <th>general-vector</th>
                     <th>list</th>
                 </tr>
-                <tr>
-                    <td>character</td>
+                <tr align="center">
+                    <th>character</th>
                     <td>=</td>
                     <td>I</td>
                     <td>-</td>
@@ -2696,8 +2697,8 @@ var                        ::= identifier
                     <td>-</td>
                     <td>-</td>
                 </tr>
-                <tr>
-                    <td>integer</td>
+                <tr align="center">
+                    <th>integer</th>
                     <td>I</td>
                     <td>=</td>
                     <td>X</td>
@@ -2706,8 +2707,8 @@ var                        ::= identifier
                     <td>-</td>
                     <td>-</td>
                 </tr>
-                <tr>
-                    <td>ﬂoat</td>
+                <tr align="center">
+                    <th>ﬂoat</th>
                     <td>-</td>
                     <td>-(1)</td>
                     <td>=</td>
@@ -2716,8 +2717,8 @@ var                        ::= identifier
                     <td>-</td>
                     <td>-</td>
                 </tr>
-                <tr>
-                    <td>symbol</td>
+                <tr align="center">
+                    <th>symbol</th>
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
@@ -2726,8 +2727,8 @@ var                        ::= identifier
                     <td>-</td>
                     <td>-</td>
                 </tr>
-                <tr>
-                    <td>string</td>
+                <tr align="center">
+                    <th>string</th>
                     <td>-</td>
                     <td>X(2)</td>
                     <td>X(2)</td>
@@ -2736,8 +2737,8 @@ var                        ::= identifier
                     <td>X(7)</td>
                     <td>X</td>
                 </tr>
-                <tr>
-                    <td>general-vector</td>
+                <tr align="center">
+                    <th>general-vector</th>
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
@@ -2746,8 +2747,8 @@ var                        ::= identifier
                     <td>=</td>
                     <td>X</td>
                 </tr>
-                <tr>
-                    <td>list</td>
+                <tr align="center">
+                    <th>list</th>
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
@@ -2760,9 +2761,9 @@ var                        ::= identifier
             <dl class="legend">
                 <dt>=</dt>
                 <dd>This is the identity function</dd>
-                <dt>
+                <dt>X</dt>
+                <dd>
                     <dl>
-                        <dt>X</dt>
                         <dd>This coercion shall be provided</dd>
                         <dt>X(2)</dt>
                         <dd>An error shall be signaled if this coercion is attempted and the string does not contain the textual representation of a number of the target class. In all other respects, this is the same as parse-number.</dd>
@@ -2773,7 +2774,7 @@ var                        ::= identifier
                         <dt>X(7)</dt>
                         <dd>This is the identity if strings are vectors in the implementation.</dd>
                     </dl>
-                </dt>
+                </dd>
                 <dt>I</dt>
                 <dd>This coercion shall be provided, but its definition is <a href="#td_implementation_defined">implementation defined</a>.
                     <dl>
