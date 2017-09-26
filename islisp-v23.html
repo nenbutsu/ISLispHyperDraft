@@ -2759,46 +2759,46 @@ var                        ::= identifier
                 </tr>
             </table>
             <dl class="legend">
-                <dt>=</dt>
+                <dt><b>=</b></dt>
                 <dd>This is the identity function</dd>
-                <dt>X</dt>
+                <dt><b>X</b></dt>
                 <dd>
                     <dl>
                         <dd>This coercion shall be provided</dd>
-                        <dt>X(2)</dt>
+                        <dt><b>X(2)</b></dt>
                         <dd>An error shall be signaled if this coercion is attempted and the string does not contain the textual representation of a number of the target class. In all other respects, this is the same as parse-number.</dd>
-                        <dt>X(5)</dt>
+                        <dt><b>X(5)</b></dt>
                         <dd>This may be the same as the ~D format directive.</dd>
-                        <dt>X(6)</dt>
+                        <dt><b>X(6)</b></dt>
                         <dd>This may be the same as the ~G format directive.</dd>
-                        <dt>X(7)</dt>
+                        <dt><b>X(7)</b></dt>
                         <dd>This is the identity if strings are vectors in the implementation.</dd>
                     </dl>
                 </dd>
-                <dt>I</dt>
+                <dt><b>I</b></dt>
                 <dd>This coercion shall be provided, but its definition is <a href="#td_implementation_defined">implementation defined</a>.
                     <dl>
-                        <dt>I(3)</dt>
+                        <dt><b>I(3)</b></dt>
                         <dd>This coercion shall be provided, but its definition is <a href="#td_implementation_defined">implementation defined</a>. The coercion depends on the implementation's neutral alphabetic characters (see §18.1.2).</dd>
                     </dl>
                 </dd>
-                <dt>–</dt>
+                <dt><b>–</b></dt>
                 <dd>An error shall be signaled if this coercion is attempted.
                     <dl>
-                        <dt>–(1)</dt>
+                        <dt><b>–(1)</b></dt>
                         <dd>Programmers requiring this kind of functionality may wish to consider instead using one of the functions, floor, ceiling, round, or truncate.</dd>
-                        <dt>–(4)</dt>
+                        <dt><b>–(4)</b></dt>
                         <dd>programmers requiring this kind of functionality may wish to consider instead using the following: (create-string 1 obj)</dd>
                     </dl>
                 </dd>
             </dl>
             <p>If an implementation provides <a href="#td_implementation_defined">implementation-defined</a> classes, it may also provide <a href="#td_implementation_defined">implementation-defined</a> coercions for the names of those classes using convert.</p>
 <pre class="example">
-(convert 3 <span class="class">float</span>)              ⇒ 3.0
+<span class="input" contenteditable="true">(convert 3 <span class="class">float</span>)</span><button class="eval"> ⇒ </button><span class="output">3.0</span>
 
-(convert "abc" <span class="class">general-vector</span>) ⇒ #(#\a #\b #\c)
+<span class="input" contenteditable="true">(convert "abc" <span class="class">general-vector</span>)</span><button class="eval"> ⇒ </button><span class="output">#(#\a #\b #\c)</span>
 
-(convert #(a b) <span class="class">list</span>)          ⇒ (a b)
+<span class="input" contenteditable="true">(convert #(a b) <span class="class">list</span>)</span><button class="eval"> ⇒ </button><span class="output">(a b)</span>
 </pre>
             
             <h3 id="symbol_class">Symbol class</h3>
