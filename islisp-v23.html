@@ -2366,49 +2366,49 @@ Where:
             
             <h5 id="defining_generic_functions">Defining generic functions</h5>
             
-            <p>Some forms specify the options of a generic function, such as the type of method combination it uses. These forms will be referred to as <q>forms that specify generic function options.</q> These forms are the defgeneric defining forms.</p>
+            <p>Some forms specify the options of a generic function, such as the type of method combination it uses. These forms will be referred to as <q>forms that specify generic function options.</q> These forms are the <span class="terminal">defgeneric</span> defining forms.</p>
             
-            <p>Some forms define methods for a generic function. These forms will be referred to as <q>method-defining forms.</q> These forms are the defmethod and defclass defining forms.</p>
-            <p id="reader_writer_accessor2">During preparation for execution, a defmethod form must be preceded by the defgeneric form for the generic function to be specialized. (Methods implicitly defined by defclass due to :reader, :writer, or :accessor options do not need a preceding defgeneric.)</p>
+            <p>Some forms define methods for a generic function. These forms will be referred to as <q>method-defining forms.</q> These forms are the <span class="terminal">defmethod</span> and <span class="terminal">defclass</span> defining forms.</p>
+            <p id="reader_writer_accessor2">During preparation for execution, a <span class="terminal">defmethod</span> form must be preceded by the <span class="terminal">defgeneric</span> form for the generic function to be specialized. (Methods implicitly defined by <span class="terminal">defclass</span> due to <span class="terminal">:reader</span>, <span class="terminal">:writer</span>, or <span class="terminal">:accessor</span> options do not need a preceding <span class="terminal">defgeneric</span>.)</p>
             <div id="def_defgeneric" class="definition-defining">
                 (<span class="operator">defgeneric</span> <span class="arg">func-spec</span> <span class="arg">lambda-list</span> {<span class="arg">option</span> | <span class="arg">method-desc</span>}*) → <span class="class">symbol</span>
             </div>
 <pre>
 Where:
-func-spec                  ::= identifier | (setf identifier)
+<span class="nonterminal">func-spec</span>                  ::= <span class="nonterminal">identifier</span> | (<span class="terminal">setf</span> <span class="nonterminal">identifier</span>)
 
-lambda-list                ::= (var * [&amp;rest var]) |
-                               (var * [:rest var])
+<span class="nonterminal">lambda-list</span>                ::= (<span class="nonterminal">var</span>* [<span class="terminal">&amp;rest</span> <span class="nonterminal">var</span>]) |
+                               (<span class="nonterminal">var</span>* [<span class="terminal">:rest</span> <span class="nonterminal">var</span>])
 
-option                     ::= (:method-combination {identifier | keyword}) |
-                               (:generic-function-class class-name)
+<span class="nonterminal">option</span>                     ::= (<span class="terminal">:method-combination</span> {<span class="nonterminal">identifier</span> | <span class="nonterminal">keyword</span>}) |
+                               (<span class="terminal">:generic-function-class</span> <span class="nonterminal">class-name</span>)
 
-method-desc                ::= (:method method-qualifier * parameter-profile form*)
+<span class="nonterminal">method-desc</span>                ::= (<span class="terminal">:method</span> <span class="nonterminal">method-qualifier</span>* <span class="nonterminal">parameter-profile</span> <span class="nonterminal">form</span>*)
 
-method-qualifier           ::= identifier | keyword
+<span class="nonterminal">method-qualifier</span>           ::= <span class="nonterminal">identifier</span> | <span class="nonterminal">keyword</span>
 
-parameter-profile          ::= ({var | (var parameter-specializer-name)}* [{&amp;rest | :rest} var])
+<span class="nonterminal">parameter-profile</span>          ::= ({<span class="nonterminal">var</span> | (<span class="nonterminal">var</span> <span class="nonterminal">parameter-specializer-name</span>)}* [{<span class="terminal">&amp;rest</span> | <span class="terminal">:rest</span>} <span class="nonterminal">var</span>])
 
-parameter-specializer-name ::= class-name
+<span class="nonterminal">parameter-specializer-name</span> ::= <span class="nonterminal">class-name</span>
 
-class-name                 ::= identifier
+<span class="nonterminal">class-name</span>                 ::= <span class="nonterminal">identifier</span>
 
-var                        ::= identifier
+<span class="nonterminal">var</span>                        ::= <span class="nonterminal">identifier</span>
 </pre>
             
-            <p>The defgeneric defining form is used to define a generic function and to specify options and declarations that pertain to a generic function as a whole.</p>
-            <p>It returns the generic function name func-spec.</p>
-            <p>The scope of the generic function identifier func-spec is the entire current toplevel scope.</p>
-            <p>The lambda-list argument is an ordinary function lambda-list.</p>
+            <p>The <span class="terminal">defgeneric</span> defining form is used to define a generic function and to specify options and declarations that pertain to a generic function as a whole.</p>
+            <p>It returns the generic function name <span class="nonterminal">func-spec</span>.</p>
+            <p>The scope of the generic function identifier <span class="nonterminal">func-spec</span> is the entire current toplevel scope.</p>
+            <p>The <span class="nonterminal">lambda-list</span> argument is an ordinary function lambda-list.</p>
             <p>The following options are provided. A given option may occur only once.</p>
             <ul>
-                <li>The :generic-function-class option specifies that the generic function is to have a different class from the default provided by the system, that is, different from the class <span class="class">standard-generic-function</span>. The class-name argument is the name of a class that can be the class of a generic function.</li>
-                <li>The :method-combination option is followed by a symbol or keyword that names a type of method combination. The names of the built-in method combination types are nil and standard.</li>
+                <li>The <span class="terminal">:generic-function-class</span> option specifies that the generic function is to have a different class from the default provided by the system, that is, different from the class <span class="class">standard-generic-function</span>. The class-name argument is the name of a class that can be the class of a generic function.</li>
+                <li>The <span class="terminal">:method-combination</span> option is followed by a symbol or keyword that names a type of method combination. The names of the built-in method combination types are <span class="terminal">nil</span> and <span class="terminal">standard</span>.</li>
             </ul>
-            <p>The method-desc arguments define methods that will belong to the generic function, as if defined by defmethod. The method-qualifier and parameter-profile arguments in a method description are the same as for defmethod. The form arguments specify the method body.</p>
+            <p>The <span class="nonterminal">method-desc</span> arguments define methods that will belong to the generic function, as if defined by <span class="terminal">defmethod</span>. The <span class="nonterminal">method-qualifier</span> and <span class="nonterminal">parameter-profile</span> arguments in a method description are the same as for <span class="terminal">defmethod</span>. The form arguments specify the method body.</p>
             <p>If no method descriptions are specified, a generic function with no methods is created. An error shall be signaled if a generic function is called and no methods apply.</p>
-            <p>The lambda-list argument of defgeneric specifies the shape of lambda-lists for the methods on this generic function. All methods on the resulting generic function must have parameter-profiles that are congruent with this shape. For further details on method congruence, see §15.2.2.2.</p>
-            <p>Implementations can extend defgeneric to include other <a href="#td_implementation_defined">implementation-defined</a> options.</p>
+            <p>The <span class="nonterminal">lambda-list</span> argument of <span class="terminal">defgeneric</span> specifies the shape of lambda-lists for the methods on this generic function. All methods on the resulting generic function must have parameter-profiles that are congruent with this shape. For further details on method congruence, see <a href="#congruent_lambda_lists">§15.2.2.2</a>.</p>
+            <p>Implementations can extend <span class="terminal">defgeneric</span> to include other <a href="#td_implementation_defined">implementation-defined</a> options.</p>
             
             <h5 id="defining_methods">Defining methods for generic functions</h5>
             
@@ -2439,7 +2439,7 @@ var                        ::= identifier
                 <li>It is a violation if the defmethod defining form is in the scope of a func-spec identifier that does not designate a generic function.</li>
                 <li>It is a violation if the given name func-spec does not exist in the current toplevel scope immediately containing the defmethod defining form. Furthermore, it is a violation if a defgeneric form for func-spec does not precede the method-defining form in the text unit being prepared for execution unless the method-defining form is a defclass.</li>
             </ul>
-            <p>The parameter-profile of the method being defined must be congruent with the lambda-list of the generic function. See §15.2.2.2 for a definition of congruence in this context.</p>
+            <p>The parameter-profile of the method being defined must be congruent with the lambda-list of the generic function. See <a href="#congruent_lambda_lists">§15.2.2.2</a> for a definition of congruence in this context.</p>
             <p id="method_qualifier">Each method-qualifier argument is an object that is used as an attribute to the given method by method combination. A method qualifier is a non-nil symbol or keyword. The method combination type further restricts what a method qualifier may be. The standard method combination type allows for unqualified methods or methods whose sole qualifier is one of the keywords :before, :after, :around.</p>
             <p>The parameter-profile argument is like an ordinary function lambda-list except that the names of required parameters can be replaced by specialized parameters. A specialized parameter is a list of the form (variable-name parameter-specializer-name). Only required parameters may be specialized. A parameter specializer name is an identifier that names a class. If no parameter specializer name is specified for a given required parameter, the parameter specializer defaults to the class named <span class="class">object</span>.</p>
             <p>The form arguments specify the method body.</p>
