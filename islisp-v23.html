@@ -2417,40 +2417,40 @@ Where:
             </div>
 <pre>
 Where:
-func-spec                  ::= identifier | (setf identifier)
+<span class="nonterminal">func-spec</span>                  ::= <span class="nonterminal">identifier</span> | (<span class="terminal">setf</span> <span class="nonterminal">identifier</span>)
 
-method-qualifier           ::= identifier | keyword
+<span class="nonterminal">method-qualifier</span>           ::= <span class="nonterminal">identifier</span> | <span class="nonterminal">keyword</span>
 
-parameter-profile          ::= ({var | (var parameter-specializer-name)}* [{&amp;rest | :rest} var])
+<span class="nonterminal">parameter-profile</span>          ::= ({<span class="nonterminal">var</span> | (<span class="nonterminal">var</span> <span class="nonterminal">parameter-specializer-name</span>)}* [{<span class="terminal">&amp;rest</span> | <span class="nonterminal">:rest</span>} <span class="nonterminal">var</span>])
 
-parameter-specializer-name ::= class-name
+<span class="nonterminal">parameter-specializer-name</span> ::= <span class="nonterminal">class-name</span>
 
-class-name                 ::= identifier
+<span class="nonterminal">class-name</span>                 ::= <span class="nonterminal">identifier</span>
 
-var                        ::= identifier
+<span class="nonterminal">var</span>                        ::= <span class="nonterminal">identifier</span>
 </pre>
             
-            <p>The defmethod defining form defines a method on a generic function. It returns the generic function name func-spec.</p>
+            <p>The <span class="terminal">defmethod</span> defining form defines a method on a generic function. It returns the generic function name <span class="nonterminal">func-spec</span>.</p>
             <p>A method-defining form contains the code that is to be executed when the arguments to the generic function cause the method that it defines to be invoked.</p>
             <p>Preparing a method-defining form for execution causes one of the following cases:</p>
             <ul>
-                <li>It is a violation if the given name func-spec already designates a generic function and this generic function contains a method that agrees with the new one on parameter specializers and qualifiers. For a definition of one method agreeing with another on parameter specializers and qualifiers, see the section §15.2.2.1.</li>
-                <li>If the given name func-spec designates a generic function and this generic function does not contain a method that agrees with the new one on parameter specializers and qualifiers, the new method is added to the generic function.</li>
-                <li>It is a violation if the defmethod defining form is in the scope of a func-spec identifier that does not designate a generic function.</li>
-                <li>It is a violation if the given name func-spec does not exist in the current toplevel scope immediately containing the defmethod defining form. Furthermore, it is a violation if a defgeneric form for func-spec does not precede the method-defining form in the text unit being prepared for execution unless the method-defining form is a defclass.</li>
+                <li>It is a violation if the given name <span class="nonterminal">func-spec</span> already designates a generic function and this generic function contains a method that agrees with the new one on parameter specializers and qualifiers. For a definition of one method agreeing with another on parameter specializers and qualifiers, see the section <a href="#agreement_on_parameter_specializers">§15.2.2.1</a>.</li>
+                <li>If the given name <span class="nonterminal">func-spec</span> designates a generic function and this generic function does not contain a method that agrees with the new one on parameter specializers and qualifiers, the new method is added to the generic function.</li>
+                <li>It is a violation if the <span class="terminal">defmethod</span> defining form is in the scope of a <span class="nonterminal">func-spec</span> identifier that does not designate a generic function.</li>
+                <li>It is a violation if the given name <span class="nonterminal">func-spec</span> does not exist in the current toplevel scope immediately containing the <span class="terminal">defmethod</span> defining form. Furthermore, it is a violation if a <span class="terminal">defgeneric</span> form for <span class="nonterminal">func-spec</span> does not precede the method-defining form in the text unit being prepared for execution unless the method-defining form is a <span class="terminal">defclass.</span></li>
             </ul>
             <p>The parameter-profile of the method being defined must be congruent with the lambda-list of the generic function. See <a href="#congruent_lambda_lists">§15.2.2.2</a> for a definition of congruence in this context.</p>
-            <p id="method_qualifier">Each method-qualifier argument is an object that is used as an attribute to the given method by method combination. A method qualifier is a non-nil symbol or keyword. The method combination type further restricts what a method qualifier may be. The standard method combination type allows for unqualified methods or methods whose sole qualifier is one of the keywords :before, :after, :around.</p>
-            <p>The parameter-profile argument is like an ordinary function lambda-list except that the names of required parameters can be replaced by specialized parameters. A specialized parameter is a list of the form (variable-name parameter-specializer-name). Only required parameters may be specialized. A parameter specializer name is an identifier that names a class. If no parameter specializer name is specified for a given required parameter, the parameter specializer defaults to the class named <span class="class">object</span>.</p>
-            <p>The form arguments specify the method body.</p>
-            <p>No two methods with agreeing parameter specializers and qualifiers may be defined for the same generic function. See the section §15.2.2.1 for a definition of agreement in this context.</p>
+            <p id="method_qualifier">Each <i>method-qualifier argument</i> is an object that is used as an attribute to the given method by method combination. A method qualifier is a non-nil symbol or keyword. The method combination type further restricts what a method qualifier may be. The standard method combination type allows for unqualified methods or methods whose sole qualifier is one of the keywords <span class="terminal">:before</span>, <span class="terminal">:after</span>, <span class="terminal">:around</span>.</p>
+            <p>The <i>parameter-profile argument</i> is like an ordinary function lambda-list except that the names of required parameters can be replaced by specialized parameters. A specialized parameter is a list of the form (<span class="nonterminal">variable-name</span> <span class="nonterminal">parameter-specializer-name</span>). Only required parameters may be specialized. A parameter specializer name is an identifier that names a class. If no parameter specializer name is specified for a given required parameter, the parameter specializer defaults to the class named <span class="class">object</span>.</p>
+            <p>The <span class="nonterminal">form</span> arguments specify the method body.</p>
+            <p>No two methods with agreeing parameter specializers and qualifiers may be defined for the same generic function. See the section <a href="#agreement_on_parameter_specializers">§15.2.2.1</a> for a definition of agreement in this context.</p>
             <p>A method is not a function and cannot be invoked as a function.</p>
             
             <h6 id="agreement_on_parameter_specializers">Agreement on parameter specializers and qualifiers</h6>
             <p> Two methods are said to agree with each other on parameter specializers and qualifiers if the following conditions hold:</p>
             <ul>
-                <li>Both methods have the same number of required parameters. Suppose the parameter specializers of the two methods are P<sub>1,1</sub> … P<sub>1,n</sub> and P<sub>2,1</sub> … P<sub>2,n</sub>.</li>
-                <li>For each 1 ≤ i ≤ n, P<sub>1,i</sub> agrees with P<sub>2,i</sub>. The parameter specializer P<sub>1,i</sub> agrees with P<sub>2,i</sub> if P<sub>1,i</sub> and P<sub>2,i</sub> denote the same class. Otherwise P<sub>1,i</sub> and P<sub>2,i</sub> do not agree.</li>
+                <li>Both methods have the same number of required parameters. Suppose the parameter specializers of the two methods are <span class="nonterminal">P<sub>1,1</sub></span> … <span class="nonterminal">P<sub>1,n</sub></span> and <span class="nonterminal">P<sub>2,1</sub></span> … <span class="nonterminal">P<sub>2,n</sub></span>.</li>
+                <li>For each 1 ≤ <span class="nonterminal">i</span> ≤ <span class="nonterminal">n</span>, <span class="nonterminal">P<sub>1,i</sub></span> agrees with <span class="nonterminal">P<sub>2,i</sub></span>. The parameter specializer <span class="nonterminal">P<sub>1,i</sub></span> agrees with <span class="nonterminal">P<sub>2,i</sub></span> if <span class="nonterminal">P<sub>1,i</sub></span> and <span class="nonterminal">P<sub>2,i</sub></span> denote the same class. Otherwise <span class="nonterminal">P<sub>1,i</sub></span> and <span class="nonterminal">P<sub>2,i</sub></span> do not agree.</li>
                 <li>The qualifiers of both methods, if any, are the same.</li>
             </ul>
             <p>The parameter specializers are derived from the parameter profiles as described above.</p>
@@ -2459,15 +2459,15 @@ var                        ::= identifier
             <p>These rules define the congruence of a set of lambda-lists, including the parameter profile of each method for a given generic function and the lambda-list specified for the generic function itself, if given.</p>
             <ul>
                 <li>Each lambda-list must have the same number of required parameters.</li>
-                <li>If any lambda-list mentions &amp;rest or :rest, each lambda-list must mention &amp;rest or :rest.</li>
+                <li>If any lambda-list mentions <span class="terminal">&amp;rest</span> or <span class="terminal">:rest</span>, each lambda-list must mention <span class="terminal">&amp;rest</span> or <span class="terminal">:rest</span>.</li>
             </ul>
             
             <h5 id="inheritance_of_methods">Inheritance of methods</h5>
             <p>A subclass inherits methods in the following sense: Any method applicable to all instances of a class is also applicable to all instances of any subclass of that class, since they are also instances of that class.</p>
-            <p>The inheritance of methods acts the same way regardless of whether the method was created by using the defmethod form or by using one of the defclass options that causes methods to be generated automatically.</p>
+            <p>The inheritance of methods acts the same way regardless of whether the method was created by using the <span class="terminal">defmethod</span> form or by using one of the <span class="terminal">defclass</span> options that causes methods to be generated automatically.</p>
             
             <h4 id="calling_generic_functions">Calling generic functions</h4>
-            <p id="effective_method">When a generic function is called with particular arguments, it must determine the code to execute. This code is called the effective method for those arguments. The effective method is a combination of the applicable methods in the generic function, which might be some or all of the defined methods. An error shall be signaled if a generic function is called and no methods apply.</p>
+            <p id="effective_method">When a generic function is called with particular arguments, it must determine the code to execute. This code is called the <span class="term">effective method</span> for those arguments. The effective method is a <span class="term">combination</span> of the applicable methods in the generic function, which might be some or all of the defined methods. An error shall be signaled if a generic function is called and no methods apply.</p>
             <p>When the effective method has been determined, it is invoked with the same arguments that were passed to the generic function. Whatever value it returns is returned as the value of the generic function.</p>
             <p>The effective method is determined by the following three-step procedure:</p>
             <ul>
@@ -2477,10 +2477,10 @@ var                        ::= identifier
             </ul>
             
             <h5 id="selecting_the_applicable_methods">Selecting the applicable methods</h5>
-            <p>Given a generic function and a set of arguments, an applicable method is a method for that generic function whose parameter specializers are satisfied by their corresponding arguments. The following definition specifies what it means for a method to be applicable and for an argument to satisfy a parameter specializer.</p>
-            <p>Let 〈A<sub>1</sub> , … , A<sub>n</sub>〉 be the required arguments to a generic function in order. Let 〈P<sub>1</sub> , … , P<sub>n</sub>〉 be the parameter specializers corresponding to the required parameters of the method M in order. The method M is applicable when each Ai satisfies P<sub>i</sub> . If A<sub>i</sub> is an instance of a class C, then it is said that A<sub>i</sub> satisfies P<sub>i</sub> when C = P<sub>i</sub> or when C is a subclass of P<sub>i</sub>.</p>
-            <p id="default_method">A method all of whose parameter specializers are the class named <span class="class">object</span> is called a default method; it is always applicable but might be shadowed by a more specific method.</p>
-            <p id="qualifiers">Methods can have qualifiers, which give the method combination procedure a way to distinguish among methods. A method that has one or more qualifiers is called a qualified method. A method with no qualifiers is called an unqualified method. Any object after :method and before the first list in method-desc is regarded as a qualifier, but only non-nil symbols and keywords are accepted as qualifiers. The qualifiers defined by standard method combination are keywords.</p>
+            <p>Given a generic function and a set of arguments, an <span class="term">applicable method</span> is a method for that generic function whose parameter specializers are satisfied by their corresponding arguments. The following definition specifies what it means for a method to be applicable and for an argument to satisfy a parameter specializer.</p>
+            <p>Let 〈<span class="nonterminal">A<sub>1</sub></span>, …, <span class="nonterminal">A<sub>n</sub></span>〉 be the required arguments to a generic function in order. Let 〈<span class="nonterminal">P<sub>1</sub></span>, …, <span class="nonterminal">P<sub>n</sub></span>〉 be the parameter specializers corresponding to the required parameters of the method <span class="nonterminal">M</span> in order. The method <span class="nonterminal">M</span> is <span class="term">applicable</span> when each <span class="nonterminal">Ai</span> <span class="term">satisfies</span> <span class="nonterminal">P<sub>i</sub></span>. If <span class="nonterminal">A<sub>i</sub></span> is an instance of a class <span class="nonterminal">C</span>, then it is said that <span class="nonterminal">A<sub>i</sub></span> satisfies <span class="nonterminal">P<sub>i</sub></span> when <span class="nonterminal">C</span> = <span class="nonterminal">P<sub>i</sub></span> or when <span class="nonterminal">C</span> is a subclass of <span class="nonterminal">P<sub>i</sub></span>.</p>
+            <p id="default_method">A method all of whose parameter specializers are the class named <span class="class">object</span> is called a <span class="term">default method</span>; it is always applicable but might be shadowed by a more specific method.</p>
+            <p id="qualifiers">Methods can have <span class="term">qualifiers</span>, which give the method combination procedure a way to distinguish among methods. A method that has one or more qualifiers is called a <span class="term">qualified method</span>. A method with no qualifiers is called an <span class="term">unqualified method</span>. Any object after <span class="terminal">:method</span> and before the first list in <span class="nonterminal">method-desc</span> is regarded as a qualifier, but only non-nil symbols and keywords are accepted as qualifiers. The qualifiers defined by standard method combination are keywords.</p>
             
             <h5 id="sorting_the_applicable_methods">Sorting the applicable methods</h5>
             
