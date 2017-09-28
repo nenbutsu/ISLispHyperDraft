@@ -2593,22 +2593,21 @@ Where:
             
             <h3 id="macros">Macros</h3>
             <p>Macros are a feature to extend the language syntactically. A macro is an abstraction for surface transformations. Because ISLISP texts (<span class="latin">e.g.</span>, function definitions) can be represented internally by objects in ISLISP, the surface transformations can be described by means of list processing. Forms are represented by conses or other objects and a macro describes a transformation function from one group of objects onto another.</p>
-            <p>Macros can be internally defined by expander functions which implement the transformation from one group of objects to another. The operation of an expander functions is specified by a defmacro defining form.</p>
+            <p>Macros can be internally defined by <span class="term">expander</span> functions which implement the transformation from one group of objects to another. The operation of an expander functions is specified by a <span class="terminal">defmacro</span> defining form.</p>
             <p>An expander receives a form as argument and returns a different form as value. The primary activity of an expander is to create sets of nested lists; for this purpose, the backquote facility is provided.</p>
             <p>Macros are expanded at preparation time. No runtime information is available.</p>
             <p>The set of usable operations is restricted to simple data structure creation and manipulation; those operations are forbidden that cause side-effects to the environment (such as I/O to the terminal), to externally accessible data structure (such as a modification to the property list of a symbol), or to the macro form itself.</p>
             <p>Macro definitions are allowed only at toplevel. Redefinition (<span class="latin">i.e.</span>, multiple definition) of macros is forbidden. A macro's definition must textually precede any use of that macro during preparation for execution.</p>
             <p>The result of expanding a macro form is another form. If that form is a macro form, it is expanded by the same mechanism until the result is not a macro form.</p>
             <p>When a toplevel form is a macro form, its resulting macro expansion is also considered to be a toplevel form.</p>
-            <p>A macro form can appear as the place specified in a setf special form. See setf on page 35.</p>
+            <p>A macro form can appear as the place specified in a setf special form. See <span class="terminal">setf</span> on <a href="#s_setf">page 35</a>.</p>
             <div id="def_defmacro" class="definition-defining">
                 (<span class="operator">defmacro</span> <span class="arg">macro-name</span> <span class="arg">lambda-list</span> <span class="arg">form</span>*) → <span class="class">symbol</span>
             </div>
             
-            <p>Defines a named (toplevel) macro. No implicit block with the macro name is established when the macro-expansion function is invoked. macro-name must be an identifier whose scope is the current toplevel scope in which the defmacro form appears. lambda-list is as defined in page 23. The definition point of macro-name is the closing parenthesis of the lambda-list.</p>
+            <p>Defines a named (toplevel) macro. No implicit block with the macro name is established when the macro-expansion function is invoked. <span class="nonterminal">macro-name</span> must be an identifier whose scope is the current toplevel scope in which the defmacro form appears. <span class="nonterminal">lambda-list</span> is as defined in <a href="#s_lambda">page 23</a>. The definition point of <span class="nonterminal">macro-name</span> is the closing parenthesis of the <span class="nonterminal">lambda-list</span>.</p>
 <pre class="example">
-(defmacro caar(x) (list 'car (list 'car x)))
-⇒ caar
+<span class="input" contenteditable="true">(defmacro caar(x) (list 'car (list 'car x)))</span><button class="eval"> ⇒ </button><span class="output">caar</span>
 </pre>
             
             <div id="syn_backquote" class="definition-syntax">
@@ -2621,14 +2620,13 @@ Where:
                 ,@<span class="operator">form</span> → <span class="class">object</span>
             </div>
             
-            <p id="quasiquote">` or quasiquote constructs a list structure. quasiquote, like quote, returns its argument unevaluated if no commas or the syntax , (unquote) or ,@ (unquote-splicing) appear within the form.</p>
-            <p>, (unquote) syntax is valid only within ` (quasiquote) expressions. When appearing within a quasiquote the form is evaluated and its result is inserted into the quasiquote structure instead of the unquote form.</p>
+            <p id="quasiquote"><span class="terminal">`</span> or <span class="term">quasiquote</span> constructs a list structure. quasiquote, like <span class="terminal">quote</span>, returns its argument unevaluated if no commas or the syntax <span class="terminal">,</span> (unquote) or <span class="terminal">,@</span> (unquote-splicing) appear within the <span class="nonterminal">form</span>.</p>
+            <p><span class="terminal">,</span> (unquote) syntax is valid only within <span class="terminal">`</span> (quasiquote) expressions. When appearing within a quasiquote the <span class="nonterminal">form</span> is evaluated and its result is inserted into the quasiquote structure instead of the unquote <span class="nonterminal">form</span>.</p>
             
-            <p>,@ (unquote-splicing) is also syntax valid only within ` expressions. When appearing within a quasiquote the expression form must evaluate to a list. The elements of the list are spliced into the enclosing list in place of the unquote-splicing form sequence.</p>
+            <p><span class="terminal">,@</span> (unquote-splicing) is also syntax valid only within <span class="terminal">`</span> expressions. When appearing within a quasiquote the expression <span class="nonterminal">form</span> must evaluate to a list. The elements of the list are spliced into the enclosing list in place of the unquote-splicing <span class="nonterminal">form</span> sequence.</p>
             <p>Quasiquote forms may be nested. Substitutions are made only for unquoted expressions appearing at the same nesting level, which increases by one inside each successive quasiquotation and decreases by one inside each unquotation.</p>
 <pre class="example">
-`(list ,(+ 1 2) 4)
-⇒ (list 3 4)
+<span class="input" contenteditable="true">`(list ,(+ 1 2) 4)</span><button class="eval"> ⇒ </button><span class="output">(list 3 4)</span>
 
 (let ((name 'a)) `(list name ,name ',name))
 ⇒ (list name a (quote a))
@@ -2655,10 +2653,10 @@ Where:
             <div id="s_assure" class="definition-special">
                 (<span class="operator">assure</span> <span class="arg">class-name</span> <span class="arg">form</span>) → <span class="class">object</span>
             </div>
-            <p>These forms evaluate form. If form returns, the returned value is returned by the the or assure form. In addition, these forms specify that the value of form is of the class specified by class-name (which must be the name of an existing class).</p>
-            <p>In a the special form, the consequences are undefined if the value of form is not of the class or a subclass of the class designated by class-name. In an assure special form, an error shall be signaled if the value of form is not of the class or a subclass of the class designated by class-name (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>These forms evaluate <span class="nonterminal">form</span>. If <span class="nonterminal">form</span> returns, the returned value is returned by the <span class="terminal">the</span> or <span class="terminal">assure</span> form. In addition, these forms specify that the value of <span class="nonterminal">form</span> is of the class specified by <span class="nonterminal">class-name</span> (which must be the name of an existing class).</p>
+            <p>In a <span class="terminal">the</span> special form, the consequences are undefined if the value of <span class="nonterminal">form</span> is not of the class or a subclass of the class designated by <span class="nonterminal">class-name</span>. In an <span class="terminal">assure</span> special form, an error shall be signaled if the value of <span class="nonterminal">form</span> is not of the class or a subclass of the class designated by <span class="nonterminal">class-name</span> (error-id. <span class="error_id">domain-error</span>).</p>
 <pre class="example">
-(the <span class="class">integer</span> 10)    ⇒ 10
+<span class="input" contenteditable="true">(the <span class="class">integer</span> 10)</span><button class="eval"> ⇒ </button><span class="output">10</span>
 
 (the <span class="class">number</span> 10)     ⇒ 10
 
@@ -2674,7 +2672,7 @@ Where:
                 (<span class="operator">convert</span> <span class="arg">obj</span> <span class="arg">class-name</span>) → <span class="class">object</span>
             </div>
             
-            <p>Returns an object of class class-name which corresponds to the object obj according to one of the following projections, called a coercion function. The table shows obj along the left-hand column and class-name along the top row (with &lt;&gt;'s in class names omitted here only for textual brevity):</p>
+            <p>Returns an object of class <span class="nonterminal">class-name</span> which corresponds to the object <span class="nonterminal">obj</span> according to one of the following projections, called a <span class="term">coercion function</span>. The table shows <span class="nonterminal">obj</span> along the left-hand column and class-name along the top row (with &lt;&gt;'s in class names omitted here only for textual brevity):</p>
             
             <table border="1">
                 <tr>
@@ -2766,11 +2764,11 @@ Where:
                     <dl>
                         <dd>This coercion shall be provided</dd>
                         <dt><b>X(2)</b></dt>
-                        <dd>An error shall be signaled if this coercion is attempted and the string does not contain the textual representation of a number of the target class. In all other respects, this is the same as parse-number.</dd>
+                        <dd>An error shall be signaled if this coercion is attempted and the string does not contain the textual representation of a number of the target class. In all other respects, this is the same as <span class="terminal">parse-number</span>.</dd>
                         <dt><b>X(5)</b></dt>
-                        <dd>This may be the same as the ~D format directive.</dd>
+                        <dd>This may be the same as the <span class="terminal">~D</span> format directive.</dd>
                         <dt><b>X(6)</b></dt>
-                        <dd>This may be the same as the ~G format directive.</dd>
+                        <dd>This may be the same as the <span class="terminal">~G</span> format directive.</dd>
                         <dt><b>X(7)</b></dt>
                         <dd>This is the identity if strings are vectors in the implementation.</dd>
                     </dl>
@@ -2779,16 +2777,16 @@ Where:
                 <dd>This coercion shall be provided, but its definition is <a href="#td_implementation_defined">implementation defined</a>.
                     <dl>
                         <dt><b>I(3)</b></dt>
-                        <dd>This coercion shall be provided, but its definition is <a href="#td_implementation_defined">implementation defined</a>. The coercion depends on the implementation's neutral alphabetic characters (see §18.1.2).</dd>
+                        <dd>This coercion shall be provided, but its definition is <a href="#td_implementation_defined">implementation defined</a>. The coercion depends on the implementation's <i>neutral</i> alphabetic characters (see <a href="#alphabetic_case_in_symbol_names">§18.1.2</a>).</dd>
                     </dl>
                 </dd>
                 <dt><b>–</b></dt>
                 <dd>An error shall be signaled if this coercion is attempted.
                     <dl>
                         <dt><b>–(1)</b></dt>
-                        <dd>Programmers requiring this kind of functionality may wish to consider instead using one of the functions, floor, ceiling, round, or truncate.</dd>
+                        <dd>Programmers requiring this kind of functionality may wish to consider instead using one of the functions, <span class="terminal">floor</span>, <span class="terminal">ceiling</span>, <span class="terminal">round</span>, or <span class="terminal">truncate</span>.</dd>
                         <dt><b>–(4)</b></dt>
-                        <dd>programmers requiring this kind of functionality may wish to consider instead using the following: (create-string 1 obj)</dd>
+                        <dd>programmers requiring this kind of functionality may wish to consider instead using the following: (<span class="terminal">create-string</span> 1 <span class="nonterminal">obj</span>)</dd>
                     </dl>
                 </dd>
             </dl>
@@ -2843,7 +2841,7 @@ Where:
             <p>A named symbol is denoted by its print name enclosed within the vertical bars (“|”). However, the enclosing vertical bars are not necessary if the symbol satisfies the following conditions:</p>
             <ol>
                 <li>
-                    <p>The symbol's print name consists only of neutral alphabetic characters (see §18.1.2) or the following additional characters:</p>
+                    <p>The symbol's print name consists only of neutral alphabetic characters (see <a href="#alphabetic_case_in_symbol_names">§18.1.2</a>) or the following additional characters:</p>
 <pre>0 1 2 3 4 5 6 7 8 9 + - &lt; &gt; / * = ? _ ! $ % [ ] ^ { } ~</pre>
                     <p>(This set may have additional <a href="#td_implementation_defined">implementation-defined</a> characters.)</p>
                 </li>
