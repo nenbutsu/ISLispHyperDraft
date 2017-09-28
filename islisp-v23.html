@@ -2528,36 +2528,36 @@ Where:
                 (<span class="operator">call-next-method</span>) → <span class="class">object</span>
             </div>
             
-            <p>The call-next-method function can be used within the body of a method to call the next method.</p>
+            <p>The <span class="terminal">call-next-method</span> function can be used within the body of a method to call the next method.</p>
             <p>It returns the value returned by the method it calls.</p>
-            <p>The type of method combination used determines which methods can invoke call-next-method and what is the next method to be called.</p>
-            <p>In the case of simple method combination where the method combination type is nil the next method is the next most specific method.</p>
-            <p>The standard method combination type allows call-next-method to be used within primary methods and :around methods. The standard method combination type defines the next method as specified in §15.3.3.2.</p>
-            <p>call-next-method passes the current method's original arguments to the next method. Neither using setq nor rebinding variables with the same names as parameters of the method affects the values call-next-method passes to the method it calls. The call-next-method function returns the value returned by the method it calls. After call-next-method returns, further computation is possible. The next-method-p function can be used to test whether there is a next method.</p>
-            <p>The functional binding of call-next-method is lexical within the body of the method-defining form; <span class="latin">i.e.</span>, it is as if it were established by labels. The function object to which the binding refers has indefinite extent.</p>
-            <p>An error shall be signaled if call-next-method is used in methods that do not support it. An error shall be signaled if call-next-method is executed and there is no next method.</p>
+            <p>The type of method combination used determines which methods can invoke <span class="terminal">call-next-method</span> and what is the next method to be called.</p>
+            <p>In the case of simple method combination where the method combination type is <span class="terminal">nil</span> the next method is the next most specific method.</p>
+            <p>The <span class="terminal">standard</span> method combination type allows <span class="terminal">call-next-method</span> to be used within primary methods and <span class="terminal">:around</span> methods. The <span class="terminal">standard</span> method combination type defines the next method as specified in <a href="#standard_method_combination">§15.3.3.2</a>.</p>
+            <p><span class="terminal">call-next-method</span> passes the current method's original arguments to the next method. Neither using <span class="terminal">setq</span> nor rebinding variables with the same names as parameters of the method affects the values <span class="terminal">call-next-method</span> passes to the method it calls. The <span class="terminal">call-next-method</span> function returns the value returned by the method it calls. After <span class="terminal">call-next-method</span> returns, further computation is possible. The <span class="terminal">next-method-p</span> function can be used to test whether there is a next method.</p>
+            <p>The functional binding of <span class="terminal">call-next-method</span> is lexical within the body of the method-defining form; <span class="latin">i.e.</span>, it is as if it were established by <span class="terminal">labels</span>. The function object to which the binding refers has indefinite extent.</p>
+            <p>An error shall be signaled if <span class="terminal">call-next-method</span> is used in methods that do not support it. An error shall be signaled if <span class="terminal">call-next-method</span> is executed and there is no next method.</p>
             <div id="l_next_method_p" class="definition-local">
                 (<span class="operator">next-method-p</span>) → <span class="nonterminal">boolean</span>
             </div>
-            <p>The next-method-p function can be used within the body of a method defined by a method-defining form to determine whether a next method exists. The next-method-p function takes no arguments and returns t or nil.</p>
-            <p>The functional binding of next-method-p is lexical within the body of the method-defining form; <span class="latin">i.e.</span>, it is as if it were established by labels. The function object to which the binding refers has indefinite extent.</p>
+            <p>The <span class="terminal">next-method-p</span> function can be used within the body of a method defined by a method-defining form to determine whether a next method exists. The <span class="terminal">next-method-p</span> function takes no arguments and returns <span class="terminal">t</span> or <span class="terminal">nil</span>.</p>
+            <p>The functional binding of <span class="terminal">next-method-p</span> is lexical within the body of the method-defining form; <span class="latin">i.e.</span>, it is as if it were established by <span class="terminal">labels</span>. The function object to which the binding refers has indefinite extent.</p>
             
             <h4 id="object_creation">Object creation and initialization</h4>
             <div id="gf_create" class="definition-generic">
                 (<span class="operator">create</span> <span class="arg">class</span> {<span class="arg">initarg</span> <span class="arg">initval</span> }*) → <span class="class">object</span>
             </div>
             
-            <p>The function create creates and returns a new instance of a class. The argument is a class object.</p>
-            <p>The initialization of a new instance consists of several distinct steps, including the following: allocating storage for the instance, filling slots with values, and executing user-supplied methods that perform additional initialization. The last two steps of create are implemented by the generic function initialize-object to provide a mechanism for customizing those steps. The initialization arguments (the initargs and initvals) are given as a single list argument to initialize-object. The instance returned by create is the new instance, which has been modified and returned by initialize-object.</p>
+            <p>The function <span class="terminal">create</span> creates and returns a new instance of a <span class="nonterminal">class</span>. The argument is a class object.</p>
+            <p>The initialization of a new instance consists of several distinct steps, including the following: allocating storage for the instance, filling slots with values, and executing user-supplied methods that perform additional initialization. The last two steps of <span class="terminal">create</span> are implemented by the generic function <span class="terminal">initialize-object</span> to provide a mechanism for customizing those steps. The initialization arguments (the <span class="nonterminal">initargs</span> and <span class="nonterminal">initvals</span>) are given as a single list argument to <span class="terminal">initialize-object</span>. The instance returned by <span class="terminal">create</span> is the new instance, which has been modified and returned by <span class="terminal">initialize-object</span>.</p>
             
             <h5 id="initialize_object">Initialize-object</h5>
-            <p>The generic function initialize-object is called by create to initialize a newly created instance. It uses standard method combination. Methods for initialize-object can be defined on user-defined classes in order to augment or override the system-supplied slot-filling mechanisms (described below).</p>
-            <p>During initialization, initialize-object is invoked after a new instance whose slots are unbound has been created.</p>
-            <p>The generic function initialize-object is called with the new instance. There is a system-supplied primary method for initialize-object whose parameter specializer is the class <span class="class">standard-object</span>. This method fills in the slots according to the initialization arguments provided and according to the :initform forms for the slots as follows:</p>
+            <p>The generic function <span class="terminal">initialize-object</span> is called by <span class="terminal">create</span> to initialize a newly created instance. It uses <span class="terminal">standard</span> method combination. Methods for <span class="terminal">initialize-object</span> can be defined on user-defined classes in order to augment or override the system-supplied slot-filling mechanisms (described below).</p>
+            <p>During initialization, <span class="terminal">initialize-object</span> is invoked after a new instance whose slots are unbound has been created.</p>
+            <p>The generic function <span class="terminal">initialize-object</span> is called with the new instance. There is a system-supplied primary method for <span class="terminal">initialize-object</span> whose parameter specializer is the class <span class="class">standard-object</span>. This method fills in the slots according to the initialization arguments provided and according to the <span class="terminal">:initform</span> forms for the slots as follows:</p>
             <ul>
                 <li>If the slot already has a value, no attempt is made to change that value.</li>
-                <li>If an initialization argument and value pair for the slot was provided among the initialization arguments, the slot is initialized with the value from that pair. The name of the initialization argument for a slot is declared by the :initarg option to slots in defclass. The consequences are undefined if more than one initialization argument for the same slot is supplied.</li>
-                <li>If the slot has a default initial value form (see defclass), that form is evaluated in the lexical environment in which that form was established and in the current dynamic environment. The result of the evaluation is an object which becomes the value of the slot.</li>
+                <li>If an initialization argument and value pair for the slot was provided among the initialization arguments, the slot is initialized with the value from that pair. The name of the initialization argument for a slot is declared by the :initarg option to slots in <span class="terminal">defclass</span>. The consequences are undefined if more than one initialization argument for the same slot is supplied.</li>
+                <li>If the slot has a default initial value form (see <a href="#def_defclass"><span class="terminal">defclass</span></a>), that form is evaluated in the lexical environment in which that form was established and in the current dynamic environment. The result of the evaluation is an object which becomes the value of the slot.</li>
                 <li>Otherwise, the slot is left uninitialized.</li>
             </ul>
             
@@ -2565,31 +2565,31 @@ Where:
                 (<span class="operator">initialize-object</span> <span class="arg">instance</span> <span class="arg">initialization-arguments</span>) → <span class="class">object</span>
             </div>
             
-            <p>The generic function initialize-object is called by create to initialize a newly created instance. The generic function initialize-object is called with the new instance and a list of initialization arguments.</p>
+            <p>The generic function <span class="terminal">initialize-object</span> is called by <span class="terminal">create</span> to initialize a newly created instance. The generic function <span class="terminal">initialize-object</span> is called with the new instance and a list of initialization arguments.</p>
             
-            <p>The system-supplied primary method on initialize-object initializes the slots of the instance with values according to the initialization-arguments (an alternating list of initialization argument keywords and values) and the :initform forms of the slots.</p>
-            <p>The instance argument is the object to be initialized. The modified instance is returned as the result. Programmers can define methods for initialize-object to specify actions to be taken when an instance is initialized. If only :after methods are defined, they will be run after the system-supplied primary method for initialization and therefore will not interfere with the default behavior of initialize-object. The consequences are undefined if a programmer-defined primary method for this generic function does not return instance.</p>
+            <p>The system-supplied primary method on <span class="terminal">initialize-object</span> initializes the slots of the instance with values according to the <i>initialization-arguments</i> (an alternating list of initialization argument keywords and values) and the <span class="terminal">:initform</span> forms of the slots.</p>
+            <p>The <span class="nonterminal">instance</span> argument is the object to be initialized. The modified instance is returned as the result. Programmers can define methods for <span class="terminal">initialize-object</span> to specify actions to be taken when an instance is initialized. If only <span class="terminal">:after</span> methods are defined, they will be run after the system-supplied primary method for initialization and therefore will not interfere with the default behavior of <span class="terminal">initialize-object</span>. The consequences are undefined if a programmer-defined primary method for this generic function does not return instance.</p>
             
             <h4 id="class_enquiry">Class enquiry</h4>
             <div id="f_class_of" class="definition-function">
                 (<span class="operator">class-of</span> <span class="arg">obj</span>) → <span class="class">class</span>
             </div>
             
-            <p>Returns the class of which the given obj is a direct instance. obj may be any ISLISP object.</p>
+            <p>Returns the class of which the given <span class="nonterminal">obj</span> is a direct instance. <span class="nonterminal">obj</span> may be any ISLISP object.</p>
             <div id="f_instancep" class="definition-function">
                 (<span class="operator">instancep</span> <span class="arg">obj</span> <span class="arg">class</span>) → <span class="nonterminal">boolean</span>
             </div>
-            <p>Returns t if obj is an instance (directly or otherwise) of the class class; otherwise, returns nil obj may be any ISLISP object. An error shall be signaled if class is not a class object (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>Returns <span class="terminal">t</span> if <span class="nonterminal">obj</span> is an instance (directly or otherwise) of the class <span class="nonterminal">class</span>; otherwise, returns <span class="terminal">nil</span>. <span class="nonterminal">obj</span> may be any ISLISP object. An error shall be signaled if class is not a class object (error-id. <span class="error_id">domain-error</span>).</p>
             
             <div id="f_subclassp" class="definition-function">
-                (<span class="operator">subclassp</span> <span class="arg">class1</span> <span class="arg">class2</span>) → <span class="nonterminal">boolean</span>
+                (<span class="operator">subclassp</span> <span class="arg">class<sub>1</sub></span> <span class="arg">class<sub>2</sub></span>) → <span class="nonterminal">boolean</span>
             </div>
             
-            <p>Returns t if the class class1 is a subclass of the class class2 ; otherwise, returns nil. An error shall be signaled if either class1 or class2 is not a class object (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>Returns <span class="terminal">t</span> if the class <span class="nonterminal">class<sub>1</sub></span> is a subclass of the class <span class="nonterminal">class<sub>2</sub></span>; otherwise, returns <span class="terminal">nil</span>. An error shall be signaled if either <span class="nonterminal">class<sub>1</sub></span> or <span class="nonterminal">class<sub>2</sub></span> is not a class object (error-id. <span class="error_id">domain-error</span>).</p>
             <div id="s_class" class="definition-special">
                 (<span class="operator">class</span> <span class="arg">class-name</span>) → <span class="class">class</span>
             </div>
-            <p>Returns the class object that corresponds to the class named class-name.</p>
+            <p>Returns the class object that corresponds to the class named <span class="nonterminal">class-name</span>.</p>
             
             <h3 id="macros">Macros</h3>
             <p>Macros are a feature to extend the language syntactically. A macro is an abstraction for surface transformations. Because ISLISP texts (<span class="latin">e.g.</span>, function definitions) can be represented internally by objects in ISLISP, the surface transformations can be described by means of list processing. Forms are represented by conses or other objects and a macro describes a transformation function from one group of objects onto another.</p>
