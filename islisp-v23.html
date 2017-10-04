@@ -3811,26 +3811,26 @@ one mantissa digit after the decimal point.
 </pre>
             
             <p>A character literal is denoted by #\ followed by a token which is either the character itself, or, if the character has a name, the character's name. For example, the letter A is denoted by <q>#\A</q>. The newline and space characters have the names <q>newline</q> and <q>space,</q> respectively, so they can be denoted by <q>#\newline</q> and <q>#\space</q>. (Case is not significant when naming a character.)</p>
-            <p>Characters are ordered by char&lt;, and this order satisfies:</p>
+            <p>Characters are ordered by <span class="terminal">char&lt;</span>, and this order satisfies:</p>
 <pre>
 0&lt;1&lt;2&lt;3&lt;4&lt;5&lt;6&lt;7&lt;8&lt;9
 A&lt;B&lt;C&lt;D&lt;E&lt;F&lt;G&lt;H&lt;I&lt;J&lt;K&lt;L&lt;M&lt;N&lt;O&lt;P&lt;Q&lt;R&lt;S&lt;T&lt;U&lt;V&lt;W&lt;X&lt;Y&lt;Z
 a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;q&lt;r&lt;s&lt;t&lt;u&lt;v&lt;w&lt;x&lt;y&lt;z
 </pre>
-            <p>where char1 &lt; char2 means that (char&lt; char1 char2) is true.</p>
+            <p>where char1 &lt; char2 means that (<span class="terminal">char&lt;</span> char1 char2) is true.</p>
             
             <div id="f_characterp" class="definition-function">
                 (<span class="operator">characterp</span> <span class="arg">obj</span>) → <span class="nonterminal">boolean</span>
             </div>
             
-            <p>Returns t if obj is a character (instance of class <span class="class">character</span>); otherwise, returns nil. obj may be any ISLISP object.</p>
+            <p>Returns <span class="terminal">t</span> if <span class="nonterminal">obj</span> is a character (instance of class <span class="class">character</span>); otherwise, returns <span class="terminal">nil</span>. <span class="nonterminal">obj</span> may be any ISLISP object.</p>
             
 <pre class="example">
-(characterp #\a) ⇒ t
+<span class="input" contenteditable="true">(characterp #\a)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(characterp "a") ⇒ nil
+<span class="input" contenteditable="true">(characterp "a")</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(characterp 'a)  ⇒ nil
+<span class="input" contenteditable="true">(characterp 'a)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 </pre>
             
             <div id="f_char_eq" class="definition-function">
@@ -3852,38 +3852,38 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
                 (<span class="operator">char&gt;=</span> <span class="arg">char<sub>1</sub></span> <span class="arg">char<sub>2</sub></span>) → <span class="nonterminal">boolean</span>
             </div>
             
-            <p>The function char= tests whether char<sub>1</sub> is the same character as char<sub>2</sub>. The function char&lt; tests whether char<sub>1</sub> is less than char<sub>2</sub>. The function char&lt;= tests whether char<sub>1</sub> is less than or equal to char<sub>2</sub>. The ordering used is the partial order defined above, extended to a total order on all characters in an <a href="#td_implementation_defined">implementation-defined</a> manner. If the test is satisfied, t is returned; otherwise, nil is returned.</p>
-            <p>Two characters are char/= if and only if they are not char=. Two characters are char&gt; if and only if they are not char&lt;=. Two characters are char&gt;= if and only if they are not char&lt;.</p>
-            <p>An error shall be signaled if either char1 or char2 is not a character (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>The function <span class="terminal">char=</span> tests whether <span class="nonterminal">char<sub>1</sub></span> is the same character as <span class="nonterminal">char<sub>2</sub></span>. The function <span class="terminal">char&lt;</span> tests whether <span class="nonterminal">char<sub>1</sub></span> is less than <span class="nonterminal">char<sub>2</sub></span>. The function <span class="terminal">char&lt;=</span> tests whether <span class="nonterminal">char<sub>1</sub></span> is less than or equal to <span class="nonterminal">char<sub>2</sub></span>. The ordering used is the partial order defined above, extended to a total order on all characters in an <a href="#td_implementation_defined">implementation-defined</a> manner. If the test is satisfied, <span class="terminal">t</span> is returned; otherwise, <span class="terminal">nil</span> is returned.</p>
+            <p>Two characters are <span class="terminal">char/=</span> if and only if they are not <span class="terminal">char=</span>. Two characters are <span class="terminal">char&gt;</span> if and only if they are not <span class="terminal">char&lt;=</span>. Two characters are <span class="terminal">char&gt;=</span> if and only if they are not <span class="terminal">char&lt;</span>.</p>
+            <p>An error shall be signaled if either <span class="nonterminal">char<sub>1</sub></span> or <span class="nonterminal">char<sub>2</sub></span> is not a character (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
-(char= #\a #\a)     ⇒ t
+<span class="input" contenteditable="true">(char= #\a #\a)</span><button class="eval"> ⇒ </button><span class="output">t
 
-(char= #\a #\b)     ⇒ nil
+<span class="input" contenteditable="true">(char= #\a #\b)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(char= #\a #\A)     ⇒ nil
+<span class="input" contenteditable="true">(char= #\a #\A)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(char/= #\a #\a)    ⇒ nil
+<span class="input" contenteditable="true">(char/= #\a #\a)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(char&lt; #\a #\a)  ⇒ nil
+<span class="input" contenteditable="true">(char&lt; #\a #\a)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(char&lt; #\a #\b)  ⇒ t
+<span class="input" contenteditable="true">(char&lt; #\a #\b)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(char&lt; #\b #\a)  ⇒ nil
+<span class="input" contenteditable="true">(char&lt; #\b #\a)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(char&lt; #\a #\A)  ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+<span class="input" contenteditable="true">(char&lt; #\a #\A)</span><button class="eval"> ⇒ </button><span class="output">nil or t</span> (<a href="#td_implementation_defined">implementation-defined</a>)
 
-(char&lt; #\* #\a)  ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+<span class="input" contenteditable="true">(char&lt; #\* #\a)</span><button class="eval"> ⇒ </button><span class="output">nil or t</span> (<a href="#td_implementation_defined">implementation-defined</a>)
 
-(char&gt; #\b #\a)  ⇒ t
+<span class="input" contenteditable="true">(char&gt; #\b #\a)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(char&lt;= #\a #\a) ⇒ t
+<span class="input" contenteditable="true">(char&lt;= #\a #\a)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(char&lt;= #\a #\A) ⇒ nil or t (<a href="#td_implementation_defined">implementation-defined</a>)
+<span class="input" contenteditable="true">(char&lt;= #\a #\A)</span><button class="eval"> ⇒ </button><span class="output">nil or t</span> (<a href="#td_implementation_defined">implementation-defined</a>)
 
-(char&gt;= #\b #\a) ⇒ t
+<span class="input" contenteditable="true">(char&gt;= #\b #\a)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(char&gt;= #\a #\a) ⇒ t
+<span class="input" contenteditable="true">(char&gt;= #\a #\a)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 </pre>
             
             <h3 id="list_class">List class</h3>
@@ -4428,9 +4428,9 @@ array1
             <p>Returns a general-vector of length <span class="nonterminal">i</span>. If <span class="nonterminal">initial-element</span> is given, the elements of the new vector are initialized with this object, otherwise the initialization is <a href="#td_implementation_defined">implementation defined</a>. An error shall be signaled if the requested vector cannot be allocated (error-id. <span class="error_id">cannot-create-vector</span>). An error shall be signaled if <span class="nonterminal">i</span> is not a non-negative integer (error-id. <span class="error_id">domain-error</span>). <span class="nonterminal">initial-element</span> may be any ISLISP object.</p>
             
 <pre class="example">
-(create-vector 3 17)  ⇒ #(17 17 17)
+<span class="input" contenteditable="true">(create-vector 3 17)</span><button class="eval"> ⇒ </button><span class="output">#(17 17 17)</span>
 
-(create-vector 2 #\a) ⇒ #(#\a #\a)
+<span class="input" contenteditable="true">(create-vector 2 #\a)</span><button class="eval"> ⇒ </button><span class="output">#(#\a #\a)</span>
 </pre>
             
             <div id="f_vector" class="definition-function">
@@ -4440,9 +4440,9 @@ array1
             <p>Returns a new general-vector whose elements are its <span class="nonterminal">obj</span> arguments. The length of the newly created vector is, therefore, the number of <span class="nonterminal">objs</span> passed as arguments. The vector is indexed by integers ranging from 0 to dimension−1. An error shall be signaled if the requested vector cannot be allocated (error-id. <span class="error_id">cannot-create-vector</span>). Each <span class="nonterminal">obj</span> may be any ISLISP object.</p>
             
 <pre class="example">
-(vector 'a 'b 'c) ⇒ #(a b c)
+<span class="input" contenteditable="true">(vector 'a 'b 'c)</span><button class="eval"> ⇒ </button><span class="output">#(a b c)</span>
 
-(vector)          ⇒ #()
+<span class="input" contenteditable="true">(vector)</span><button class="eval"> ⇒ </button><span class="output">#()</span>
 </pre>
             
             <h3 id="string_class">String class</h3>
@@ -4457,9 +4457,9 @@ array1
             <p>Returns <span class="terminal">t</span> if <span class="nonterminal">obj</span> is a string (instance of class <span class="class">string</span>); otherwise, returns <span class="terminal">nil</span>. <span class="nonterminal">obj</span> may be any ISLISP object.</p>
             
 <pre class="example">
-(stringp "abc") ⇒ t
+<span class="input" contenteditable="true">(stringp "abc")</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(stringp 'abc) ⇒ nil
+<span class="input" contenteditable="true">(stringp 'abc)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 </pre>
             
             <div id="f_create_string" class="definition-function">
@@ -4469,9 +4469,9 @@ array1
             <p>Returns a string of length <span class="nonterminal">i</span>. If <span class="nonterminal">initial-character</span> is given, then the characters of the new string are initialized with this character, otherwise the initialization is <a href="#td_implementation_defined">implementation defined</a>. An error shall be signaled if the requested string cannot be allocated (error-id. <span class="error_id">cannot-create-string</span>). An error shall be signaled if <span class="nonterminal">i</span> is not a non-negative integer or if <span class="nonterminal">initial-character</span> is not a character (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
-(create-string 3 #\a) ⇒ "aaa"
+<span class="input" contenteditable="true">(create-string 3 #\a)</span><button class="eval"> ⇒ </button><span class="output">"aaa"</span>
 
-(create-string 0 #\a) ⇒ ""
+<span class="input" contenteditable="true">(create-string 0 #\a)</span><button class="eval"> ⇒ </button><span class="output">""</span>
 </pre>
             
             <div id="f_stringeq" class="definition-function">
@@ -4502,35 +4502,35 @@ array1
             <p>For these 6 string comparison functions, if the test is satisfied, an <a href="#td_implementation_defined">implementation-defined</a> non-nil value is returned; otherwise, <span class="terminal">nil</span> is returned.</p>
             <p>An error shall be signaled if either <span class="nonterminal">string<sub>1</sub></span> or <span class="nonterminal">string<sub>2</sub></span> is not a string (error-id. <span class="error_id">domain-error</span>).</p>
 <pre class="example">
-(if (string= "abcd" "abcd") t nil)   ⇒ t
+<span class="input" contenteditable="true">(if (string= "abcd" "abcd") t nil)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(if (string= "abcd" "wxyz") t nil)   ⇒ nil
+<span class="input" contenteditable="true">(if (string= "abcd" "wxyz") t nil)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(if (string= "abcd" "abcde") t nil)  ⇒ nil
+<span class="input" contenteditable="true">(if (string= "abcd" "abcde") t nil)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(if (string= "abcde" "abcd") t nil)  ⇒ nil
+<span class="input" contenteditable="true">(if (string= "abcde" "abcd") t nil)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(if (string/= "abcd" "wxyz") t nil)  ⇒ t
+<span class="input" contenteditable="true">(if (string/= "abcd" "wxyz") t nil)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(if (string&lt; "abcd" "abcd") t nil)   ⇒ nil
+<span class="input" contenteditable="true">(if (string&lt; "abcd" "abcd") t nil)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(if (string&lt; "abcd" "wxyz") t nil)   ⇒ t
+<span class="input" contenteditable="true">(if (string&lt; "abcd" "wxyz") t nil)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(if (string&lt; "abcd" "abcde") t nil)  ⇒ t
+<span class="input" contenteditable="true">(if (string&lt; "abcd" "abcde") t nil)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(if (string&lt; "abcde" "abcd") t nil)  ⇒ nil
+<span class="input" contenteditable="true">(if (string&lt; "abcde" "abcd") t nil)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(if (string&lt;= "abcd" "abcd") t nil)  ⇒ t
+<span class="input" contenteditable="true">(if (string&lt;= "abcd" "abcd") t nil)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(if (string&lt;= "abcd" "wxyz") t nil)  ⇒ t
+<span class="input" contenteditable="true">(if (string&lt;= "abcd" "wxyz") t nil)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(if (string&lt;= "abcd" "abcde") t nil) ⇒ t
+<span class="input" contenteditable="true">(if (string&lt;= "abcd" "abcde") t nil)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(if (string&lt;= "abcde" "abcd") t nil) ⇒ nil
+<span class="input" contenteditable="true">(if (string&lt;= "abcde" "abcd") t nil)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(if (string&gt; "abcd" "wxyz") t nil)   ⇒ nil
+<span class="input" contenteditable="true">(if (string&gt; "abcd" "wxyz") t nil)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(if (string&gt;= "abcd" "abcd") t nil)  ⇒ t
+<span class="input" contenteditable="true">(if (string&gt;= "abcd" "abcd") t nil)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 </pre>
             
             <div id="f_char_index" class="definition-function">
@@ -4540,15 +4540,15 @@ array1
             <p>An error shall be signaled if <span class="nonterminal">char</span> is not a character or if <span class="nonterminal">string</span> is not a string (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
-(char-index #\b "abcab")   ⇒ 1
+<span class="input" contenteditable="true">(char-index #\b "abcab")</span><button class="eval"> ⇒ </button><span class="output">1</span>
 
-(char-index #\B "abcab")   ⇒ nil
+<span class="input" contenteditable="true">(char-index #\B "abcab")</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(char-index #\b "abcab" 2) ⇒ 4
+<span class="input" contenteditable="true">(char-index #\b "abcab" 2)</span><button class="eval"> ⇒ </button><span class="output">4</span>
 
-(char-index #\d "abcab")   ⇒ nil
+<span class="input" contenteditable="true">(char-index #\d "abcab")</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(char-index #\a "abcab" 4) ⇒ nil
+<span class="input" contenteditable="true">(char-index #\a "abcab" 4)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 </pre>
             
             <div id="f_string_index" class="definition-function">
@@ -4559,19 +4559,19 @@ array1
             <p>An error shall be signaled if either <span class="nonterminal">substring</span> or <span class="nonterminal">string</span> is not a string (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
-(string-index "foo" "foobar")   ⇒ 0
+<span class="input" contenteditable="true">(string-index "foo" "foobar")</span><button class="eval"> ⇒ </button><span class="output">0</span>
 
-(string-index "bar" "foobar")   ⇒ 3
+<span class="input" contenteditable="true">(string-index "bar" "foobar")</span><button class="eval"> ⇒ </button><span class="output">3</span>
 
-(string-index "FOO" "foobar")   ⇒ nil
+<span class="input" contenteditable="true">(string-index "FOO" "foobar")</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(string-index "foo" "foobar" 1) ⇒ nil
+<span class="input" contenteditable="true">(string-index "foo" "foobar" 1)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(string-index "bar" "foobar" 1) ⇒ 3
+<span class="input" contenteditable="true">(string-index "bar" "foobar" 1)</span><button class="eval"> ⇒ </button><span class="output">3</span>
 
-(string-index "foo" "")         ⇒ nil
+<span class="input" contenteditable="true">(string-index "foo" "")</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(string-index "" "foo")         ⇒ 0
+<span class="input" contenteditable="true">(string-index "" "foo")</span><button class="eval"> ⇒ </button><span class="output">0</span>
 </pre>
             
             <div id="f_string_append" class="definition-function">
@@ -4583,15 +4583,15 @@ array1
             <p>An error shall be signaled if the string cannot be allocated (error-id. <span class="error_id">cannot-create-string</span>).</p>
             
 <pre class="example">
-(string-append "abc" "def")    ⇒ "abcdef"
+<span class="input" contenteditable="true">(string-append "abc" "def")</span><button class="eval"> ⇒ </button><span class="output">"abcdef"</span>
 
-(string-append "abc" "abc")    ⇒ "abcabc"
+<span class="input" contenteditable="true">(string-append "abc" "abc")</span><button class="eval"> ⇒ </button><span class="output">"abcabc"</span>
 
-(string-append "abc" "")       ⇒ "abc"
+<span class="input" contenteditable="true">(string-append "abc" "")</span><button class="eval"> ⇒ </button><span class="output">"abc"</span>
 
-(string-append "" "abc")       ⇒ "abc"
+<span class="input" contenteditable="true">(string-append "" "abc")</span><button class="eval"> ⇒ </button><span class="output">"abc"</span>
 
-(string-append "abc" "" "def") ⇒ "abcdef"
+<span class="input" contenteditable="true">(string-append "abc" "" "def")</span><button class="eval"> ⇒ </button><span class="output">"abcdef"</span>
 </pre>
             
             <h3 id="sequence_functions">Sequence functions</h3>
