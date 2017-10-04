@@ -2800,45 +2800,45 @@ Where:
 </pre>
             
             <h3 id="symbol_class">Symbol class</h3>
-            <p>A symbol (an instance of class <span class="class">symbol</span>) is an object. Symbols can be named or unnamed. A symbol's name is sometimes called a print name because it is used to identify the symbol during reading and printing. Symbols can have associated properties.</p>
+            <p>A symbol (an instance of class <span class="class">symbol</span>) is an object. Symbols can be <span class="term">named</span> or <span class="term">unnamed</span>. A symbol's name is sometimes called a <span class="term">print name</span> because it is used to identify the symbol during reading and printing. Symbols can have associated <span class="term">properties</span>.</p>
             <div id="f_symbolp" class="definition-function">
                 (<span class="operator">symbolp</span> <span class="arg">obj</span>) → <span class="nonterminal">boolean</span>
             </div>
             
-            <p>Returns t if obj is a symbol (instance of class <span class="class">symbol</span>); otherwise, returns nil. The obj may be any ISLISP object.</p>
+            <p>Returns <span class="terminal">t</span> if <span class="nonterminal">obj</span> is a symbol (instance of class <span class="class">symbol</span>); otherwise, returns <span class="terminal">nil</span>. The <span class="nonterminal">obj</span> may be any ISLISP object.</p>
             
 <pre class="example">
-(symbolp 'a)    ⇒ t
+<span class="input" contenteditable="true">(symbolp 'a)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(symbolp "a")   ⇒ nil
+<span class="input" contenteditable="true">(symbolp "a")</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(symbolp #\a)   ⇒ nil
+<span class="input" contenteditable="true">(symbolp #\a)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(symbolp 't)    ⇒ t
+<span class="input" contenteditable="true">(symbolp 't)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(symbolp t)     ⇒ t
+<span class="input" contenteditable="true">(symbolp t)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(symbolp 'nil)  ⇒ t
+<span class="input" contenteditable="true">(symbolp 'nil)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(symbolp nil)   ⇒ t
+<span class="input" contenteditable="true">(symbolp nil)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(symbolp '())   ⇒ t
+<span class="input" contenteditable="true">(symbolp '())</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(symbolp '*pi*) ⇒ t
+<span class="input" contenteditable="true">(symbolp '*pi*)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(symbolp *pi*)  ⇒ nil
+<span class="input" contenteditable="true">(symbolp *pi*)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 </pre>
             
             <h4 id="symbol_names">Symbol names</h4>
             
-            <p>Symbols can be either named or unnamed.</p>
-            <p>There is a mapping from names to symbols. Distinct symbols (symbols that are not eq) always have distinct names. No such mapping is defined for unnamed symbols.</p>
+            <p>Symbols can be either <span class="term">named</span> or <span class="term">unnamed</span>.</p>
+            <p>There is a mapping from names to symbols. Distinct symbols (symbols that are not <span class="terminal">eq</span>) always have distinct names. No such mapping is defined for unnamed symbols.</p>
             <p>The name of a symbol is represented as a string.</p>
             
             <h5 id="notation_for_symbols">Notation for symbols</h5>
             
-            <p>The constituent characters of a symbol's name are described in §6.</p>
-            <p>A named symbol is denoted by its print name enclosed within the vertical bars (“|”). However, the enclosing vertical bars are not necessary if the symbol satisfies the following conditions:</p>
+            <p>The constituent characters of a symbol's name are described in <a href="#lexemes">§6</a>.</p>
+            <p>A named symbol is denoted by its print name enclosed within the vertical bars (“<span class="terminal">|</span>”). However, the enclosing vertical bars are not necessary if the symbol satisfies the following conditions:</p>
             <ol>
                 <li>
                     <p>The symbol's print name consists only of neutral alphabetic characters (see <a href="#alphabetic_case_in_symbol_names">§18.1.2</a>) or the following additional characters:</p>
@@ -2858,7 +2858,7 @@ Where:
 </pre>
             <p>If the symbol name contains a vertical bar, the vertical bar must be preceded by a backslash <q>\</q>. If the symbol name contains a backslash, the backslash must be preceded by another backslash. For example, <q>|\\\\\|\\\||</q> denotes a symbol whose name is a 5 character string containing backslash, backslash, vertical bar, backslash, vertical bar.</p>
             <div class="note">Note: All required symbols can be written without vertical bars.</div>
-            <p id="rest_66">It is <a href="#td_implementation_defined">implementation defined</a> whether the names of symbols can contain colon (:) or ampersand (&amp;). Consequently, whether &amp;rest and keywords (<span class="latin">e.g.</span>, :rest, :before, and :after) are represented as symbols or something else is <a href="#td_implementation_defined">implementation defined</a>.</p>
+            <p id="rest_66">It is <a href="#td_implementation_defined">implementation defined</a> whether the names of symbols can contain colon (:) or ampersand (&amp;). Consequently, whether &amp;rest and keywords (<span class="latin">e.g.</span>, <span class="terminal">:rest</span>, <span class="terminal">:before</span>, and <span class="terminal">:after</span>) are represented as symbols or something else is <a href="#td_implementation_defined">implementation defined</a>.</p>
             
             <h5 id="alphabetic_case_in_symbol_names">Alphabetic case in symbol names</h5>
             <p>If the enclosing vertical bars are omitted, the case of alphabetic characters in a symbol is translated by the reader to a canonical case that is used internally. Therefore, for example, each of the following denotes the same symbol in all implementations:</p>
@@ -2873,7 +2873,7 @@ Where:
                 <li>FOO</li>
             </ul>
             <p>Internally, alphabetic case in a symbol's print name is maintained, and is significant. For example, |FOO| and |foo| are not the same symbol in any implementation. However, the reader canonicalizes the case of symbols whose names are not written enclosed by vertical bars. So foo and FOO both represent the same symbol, but it is <a href="#td_implementation_defined">implementation defined</a> whether that symbol is |foo| or |FOO|.</p>
-            <p id="neutral_alphabetic_case">Specifically, each implementation has an <a href="#td_implementation_defined">implementation-defined</a> attribute called its neutral alphabetic case, which is either <q>lowercase</q> or <q>uppercase.</q> If the neutral alphabetic case of an implementation is lowercase, the neutral alphabetic characters for that implementation are defined to be as follows:</p>
+            <p id="neutral_alphabetic_case">Specifically, each implementation has an <a href="#td_implementation_defined">implementation-defined</a> attribute called its <span class="term">neutral alphabetic case</span>, which is either <q>lowercase</q> or <q>uppercase.</q> If the neutral alphabetic case of an implementation is lowercase, the <span class="term">neutral alphabetic characters</span> for that implementation are defined to be as follows:</p>
 <pre>a b c d e f g h i j k l m n o p q r s t u v w x y z</pre>
             <p>Otherwise (if the neutral alphabetic case of an implementation is uppercase), the neutral alphabetic characters for that implementation are defined to be as follows:</p>
 <pre>A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</pre>
@@ -2881,19 +2881,19 @@ Where:
             <p>An implementation may extend the set of neutral alphabetic characters to include additional <a href="#td_implementation_defined">implementation-defined</a> characters.</p>
             
             <h5 id="nil_and">nil and ()</h5>
-            <p>The symbol nil, which represents both the false value and the empty list, can also be denoted by ().</p>
+            <p>The symbol <span class="terminal">nil</span>, which represents both the false value and the empty list, can also be denoted by ().</p>
             
             
             <h4 id="symbol_properties">Symbol properties</h4>
             
-            <p>A property of a symbol is a named association between a property indicator and a property value. A symbol s is said to have a property p if a property indicator p is associated with s.</p>
+            <p>A <span class="term">property</span> of a symbol is a named association between a <span class="term">property indicator</span> and a <span class="term">property value</span>. A symbol s is said to have a property <span class="nonterminal">p</span> if <span class="nonterminal">a</span> property indicator <span class="nonterminal">p</span> is associated with <span class="nonterminal">s</span>.</p>
             <div id="f_property" class="definition-function">
                 (<span class="operator">property</span> <span class="arg">symbol</span> <span class="arg">property-name</span> [<span class="arg">obj</span>]) → <span class="class">object</span>
             </div>
-            <p>Returns the value of the property named property-name associated with the symbol symbol . If symbol has no property named property-name, obj (which defaults to nil) is returned.</p>
+            <p>Returns the value of the property named <span class="nonterminal">property-name</span> associated with the symbol <span class="nonterminal">symbol</span>. If <span class="nonterminal">symbol</span> has no property named <span class="nonterminal">property-name</span>, <span class="nonterminal">obj</span> (which defaults to <span class="terminal">nil</span>) is returned.</p>
             <p>An error shall be signaled if either symbol or property-name is not a symbol (error-id. <span class="error_id">domain-error</span>). obj may be any ISLISP object</p>
 <pre class="example">
-(property 'zeus 'daughter) ⇒ athena
+<span class="input" contenteditable="true">(property 'zeus 'daughter)</span><button class="eval"> ⇒ </button><span class="output">athena</span>
 </pre>
             <div id="s_setf_property" class="definition-special-form">
                 (<span class="operator">setf</span> (<span class="operator">property</span> <span class="arg">symbol</span> <span class="arg">property-name</span>) <span class="arg">obj</span>) → <span class="class">object</span>
@@ -2901,24 +2901,22 @@ Where:
             <div id="f_set_property" class="definition-function">
                 (<span class="operator">set-property</span> <span class="arg">obj</span> <span class="arg">symbol</span> <span class="arg">property-name</span>) → <span class="class">object</span>
             </div>
-            <p>Causes obj to be the new value of the property named property-name asssociated with the symbol symbol . If the property named property-name already exists, its corresponding property value is replaced; otherwise, a new property is created. obj is returned.</p>
+            <p>Causes <span class="nonterminal">obj</span> to be the new value of the property named <span class="nonterminal">property-name</span> asssociated with the symbol <span class="nonterminal">symbol</span>. If the property named <span class="nonterminal">property-name</span> already exists, its corresponding property value is replaced; otherwise, a new property is created. <span class="nonterminal">obj</span> is returned.</p>
             <p>An error shall be signaled if either symbol or property-name is not a symbol (error-id. <span class="error_id">domain-error</span>). obj may be any ISLISP object</p>
             
 <pre class="example">
-(setf (property 'zeus 'daughter) 'athena)
-⇒ athena
+<span class="input" contenteditable="true">(setf (property 'zeus 'daughter) 'athena)</span><button class="eval"> ⇒ </button><span class="output">athena</span>
 
-(set-property 'athena 'zeus 'daughter)
-⇒ athena
+<span class="input" contenteditable="true">(set-property 'athena 'zeus 'daughter)</span><button class="eval"> ⇒ </button><span class="output">athena</span>
 </pre>
             <div id="f_remove_property" class="definition-function">
                 (<span class="operator">remove-property</span> <span class="arg">symbol</span> <span class="arg">property-name</span>) → <span class="class">object</span>
             </div>
             
-            <p>Removes the property property-name associated with symbol and returns the property value of the removed property if there is such a property. If there is no such property, nil is returned.</p>
-            <p>An error shall be signaled if either symbol or property-name is not a symbol (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>Removes the property <span class="nonterminal">property-name</span> associated with <span class="nonterminal">symbol</span> and returns the property value of the removed property if there is such a property. If there is no such property, <span class="terminal">nil</span> is returned.</p>
+            <p>An error shall be signaled if either <span class="nonterminal">symbol</span> or <span class="nonterminal">property-name</span> is not a symbol (error-id. <span class="error_id">domain-error</span>).</p>
 <pre class="example">
-(remove-property 'zeus 'daughter) ⇒ athena
+<span class="input" contenteditable="true">(remove-property 'zeus 'daughter)</span><button class="eval"> ⇒ </button><span class="output">athena</span>
 </pre>
             
             <h4 id="unnamed_symbols">Unnamed symbols</h4>
@@ -2926,7 +2924,7 @@ Where:
                 (<span class="operator">gensym</span>) → <span class="class">symbol</span>
             </div>
             
-            <p>Returns an unnamed symbol. gensym is useful for writing macros. It is impossible for an identifier to name an unnamed symbol.</p>
+            <p>Returns an unnamed symbol. <span class="terminal">gensym</span> is useful for writing macros. It is impossible for an identifier to name an unnamed symbol.</p>
 <pre class="example">
 (defmacro twice (x)
   (let ((v (gensym)))
