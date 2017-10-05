@@ -4608,13 +4608,13 @@ array1
             <p>An error shall be signaled if <span class="nonterminal">sequence</span> is not a basic-vector or a list (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
-(length '(a b c))          ⇒ 3
+<span class="input" contenteditable="true">(length '(a b c))</span><button class="eval"> ⇒ </button><span class="output">3</span>
 
-(length '(a (b) (c d e)))  ⇒ 3
+<span class="input" contenteditable="true">(length '(a (b) (c d e)))</span><button class="eval"> ⇒ </button><span class="output">3</span>
 
-(length '())               ⇒ 0
+<span class="input" contenteditable="true">(length '())</span><button class="eval"> ⇒ </button><span class="output">0</span>
 
-(length (vector 'a 'b 'c)) ⇒ 3
+<span class="input" contenteditable="true">(length (vector 'a 'b 'c))</span><button class="eval"> ⇒ </button><span class="output">3</span>
 </pre>
             
             <div id="f_elt" class="definition-function">
@@ -4624,11 +4624,11 @@ array1
             <p>Given a <span class="nonterminal">sequence</span> and an integer <span class="nonterminal">z</span> satisfying 0 ≤ <span class="nonterminal">z</span> &lt; (<span class="terminal">length sequence</span>), <span class="terminal">elt</span> returns the element of <span class="nonterminal">sequence</span> that has index <span class="nonterminal">z</span>. Indexing is 0-based; <span class="latin">i.e.</span>, <span class="nonterminal">z</span> = 0 designates the first element. An error shall be signaled if <span class="nonterminal">z</span> is an integer outside of the mentioned range (error-id. <span class="error_id">index-out-of-range</span>).</p>
             <p>An error shall be signaled if <span class="nonterminal">sequence</span> is not a basic-vector or a list or if <span class="nonterminal">z</span> is not an integer (error-id. <span class="error_id">domain-error</span>).</p>
 <pre class="example">
-(elt '(a b c) 2)          ⇒ c
+<span class="input" contenteditable="true">(elt '(a b c) 2)</span><button class="eval"> ⇒ </button><span class="output">c</span>
 
-(elt (vector 'a 'b 'c) 1) ⇒ b
+<span class="input" contenteditable="true">(elt (vector 'a 'b 'c) 1)</span><button class="eval"> ⇒ </button><span class="output">b</span>
 
-(elt "abc" 0)             ⇒ #\a
+<span class="input" contenteditable="true">(elt "abc" 0)</span><button class="eval"> ⇒ </button><span class="output">#\a</span>
 </pre>
             
             <div id="s_setf_elt" class="definition-special-form">
@@ -4656,12 +4656,11 @@ array1
             <p>Given a sequence <span class="nonterminal">sequence</span> and two integers <span class="nonterminal">z<sub>1</sub></span> and <span class="nonterminal">z<sub>2</sub></span> satisfying 0 ≤ <span class="nonterminal">z<sub>1</sub></span> ≤ <span class="nonterminal">z<sub>2</sub></span> ≤ (<span class="terminal">length</span> <span class="nonterminal">sequence</span>), this function returns the subsequence of length <span class="nonterminal">z<sub>2</sub></span> − <span class="nonterminal">z<sub>1</sub></span>, containing the elements with indices from <span class="nonterminal">z<sub>1</sub></span> (inclusive) to <span class="nonterminal">z<sub>2</sub></span> (exclusive). The subsequence is newly allocated, and has the same class as <span class="nonterminal">sequence</span>.</p>
             <p>An error shall be signaled if the requested subsequence cannot be allocated (error-id. <span class="error_id">cannot-create-sequence</span>). An error shall be signaled if <span class="nonterminal">z<sub>1</sub></span> or <span class="nonterminal">z<sub>2</sub></span> are outside of the bounds mentioned (error-id. <span class="error_id">index-out-of-range</span>). An error shall be signaled if <span class="nonterminal">sequence</span> is not a basic-vector or a list, or if <span class="nonterminal">z<sub>1</sub></span> is not an integer, or if <span class="nonterminal">z<sub>2</sub></span> is not an integer (error-id. <span class="error_id">domain-error</span>).</p>
 <pre class="example">
-(subseq "abcdef" 1 4)              ⇒ "bcd"
+<span class="input" contenteditable="true">(subseq "abcdef" 1 4)</span><button class="eval"> ⇒ </button><span class="output">"bcd"</span>
 
-(subseq '(a b c d e f) 1 4)        ⇒ (b c d)
+<span class="input" contenteditable="true">(subseq '(a b c d e f) 1 4)</span><button class="eval"> ⇒ </button><span class="output">(b c d)</span>
 
-(subseq (vector 'a 'b 'c 'd 'e 'f) 1 4)
-⇒ #(b c d)
+<span class="input" contenteditable="true">(subseq (vector 'a 'b 'c 'd 'e 'f) 1 4)</span><button class="eval"> ⇒ </button><span class="output">#(b c d)</span>
 </pre>
             
             <div id="f_map_into" class="definition-function">
@@ -4705,12 +4704,12 @@ a                           ⇒ (2 4 6 8)
                 (<span class="operator">streamp</span> <span class="arg">obj</span>) → <span class="nonterminal">boolean</span>
             </div>
             
-            <p>Returns t if obj is a stream (instance of class <span class="class">stream</span>); otherwise, returns nil. obj may be any ISLISP object. streamp is unaffected by whether its argument, if an instance of the class <span class="class">stream</span>, is open or closed.</p>
+            <p>Returns <span class="terminal">t</span> if <span class="nonterminal">obj</span> is a stream (instance of class <span class="class">stream</span>); otherwise, returns <span class="terminal">nil</span>. <span class="nonterminal">obj</span> may be any ISLISP object. <span class="terminal">streamp</span> is unaffected by whether its argument, if an instance of the class <span class="class">stream</span>, is open or closed.</p>
             
 <pre class="example">
-(streamp (standard-input)) ⇒ t
+<span class="input" contenteditable="true">(streamp (standard-input))</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(streamp '())              ⇒ nil
+<span class="input" contenteditable="true">(streamp '())</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 </pre>
             
             <div id="f_open_stream_p" class="definition-function">
@@ -4723,27 +4722,27 @@ a                           ⇒ (2 4 6 8)
                 (<span class="operator">input-stream-p</span> <span class="arg">obj</span>) → <span class="nonterminal">boolean</span>
             </div>
             
-            <p>Returns t if obj is a stream that can handle input operations; otherwise, returns nil.</p>
+            <p>Returns <span class="terminal">t</span> if <span class="nonterminal">obj</span> is a stream that can handle input operations; otherwise, returns <span class="terminal">nil</span>.</p>
 <pre class="example">
-(input-stream-p (standard-input))  ⇒ t
+<span class="input" contenteditable="true">(input-stream-p (standard-input))</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(input-stream-p (standard-output)) ⇒ nil
+<span class="input" contenteditable="true">(input-stream-p (standard-output))</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(input-stream-p '(a b c))          ⇒ nil
+<span class="input" contenteditable="true">(input-stream-p '(a b c))</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 </pre>
             
             <div id="f_output_stream_p" class="definition-function">
                 (<span class="operator">output-stream-p</span> <span class="arg">obj</span>) → <span class="nonterminal">boolean</span>
             </div>
             
-            <p>Returns t if obj is a stream that can handle output operations; otherwise, returns nil.</p>
+            <p>Returns <span class="terminal">t</span> if <span class="nonterminal">obj</span> is a stream that can handle output operations; otherwise, returns <span class="terminal">nil</span>.</p>
             
 <pre class="example">
-(output-stream-p (standard-output)) ⇒ t
+<span class="input" contenteditable="true">(output-stream-p (standard-output))</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(output-stream-p (standard-input))  ⇒ nil
+<span class="input" contenteditable="true">(output-stream-p (standard-input))</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(output-stream-p "hello")           ⇒ nil
+<span class="input" contenteditable="true">(output-stream-p "hello")</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 </pre>
             
             <div id="f_standard_input" class="definition-function">
@@ -4756,10 +4755,10 @@ a                           ⇒ (2 4 6 8)
                 (<span class="operator">error-output</span>) → <span class="class">stream</span>
             </div>
             
-            <p>The function standard-input returns the stream used as the default stream for input functions.</p>
-            <p>The function standard-output returns the stream used as the default stream for output functions.</p>
-            <p>The function error-output returns the stream used as the default stream for warnings and non-interactive error messages.</p>
-            <p>The value returned by each of these functions is initially <a href="#td_implementation_defined">implementation-defined</a>, but can be dynamically bound; see with-standard-input, with-standard-output, and with-error-output.</p>
+            <p>The function <span class="terminal">standard-input</span> returns the stream used as the default stream for input functions.</p>
+            <p>The function <span class="terminal">standard-output</span> returns the stream used as the default stream for output functions.</p>
+            <p>The function <span class="terminal">error-output</span> returns the stream used as the default stream for warnings and non-interactive error messages.</p>
+            <p>The value returned by each of these functions is initially <a href="#td_implementation_defined">implementation-defined</a>, but can be dynamically bound; see <a href="#s_with_standard_input"><span class="terminal">with-standard-input</span></a>, <a href="#s_with_standard_output"><span class="terminal">with-standard-output</span></a>, and <a href="#s_with_error_output"><span class="terminal">with-error-output</span></a>.</p>
             
             <div id="s_with_standard_input" class="definition-special">
                 (<span class="operator">with-standard-input</span> <span class="arg">stream-form</span> <span class="arg">form</span>*) → <span class="class">object</span>
@@ -4771,7 +4770,7 @@ a                           ⇒ (2 4 6 8)
                 (<span class="operator">with-error-output</span> <span class="arg">stream-form</span> <span class="arg">form</span>*) → <span class="class">object</span>
             </div>
             
-            <p>These special forms first evaluate their stream-form argument to produce a stream s and then evaluate their body forms in a dynamic environment where the corresponding function (standard-input, standard-output, or error-output) returns the stream s. The returned value of each of these forms is the result of the evaluation of the last form of their body (or nil if there is none).</p>
+            <p>These special forms first evaluate their <span class="nonterminal">stream-form</span> argument to produce a stream <span class="nonterminal">s</span> and then evaluate their body <span class="nonterminal">forms</span> in a dynamic environment where the corresponding function (<span class="terminal">standard-input</span>, <span class="terminal">standard-output</span>, or <span class="terminal">error-output</span>) returns the stream <span class="nonterminal">s</span>. The returned value of each of these <span class="nonterminal">forms</span> is the result of the evaluation of the last <span class="nonterminal">form</span> of their body (or <span class="terminal">nil</span> if there is none).</p>
             
 <pre class="example">
 (with-standard-input (create-string-input-stream "this is a string")
@@ -4783,8 +4782,8 @@ a                           ⇒ (2 4 6 8)
             
             <p>Streams might be connected to files or devices. Given a name, a stream can be created that is connected to a file having that name. File systems in which files are not named are not supported.
             </p>
-            <p>A filename is represented by a string. The correct syntax of filenames is <a href="#td_implementation_defined">implementation defined</a>.</p>
-            <p>Streams to files are created by open-input-file, open-output-file, open-io-file, with-open-input-file, with-open-output-file, and with-open-io-file.</p>
+            <p>A <span class="term">filename</span> is represented by a string. The correct syntax of filenames is <a href="#td_implementation_defined">implementation defined</a>.</p>
+            <p>Streams to files are created by <span class="terminal">open-input-file</span>, <span class="terminal">open-output-file</span>, <span class="terminal">open-io-file</span>, <span class="terminal">with-open-input-file</span>, <span class="terminal">with-open-output-file</span>, and <span class="terminal">with-open-io-file</span>.</p>
             
             <div id="f_open_input_file" class="definition-function">
                 (<span class="operator">open-input-file</span> <span class="arg">filename</span> [<span class="arg">element-class</span>]) → <span class="class">stream</span>
@@ -4796,9 +4795,9 @@ a                           ⇒ (2 4 6 8)
                 (<span class="operator">open-io-file</span> <span class="arg">filename</span> [<span class="arg">element-class</span>]) → <span class="class">stream</span>
             </div>
             
-            <p>open-input-file opens a file for input only. open-output-file opens a file for output only. open-io-file opens a file for both input and output.</p>
-            <p>An error shall be signaled if filename is not a string. The corresponding file is opened in an <a href="#td_implementation_defined">implementation-defined</a> way. These functions return an instance of the <span class="class">stream</span> class connected to the file specified by filename.</p>
-            <p>The element-class can be either the class <span class="class">character</span> (the default) or a positive integer that is a number of bits in a byte to be used for a binary stream. All implementations must support a value of 8 (denoting integer byte values from 0 to 255), but some implementations might support other byte sizes as well.</p>
+            <p><span class="terminal">open-input-file</span> opens a file for input only. <span class="terminal">open-output-file</span> opens a file for output only. <span class="terminal">open-io-file</span> opens a file for both input and output.</p>
+            <p>An error shall be signaled if <span class="nonterminal">filename</span> is not a string. The corresponding file is opened in an <a href="#td_implementation_defined">implementation-defined</a> way. These functions return an instance of the <span class="class">stream</span> class connected to the file specified by <span class="nonterminal">filename</span>.</p>
+            <p>The <span class="nonterminal">element-class</span> can be either the class <span class="class">character</span> (the default) or a positive integer that is a number of bits in a byte to be used for a binary stream. All implementations must support a value of 8 (denoting integer byte values from 0 to 255), but some implementations might support other byte sizes as well.</p>
             <div class="note">Note: When a binary stream is used, the order of bits within bytes and bytes within words (<span class="latin">i.e.</span>, whether it is right to left or left to right) are each <a href="#td_implementation_defined">implementation defined</a>.</div>
             
 <pre class="example">
@@ -4816,8 +4815,8 @@ a                           ⇒ (2 4 6 8)
                 (<span class="operator">with-open-input-file</span> (<span class="arg">name</span> <span class="arg">filename</span> [<span class="arg">element-class</span>]) <span class="arg">form</span>*) → <span class="class">object</span>
             </div>
             
-            <p>Each of these special forms opens a stream to a file (using open-input-file, open-output-file, or open-io-file, respectively), evaluates the forms, closes the file, and returns the value returned by the last form (or nil if there are no forms).</p>
-            <p>The filename and element-class are evaluated and passed as arguments to the appropriate file-opening function. The stream created by opening the file is bound to the variable named by name (as if a let was used), so the identifier name can be used to refer to the stream.</p>
+            <p>Each of these special forms opens a stream to a file (using <span class="terminal">open-input-file</span>, <span class="terminal">open-output-file</span>, or <span class="terminal">open-io-file</span>, respectively), evaluates the <span class="nonterminal">forms</span>, closes the file, and returns the value returned by the last <span class="nonterminal">form</span> (or <span class="terminal">nil</span> if there are no forms).</p>
+            <p>The <span class="nonterminal">filename</span> and <span class="nonterminal">element-class</span> are evaluated and passed as arguments to the appropriate file-opening function. The stream created by opening the file is bound to the variable named by <span class="nonterminal">name</span> (as if a let was used), so the identifier <span class="nonterminal">name</span> can be used to refer to the stream.</p>
             <p>The stream is closed on exit, whether or not exit from these special forms is normal. For this reason, these special forms are usually preferred over the corresponding functions for opening and closing files.</p>
             
 <pre class="example">
@@ -4834,7 +4833,7 @@ a                           ⇒ (2 4 6 8)
                 (<span class="operator">close</span> <span class="arg">stream</span>) → <a href="#td_implementation_defined">implementation defined</a>
             </div>
             
-            <p>The function close closes the stream stream. If stream is closed it may no longer be used in input or output operations. Closing a file stream ends the association between the stream and its file. If the stream was already closed this function performs nothing. The result value is <a href="#td_implementation_defined">implementation defined</a>. An error shall be signaled if stream is not a stream (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>The function <span class="terminal">close</span> closes the stream <span class="nonterminal">stream</span>. If <span class="nonterminal">stream</span> is closed it may no longer be used in input or output operations. Closing a file stream ends the association between the stream and its file. If the stream was already closed this function performs nothing. The result value is <a href="#td_implementation_defined">implementation defined</a>. An error shall be signaled if stream is not a stream (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
 (defglobal input-str (open-input-file "data.lsp"))
@@ -4849,7 +4848,7 @@ a                           ⇒ (2 4 6 8)
                 (<span class="operator">finish-output</span> <span class="arg">stream</span>) → <span class="class">null</span>
             </div>
             
-            <p>Completes any pending output to the destination designated by stream. Waits until the pending output is complete and then returns nil. For instance, pending output might be stored in a buffer; in this case finish-output forces the buffer to be written to the stream's destination. An error shall be signaled if stream is not a stream that can handle output operations (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>Completes any pending output to the destination designated by <span class="nonterminal">stream</span>. Waits until the pending output is complete and then returns <span class="terminal">nil</span>. For instance, pending output might be stored in a buffer; in this case <span class="terminal">finish-output</span> forces the buffer to be written to the stream's destination. An error shall be signaled if stream is not a stream that can handle output operations (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
 (defglobal output-str (open-output-file "data.lsp"))
@@ -4882,7 +4881,7 @@ a                           ⇒ (2 4 6 8)
                 (<span class="operator">create-string-output-stream</span>) → <span class="class">stream</span>
             </div>
             
-            <p>This function creates and returns a string output stream. The output to a string stream can be retrieved by get-output-stream-string.</p>
+            <p>This function creates and returns a string output stream. The output to a string stream can be retrieved by <span class="terminal">get-output-stream-string</span>.</p>
             
 <pre class="example">
 (let ((str (create-string-output-stream)))
@@ -4895,7 +4894,7 @@ a                           ⇒ (2 4 6 8)
             <div id="f_get_output_stream_string" class="definition-function">
                 (<span class="operator">get-output-stream-string</span> <span class="arg">stream</span>) → <span class="class">string</span>
             </div>
-            <p>Returns a string containing all characters written to stream since the last call to this function or since the creation of the stream, if this function has not been called with stream before. An error shall be signaled if stream is not a stream created with create-string-output-stream (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>Returns a string containing all characters written to <span class="nonterminal">stream</span> since the last call to this function or since the creation of the <span class="nonterminal">stream</span>, if this function has not been called with <span class="nonterminal">stream</span> before. An error shall be signaled if stream is not a stream created with <span class="terminal">create-string-output-stream</span> (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
 (let ((out-str (create-string-output-stream)))
