@@ -2941,31 +2941,31 @@ Where:
                 (<span class="operator">numberp</span> <span class="arg">obj</span>) → <span class="nonterminal">boolean</span>
             </div>
             
-            <p>Returns t if obj is a number (instance of class <span class="class">number</span>); otherwise, returns nil. The obj may be any ISLISP object.</p>
+            <p>Returns <span class="terminal">t</span> if <span class="nonterminal">obj</span> is a number (instance of class <span class="class">number</span>); otherwise, returns <span class="terminal">nil</span>. The <span class="nonterminal">obj</span> may be any ISLISP object.</p>
 <pre class="example">
-(numberp 3)        ⇒ t
+<span class="input" contenteditable="true">(numberp 3)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(numberp -0.3)     ⇒ t
+<span class="input" contenteditable="true">(numberp -0.3)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(numberp '(a b c)) ⇒ nil
+<span class="input" contenteditable="true">(numberp '(a b c))</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(numberp "17")     ⇒ nil
+<span class="input" contenteditable="true">(numberp "17")</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 </pre>
             
             <div id="f_parse_number" class="definition-function">
                 (<span class="operator">parse-number</span> <span class="arg">string</span>) → <span class="class">number</span>
             </div>
             
-            <p>The characters belonging to string are scanned (as if by read) and if the resulting lexeme is the textual representation of a number, the number it represents is returned.</p>
-            <p>An error shall be signaled if string is not a string (error-id. <span class="error_id">domain-error</span>). An error shall be signaled if string is not the textual representation of a number (error-id. <span class="error_id">cannot-parse-number</span>).</p>
+            <p>The characters belonging to <span class="nonterminal">string</span> are scanned (as if by <a href="#f_read"><span class="terminal">read</span></a>) and if the resulting lexeme is the textual representation of a number, the number it represents is returned.</p>
+            <p>An error shall be signaled if <span class="nonterminal">string</span> is not a string (error-id. <span class="error_id">domain-error</span>). An error shall be signaled if <span class="nonterminal">string</span> is not the textual representation of a number (error-id. <span class="error_id">cannot-parse-number</span>).</p>
 <pre class="example">
-(parse-number "123.34") ⇒ 123.34
+<span class="input" contenteditable="true">(parse-number "123.34")</span><button class="eval"> ⇒ </button><span class="output">123.34</span>
 
-(parse-number "#XFACE") ⇒ 64206
+<span class="input" contenteditable="true">(parse-number "#XFACE")</span><button class="eval"> ⇒ </button><span class="output">64206</span>
 
-(parse-number "-37.")   an error shall be signaled
+<span class="input" contenteditable="true">(parse-number "-37.")</span><button class="eval"> ⇒ </button><span class="output">an error shall be signaled</span>
 
-(parse-number "-.5")    an error shall be signaled
+<span class="input" contenteditable="true">(parse-number "-.5")</span><button class="eval"> ⇒ </button><span class="output">an error shall be signaled</span>
 
 since floating-point number lexemes have
 at least one mantissa digit before and at least
@@ -2976,29 +2976,29 @@ one mantissa digit after the decimal point.
                 (<span class="operator">=</span> <span class="arg">x<sub>1</sub></span> <span class="arg">x<sub>2</sub></span>) → <span class="nonterminal">boolean</span>
             </div>
             
-            <p>Returns t if x<sub>1</sub> has the same mathematical value as x<sub>2</sub> ; otherwise, returns nil. An error shall be signaled if either x<sub>1</sub> or x<sub>2</sub> is not a number (error-id. <span class="error_id">domain-error</span>).</p>
-            <div class="note">Note: = differs from eql because = compares only the mathematical values of its arguments, whereas eql also compares the representations.</div>
+            <p>Returns <span class="terminal">t</span> if <span class="nonterminal">x<sub>1</sub></span> has the same mathematical value as <span class="nonterminal">x<sub>2</sub></span>; otherwise, returns <span class="terminal">nil</span>. An error shall be signaled if either <span class="nonterminal">x<sub>1</sub></span> or <span class="nonterminal">x<sub>2</sub></span> is not a number (error-id. <span class="error_id">domain-error</span>).</p>
+            <div class="note">Note: <span class="terminal">=</span> differs from <span class="terminal">eql</span> because <span class="terminal">=</span> compares only the mathematical values of its arguments, whereas <span class="terminal">eql</span> also compares the representations.</div>
 <pre class="example">
-(= 3 4)                            ⇒ nil
+<span class="input" contenteditable="true">(= 3 4)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(= 3 3.0)                          ⇒ t
+<span class="input" contenteditable="true">(= 3 3.0)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(= (parse-number "134.54") 134.54) ⇒ t
+<span class="input" contenteditable="true">(= (parse-number "134.54") 134.54)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(= 0.0 -0.0)                       ⇒ t
+<span class="input" contenteditable="true">(= 0.0 -0.0)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 </pre>
             
             <div id="f_math_neq" class="definition-function">
                 (<span class="operator">/=</span> <span class="arg">x1</span> <span class="arg">x2</span>) → <span class="nonterminal">boolean</span>
             </div>
             
-            <p>Returns t if x1 and x2 have mathematically distinct values; otherwise, returns nil. An error shall be signaled if either x1 or x2 is not a number (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>Returns <span class="terminal">t</span> if <span class="nonterminal">x<sub>1</sub></span> and <span class="nonterminal">x<sub>2</sub></span> have mathematically distinct values; otherwise, returns <span class="terminal">nil</span>. An error shall be signaled if either <span class="nonterminal">x<sub>1</sub></span> or <span class="nonterminal">x<sub>2</sub></span> is not a number (error-id. <span class="error_id">domain-error</span>).</p>
 <pre class="example">
-(/= 3 4)                            ⇒ t
+<span class="input" contenteditable="true">(/= 3 4)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(/= 3 3.0)                          ⇒ nil
+<span class="input" contenteditable="true">(/= 3 3.0)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(/= (parse-number "134.54") 134.54) ⇒ nil
+<span class="input" contenteditable="true">(/= (parse-number "134.54") 134.54)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 </pre>
             
             <div id="f_gteq" class="definition-function">
@@ -3014,33 +3014,33 @@ one mantissa digit after the decimal point.
                 (<span class="operator">&lt;</span> <span class="arg">x<sub>1</sub></span> <span class="arg">x<sub>2</sub></span>) → <span class="nonterminal">boolean</span>
             </div>
             
-            <p>&gt;= returns t if x<sub>1</sub> is greater than or = x<sub>2</sub> . &lt;= returns t if x<sub>1</sub> is less than or = x<sub>2</sub> . &gt; returns t if x<sub>1</sub> is greater than x<sub>2</sub>. &lt; returns t if x<sub>1</sub> is less than x<sub>2</sub>.</p>
-            <p>The mathematical values of the arguments are compared. An error shall be signaled if either x<sub>1</sub> or x<sub>2</sub> is not a number (error-id. <span class="error_id">domain-error</span>).</p>
+            <p><span class="terminal">&gt;=</span> returns <span class="terminal">t</span> if <span class="nonterminal">x<sub>1</sub></span> is greater than or <span class="terminal">=</span> <span class="nonterminal">x<sub>2</sub></span>. <span class="terminal">&lt;=</span> returns <span class="terminal">t</span> if <span class="nonterminal">x<sub>1</sub></span> is less than or <span class="terminal">=</span> <span class="nonterminal">x<sub>2</sub></span>. <span class="terminal">&gt;</span> returns <span class="terminal">t</span> if <span class="nonterminal">x<sub>1</sub></span> is greater than <span class="nonterminal">x<sub>2</sub></span>. <span class="terminal">&lt;</span> returns <span class="terminal">t</span> if <span class="nonterminal">x<sub>1</sub></span> is less than <span class="nonterminal">x<sub>2</sub></span>.</p>
+            <p>The mathematical values of the arguments are compared. An error shall be signaled if either <span class="nonterminal">x<sub>1</sub></span> or <span class="nonterminal">x<sub>2</sub></span> is not a number (error-id. <span class="error_id">domain-error</span>).</p>
 <pre class="example">
-(&gt; 2 2)    ⇒ nil
+<span class="input" contenteditable="true">(&gt; 2 2)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(&gt; 2.0 2)  ⇒ nil
+<span class="input" contenteditable="true">(&gt; 2.0 2)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(&gt; 2 -10)  ⇒ t
+<span class="input" contenteditable="true">(&gt; 2 -10)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(&gt; 100 3)  ⇒ t
+<span class="input" contenteditable="true">(&gt; 100 3)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(&lt; 2 2)    ⇒ nil
+<span class="input" contenteditable="true">(&lt; 2 2)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(&lt; 1 2)    ⇒ t
+<span class="input" contenteditable="true">(&lt; 1 2)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(&gt;= 2 2)   ⇒ t
+<span class="input" contenteditable="true">(&gt;= 2 2)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(&gt;= 2.0 2) ⇒ t
+<span class="input" contenteditable="true">(&gt;= 2.0 2)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(&gt;= -1 2)  ⇒ nil
+<span class="input" contenteditable="true">(&gt;= -1 2)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(&lt;= -1 2)  ⇒ t
+<span class="input" contenteditable="true">(&lt;= -1 2)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(&lt;= 2 -1)  ⇒ nil
+<span class="input" contenteditable="true">(&lt;= 2 -1)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 </pre>
             
-            <p>In the remaining definitions in this section, any noted coercion to <span class="class">float</span> is done as if by float or by (convert z <span class="class">float</span>).</p>
+            <p>In the remaining definitions in this section, any noted coercion to <span class="class">float</span> is done as if by <a href="#f_float"><span class="terminal">float</span></a> or by (<a href="#s_convert"><span class="terminal">convert</span></a> <span class="nonterminal">z</span> <span class="class">float</span>).</p>
             <div id="f_plus" class="definition-function">
                 (<span class="operator">+</span> <span class="arg">x</span>*) → <span class="class">number</span>
             </div>
@@ -3048,61 +3048,61 @@ one mantissa digit after the decimal point.
                 (<span class="operator">*</span> <span class="arg">x</span>*) → <span class="class">number</span>
             </div>
             
-            <p>The functions + and * return the sum and the product, respectively, of their arguments. If all arguments are integers, the result is an integer. If any argument is a ﬂoat, the result is a ﬂoat. When given no arguments, + returns 0 and * returns 1. An error shall be signaled if any x is not a number (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>The functions <span class="terminal">+</span> and <span class="terminal">*</span> return the sum and the product, respectively, of their arguments. If all arguments are integers, the result is an integer. If any argument is a ﬂoat, the result is a ﬂoat. When given no arguments, <span class="terminal">+</span> returns 0 and <span class="terminal">*</span> returns 1. An error shall be signaled if any <span class="nonterminal">x</span> is not a number (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
-(+ 12 3)   ⇒ 15
+<span class="input" contenteditable="true">(+ 12 3)</span><button class="eval"> ⇒ </button><span class="output">15</span>
 
-(+ 1 2 3)  ⇒ 6
+<span class="input" contenteditable="true">(+ 1 2 3)</span><button class="eval"> ⇒ </button><span class="output">6</span>
 
-(+ 12 3.0) ⇒ 15.0
+<span class="input" contenteditable="true">(+ 12 3.0)</span><button class="eval"> ⇒ </button><span class="output">15.0</span>
 
-(+ 4 0.0)  ⇒ 4.0
+<span class="input" contenteditable="true">(+ 4 0.0)</span><button class="eval"> ⇒ </button><span class="output">4.0</span>
 
-(+)        ⇒ 0
+<span class="input" contenteditable="true">(+)</span><button class="eval"> ⇒ </button><span class="output">0</span>
 
-(* 12 3)   ⇒ 36
+<span class="input" contenteditable="true">(* 12 3)</span><button class="eval"> ⇒ </button><span class="output">36</span>
 
-(* 12 3.0) ⇒ 36.0
+<span class="input" contenteditable="true">(* 12 3.0)</span><button class="eval"> ⇒ </button><span class="output">36.0</span>
 
-(* 4.0 0)  ⇒ 0.0
+<span class="input" contenteditable="true">(* 4.0 0)</span><button class="eval"> ⇒ </button><span class="output">0.0</span>
 
-(* 2 3 4)  ⇒ 24
+<span class="input" contenteditable="true">(* 2 3 4)</span><button class="eval"> ⇒ </button><span class="output">24</span>
 
-(*)        ⇒ 1
+<span class="input" contenteditable="true">(*)</span><button class="eval"> ⇒ </button><span class="output">1</span>
 </pre>
             
             <div id="f_minus" class="definition-function">
                 (<span class="operator">-</span> <span class="arg">x</span>+) → <span class="class">number</span>
             </div>
             
-            <p>Given one argument, x , this function returns its additive inverse. An error shall be signaled if x is not a number (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>Given one argument, <span class="nonterminal">x</span>, this function returns its additive inverse. An error shall be signaled if <span class="nonterminal">x</span> is not a number (error-id. <span class="error_id">domain-error</span>).</p>
             <p>If an implementation supports a -0.0 that is distinct from 0.0, then (- 0.0) returns -0.0; in implementations where -0.0 and 0.0 are not distinct, (- 0.0) returns 0.0.</p>
             
 <pre class="example">
-(- 1)              ⇒ -1
+<span class="input" contenteditable="true">(- 1)</span><button class="eval"> ⇒ </button><span class="output">-1</span>
 
-(- -4.0)           ⇒ 4.0
+<span class="input" contenteditable="true">(- -4.0)</span><button class="eval"> ⇒ </button><span class="output">4.0</span>
 
-(- 4.0)            ⇒ -4.0
+<span class="input" contenteditable="true">(- 4.0)</span><button class="eval"> ⇒ </button><span class="output">-4.0</span>
 
-(eql (- 0.0) -0.0) ⇒ t
+<span class="input" contenteditable="true">(eql (- 0.0) -0.0)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(eql (- -0.0) 0.0) ⇒ t
+<span class="input" contenteditable="true">(eql (- -0.0) 0.0)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 </pre>
             
-            <p>Given more than one argument, x<sub>1</sub> … x<sub>n</sub> , - returns their successive differences, x<sub>1</sub> −x<sub>2</sub> − … −x<sub>n</sub>. An error shall be signaled if any x is not a number (error-id. <span class="error_id">domain-error</span>).
+            <p>Given more than one argument, <span class="nonterminal">x<sub>1</sub></span> … <span class="nonterminal">x<sub>n</sub></span>, - returns their successive differences, <span class="nonterminal">x<sub>1</sub></span> − <span class="nonterminal">x<sub>2</sub></span> − … − <span class="nonterminal">x<sub>n</sub></span>. An error shall be signaled if any <span class="nonterminal">x</span> is not a number (error-id. <span class="error_id">domain-error</span>).
             </p>
 <pre class="example">
-(- 1 2)      ⇒ -1
+<span class="input" contenteditable="true">(- 1 2)</span><button class="eval"> ⇒ </button><span class="output">-1</span>
 
-(- 92 43)    ⇒ 49
+<span class="input" contenteditable="true">(- 92 43)</span><button class="eval"> ⇒ </button><span class="output">49</span>
 
-(- 2.3 -3.0) ⇒ 5.3
+<span class="input" contenteditable="true">(- 2.3 -3.0)</span><button class="eval"> ⇒ </button><span class="output">5.3</span>
 
-(- 0.0 0.0)  ⇒ 0.0
+<span class="input" contenteditable="true">(- 0.0 0.0)</span><button class="eval"> ⇒ </button><span class="output">0.0</span>
 
-(- 3 4 5)    ⇒ -6
+<span class="input" contenteditable="true">(- 3 4 5)</span><button class="eval"> ⇒ </button><span class="output">-6</span>
 </pre>
             
             <div id="f_quotient" class="definition-function">
