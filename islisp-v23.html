@@ -5192,7 +5192,7 @@ Output is: This is a tilde: ~
                 (<span class="operator">probe-file</span> <span class="arg">filename</span>) → <span class="nonterminal">boolean</span>
             </div>
             
-            <p>Returns t if the file specified by filename exists; otherwise, returns nil. An error shall be signaled if filename is not a string (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>Returns <span class="terminal">t</span> if the file specified by <span class="nonterminal">filename</span> exists; otherwise, returns <span class="terminal">nil</span>. An error shall be signaled if <span class="nonterminal">filename</span> is not a string (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
 (probe-file "notexist.lsp") ⇒ nil
@@ -5209,8 +5209,8 @@ Output is: This is a tilde: ~
                 (<span class="operator">file-position</span> <span class="arg">stream</span>) → <span class="class">integer</span>
             </div>
             
-            <p>Returns the file position associated with stream.</p>
-            <p>A file position is a non-negative integer that represents a position in the stream. For binary streams, the file position represents the number of preceding bytes in the stream. It is increased by one each time one of the following is done:</p>
+            <p>Returns the file position associated with <span class="nonterminal">stream</span>.</p>
+            <p>A file position is a non-negative integer that represents a position in the <span class="nonterminal">stream</span>. For binary streams, the file position represents the number of preceding bytes in the stream. It is increased by one each time one of the following is done:</p>
 <pre>
 (read-byte stream)
 
