@@ -588,7 +588,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
                 <dt class="classname" id="string11">String</dt>
                 <dd>A string is represented by the sequence of its characters enclosed in a pair of "'s. For example: "abc". Special characters are preceded with a backslash as an escape character.</dd>
                 <dt class="classname" id="symbol11">Symbol</dt>
-                <dd>A named symbol is represented by its print name. Vertical bars (|) might need to enclose the symbol if it contains certain special characters; see §18. The notation, if any, used for unnamed symbols is <a href="#td_implementation_defined">implementation defined</a>.</dd>
+                <dd>A named symbol is represented by its print name. Vertical bars (|) might need to enclose the symbol if it contains certain special characters; see <a href="#symbol_class">§18</a>. The notation, if any, used for unnamed symbols is <a href="#td_implementation_defined">implementation defined</a>.</dd>
             </dl>
             <p>There are objects which do not have a textual representation, such as a class or an instance of the <span class="class">function</span> class.</p>
             
@@ -3857,7 +3857,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
             <p>An error shall be signaled if either <span class="nonterminal">char<sub>1</sub></span> or <span class="nonterminal">char<sub>2</sub></span> is not a character (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
-<span class="input" contenteditable="true">(char= #\a #\a)</span><button class="eval"> ⇒ </button><span class="output">t
+<span class="input" contenteditable="true">(char= #\a #\a)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
 <span class="input" contenteditable="true">(char= #\a #\b)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
@@ -5210,7 +5210,7 @@ Output is: This is a tilde: ~
             </div>
             
             <p>Returns the file position associated with <span class="nonterminal">stream</span>.</p>
-            <p>A file position is a non-negative integer that represents a position in the <span class="nonterminal">stream</span>. For binary streams, the file position represents the number of preceding bytes in the stream. It is increased by one each time one of the following is done:</p>
+            <p>A file position is a non-negative integer that represents a position in the <span class="nonterminal">stream</span>. For binary streams, the file position represents the number of preceding bytes in the <span class="nonterminal">stream</span>. It is increased by one each time one of the following is done:</p>
 <pre>
 (read-byte stream)
 
@@ -5240,7 +5240,7 @@ Output is: This is a tilde: ~
 
 (read stream)
 </pre>
-            <p>The amount may depend on the output and on the file position itself. It is <a href="#td_implementation_defined">implementation-defined</a> which integer represents the first element of the file. An error shall be signaled if stream is not a stream to or from a file (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>The amount may depend on the output and on the file position itself. It is <a href="#td_implementation_defined">implementation-defined</a> which integer represents the first element of the file. An error shall be signaled if <span class="nonterminal">stream</span> is not a stream to or from a file (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
 ;; This example assumes 8-bit byte codes are stored in files.
@@ -5265,8 +5265,8 @@ Output is: This is a tilde: ~
                 (<span class="operator">set-file-position</span> <span class="arg">stream</span> <span class="arg">z</span>) → <span class="class">integer</span>
             </div>
             
-            <p>Attempts to change the file position (see file-position) of the stream stream to z . If it is not possible to move to the exact position z , some <a href="#td_implementation_defined">implementation-defined</a> motion within the file might still be performed. The value returned is the new file position, which might or might not be z.</p>
-            <p>An error shall be signaled if stream is not a stream to or from a file, or if z is not a non-negative integer (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>Attempts to change the file position (see <a href="#f_file_position"><span class="terminal">file-position</span></a>) of the stream <span class="nonterminal">stream</span> to <span class="nonterminal">z</span> . If it is not possible to move to the exact position <span class="nonterminal">z</span> , some <a href="#td_implementation_defined">implementation-defined</a> motion within the file might still be performed. The value returned is the new file position, which might or might not be <span class="nonterminal">z</span>.</p>
+            <p>An error shall be signaled if <span class="nonterminal">stream</span> is not a stream to or from a file, or if <span class="nonterminal">z</span> is not a non-negative integer (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
 (set-file-position example 4) ⇒ 4
@@ -5276,7 +5276,7 @@ Output is: This is a tilde: ~
                 (<span class="operator">file-length</span> <span class="arg">filename</span> <span class="arg">element-class</span>) → <span class="class">object</span>
             </div>
             
-            <p>Returns the length of the file named by filename, or returns nil if the length cannot be determined. The element-class determines the units. An error shall be signaled if filename is not a string (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>Returns the length of the file named by <span class="nonterminal">filename</span>, or returns <span class="terminal">nil</span> if the length cannot be determined. The <span class="nonterminal">element-class</span> determines the units. An error shall be signaled if <span class="nonterminal">filename</span> is not a string (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
 (file-length "file27.dat" 8)   ⇒ 25
