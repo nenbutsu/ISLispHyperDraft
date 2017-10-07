@@ -3112,26 +3112,26 @@ one mantissa digit after the decimal point.
                 (<span class="operator">reciprocal</span> <span class="arg">x</span>) → <span class="class">number</span>
             </div>
             
-            <p>The function reciprocal returns the reciprocal of its argument x ; that is, 1/x . An error shall be signaled if x is zero (error-id. <span class="error_id">division-by-zero</span>).</p>
-            <p>The function quotient, given two arguments dividend and divisor , returns the quotient of those numbers. The result is an integer if dividend and divisor are integers and divisor evenly divides dividend , otherwise it will be a ﬂoat.</p>
-            <p>Given more than two arguments, quotient operates iteratively on each of the divisor<sub>1</sub> … divisor<sub>n</sub> as in dividend /divisor<sub>1</sub> / … /divisor<sub>n</sub>. The type of the result follows from the two-argument case because the three-or-more-argument quotient can be defined as follows:</p>
+            <p>The function <span class="terminal">reciprocal</span> returns the reciprocal of its argument <span class="nonterminal">x</span>; that is, 1/<span class="nonterminal">x</span>. An error shall be signaled if <span class="nonterminal">x</span> is zero (error-id. <span class="error_id">division-by-zero</span>).</p>
+            <p>The function <span class="terminal">quotient</span>, given two arguments <span class="nonterminal">dividend</span> and <span class="nonterminal">divisor</span>, returns the quotient of those numbers. The result is an integer if <span class="nonterminal">dividend</span> and <span class="nonterminal">divisor</span> are integers and <span class="nonterminal">divisor</span> evenly divides <span class="nonterminal">dividend</span>, otherwise it will be a ﬂoat.</p>
+            <p>Given more than two arguments, <span class="terminal">quotient</span> operates iteratively on each of the <span class="nonterminal">divisor<sub>1</sub></span> … <span class="nonterminal">divisor<sub>n</sub></span> as in <span class="nonterminal">dividend</span> / <span class="nonterminal">divisor<sub>1</sub></span> / … / <span class="nonterminal">divisor<sub>n</sub></span>. The type of the result follows from the two-argument case because the three-or-more-argument quotient can be defined as follows:</p>
 <pre>
-(quotient dividend divisor<sub>1</sub> divisor<sub>2</sub> …)
-≡ (quotient (quotient dividend divisor<sub>1</sub>) divisor<sub>2</sub> …)
+(quotient <span class="nonterminal">dividend</span> <span class="nonterminal">divisor<sub>1</sub></span> <span class="nonterminal">divisor<sub>2</sub></span> …)
+≡ (quotient (quotient <span class="nonterminal">dividend</span> <span class="nonterminal">divisor<sub>1</sub></span>) <span class="nonterminal">divisor<sub>2</sub></span> …)
 </pre>
-            <p>An error shall be signaled if dividend is not a number (error-id. <span class="error_id">domain-error</span>). An error shall be signaled if any divisor is not a number (error-id. <span class="error_id">domain-error</span>). An error shall be signaled if any divisor is zero (error-id. <span class="error_id">division-by-zero</span>).</p>
+            <p>An error shall be signaled if <span class="nonterminal">dividend</span> is not a number (error-id. <span class="error_id">domain-error</span>). An error shall be signaled if any <span class="nonterminal">divisor</span> is not a number (error-id. <span class="error_id">domain-error</span>). An error shall be signaled if any <span class="nonterminal">divisor</span> is zero (error-id. <span class="error_id">division-by-zero</span>).</p>
 <pre class="example">
-(reciprocal 2)    ⇒ 0.5
+<span class="input" contenteditable="true">(reciprocal 2)</span><button class="eval"> ⇒ </button><span class="output">0.5</span>
 
-(quotient 10 5)   ⇒ 2
+<span class="input" contenteditable="true">(quotient 10 5)</span><button class="eval"> ⇒ </button><span class="output">2</span>
 
-(quotient 1 2)    ⇒ 0.5
+<span class="input" contenteditable="true">(quotient 1 2)</span><button class="eval"> ⇒ </button><span class="output">0.5</span>
 
-(quotient 2 -0.5) ⇒ -4.0
+<span class="input" contenteditable="true">(quotient 2 -0.5)</span><button class="eval"> ⇒ </button><span class="output">-4.0</span>
 
-(quotient 0 0.0)  an error shall be signaled
+<span class="input" contenteditable="true">(quotient 0 0.0)</span><button class="eval">  ⇒ </button><span class="output">an error shall be signaled</span>
 
-(quotient 2 3 4)  ⇒ 0.16666666666666666
+<span class="input" contenteditable="true">(quotient 2 3 4)</span><button class="eval"> ⇒ </button><span class="output">0.16666666666666666</span>
 </pre>
             
             <div id="f_max" class="definition-function">
@@ -3141,97 +3141,97 @@ one mantissa digit after the decimal point.
                 (<span class="operator">min</span> <span class="arg">x</span>+) → <span class="class">number</span>
             </div>
             
-            <p>The function min returns the least (closest to negative infinity) of its arguments. The comparison is done by &lt;.</p>
-            <p>The function max returns the greatest (closest to positive infinity) of its arguments. The comparison is done by &gt;.</p>
-            <p>An error shall be signaled if any x is not a number (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>The function <span class="terminal">min</span> returns the least (closest to negative infinity) of its arguments. The comparison is done by <span class="terminal">&lt;</span>.</p>
+            <p>The function <span class="terminal">max</span> returns the greatest (closest to positive infinity) of its arguments. The comparison is done by <span class="terminal">&gt;</span>.</p>
+            <p>An error shall be signaled if any <span class="nonterminal">x</span> is not a number (error-id. <span class="error_id">domain-error</span>).</p>
 <pre class="example">
-(max -5 3)       ⇒ 3
+<span class="input" contenteditable="true">(max -5 3)</span><button class="eval"> ⇒ </button><span class="output">3</span>
 
-(max 2.0 3)      ⇒ 3
+<span class="input" contenteditable="true">(max 2.0 3)</span><button class="eval"> ⇒ </button><span class="output">3</span>
 
-(max 2 2.0)      ⇒ 2 or 2.0 (<a href="#td_implementation_defined">implementation-defined</a>)
+<span class="input" contenteditable="true">(max 2 2.0)</span><button class="eval"> ⇒ </button><span class="output">2 or 2.0</span> (<a href="#td_implementation_defined">implementation-defined</a>)
 
-(max 1 5 2 4 3)  ⇒ 5
+<span class="input" contenteditable="true">(max 1 5 2 4 3)</span><button class="eval"> ⇒ </button><span class="output">5</span>
 
-(min 3 1)        ⇒ 1
+<span class="input" contenteditable="true">(min 3 1)</span><button class="eval"> ⇒ </button><span class="output">1</span>
 
-(min 1 2.0)      ⇒ 1
+<span class="input" contenteditable="true">(min 1 2.0)</span><button class="eval"> ⇒ </button><span class="output">1</span>
 
-(min 2 2.0)      ⇒ 2 or 2.0 (<a href="#td_implementation_defined">implementation-defined</a>)
+<span class="input" contenteditable="true">(min 2 2.0)</span><button class="eval"> ⇒ </button><span class="output">2 or 2.0</span> (<a href="#td_implementation_defined">implementation-defined</a>)
 
-(min 1 5 2 5 3)  ⇒ 1
+<span class="input" contenteditable="true">(min 1 5 2 5 3)</span><button class="eval"> ⇒ </button><span class="output">1</span>
 </pre>
             <div id="f_abs" class="definition-function">
                 (<span class="operator">abs</span> <span class="arg">x</span>) → <span class="class">number</span>
             </div>
             
-            <p>The function abs returns the absolute value of its argument. An error shall be signaled if x is not a number (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>The function <span class="terminal">abs</span> returns the absolute value of its argument. An error shall be signaled if <span class="nonterminal">x</span> is not a number (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
-(abs -3)   ⇒ 3
+<span class="input" contenteditable="true">(abs -3)</span><button class="eval"> ⇒ </button><span class="output">3</span>
 
-(abs 2.0)  ⇒ 2.0
+<span class="input" contenteditable="true">(abs 2.0)</span><button class="eval"> ⇒ </button><span class="output">2.0</span>
 
-(abs -0.0) ⇒ 0.0
+<span class="input" contenteditable="true">(abs -0.0)</span><button class="eval"> ⇒ </button><span class="output">0.0</span>
 </pre>
             
             <div id="f_exp" class="definition-function">
                 (<span class="operator">exp</span> <span class="arg">x</span>) → <span class="class">number</span>
             </div>
             
-            <p>Returns e raised to the power x , where e is the base of the natural logarithm. An error shall be signaled if x is not a number (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>Returns e raised to the power <span class="nonterminal">x</span>, where e is the base of the natural logarithm. An error shall be signaled if <span class="nonterminal">x</span> is not a number (error-id. <span class="error_id">domain-error</span>).</p>
 <pre class="example">
-(exp 1)    ⇒ 2.718281828459045
+<span class="input" contenteditable="true">(exp 1)</span><button class="eval"> ⇒ </button><span class="output">2.718281828459045</span>
 
-(exp 2)    ⇒ 7.38905609893065
+<span class="input" contenteditable="true">(exp 2)</span><button class="eval"> ⇒ </button><span class="output">7.38905609893065</span>
 
-(exp 1.23) ⇒ 3.4212295362896734
+<span class="input" contenteditable="true">(exp 1.23)</span><button class="eval"> ⇒ </button><span class="output">3.4212295362896734</span>
 
-(exp 0)    ⇒ 1 or 1.0 (<a href="#td_implementation_defined">implementation-defined</a>)
+<span class="input" contenteditable="true">(exp 0)</span><button class="eval"> ⇒ </button><span class="output">1 or 1.0</span> (<a href="#td_implementation_defined">implementation-defined</a>)
 </pre>
             
             <div id="f_log" class="definition-function">
                 (<span class="operator">log</span> <span class="arg">x</span>) → <span class="class">number</span>
             </div>
             
-            <p>Returns the natural logarithm of x . An error shall be signaled if x is not a positive number (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>Returns the natural logarithm of <span class="nonterminal">x</span>. An error shall be signaled if <span class="nonterminal">x</span> is not a positive number (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
-(log 2.718281828459045) ⇒ 1.0
+<span class="input" contenteditable="true">(log 2.718281828459045)</span><button class="eval"> ⇒ </button><span class="output">1.0</span>
 
-(log 10)                ⇒ 2.302585092994046
+<span class="input" contenteditable="true">(log 10)</span><button class="eval"> ⇒ </button><span class="output">2.302585092994046</span>
 
-(log 1)                 ⇒ 0 or 0.0 (<a href="#td_implementation_defined">implementation-defined</a>)
+<span class="input" contenteditable="true">(log 1)</span><button class="eval"> ⇒ </button><span class="output">0 or 0.0</span> (<a href="#td_implementation_defined">implementation-defined</a>)
 </pre>
             
             <div id="f_expt" class="definition-function">
                 (<span class="operator">expt</span> <span class="arg">x<sub>1</sub></span> <span class="arg">x<sub>2</sub></span>) → <span class="class">number</span>
             </div>
             
-            <p>Returns x<sub>1</sub> raised to the power x<sub>2</sub>. The result will be an integer if x<sub>1</sub> is an integer and x<sub>2</sub> is a non-negative integer. An error shall be signaled if x<sub>1</sub> is zero and x<sub>2</sub> is negative, or if x<sub>1</sub> is zero and x<sub>2</sub> is a zero ﬂoat, or if x<sub>1</sub> is negative and x<sub>2</sub> is not an integer.</p>
+            <p>Returns <span class="nonterminal">x<sub>1</sub></span> raised to the power <span class="nonterminal">x<sub>2</sub></span>. The result will be an integer if <span class="nonterminal">x<sub>1</sub></span> is an integer and <span class="nonterminal">x<sub>2</sub></span> is a non-negative integer. An error shall be signaled if <span class="nonterminal">x<sub>1</sub></span> is zero and <span class="nonterminal">x<sub>2</sub></span> is negative, or if <span class="nonterminal">x<sub>1</sub></span> is zero and <span class="nonterminal">x<sub>2</sub></span> is a zero ﬂoat, or if <span class="nonterminal">x<sub>1</sub></span> is negative and <span class="nonterminal">x<sub>2</sub></span> is not an integer.</p>
             
 <pre class="example">
-(expt2 3)       ⇒ 8
+<span class="input" contenteditable="true">(expt2 3)</span><button class="eval"> ⇒ </button><span class="output">8</span>
 
-(expt -100 2)   ⇒ 10000
+<span class="input" contenteditable="true">(expt -100 2)</span><button class="eval"> ⇒ </button><span class="output">10000</span>
 
-(expt 4 -2)     ⇒ 0.0625
+<span class="input" contenteditable="true">(expt 4 -2)</span><button class="eval"> ⇒ </button><span class="output">0.0625</span>
 
-(expt 0.5 2)    ⇒ 0.25
+<span class="input" contenteditable="true">(expt 0.5 2)</span><button class="eval"> ⇒ </button><span class="output">0.25</span>
 
-(expt x 0)      ⇒ 1        if x is an integer
+<span class="input" contenteditable="true">(expt x 0)</span><button class="eval"> ⇒ </button><span class="output">1</span>        if x is an integer
 
-(expt x 0)      ⇒ 1.0      if x is a float
+<span class="input" contenteditable="true">(expt x 0)</span><button class="eval"> ⇒ </button><span class="output">1.0</span>      if x is a float
 
-(expt -0.25 -1) ⇒ -4.0
+<span class="input" contenteditable="true">(expt -0.25 -1)</span><button class="eval"> ⇒ </button><span class="output">-4.0</span>
 
-(expt 100 0.5)  ⇒ 10.0
+<span class="input" contenteditable="true">(expt 100 0.5)</span><button class="eval">  ⇒ </button><span class="output">10.0</span>
 
-(expt 100 -1.5) ⇒ 0.001
+<span class="input" contenteditable="true">(expt 100 -1.5)</span><button class="eval"> ⇒ </button><span class="output">0.001</span>
 
-(expt x 0.0)    ⇒ 1.0      if x is a positive float
+<span class="input" contenteditable="true">(expt x 0.0)</span><button class="eval"> ⇒ </button><span class="output">1.0</span>      if x is a positive float
 
-(expt 0.0 0.0)   an error shall be signaled
+<span class="input" contenteditable="true">(expt 0.0 0.0)</span><button class="eval"> ⇒ </button><span class="output">an error shall be signaled</span>
 </pre>
             
             <div id="f_sqrt" class="definition-function">
