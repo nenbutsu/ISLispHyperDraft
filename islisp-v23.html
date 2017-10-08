@@ -3211,7 +3211,7 @@ one mantissa digit after the decimal point.
             <p>Returns <span class="nonterminal">x<sub>1</sub></span> raised to the power <span class="nonterminal">x<sub>2</sub></span>. The result will be an integer if <span class="nonterminal">x<sub>1</sub></span> is an integer and <span class="nonterminal">x<sub>2</sub></span> is a non-negative integer. An error shall be signaled if <span class="nonterminal">x<sub>1</sub></span> is zero and <span class="nonterminal">x<sub>2</sub></span> is negative, or if <span class="nonterminal">x<sub>1</sub></span> is zero and <span class="nonterminal">x<sub>2</sub></span> is a zero ﬂoat, or if <span class="nonterminal">x<sub>1</sub></span> is negative and <span class="nonterminal">x<sub>2</sub></span> is not an integer.</p>
             
 <pre class="example">
-<span class="input" contenteditable="true">(expt2 3)</span><button class="eval"> ⇒ </button><span class="output">8</span>
+<span class="input" contenteditable="true">(expt 2 3)</span><button class="eval"> ⇒ </button><span class="output">8</span>
 
 <span class="input" contenteditable="true">(expt -100 2)</span><button class="eval"> ⇒ </button><span class="output">10000</span>
 
@@ -3237,13 +3237,13 @@ one mantissa digit after the decimal point.
             <div id="f_sqrt" class="definition-function">
                 (<span class="operator">sqrt</span> <span class="arg">x</span>) → <span class="class">number</span>
             </div>
-            <p>Returns the non-negative square root of x. An error shall be signaled if x is not a non-negative number (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>Returns the non-negative square root of <span class="nonterminal">x</span>. An error shall be signaled if <span class="nonterminal">x</span> is not a non-negative number (error-id. <span class="error_id">domain-error</span>).</p>
 <pre class="example">
-(sqrt 4)   ⇒ 2
+<span class="input" contenteditable="true">(sqrt 4)</span><button class="eval"> ⇒ </button><span class="output">2</span>
 
-(sqrt 2)   ⇒ 1.4142135623730951
+<span class="input" contenteditable="true">(sqrt 2)</span><button class="eval"> ⇒ </button><span class="output">1.4142135623730951</span>
 
-(sqrt -1) an error shall be signaled
+<span class="input" contenteditable="true">(sqrt -1)</span><button class="eval"> ⇒ </button><span class="output">an error shall be signaled</span>
 </pre>
             
             <div id="c_pi" class="definition-constant">
@@ -3265,65 +3265,65 @@ one mantissa digit after the decimal point.
                 (<span class="operator">tan</span> <span class="arg">x</span>) → <span class="class">number</span>
             </div>
             
-            <p>The function sin returns the sine of x . The function cos returns the cosine of x . The function tan returns the tangent of x . In each case, x must be given in radians.</p>
-            <p>An error shall be signaled if x is not a number (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>The function <span class="terminal">sin</span> returns the sine of <span class="nonterminal">x</span> . The function <span class="terminal">cos</span> returns the cosine of <span class="nonterminal">x</span>. The function tan returns the tangent of <span class="nonterminal">x</span>. In each case, <span class="nonterminal">x</span> must be given in radians.</p>
+            <p>An error shall be signaled if <span class="nonterminal">x</span> is not a number (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
 ;; Note that conforming processors are permitted to vary
 ;; in the floating precision of these results.
-(sin 1)     ⇒ 0.8414709848078965
+<span class="input" contenteditable="true">(sin 1)</span><button class="eval"> ⇒ </button><span class="output">0.8414709848078965</span>
 
-(sin 0)     ⇒ 0 or 0.0 (<a href="#td_implementation_defined">implementation-defined</a>)
+<span class="input" contenteditable="true">(sin 0)</span><button class="eval"> ⇒ </button><span class="output">0 or 0.0</span> (<a href="#td_implementation_defined">implementation-defined</a>)
 
-(sin 0.001) ⇒ 9.999998333333417E-4
+<span class="input" contenteditable="true">(sin 0.001)</span><button class="eval"> ⇒ </button><span class="output">9.999998333333417E-4</span>
 
-(cos 1)     ⇒ 0.5403023058681398
+<span class="input" contenteditable="true">(cos 1)</span><button class="eval"> ⇒ </button><span class="output">0.5403023058681398</span>
 
-(cos 0)     ⇒ 1 or 1.0 (<a href="#td_implementation_defined">implementation-defined</a>)
+<span class="input" contenteditable="true">(cos 0)</span><button class="eval"> ⇒ </button><span class="output">1 or 1.0</span> (<a href="#td_implementation_defined">implementation-defined</a>)
 
-(cos 0.001) ⇒ 0.9999995000000417
+<span class="input" contenteditable="true">(cos 0.001)</span><button class="eval"> ⇒ </button><span class="output">0.9999995000000417</span>
 
-(tan 1)     ⇒ 1.557407724654902
+<span class="input" contenteditable="true">(tan 1)</span><button class="eval"> ⇒ </button><span class="output">1.557407724654902</span>
 
-(tan 0)     ⇒ 0 or 0.0 (<a href="#td_implementation_defined">implementation-defined</a>)
+<span class="input" contenteditable="true">(tan 0)</span><button class="eval"> ⇒ </button><span class="output">0 or 0.0</span> (<a href="#td_implementation_defined">implementation-defined</a>)
 
-(tan 0.001) ⇒ 0.0010000003333334668
+<span class="input" contenteditable="true">(tan 0.001)</span><button class="eval"> ⇒ </button><span class="output">0.0010000003333334668</span>
 </pre>
             
             <div id="f_atan" class="definition-function">
                 (<span class="operator">atan</span> <span class="arg">x</span>) → <span class="class">number</span>
             </div>
             
-            <p>Returns the arc tangent of x.</p>
+            <p>Returns the arc tangent of <span class="nonterminal">x</span>.</p>
             <p>The result is a (real) number that lies between −π/2 and π/2 (both exclusive).</p>
             <p>The following definition for (one-argument) arc tangent determines the range and branch cuts:</p>
             
-            <table border="1">
+            <table>
                 <tr>
                     <td>arctan x</td>
                     <td>=</td>
                     <td>
-                        <table border="1">
+                        <table>
                             <tr>
                                 <td style="border-bottom: black thin solid">log (1 + ix) - log (1 - ix)</td>
                             </tr>
                             <tr>
-                                <td>2i</td>
+                                <td align="center">2i</td>
                             </tr>
                         </table>
                     </td>
                 </tr>
             </table>
             
-            <p>An error shall be signaled if x is not a number (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>An error shall be signaled if <span class="nonterminal">x</span> is not a number (error-id. <span class="error_id">domain-error</span>).</p>
             
             <div id="f_atan2" class="definition-function">
                 (<span class="operator">atan2</span> <span class="arg">x1</span> <span class="arg">x2</span>) → <span class="class">number</span>
             </div>
             
-            <p>Given a point (x<sub>2</sub>, x<sub>1</sub>) in rectangular coordinates, this function returns the phase of its representation in polar coordinates. If x<sub>1</sub> is zero and x<sub>2</sub> is negative, the result is positive. If x<sub>1</sub> and x<sub>2</sub> are both zero, the result is <a href="#td_implementation_defined">implementation defined</a>.</p>
-            <p>An error shall be signaled if x is not a number (error-id. <span class="error_id">domain-error</span>).</p>
-            <p>The value of atan2 is always between −π (exclusive) and π (inclusive) when minus zero is not supported; when minus zero is supported, the range includes −π.</p>
+            <p>Given a point (<span class="nonterminal">x<sub>2</sub></span>, <span class="nonterminal">x<sub>1</sub></span>) in rectangular coordinates, this function returns the phase of its representation in polar coordinates. If <span class="nonterminal">x<sub>1</sub></span> is zero and <span class="nonterminal">x<sub>2</sub></span> is negative, the result is positive. If <span class="nonterminal">x<sub>1</sub></span> and <span class="nonterminal">x<sub>2</sub></span> are both zero, the result is <a href="#td_implementation_defined">implementation defined</a>.</p>
+            <p>An error shall be signaled if <span class="nonterminal">x</span> is not a number (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>The value of <span class="terminal">atan2</span> is always between −π (exclusive) and π (inclusive) when minus zero is not supported; when minus zero is supported, the range includes −π.</p>
             
             <table border="1">
                 <caption>Figure 3. Quadrant information for atan2</caption>
@@ -3389,19 +3389,19 @@ one mantissa digit after the decimal point.
                 </tr>
                 <tr>
                     <td>y&lt;0</td>
-                    <td>x=0</td>
+                    <td>x&lt;0</td>
                     <td>Quadrand III</td>
                     <td>-π&lt;result&lt;0</td>
                 </tr>
                 <tr>
                     <td>y&lt;0</td>
-                    <td>x&gt;0</td>
+                    <td>x=0</td>
                     <td>Negative y-axis</td>
                     <td>-π/2</td>
                 </tr>
                 <tr>
                     <td>y&lt;0</td>
-                    <td>x=0</td>
+                    <td>x&gt;0</td>
                     <td>Quadrant IV</td>
                     <td>-π/2&lt;result&lt;0</td>
                 </tr>
@@ -3437,27 +3437,27 @@ one mantissa digit after the decimal point.
                 </tr>
             </table>
             
-            <p>The signs of x<sub>1</sub> (indicated as y) and x<sub>2</sub> (indicated as x) are used to derive quadrant information. Figure 19.1 details various special cases. The asterisk (*) indicates that the entry in the figure applies to implementations that support minus zero.</p>
+            <p>The signs of <span class="nonterminal">x<sub>1</sub></span> (indicated as <span class="nonterminal">y</span>) and <span class="nonterminal">x<sub>2</sub></span> (indicated as <span class="nonterminal">x</span>) are used to derive quadrant information. Figure 19.1 details various special cases. The asterisk (*) indicates that the entry in the figure applies to implementations that support minus zero.</p>
 <pre class="example">
-(atan2 0 3.0)     ⇒ 0 or 0.0 (<a href="#td_implementation_defined">implementation-defined</a>)
+<span class="input" contenteditable="true">(atan2 0 3.0)</span><button class="eval"> ⇒ </button><span class="output">0 or 0.0</span> (<a href="#td_implementation_defined">implementation-defined</a>)
 
-(atan2 1 1)       ⇒ 0.7853981633974483
+<span class="input" contenteditable="true">(atan2 1 1)</span><button class="eval"> ⇒ </button><span class="output">0.7853981633974483</span>
 
-(atan2 1.0 -0.3)  ⇒ 1.8622531212727635
+<span class="input" contenteditable="true">(atan2 1.0 -0.3)</span><button class="eval"> ⇒ </button><span class="output">1.8622531212727635</span>
 
-(atan2 0.0 -0.5)  ⇒ 3.141592653589793
+<span class="input" contenteditable="true">(atan2 0.0 -0.5)</span><button class="eval"> ⇒ </button><span class="output">3.141592653589793</span>
 
-(atan2 -1 -1)     ⇒ -2.356194490192345
+<span class="input" contenteditable="true">(atan2 -1 -1)</span><button class="eval"> ⇒ </button><span class="output">-2.356194490192345</span>
 
-(atan2 -1.0 0.3)  ⇒ -1.2793396
+<span class="input" contenteditable="true">(atan2 -1.0 0.3)</span><button class="eval"> ⇒ </button><span class="output">-1.2793396</span>
 
-(atan2 0.0 0.5)   ⇒ 0.0
+<span class="input" contenteditable="true">(atan2 0.0 0.5)</span><button class="eval"> ⇒ </button><span class="output">0.0</span>
                 
-(defun asin (x) (atan2 x (sqrt (- 1 (expt x 2))))) ⇒ asin
+<span class="input" contenteditable="true">(defun asin (x) (atan2 x (sqrt (- 1 (expt x 2)))))</span><button class="eval"> ⇒ </button><span class="output">asin</span>
 
-(defun acos (x) (atan2 (sqrt (- 1 (expt x 2))) x)) ⇒ acos
+<span class="input" contenteditable="true">(defun acos (x) (atan2 (sqrt (- 1 (expt x 2))) x))</span><button class="eval"> ⇒ </button><span class="output">acos</span>
 
-(defun atan (x) (atan2 x 1)) ⇒ atan
+<span class="input" contenteditable="true">(defun atan (x) (atan2 x 1))</span><button class="eval"> ⇒ </button><span class="output">atan</span>
 </pre>
             
             <div id="f_sinh" class="definition-function">
@@ -3470,44 +3470,44 @@ one mantissa digit after the decimal point.
                 (<span class="operator">tanh</span> <span class="arg">x</span>) → <span class="class">number</span>
             </div>
             
-            <p>The function sinh returns the hyperbolic sine of x . The function cosh returns the hyperbolic cosine of x . The function tanh returns the hyperbolic tangent of x.</p>
-            <p>An error shall be signaled if x is not a number (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>The function <span class="terminal">sinh</span> returns the hyperbolic sine of <span class="nonterminal">x</span>. The function <span class="terminal">cosh</span> returns the hyperbolic cosine of <span class="nonterminal">x</span>. The function <span class="terminal">tanh</span> returns the hyperbolic tangent of <span class="nonterminal">x</span>.</p>
+            <p>An error shall be signaled if <span class="nonterminal">x</span> is not a number (error-id. <span class="error_id">domain-error</span>).</p>
 <pre class="example">
-(sinh 1)     ⇒ 1.1752011936438014
+<span class="input" contenteditable="true">(sinh 1)</span><button class="eval"> ⇒ </button><span class="output">1.1752011936438014</span>
 
-(sinh 0)     ⇒ 0 or 0.0 (<a href="#td_implementation_defined">implementation-defined</a>)
+<span class="input" contenteditable="true">(sinh 0)</span><button class="eval"> ⇒ </button><span class="output">0 or 0.0</span> (<a href="#td_implementation_defined">implementation-defined</a>)
 
-(sinh 0.001) ⇒ 0.001000000166666675
+<span class="input" contenteditable="true">(sinh 0.001)</span><button class="eval"> ⇒ </button><span class="output">0.001000000166666675</span>
 
-(sinh 1)     ⇒ 1.5430806348152437
+<span class="input" contenteditable="true">(sinh 1)</span><button class="eval"> ⇒ </button><span class="output">1.5430806348152437</span>
 
-(cosh 0)     ⇒ 1 or 1.0 (<a href="#td_implementation_defined">implementation-defined</a>)
+<span class="input" contenteditable="true">(cosh 0)</span><button class="eval"> ⇒ </button><span class="output">1 or 1.0</span> (<a href="#td_implementation_defined">implementation-defined</a>)
 
-(cosh 0.001) ⇒ 1.0000005000000416
+<span class="input" contenteditable="true">(cosh 0.001)</span><button class="eval"> ⇒ </button><span class="output">1.0000005000000416</span>
 
-(tanh 1)     ⇒ 0.7615941559557649
+<span class="input" contenteditable="true">(tanh 1)</span><button class="eval"> ⇒ </button><span class="output">0.7615941559557649</span>
 
-(tanh 0)     ⇒ 0 or 0.0 (<a href="#td_implementation_defined">implementation-defined</a>)
+<span class="input" contenteditable="true">(tanh 0)</span><button class="eval"> ⇒ </button><span class="output">0 or 0.0</span> (<a href="#td_implementation_defined">implementation-defined</a>)
 
-(tanh 0.001) ⇒ 9.999996666668002E-4
+<span class="input" contenteditable="true">(tanh 0.001)</span><button class="eval"> ⇒ 9.999996666668002E-4
 </pre>
             
             <div id="f_atanh" class="definition-function">
                 (<span class="operator">atanh</span> <span class="arg">x</span>) → <span class="class">number</span>
             </div>
             
-            <p>Returns the hyperbolic arc tangent of x . An error shall be signaled if x is not a number with absolute value less than 1 (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>Returns the hyperbolic arc tangent of <span class="nonterminal">x</span>. An error shall be signaled if <span class="nonterminal">x</span> is not a number with absolute value less than 1 (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
-(atanh 0.5)   ⇒ 0.5493061443340549
+<span class="input" contenteditable="true">(atanh 0.5)</span><button class="eval"> ⇒ </button><span class="output">0.5493061443340549</span>
 
-(atanh 0)     ⇒ 0 or 0.0 (<a href="#td_implementation_defined">implementation-defined</a>)
+<span class="input" contenteditable="true">(atanh 0)</span><button class="eval"> ⇒ </button><span class="output">0 or 0.0</span> (<a href="#td_implementation_defined">implementation-defined</a>)
 
-(atanh 0.001) ⇒ 0.0010000003333335335
+<span class="input" contenteditable="true">(atanh 0.001)</span><button class="eval"> ⇒ </button><span class="output">0.0010000003333335335</span>
                 
-(defun asinh (x) (atanh (quotient x (sqrt (+ 1 (expt x 2)))))) ⇒ asinh
+<span class="input" contenteditable="true">(defun asinh (x) (atanh (quotient x (sqrt (+ 1 (expt x 2))))))</span><button class="eval"> ⇒ </button><span class="output">asinh</span>
                 
-(defun acosh (x) (atanh (quotient (sqrt (* (- x 1) (+ x 1))) x))) ⇒ acosh
+<span class="input" contenteditable="true">(defun acosh (x) (atanh (quotient (sqrt (* (- x 1) (+ x 1))) x)))</span><button class="eval"> ⇒ </button><span class="output">acosh</span>
 </pre>
             
             <h4 id="float_class">Float class</h4>
@@ -3515,13 +3515,13 @@ one mantissa digit after the decimal point.
             <p>This class represents the set of ﬂoating-point numbers. Each ﬂoating-point number is represented by a rational number with some given precision; see IEEE standard 754-1985 for details.</p>
             <p>Floating-point numbers are written in one of the following formats:</p>
 <pre>
-[s]dd … d.dd … d
-[s]dd … d.dd … dE[s]dd … d
-[s]dd … d.dd … de[s]dd … d
-[s]dd … dE[s]dd … d
-[s]dd … de[s]dd … d
+[<span class="nonterminal">s</span>]<span class="nonterminal">dd</span> … <span class="nonterminal">d</span>.<span class="nonterminal">dd</span> … <span class="nonterminal">d</span>
+[<span class="nonterminal">s</span>]<span class="nonterminal">dd</span> … <span class="nonterminal">d</span>.<span class="nonterminal">dd</span> … <span class="nonterminal">d</span>E[<span class="nonterminal">s</span>]<span class="nonterminal">dd</span> … <span class="nonterminal">d</span>
+[<span class="nonterminal">s</span>]<span class="nonterminal">dd</span> … <span class="nonterminal">d</span>.<span class="nonterminal">dd</span> … <span class="nonterminal">d</span>e[<span class="nonterminal">s</span>]<span class="nonterminal">dd</span> … <span class="nonterminal">d</span>
+[<span class="nonterminal">s</span>]<span class="nonterminal">dd</span> … <span class="nonterminal">d</span>E[<span class="nonterminal">s</span>]<span class="nonterminal">dd</span> … <span class="nonterminal">d</span>
+[<span class="nonterminal">s</span>]<span class="nonterminal">dd</span> … <span class="nonterminal">d</span>e[<span class="nonterminal">s</span>]<span class="nonterminal">dd</span> … <span class="nonterminal">d</span>
 </pre>
-            <p>where s is either <q>+</q> or <q>-</q>, and dd … d is at least one digit from <q>0</q>–<q>9</q>.</p>
+            <p>where <span class="nonterminal">s</span> is either <q>+</q> or <q>-</q>, and <span class="nonterminal">dd</span> … <span class="nonterminal">d</span> is at least one digit from <q>0</q>–<q>9</q>.</p>
             <p>There must be at least one digit before the decimal point and at least one mantissa digit after the decimal point.</p>
             
             <div id="c_most_positive_float" class="definition-constant">
@@ -3531,96 +3531,96 @@ one mantissa digit after the decimal point.
                 <span class="terminal">*most-negative-float*</span> → <span class="class">float</span>
             </div>
             
-            <p>The value of *most-positive-float* is the <a href="#td_implementation_dependent">implementation-dependent</a> ﬂoating-point number closest to positive infinity.</p>
-            <p>The value of *most-negative-float* is the <a href="#td_implementation_dependent">implementation-dependent</a> ﬂoating-point number closest to negative infinity.</p>
+            <p>The value of <span class="terminal">*most-positive-float*</span> is the <a href="#td_implementation_dependent">implementation-dependent</a> ﬂoating-point number closest to positive infinity.</p>
+            <p>The value of <span class="terminal">*most-negative-float*</span> is the <a href="#td_implementation_dependent">implementation-dependent</a> ﬂoating-point number closest to negative infinity.</p>
             
             <div id="f_floatp" class="definition-function">
                 (<span class="operator">floatp</span> <span class="arg">obj</span>) → <span class="nonterminal">boolean</span>
             </div>
             
-            <p>Returns t if obj is a ﬂoat (instance of class <span class="class">float</span>); otherwise, returns nil. The obj may be any ISLISP object.</p>
+            <p>Returns <span class="terminal">t</span> if <span class="nonterminal">obj</span> is a ﬂoat (instance of class <span class="class">float</span>); otherwise, returns <span class="terminal">nil</span>. The <span class="nonterminal">obj</span> may be any ISLISP object.</p>
             
 <pre class="example">
-(floatp "2.4") ⇒ nil
+<span class="input" contenteditable="true">(floatp "2.4")</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(floatp 2)     ⇒ nil
+<span class="input" contenteditable="true">(floatp 2)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(floatp 2.0)   ⇒ t
+<span class="input" contenteditable="true">(floatp 2.0)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 </pre>
             
             <div id="f_float" class="definition-function">
                 (<span class="operator">float</span> <span class="arg">x</span>) → <span class="class">float</span>
             </div>
             
-            <p>Returns x itself if it is an instance of the class <span class="class">float</span> and returns a ﬂoating-point approximation of x otherwise. An error shall be signaled if x is not a number (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>Returns <span class="nonterminal">x</span> itself if it is an instance of the class <span class="class">float</span> and returns a ﬂoating-point approximation of <span class="nonterminal">x</span> otherwise. An error shall be signaled if <span class="nonterminal">x</span> is not a number (error-id. <span class="error_id">domain-error</span>).</p>
 <pre class="example">
-(float 0)                           ⇒ 0.0
+<span class="input" contenteditable="true">(float 0)</span><button class="eval"> ⇒ </button><span class="output">0.0</span>
 
-(float 2)                           ⇒ 2.0
+<span class="input" contenteditable="true">(float 2)</span><button class="eval"> ⇒ </button><span class="output">2.0</span>
 
-(float -2.0)                        ⇒ -2.0
+<span class="input" contenteditable="true">(float -2.0)</span><button class="eval"> ⇒ </button><span class="output">-2.0</span>
 
-(float 123456789123456789123456789) ⇒ 1.2345678912345679E26
+<span class="input" contenteditable="true">(float 123456789123456789123456789)</span><button class="eval"> ⇒ </button><span class="output">1.2345678912345679E26</span>
 </pre>
             
             <div id="f_floor" class="definition-function">
                 (<span class="operator">floor</span> <span class="arg">x</span>) → <span class="class">integer</span>
             </div>
             
-            <p>Returns the greatest integer less than or equal to x . That is, x is truncated towards negative infinity. An error shall be signaled if x is not a number (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>Returns the greatest integer less than or equal to <span class="nonterminal">x</span>. That is, <span class="nonterminal">x</span> is truncated towards negative infinity. An error shall be signaled if <span class="nonterminal">x</span> is not a number (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
-(floor 3.0)  ⇒ 3
+<span class="input" contenteditable="true">(floor 3.0)</span><button class="eval">  ⇒ </button><span class="output">3</span>
 
-(floor 3.4)  ⇒ 3
+<span class="input" contenteditable="true">(floor 3.4)</span><button class="eval">  ⇒ </button><span class="output">3</span>
 
-(floor 3.9)  ⇒ 3
+<span class="input" contenteditable="true">(floor 3.9)</span><button class="eval">  ⇒ </button><span class="output">3</span>
 
-(floor -3.9) ⇒ -4
+<span class="input" contenteditable="true">(floor -3.9)</span><button class="eval"> ⇒ </button><span class="output">-4</span>
 
-(floor -3.4) ⇒ -4
+<span class="input" contenteditable="true">(floor -3.4)</span><button class="eval"> ⇒ </button><span class="output">-4</span>
 
-(floor -3.0) ⇒ -3
+<span class="input" contenteditable="true">(floor -3.0)</span><button class="eval"> ⇒ </button><span class="output">-3</span>
 </pre>
             
             <div id="f_ceiling" class="definition-function">
                 (<span class="operator">ceiling</span> <span class="arg">x</span>) → <span class="class">integer</span>
             </div>
             
-            <p>Returns the smallest integer that is not smaller than x. That is, x is truncated towards positive infinity. An error shall be signaled if x is not a number (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>Returns the smallest integer that is not smaller than <span class="nonterminal">x</span>. That is, <span class="nonterminal">x</span> is truncated towards positive infinity. An error shall be signaled if <span class="nonterminal">x</span> is not a number (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
-(ceiling 3.0)  ⇒ 3
+<span class="input" contenteditable="true">(ceiling 3.0)</span><button class="eval"> ⇒ </button><span class="output">3</span>
 
-(ceiling 3.4)  ⇒ 4
+<span class="input" contenteditable="true">(ceiling 3.4)</span><button class="eval"> ⇒ </button><span class="output">4</span>
 
-(ceiling 3.9)  ⇒ 4
+<span class="input" contenteditable="true">(ceiling 3.9)</span><button class="eval"> ⇒ </button><span class="output">4</span>
 
-(ceiling -3.9) ⇒ -3
+<span class="input" contenteditable="true">(ceiling -3.9)</span><button class="eval"> ⇒ </button><span class="output">-3</span>
 
-(ceiling -3.4) ⇒ -3
+<span class="input" contenteditable="true">(ceiling -3.4)</span><button class="eval"> ⇒ </button><span class="output">-3</span>
 
-(ceiling -3.0) ⇒ -3
+<span class="input" contenteditable="true">(ceiling -3.0)</span><button class="eval"> ⇒ </button><span class="output">-3</span>
 </pre>
             
             <div id="f_truncate" class="definition-function">
                 (<span class="operator">truncate</span> <span class="arg">x</span>) → <span class="class">integer</span>
             </div>
             
-            <p>Returns the integer between 0 and x (inclusive) that is nearest to x. That is, x is truncated towards zero. An error shall be signaled if x is not a number (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>Returns the integer between 0 and <span class="nonterminal">x</span> (inclusive) that is nearest to <span class="nonterminal">x</span>. That is, <span class="nonterminal">x</span> is truncated towards zero. An error shall be signaled if <span class="nonterminal">x</span> is not a number (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
-(truncate 3.0)  ⇒ 3
+<span class="input" contenteditable="true">(truncate 3.0)</span><button class="eval"> ⇒ </button><span class="output">3</span>
 
-(truncate 3.4)  ⇒ 3
+<span class="input" contenteditable="true">(truncate 3.4)</span><button class="eval"> ⇒ </button><span class="output">3</span>
 
-(truncate 3.9)  ⇒ 3
+<span class="input" contenteditable="true">(truncate 3.9)</span><button class="eval"> ⇒ </button><span class="output">3</span>
 
-(truncate -3.4) ⇒ -3
+<span class="input" contenteditable="true">(truncate -3.4)</span><button class="eval"> ⇒ </button><span class="output">-3</span>
 
-(truncate -3.9) ⇒ -3
+<span class="input" contenteditable="true">(truncate -3.9)</span><button class="eval"> ⇒ </button><span class="output">-3</span>
 
-(truncate -3.0) ⇒ -3
+<span class="input" contenteditable="true">(truncate -3.0)</span><button class="eval"> ⇒ </button><span class="output">-3</span>
 </pre>
             
             <div id="f_round" class="definition-function">
@@ -3630,23 +3630,23 @@ one mantissa digit after the decimal point.
             <p>Returns the integer nearest to x. If x is exactly halfway between two integers, the even one is chosen. An error shall be signaled if x is not a number (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
-(round 3.0)  ⇒ 3
+<span class="input" contenteditable="true">(round 3.0)</span><button class="eval"> ⇒ </button><span class="output">3</span>
 
-(round 3.4)  ⇒ 3
+<span class="input" contenteditable="true">(round 3.4)</span><button class="eval"> ⇒ </button><span class="output">3</span>
 
-(round -3.4) ⇒ -3
+<span class="input" contenteditable="true">(round -3.4)</span><button class="eval"> ⇒ </button><span class="output">-3</span>
 
-(round 3.6)  ⇒ 4
+<span class="input" contenteditable="true">(round 3.6)</span><button class="eval"> ⇒ </button><span class="output">4</span>
 
-(round -3.6) ⇒ -4
+<span class="input" contenteditable="true">(round -3.6)</span><button class="eval"> ⇒ </button><span class="output">-4</span>
 
-(round 3.5)  ⇒ 4
+<span class="input" contenteditable="true">(round 3.5)</span><button class="eval"> ⇒ </button><span class="output">4</span>
 
-(round -3.5) ⇒ -4
+<span class="input" contenteditable="true">(round -3.5)</span><button class="eval"> ⇒ </button><span class="output">-4</span>
 
-(round 2.5)  ⇒ 2
+<span class="input" contenteditable="true">(round 2.5)</span><button class="eval"> ⇒ </button><span class="output">2</span>
 
-(round -0.5) ⇒ 0
+<span class="input" contenteditable="true">(round -0.5)</span><button class="eval"> ⇒ </button><span class="output">0</span>
 </pre>
             
             <h4 id="integer_class">Integer class</h4>
@@ -3655,33 +3655,33 @@ one mantissa digit after the decimal point.
             <p>Arithmetic operations that only involve integers behave in a mathematically correct way, regardless of the size of the integer. If there are cases where arithmetic on integers would produce results or intermediate expressions that exceed the precision of the underlying hardware, an ISLISP processor shall simulate any necessary operations in software in order to assure mathematical correctness. The circumstances, if any, for which such simulation is necessary is <a href="#td_implementation_defined">implementation defined</a>; the point at which such simulation will exceed the capacity of the processor is also <a href="#td_implementation_defined">implementation defined</a>.</p>
             <p>Integers are written in one of the following formats.</p>
 <pre>
-#B [s]bb … b, each b being either <q>0</q> or <q>1</q>.
-#b [s]bb … b, each b being either <q>0</q> or <q>1</q>.
+#<span class="terminal">B</span> [<span class="nonterminal">s</span>]<span class="nonterminal">bb</span> … <span class="nonterminal">b</span>, each <span class="nonterminal">b</span> being either <q>0</q> or <q>1</q>.
+#<span class="terminal">b</span> [<span class="nonterminal">s</span>]<span class="nonterminal">bb</span> … <span class="nonterminal">b</span>, each <span class="nonterminal">b</span> being either <q>0</q> or <q>1</q>.
 
-#O [s]oo … o, each o being one of <q>0</q>–<q>7</q>.
-#o [s]oo … o, each o being one of <q>0</q>–<q>7</q>.
+#<span class="terminal">O</span> [<span class="nonterminal">s</span>]<span class="nonterminal">oo</span> … <span class="nonterminal">o</span>, each <span class="nonterminal">o</span> being one of <q>0</q>–<q>7</q>.
+#<span class="terminal">o</span> [<span class="nonterminal">s</span>]<span class="nonterminal">oo</span> … <span class="nonterminal">o</span>, each <span class="nonterminal">o</span> being one of <q>0</q>–<q>7</q>.
 
-   [s]dd … d, each d being one of <q>0</q>–<q>9</q>.
+   [<span class="nonterminal">s</span>]<span class="nonterminal">dd</span> … <span class="nonterminal">d</span>, each <span class="nonterminal">d</span> being one of <q>0</q>–<q>9</q>.
 
-#X [s]xx … x, each x being one of <q>0</q>–<q>9</q>, <q>A</q>–<q>F</q>, <q>a</q>–<q>f</q>.
-#x [s]xx … x, each x being one of <q>0</q>–<q>9</q>, <q>A</q>–<q>F</q>, <q>a</q>–<q>f</q>.
+#<span class="terminal">X</span> [<span class="nonterminal">s</span>]<span class="nonterminal">xx</span> … <span class="nonterminal">x</span>, each <span class="nonterminal">x</span> being one of <q>0</q>–<q>9</q>, <q>A</q>–<q>F</q>, <q>a</q>–<q>f</q>.
+#<span class="terminal">x</span> [<span class="nonterminal">s</span>]<span class="nonterminal">xx</span> … <span class="nonterminal">x</span>, each <span class="nonterminal">x</span> being one of <q>0</q>–<q>9</q>, <q>A</q>–<q>F</q>, <q>a</q>–<q>f</q>.
 </pre>
-            <p>where s is either <q>+</q> or <q>-</q>.</p>
+            <p>where <span class="nonterminal">s</span> is either <q>+</q> or <q>-</q>.</p>
             <div class="note">Note: In ISLISP, there is no variable that controls the reader. Thus the above notations are exactly the notations for integers.</div>
             <div id="f_integerp" class="definition-function">
                 (<span class="operator">integerp</span> <span class="arg">obj</span>) → <span class="nonterminal">boolean</span>
             </div>
             
-            <p>Returns t if obj is an integer (instance of class <span class="class">integer</span>); otherwise, returns nil. obj may be any ISLISP object.</p>
+            <p>Returns <span class="terminal">t</span> if <span class="nonterminal">obj</span> is an integer (instance of class <span class="class">integer</span>); otherwise, returns <span class="terminal">nil</span>. <span class="nonterminal">obj</span> may be any ISLISP object.</p>
             
 <pre class="example">
-(integerp 3)        ⇒ t 
+<span class="input" contenteditable="true">(integerp 3)</span><button class="eval"> ⇒ </button><span class="output">t</span>
 
-(integerp 3.4)      ⇒ nil
+<span class="input" contenteditable="true">(integerp 3.4)</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(integerp "4")      ⇒ nil
+<span class="input" contenteditable="true">(integerp "4")</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 
-(integerp '(a b c)) ⇒ nil
+<span class="input" contenteditable="true">(integerp '(a b c))</span><button class="eval"> ⇒ </button><span class="output">nil</span>
 </pre>
             
             <div id="f_div" class="definition-function">
@@ -3691,112 +3691,111 @@ one mantissa digit after the decimal point.
                 (<span class="operator">mod</span> <span class="arg">z<sub>1</sub></span> <span class="arg">z<sub>2</sub>)</span> → <span class="class">integer</span>
             </div>
             
-            <p>div returns the greatest integer less than or equal to the quotient of z<sub>1</sub> and z<sub>2</sub>. An error shall be signaled if z<sub>2</sub> is zero (error-id. <span class="error_id">division-by-zero</span>).</p>
-            <p>mod returns the remainder of the integer division of z<sub>1</sub> by z<sub>2</sub>. The sign of the result is the sign of z<sub>2</sub>. The result lies between 0 (inclusive) and z<sub>2</sub> (exclusive), and the difference of z<sub>1</sub> and this result is divisible by z<sub>2</sub> without remainder.</p>
-            <p>div and mod satisfy:</p>
+            <p><span class="terminal">div</span> returns the greatest integer less than or equal to the quotient of <span class="nonterminal">z<sub>1</sub></span> and <span class="nonterminal">z<sub>2</sub></span>. An error shall be signaled if <span class="nonterminal">z<sub>2</sub></span> is zero (error-id. <span class="error_id">division-by-zero</span>).</p>
+            <p><span class="terminal">mod</span> returns the remainder of the integer division of <span class="nonterminal">z<sub>1</sub></span> by <span class="nonterminal">z<sub>2</sub></span>. The sign of the result is the sign of <span class="nonterminal">z<sub>2</sub></span>. The result lies between 0 (inclusive) and <span class="nonterminal">z<sub>2</sub></span> (exclusive), and the difference of <span class="nonterminal">z<sub>1</sub></span> and this result is divisible by <span class="nonterminal">z<sub>2</sub></span> without remainder.</p>
+            <p><span class="terminal">div</span> and <span class="terminal">mod</span> satisfy:</p>
 <pre>
 (= z1 (+ (* (div z<sub>1</sub> z<sub>2</sub>) z<sub>2</sub>) (mod z<sub>1</sub> z<sub>2</sub>)))
 </pre>
-            <p>That is, the evaluation of the above form always return t.</p>
-            <p>An error shall be signaled if either z<sub>1</sub> or z<sub>2</sub> is not an integer (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>That is, the evaluation of the above form always return <span class="terminal">t</span>.</p>
+            <p>An error shall be signaled if either <span class="nonterminal">z<sub>1</sub></span> or <span class="nonterminal">z<sub>2</sub></span> is not an integer (error-id. <span class="error_id">domain-error</span>).</p>
 <pre class="example">
-(div 12 3)   ⇒ 4
+<span class="input" contenteditable="true">(div 12 3)</span><button class="eval"> ⇒ </button><span class="output">4</span>
 
-(div 14 3)   ⇒ 4
+<span class="input" contenteditable="true">(div 14 3)</span><button class="eval"> ⇒ </button><span class="output">4</span>
 
-(div -12 3)  ⇒ -4
+<span class="input" contenteditable="true">(div -12 3)</span><button class="eval"> ⇒ </button><span class="output">-4</span>
 
-(div -14 3)  ⇒ -5
+<span class="input" contenteditable="true">(div -14 3)</span><button class="eval"> ⇒ </button><span class="output">-5</span>
 
-(div 12 -3)  ⇒ -4
+<span class="input" contenteditable="true">(div 12 -3)</span><button class="eval"> ⇒ </button><span class="output">-4</span>
 
-(div 14 -3)  ⇒ -5
+<span class="input" contenteditable="true">(div 14 -3)</span><button class="eval"> ⇒ </button><span class="output">-5</span>
 
-(div -12 -3) ⇒ 4
+<span class="input" contenteditable="true">(div -12 -3)</span><button class="eval"> ⇒ </button><span class="output">4</span>
 
-(div -14 -3) ⇒ 4
+<span class="input" contenteditable="true">(div -14 -3)</span><button class="eval"> ⇒ </button><span class="output">4</span>
 
-(mod 12 3)   ⇒ 0
+<span class="input" contenteditable="true">(mod 12 3)</span><button class="eval"> ⇒ </button><span class="output">0</span>
 
-(mod 7 247)  ⇒ 7
+<span class="input" contenteditable="true">(mod 7 247)</span><button class="eval"> ⇒ </button><span class="output">7</span>
 
-(mod 247 7)  ⇒ 2
+<span class="input" contenteditable="true">(mod 247 7)</span><button class="eval"> ⇒ </button><span class="output">2</span>
 
-(mod 14 3)   ⇒ 2
+<span class="input" contenteditable="true">(mod 14 3)</span><button class="eval"> ⇒ </button><span class="output">2</span>
 
-(mod -12 3)  ⇒ 0
+<span class="input" contenteditable="true">(mod -12 3)</span><button class="eval"> ⇒ </button><span class="output">0</span>
 
-(mod -14 3)  ⇒ 1
+<span class="input" contenteditable="true">(mod -14 3)</span><button class="eval"> ⇒ </button><span class="output">1</span>
 
-(mod 12 -3)  ⇒ 0
+<span class="input" contenteditable="true">(mod 12 -3)</span><button class="eval"> ⇒ </button><span class="output">0</span>
 
-(mod 14 -3)  ⇒ -1
+<span class="input" contenteditable="true">(mod 14 -3)</span><button class="eval"> ⇒ </button><span class="output">-1</span>
 
-(mod -12 -3) ⇒ 0
+<span class="input" contenteditable="true">(mod -12 -3)</span><button class="eval"> ⇒ </button><span class="output">0</span>
 
-(mod -14 -3) ⇒ 02
+<span class="input" contenteditable="true">(mod -14 -3)</span><button class="eval"> ⇒ </button><span class="output">02</span>
 </pre>
             
             <div id="f_gcd" class="definition-function">
                 (<span class="operator">gcd</span> <span class="arg">z<sub>1</sub></span> <span class="arg">z<sub>2</sub></span>) → <span class="class">integer</span>
             </div>
             
-            <p>gcd returns the greatest common divisor of its integer arguments. The result is a non-negative integer. For nonzero arguments the greatest common divisor is the largest integer z such that z<sub>1</sub> and z<sub>2</sub> are integral multiples of z.</p>
-            <p>An error shall be signaled if either z<sub>1</sub> or z<sub>2</sub> is not an integer (error-id. <span class="error_id">domain-error</span>).</p>
+            <p><span class="terminal">gcd</span> returns the greatest common divisor of its integer arguments. The result is a non-negative integer. For nonzero arguments the greatest common divisor is the largest integer <span class="nonterminal">z</span> such that <span class="nonterminal">z<sub>1</sub></span> and <span class="nonterminal">z<sub>2</sub></span> are integral multiples of <span class="nonterminal">z</span>.</p>
+            <p>An error shall be signaled if either <span class="nonterminal">z<sub>1</sub></span> or <span class="nonterminal">z<sub>2</sub></span> is not an integer (error-id. <span class="error_id">domain-error</span>).</p>
 <pre class="example">
-(gcd 12 5)    ⇒ 1
+<span class="input" contenteditable="true">(gcd 12 5)</span><button class="eval"> ⇒ </button><span class="output">1</span>
 
-(gcd 15 24)   ⇒ 3
+<span class="input" contenteditable="true">(gcd 15 24)</span><button class="eval"> ⇒ </button><span class="output">3</span>
 
-(gcd -15 24)  ⇒ 3
+<span class="input" contenteditable="true">(gcd -15 24)</span><button class="eval"> ⇒ </button><span class="output">3</span>
 
-(gcd 15 -24)  ⇒ 3
+<span class="input" contenteditable="true">(gcd 15 -24)</span><button class="eval"> ⇒ </button><span class="output">3</span>
 
-(gcd -15 -24) ⇒ 3
+<span class="input" contenteditable="true">(gcd -15 -24)</span><button class="eval"> ⇒ </button><span class="output">3</span>
 
-(gcd 0 -4)    ⇒ 4
+<span class="input" contenteditable="true">(gcd 0 -4)</span><button class="eval"> ⇒ </button><span class="output">4</span>
 
-(gcd 0 0)     ⇒ 0
+<span class="input" contenteditable="true">(gcd 0 0)</span><button class="eval"> ⇒ </button><span class="output">0</span>
 </pre>
             
             <div id="f_lcm" class="definition-function">
                 (<span class="operator">lcm</span> <span class="arg">z<sub>1</sub></span> <span class="arg">z<sub>2</sub></span>) → <span class="class">integer</span>
             </div>
-            <p>lcm returns the least common multiple of its integer arguments. gcd and lcm satisfies:</p>
+            <p><span class="terminal">lcm</span> returns the least common multiple of its integer arguments. <span class="terminal">gcd</span> and <span class="terminal">lcm</span> satisfies:</p>
 <pre>
 (= (* (gcd m n) (lcm m n)) (abs (* m n)))
 </pre>
-            <p>That is, the evaluation of the above form always return t.</p>
-            <p>An error shall be signaled if either z<sub>1</sub> or z<sub>2</sub> is not an integer (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>That is, the evaluation of the above form always return <span class="terminal">t</span>.</p>
+            <p>An error shall be signaled if either <span class="nonterminal">z<sub>1</sub></span> or <span class="nonterminal">z<sub>2</sub></span> is not an integer (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
-(lcm 2 3)     ⇒ 6
+<span class="input" contenteditable="true">(lcm 2 3)</span><button class="eval"> ⇒ </button><span class="output">6</span>
 
-(lcm 15 24)   ⇒ 120
+<span class="input" contenteditable="true">(lcm 15 24)</span><button class="eval"> ⇒ </button><span class="output">120</span>
 
-(lcm 15 -24)  ⇒ 120
+<span class="input" contenteditable="true">(lcm 15 -24)</span><button class="eval"> ⇒ </button><span class="output">120</span>
 
-(lcm -15 24)  ⇒ 120
+<span class="input" contenteditable="true">(lcm -15 24)</span><button class="eval"> ⇒ </button><span class="output">120</span>
 
-(lcm -15 -24) ⇒ 120
+<span class="input" contenteditable="true">(lcm -15 -24)</span><button class="eval"> ⇒ </button><span class="output">120</span>
 
-(lcm 0 -4)    ⇒ 0
+<span class="input" contenteditable="true">(lcm 0 -4)</span><button class="eval"> ⇒ </button><span class="output">0</span>
 
-(lcm 0 0)     ⇒ 0
+<span class="input" contenteditable="true">(lcm 0 0)</span><button class="eval"> ⇒ </button><span class="output">0</span>
 </pre>
             
             <div id="f_isqrt" class="definition-function">
                 (<span class="operator">isqrt</span> <span class="arg">z</span>) → <span class="class">integer</span>
             </div>
             
-            <p>Returns the greatest integer less than or equal to the exact positive square root of z . An error shall be signaled if z is not a non-negative integer (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>Returns the greatest integer less than or equal to the exact positive square root of <span class="nonterminal">z</span>. An error shall be signaled if <span class="nonterminal">z</span> is not a non-negative integer (error-id. <span class="error_id">domain-error</span>).</p>
 <pre class="example">
-(isqrt 49) ⇒ 7
+<span class="input" contenteditable="true">(isqrt 49)</span><button class="eval"> ⇒ </button><span class="output">7</span>
 
-(isqrt 63) ⇒ 7
+<span class="input" contenteditable="true">(isqrt 63)</span><button class="eval"> ⇒ </button><span class="output">7</span>
 
-(isqrt 1000000000000002000000000000000)
-           ⇒ 1000000000000000
+<span class="input" contenteditable="true">(isqrt 1000000000000002000000000000000)</span><button class="eval"> ⇒ </button><span class="output">1000000000000000</span>
 </pre>
             
             <h3 id="character_class">Character class</h3>
