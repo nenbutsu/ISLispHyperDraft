@@ -5287,20 +5287,20 @@ Output is: This is a tilde: ~
             <p id="error_system">The condition system, sometimes called the <q>error system,</q> is a facility which permits problem situations detected at runtime to be represented and resolved while still under the control of a conforming program.</p>
             
             <h4 id="conditions">Conditions</h4>
-            <p>When a problem situation is detected, a representation of that situation called a condition (or sometimes a <q>condition object</q> to emphasize its nature as an ordinary ISLISP object) is constructed and the situation represented by the condition is announced by a process called signaling. This signaling process allows a dynamically established handler an opportunity to resolve the problem.</p>
+            <p>When a problem situation is detected, a representation of that situation called a <span class="term">condition</span> (or sometimes a <q>condition object</q> to emphasize its nature as an ordinary ISLISP object) is constructed and the situation represented by the condition is announced by a process called <span class="term">signaling</span>. This signaling process allows a dynamically established <span class="term">handler</span> an opportunity to resolve the problem.</p>
             <p><a href="#figure_1">Figure 1</a> shows an inheritance graph for the various condition classes.</p>
             <p>Some condition classes require initialization arguments when using create so that associated data can be provided. For more information, see §29.3.</p>
-            <p id="error_conditions">Conditions that represent situations involving dynamically detected program errors are called error conditions. Error conditions and those conditions that represent implementation limitations that may not be symptomatic of program errors are collectively called serious conditions.</p>
+            <p id="error_conditions">Conditions that represent situations involving dynamically detected program errors are called <span class="term">error conditions</span>. Error conditions and those conditions that represent implementation limitations that may not be symptomatic of program errors are collectively called <span class="term">serious conditions</span>.</p>
             <div class="note">Note: In some dialects of LISP a meaning is assigned to the idea of conditions that are not serious. Such conditions are beyond the scope of this document; hence the use of the class name <span class="class">serious-condition</span> as the most general kind of condition defined herein.</div>
             
             <h4 id="signaling_and_handling">Signaling and handling conditions</h4>
             
-            <p>When a condition is signaled, the active handler is called with one argument, a condition which represents the situation. An initial active handler will have been established by the system; it will provide some <a href="#td_implementation_defined">implementation-defined</a> action (such as return to toplevel, program exit, or entry into an interactive debugger). User programs may also establish handlers (see with-handler).</p>
+            <p>When a condition is signaled, the <span class="term">active handler</span> is called with one argument, a condition which represents the situation. An initial active handler will have been established by the system; it will provide some <a href="#td_implementation_defined">implementation-defined</a> action (such as return to toplevel, program exit, or entry into an interactive debugger). User programs may also establish handlers (see <a href="#s_with_handler"><span class="terminal">with-handler</span></a>).</p>
             <p>At any given time, only one handler is active. Establishing a new handler with with-handler shadows any previously active handler. This newly established handler is active throughout execution of its associated body of code unless shadowed by another use of with-handler.</p>
-            <p>If called, a handler function will execute in the dynamic environment of the call to signal-condition, except that the handler context is re-bound to match the dynamic handler state that was current at the point the handler function was established as the active handler.</p>
-            <div class="note">Note: This means that handlers are not expected to handle errors in themselves. If a programmer wishes to have a handler handle its own errors, he might use labels to allow the function a way to refer to itself and might have the function re-establish itself as a handler within its own body.</div>
-            <p>When a handler is called, it must handle the condition by transferring control to a point outside of the call to signal-condition. Such a transfer of control might be made explicitly by use of go, throw, or return-from or implicitly by use of an abstract operation such as continue-condition that has an equivalent effect. The consequences are undefined if the handler returns normally; the handler is required to transfer control.</p>
-            <p>A handler may defer to previously established handlers by calling signal-condition on the condition object which it received as an argument.</p>
+            <p>If called, a handler function will execute in the dynamic environment of the call to <a href="#f_signal_condition"><span class="terminal">signal-condition</span></a>, <i>except</i> that the handler context is re-bound to match the dynamic handler state that was current at the point the handler function was established as the active handler.</p>
+            <div class="note">Note: This means that handlers are not expected to handle errors in themselves. If a programmer wishes to have a handler handle its own errors, he might use <a href="#s_labels"><span class="terminal">labels</span></a> to allow the function a way to refer to itself and might have the function re-establish itself as a handler within its own body.</div>
+            <p>When a handler is called, it must handle the condition by transferring control to a point outside of the call to <a href="#f_signal_condition"><span class="terminal">signal-condition</span></a>. Such a transfer of control might be made explicitly by use of <a href="#s_go"><span class="terminal">go</span></a>, <a href="#s_throw"><span class="terminal">throw</span></a>, or <a href="#s_return_from"><span class="terminal">return-from</span></a> or implicitly by use of an abstract operation such as <a href="#f_continue_condition"><span class="terminal">continue-condition</span></a> that has an equivalent effect. The consequences are undefined if the handler returns normally; the handler is required to transfer control.</p>
+            <p>A handler may defer to previously established handlers by calling <span class="terminal">signal-condition</span> on the condition object which it received as an argument.</p>
             
             <h5 id="operations_relating_to_condition_signaling">Operations relating to condition signaling</h5>
             
@@ -5309,7 +5309,7 @@ Output is: This is a tilde: ~
             </div>
             
             <p>An error shall be signaled.</p>
-            <p>error-string and the objs are advice to the implementation about how the error message might be textually described (using format), but whether or not that advice is used is <a href="#td_implementation_defined">implementation defined</a>.</p>
+            <p><span class="nonterminal">error-string</span> and the <span class="nonterminal">objs</span> are advice to the implementation about how the error message might be textually described (using <span class="terminal">format</span>), but whether or not that advice is used is <a href="#td_implementation_defined">implementation defined</a>.</p>
             <p>This is equivalent to:</p>
 <pre>
 (signal-condition
@@ -5323,7 +5323,7 @@ Output is: This is a tilde: ~
                 (<span class="operator">cerror</span> <span class="arg">continue-string</span> <span class="arg">error-string</span> <span class="arg">obj</span>*) → <span class="class">object</span>
             </div>
             
-            <p>Like error, but the error that it signals is “continuable” (see continue-condition). The extra argument continue-string describes what happens if this function returns.</p>
+            <p>Like <span class="terminal">error</span>, but the error that it signals is “continuable” (see <a href="#f_continue_condition"><span class="terminal">continue-condition</span></a>). The extra argument <span class="nonterminal">continue-string</span> describes what happens if this function returns.</p>
             <p>This is equivalent to:</p>
 <pre>
 (signal-condition
@@ -5339,9 +5339,9 @@ Output is: This is a tilde: ~
                 (<span class="operator">signal-condition</span> <span class="arg">condition</span> <span class="arg">continuable</span>) → <span class="class">object</span>
             </div>
             
-            <p>Invokes the condition handling system on condition.</p>
-            <p>If continuable is nil, the results of attempting to “continue” (see continue-condition) are not defined except that the call to signal-condition will not return normally.</p>
-            <p>If continuable is not nil, it will be possible to return from the call to signal-condition (see continue-condition). In this case, the specific value of continuable may be a string indicating the effect of continuing, or it may be the symbol t, indicating that an <a href="#td_implementation_defined">implementation-defined</a> string such as "Continue with no special action." is to be used.</p>
+            <p>Invokes the condition handling system on <span class="nonterminal">condition</span>.</p>
+            <p>If <span class="nonterminal">continuable</span> is <span class="terminal">nil</span>, the results of attempting to “continue” (see <a href="#f_continue_condition"><span class="terminal">continue-condition</span></a>) are not defined except that the call to <span class="terminal">signal-condition</span> will not return normally.</p>
+            <p>If <span class="nonterminal">continuable</span> is not <span class="terminal">nil</span>, it will be possible to return from the call to <span class="terminal">signal-condition</span> (see <a href="#f_continue_condition"><span class="terminal">continue-condition</span></a>). In this case, the specific value of continuable may be a string indicating the effect of continuing, or it may be the symbol <span class="terminal">t</span>, indicating that an <a href="#td_implementation_defined">implementation-defined</a> string such as "Continue with no special action." is to be used.</p>
             
 <pre class="example">
 (signal-condition (create (class <span class="class">simple-error</span>)
@@ -5357,31 +5357,31 @@ Output is: This is a tilde: ~
                 (<span class="operator">ignore-errors</span> <span class="arg">form</span>*) → <span class="class">object</span>
             </div>
             
-            <p>Establishes a handler for <span class="class">error</span>, such that if an error occurs during execution of forms, ignore-errors will immediately return nil. Then it executes forms, returning the value returned by the last form (or nil if there were no forms) if execution terminates normally.</p>
+            <p>Establishes a handler for <span class="class">error</span>, such that if an error occurs during execution of <span class="nonterminal">forms</span>, <span class="terminal">ignore-errors</span> will immediately return <span class="terminal">nil</span>. Then it executes forms, returning the value returned by the last form (or <span class="terminal">nil</span> if there were no <span class="nonterminal">forms</span>) if execution terminates normally.</p>
             
             <div id="gf_report_condition" class="definition-generic">
                 (<span class="operator">report-condition</span> <span class="arg">condition</span> <span class="arg">stream</span>) → <span class="class">condition</span>
             </div>
             
-            <p>Presents a natural language description of condition to stream. This generic function may be specialized for user-defined condition classes.</p>
+            <p>Presents a natural language description of <span class="nonterminal">condition</span> to <span class="nonterminal">stream</span>. This generic function may be specialized for user-defined condition classes.</p>
             
             <div id="f_condition_continuable" class="definition-function">
                 (<span class="operator">condition-continuable</span> <span class="arg">condition</span>) → <span class="class">object</span>
             </div>
             
-            <p>Returns nil if condition is not continuable, or a string describing the effect of continuing otherwise.</p>
+            <p>Returns <span class="terminal">nil</span> if <span class="nonterminal">condition</span> is not continuable, or a string describing the effect of continuing otherwise.</p>
             
             <div id="f_continue_condition" class="definition-function">
                 (<span class="operator">continue-condition</span> <span class="arg">condition</span> [<span class="arg">value</span>]) <span class="comment">transfers control and data</span>
             </div>
             
-            <p><q>Continues</q> from condition by finding the call to signal-condition and arranging for it to perform a normal return of the value, which defaults to nil. The consequences are undefined if the condition is not continuable.</p>
+            <p><q>Continues</q> from <span class="nonterminal">condition</span> by finding the call to <span class="terminal">signal-condition</span> and arranging for it to perform a normal return of the value, which defaults to <span class="terminal">nil</span>. The consequences are undefined if the <span class="nonterminal">condition</span> is not continuable.</p>
             
             <div id="s_with_handler" class="definition-special">
                 (<span class="operator">with-handler</span> <span class="arg">handler</span> <span class="arg">form</span>*) → <span class="class">object</span>
             </div>
             
-            <p>Evaluates handler , which must yield a function (called the “handler function”). The handler function is established as active handler (see §29.2) and then the forms are executed. If execution of forms finishes normally, the value of the last form (or nil if there are no forms) is returned.</p>
+            <p>Evaluates <span class="nonterminal">handler</span>, which must yield a function (called the “handler function”). The handler function is established as active handler (see <a href="#signaling_and_handling">§29.2</a>) and then the forms are executed. If execution of <span class="nonterminal">forms</span> finishes normally, the value of the last <span class="nonterminal">form</span> (or <span class="terminal">nil</span> if there are no forms) is returned.</p>
             
             <h4 id="data_associated_with_condition_classes">Data associated with condition classes</h4>
             <p>Some of the condition classes defined by ISLISP permit data to be associated with a condition object at its time of creation and later retrieved. Initialization arguments and accessors for such classes are defined here.</p>
@@ -5391,9 +5391,9 @@ Output is: This is a tilde: ~
             <dl>
                 <dt><span class="class">arithmetic-error</span></dt>
                 <dd>
-                    <p>operation operation</p>
-                    <p>operands operands</p>
-                    <p>The operation is the function that was being performed, and the operands is a list of the arguments it received.</p>
+                    <p>operation <span class="nonterminal">operation</span></p>
+                    <p>operands <span class="nonterminal">operands</span></p>
+                    <p>The <span class="nonterminal">operation</span> is the function that was being performed, and the <span class="nonterminal">operands</span> is a list of the arguments it received.</p>
                 </dd>
             </dl>
             
@@ -5404,14 +5404,14 @@ Output is: This is a tilde: ~
                 (<span class="operator">arithmetic-error-operands</span> <span class="arg">arithmetic-error</span>) → <span class="class">list</span>
             </div>
             
-            <p>These functions return the operation and operands supplied as data when creating the arithmetic-error . An error shall be signaled if arithmetic-error is not a condition of class <span class="class">arithmetic-error</span> (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>These functions return the <span class="nonterminal">operation</span> and <span class="nonterminal">operands</span> supplied as data when creating the <span class="nonterminal">arithmetic-error</span>. An error shall be signaled if <span class="nonterminal">arithmetic-error</span> is not a condition of class <span class="class">arithmetic-error</span> (error-id. <span class="error_id">domain-error</span>).</p>
             
             <h5 id="domain_errors">Domain errors</h5>
             <dl><dt><span class="class">domain-error</span></dt>
                 <dd>
-                    <p>object object</p>
-                    <p>expected-class expected-class</p>
-                    <p>The object is the offending object, and the expected-class is the class that it was expected to be.</p>
+                    <p>object <span class="nonterminal">object</span></p>
+                    <p>expected-class <span class="nonterminal">expected-class</span></p>
+                    <p>The <span class="nonterminal">object</span> is the offending object, and the <span class="nonterminal">expected-class</span> is the class that it was expected to be.</p>
                 </dd>
             </dl>
             
@@ -5422,14 +5422,14 @@ Output is: This is a tilde: ~
                 (<span class="operator">domain-error-expected-class</span> <span class="arg">domain-error</span>) → <span class="class">class</span>
             </div>
             
-            <p>These functions return the object and expected-class supplied as data when creating the domain-error . An error shall be signaled if domain-error is not a condition of class <span class="class">domain-error</span> (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>These functions return the <span class="nonterminal">object</span> and <span class="nonterminal">expected-class</span> supplied as data when creating the <span class="nonterminal">domain-error</span>. An error shall be signaled if <span class="nonterminal">domain-error</span> is not a condition of class <span class="class">domain-error</span> (error-id. <span class="error_id">domain-error</span>).</p>
             
             <h5 id="parse_errors">Parse errors</h5>
             <dl><dt><span class="class">parse-error</span></dt>
                 <dd>
-                    <p>string string</p>
-                    <p>expected-class expected-class</p>
-                    <p>The string is the string that was being parsed, and the expected-class is the class that the textual notation in the string was expected to represent.</p>
+                    <p>string <span class="nonterminal">string</span></p>
+                    <p>expected-class <span class="nonterminal">expected-class</span></p>
+                    <p>The <span class="nonterminal">string</span> is the string that was being parsed, and the <span class="nonterminal">expected-class</span> is the class that the textual notation in the <span class="nonterminal">string</span> was expected to represent.</p>
                 </dd>
             </dl>
             
@@ -5440,15 +5440,15 @@ Output is: This is a tilde: ~
                 (<span class="operator">parse-error-expected-class</span> <span class="arg">parse-error</span>) → <span class="class">class</span>
             </div>
             
-            <p>These functions return the string and expected-class supplied as data when creating the parse-error. An error shall be signaled if parse-error is not a condition of class <span class="class">parse-error</span> (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>These functions return the <span class="nonterminal">string</span> and <span class="nonterminal">expected-class</span> supplied as data when creating the <span class="nonterminal">parse-error</span>. An error shall be signaled if <span class="nonterminal">parse-error</span> is not a condition of class <span class="class">parse-error</span> (error-id. <span class="error_id">domain-error</span>).</p>
             
             <h5 id="simple_errors">Simple errors</h5>
             <dl>
                 <dt><span class="class">simple-error</span></dt>
                 <dd>
-                    <p>format-string format-string</p>
-                    <p>format-arguments format-arguments</p>
-                    <p>The format-string (a string) and format-arguments (a list of objects) are passed through to format to construct the error message. Each object in the list given as format-arguments becomes a separate data argument, obj , in the call to format.</p>
+                    <p>format-string <span class="nonterminal">format-string</span></p>
+                    <p>format-arguments <span class="nonterminal">format-arguments</span></p>
+                    <p>The <span class="nonterminal">format-string</span> (a string) and <span class="nonterminal">format-arguments</span> (a list of objects) are passed through to <span class="terminal">format</span> to construct the error message. Each object in the list given as <span class="nonterminal">format-arguments</span> becomes a separate data argument, <span class="nonterminal">obj</span>, in the call to <span class="terminal">format</span>.</p>
                 </dd>
             </dl>
             
@@ -5459,13 +5459,13 @@ Output is: This is a tilde: ~
                 (<span class="operator">simple-error-format-arguments</span> <span class="arg">simple-error</span>) → <span class="class">list</span>
             </div>
             
-            <p>These functions return the format-string and format-arguments supplied as data when creating the simple-error . An error shall be signaled if simple-error is not a condition of class <span class="class">simple-error</span> (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>These functions return the <span class="nonterminal">format-string</span> and <span class="nonterminal">format-arguments</span> supplied as data when creating the <span class="nonterminal">simple-error</span>. An error shall be signaled if <span class="nonterminal">simple-error</span> is not a condition of class <span class="class">simple-error</span> (error-id. <span class="error_id">domain-error</span>).</p>
             
             <h5 id="stream_errors">Stream errors</h5>
             <dl><dt><span class="class">stream-error</span></dt>
                 <dd>
-                    <p>stream stream</p>
-                    <p>The stream is the stream on which the error occurred.</p>
+                    <p>stream <span class="nonterminal">stream</span></p>
+                    <p>The <span class="nonterminal">stream</span> is the stream on which the error occurred.</p>
                 </dd>
             </dl>
             
@@ -5473,15 +5473,15 @@ Output is: This is a tilde: ~
                 (<span class="operator">stream-error-stream</span> <span class="arg">stream-error</span>) → <span class="class">stream</span>
             </div>
             
-            <p>Returns the stream supplied as data when creating the stream-error . An error shall be signaled if stream-error is not a condition of class <span class="class">stream-error</span> (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>Returns the <span class="nonterminal">stream</span> supplied as data when creating the <span class="nonterminal">stream-error</span>. An error shall be signaled if <span class="terminal">stream-error</span> is not a condition of class <span class="class">stream-error</span> (error-id. <span class="error_id">domain-error</span>).</p>
             
             <h5 id="undefined_entity_errors">Undefined entity errors</h5>
             <dl>
                 <dt><span class="class">undefined-entity</span></dt>
                 <dd>
-                    <p>name name</p>
-                    <p>namespace namespace</p>
-                    <p>The name is a symbol representing the identifier which was undefined. The namespace is one of the symbols variable, dynamic-variable, function, or class.</p>
+                    <p>name <span class="nonterminal">name</span></p>
+                    <p>namespace <span class="nonterminal">namespace</span></p>
+                    <p>The <span class="nonterminal">name</span> is a symbol representing the identifier which was undefined. The <span class="nonterminal">namespace</span> is one of the symbols <span class="terminal">variable</span>, <span class="terminal">dynamic-variable</span>, <span class="terminal">function</span>, or <span class="terminal">class</span>.</p>
                 </dd>
             </dl>
             
@@ -5492,9 +5492,9 @@ Output is: This is a tilde: ~
                 (<span class="operator">undefined-entity-namespace</span> <span class="arg">undefined-entity</span>) → <span class="class">symbol</span>
             </div>
             
-            <p>These functions return the name and namespace supplied as data when creating the undefined-entity. An error shall be signaled if undefined-entity is not a condition of class <span class="class">undefined-entity</span> (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>These functions return the <span class="nonterminal">name</span> and <span class="nonterminal">namespace</span> supplied as data when creating the <span class="nonterminal">undefined-entity</span>. An error shall be signaled if <span class="nonterminal">undefined-entity</span> is not a condition of class <span class="class">undefined-entity</span> (error-id. <span class="error_id">domain-error</span>).</p>
             
-            <p>The result of undefined-entity-namespace will be one of the symbols variable, dynamic-variable, function, or class.</p>
+            <p>The result of <span class="terminal">undefined-entity-namespace</span> will be one of the symbols <span class="terminal">variable</span>, <span class="terminal">dynamic-variable</span>, <span class="terminal">function</span>, or <span class="terminal">class</span>.</p>
             
             <h4 id="error_identification">Error identification</h4>
             
