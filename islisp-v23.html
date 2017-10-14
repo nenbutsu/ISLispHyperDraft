@@ -4908,8 +4908,8 @@ a                           ⇒ (2 4 6 8)
             <h4 id="argument_conventions">Argument conventions for input functions</h4>
             
             <p>Most of the reader functions that do input treat their arguments as follows:</p>
-            <p>When end-of-stream is reached (<span class="latin">i.e.</span>, an attempt is made to read a stream element immediately after the last one in the stream), the behavior depends on the value of eos-error-p (which defaults to t): if eos-error-p is nil, the function returns the eos-value (which defaults to nil); otherwise, an error shall be signaled (error-id. <span class="error_id">end-of-stream</span>).</p>
-            <p>If the input-stream is not specified, the standard input stream (the value returned by the standard-input function) is used. An error shall be signaled if an input-stream does not satisfy the input-stream-p predicate (error-id. <span class="error_id">not-an-input-stream</span>).</p>
+            <p>When end-of-stream is reached (<span class="latin">i.e.</span>, an attempt is made to read a stream element immediately after the last one in the stream), the behavior depends on the value of <span class="nonterminal">eos-error-p</span> (which defaults to <span class="terminal">t</span>): if <span class="nonterminal">eos-error-p</span> is <span class="terminal">nil</span>, the function returns the <span class="nonterminal">eos-value</span> (which defaults to <span class="terminal">nil</span>); otherwise, an error shall be signaled (error-id. <span class="error_id">end-of-stream</span>).</p>
+            <p>If the <span class="nonterminal">input-stream</span> is not specified, the standard input stream (the value returned by the <a href="#f_standard_input"><span class="terminal">standard-input</span></a> function) is used. An error shall be signaled if an <span class="nonterminal">input-stream</span> does not satisfy the <a href="#f_input_stream_p"><span class="terminal">input-stream-p</span></a> predicate (error-id. <span class="error_id">not-an-input-stream</span>).</p>
             
             <h4 id="character_io">Character I/O</h4>
             
@@ -4919,14 +4919,13 @@ a                           ⇒ (2 4 6 8)
                 (<span class="operator">read</span> [<span class="arg">input-stream</span> [<span class="arg">eos-error-p</span> [<span class="arg">eos-value</span>]]]) → <span class="class">object</span>
             </div>
             
-            <p>The function read returns the ISLISP object that is created as the result of reading its textual representation from the stream input-stream.</p>
-            <p>See §27.1 for information about how input-stream, eos-error-p, and eos-value are treated.</p>
+            <p>The function <span class="terminal">read</span> returns the ISLISP object that is created as the result of reading its textual representation from the stream <span class="nonterminal">input-stream</span>.</p>
+            <p>See <a href="#argument_conventions">§27.1</a> for information about how input-stream, eos-error-p, and eos-value are treated.</p>
             
 <pre class="example">
-(defglobal str (create-string-input-stream "hello #(1 2 3) 123 #\\A"))
-                         ⇒ str
+<span class="input" contenteditable="true">(defglobal str (create-string-input-stream "hello #(1 2 3) 123 #\\A"))</span><button class="eval"> ⇒ </button><span class="output">str</span>
                 
-(read str)               ⇒ hello
+<span class="input" contenteditable="true">(read str)</span><button class="eval"> ⇒ </button><span class="output">hello</span>
 
 (read str)               ⇒ #(1 2 3)
 
@@ -4941,8 +4940,8 @@ a                           ⇒ (2 4 6 8)
                 (<span class="operator">read-char</span> [<span class="arg">input-stream</span> [<span class="arg">eos-error-p</span> [<span class="arg">eos-value</span>]]]) → <span class="class">object</span>
             </div>
             
-            <p>read-char reads a single character from input-stream and returns the corresponding character object.</p>
-            <p>See §27.1 for information about how input-stream, eos-error-p, and eos-value are treated.</p>
+            <p><span class="terminal">read-char</span> reads a single character from <span class="nonterminal">input-stream</span> and returns the corresponding character object.</p>
+            <p>See <a href="#argument_conventions">§27.1</a> for information about how <span class="nonterminal">input-stream</span>, <span class="nonterminal">eos-error-p</span>, and <span class="nonterminal">eos-value</span> are treated.</p>
             
 <pre class="example">
 (defglobal str (create-string-input-stream "hi"))
@@ -4959,8 +4958,8 @@ a                           ⇒ (2 4 6 8)
                 (<span class="operator">preview-char</span> [<span class="arg">input-stream</span> [<span class="arg">eos-error-p</span> [<span class="arg">eos-value</span>]]]) → <span class="class">object</span>
             </div>
             
-            <p>Returns the next character of input-stream, if any. The character is not consumed; the next attempt to peek at or read a character from the stream sees that same character.</p>
-            <p>See §27.1 for information about how input-stream, eos-error-p, and eos-value are treated.</p>
+            <p>Returns the next character of <span class="nonterminal">input-stream</span>, if any. The character is not consumed; the next attempt to peek at or read a character from the <span class="nonterminal">stream</span> sees that same character.</p>
+            <p>See <a href="#argument_conventions">§27.1</a> for information about how <span class="nonterminal">input-stream</span>, <span class="nonterminal">eos-error-p</span>, and <span class="nonterminal">eos-value</span> are treated.</p>
 <pre class="example">
 (let ((s (create-string-input-stream "foo")))
   (list (preview-char s) (read-char s) (read-char s)))
@@ -4971,8 +4970,8 @@ a                           ⇒ (2 4 6 8)
                 (<span class="operator">read-line</span> [<span class="arg">input-stream</span> [<span class="arg">eos-error-p</span> [<span class="arg">eos-value</span>]]]) → <span class="class">object</span>
             </div>
             
-            <p>Reads a line of characters from input-stream and returns them as a string (without the newline character at the end of the line). If an end-of-stream is reached before the next newline character and a non-empty line has been read prior to the end-of-stream, that line is returned.</p>
-            <p>See §27.1 for information about how input-stream, eos-error-p, and eos-value are treated.</p>
+            <p>Reads a line of characters from <span class="nonterminal">input-stream</span> and returns them as a string (without the newline character at the end of the line). If an <span class="nonterminal">end-of-stream</span> is reached before the next newline character and a non-empty line has been read prior to the end-of-stream, that line is returned.</p>
+            <p>See <a href="#argument_conventions">§27.1</a> for information about how <span class="nonterminal">input-stream</span>, <span class="nonterminal">eos-error-p</span>, and <span class="nonterminal">eos-value</span> are treated.</p>
 <pre class="example">
 (with-open-output-file (out "newfile")
   (format out "This is an example")
@@ -4992,7 +4991,7 @@ a                           ⇒ (2 4 6 8)
                 (<span class="operator">stream-ready-p</span> <span class="arg">input-stream</span>) → <span class="nonterminal">boolean</span>
             </div>
             
-            <p>Returns t if an attempt to obtain the next element from the stream will not cause the processor to have to wait; otherwise, returns nil. An error shall be signaled if stream is not a stream that can handle input operations (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>Returns <span class="terminal">t</span> if an attempt to obtain the next element from the <span class="nonterminal">stream</span> will not cause the processor to have to wait; otherwise, returns <span class="terminal">nil</span>. An error shall be signaled if <span class="nonterminal">stream</span> is not a stream that can handle input operations (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
 (with-open-output-file (out "testfile.dat")
@@ -5024,74 +5023,74 @@ a                           ⇒ (2 4 6 8)
                 (<span class="operator">format-tab</span> <span class="arg">output-stream</span> <span class="arg">column</span>) → <span class="class">null</span>
             </div>
             
-            <p>The function format has the side-effect of printing according to format-string. It returns nil. An error shall be signaled if the output-stream parameter does not satisfy the output-stream-p predicate (error-id. <span class="error_id">not-an-output-stream</span>). An error shall be signaled if format-string is not a string (error-id. <span class="error_id">domain-error</span>). The following is a summary of all the available format directives:</p>
+            <p>The function <span class="terminal">format</span> has the side-effect of printing according to <span class="nonterminal">format-string</span>. It returns <span class="terminal">nil</span>. An error shall be signaled if the <span class="nonterminal">output-stream</span> parameter does not satisfy the <span class="terminal">output-stream-p</span> predicate (error-id. <span class="error_id">not-an-output-stream</span>). An error shall be signaled if <span class="nonterminal">format-string</span> is not a string (error-id. <span class="error_id">domain-error</span>). The following is a summary of all the available format directives:</p>
             
-            <p>obj refers to the next item of the set of obj* to be processed.</p>
+            <p><span class="nonterminal">obj</span> refers to the next item of the set of <span class="nonterminal">obj</span>* to be processed.</p>
             <dl>
                 <dt>~A</dt>
                 <dd>
-                    <p>Aesthetic: The obj is any object. obj is printed as it would with ~S, but without escape characters. Characters are output directly without any conversion. That is, the output generated using this format directive is suitable for being read by a human reader.</p>
-                    <p>This effect is implemented by (format-object output-stream obj nil).</p>
+                    <p>Aesthetic: The <span class="nonterminal">obj</span> is any object. <span class="nonterminal">obj</span> is printed as it would with ~S, but without escape characters. Characters are output directly without any conversion. That is, the output generated using this format directive is suitable for being read by a human reader.</p>
+                    <p>This effect is implemented by (<span class="terminal">format-object</span> <span class="nonterminal">output-stream</span> <span class="nonterminal">obj</span> <span class="terminal">nil</span>).</p>
                 </dd>
                 <dt>~B</dt>
                 <dd>
-                    <p>Binary: An error shall be signaled if obj is not an integer. obj is printed in binary radix (radix 2).</p>
-                    <p>This effect is implemented by (format-integer output-stream obj 2).</p>
+                    <p>Binary: An error shall be signaled if <span class="nonterminal">obj</span> is not an integer. <span class="nonterminal">obj</span> is printed in binary radix (radix 2).</p>
+                    <p>This effect is implemented by (<span class="terminal">format-integer</span> <span class="nonterminal">output-stream</span> <span class="nonterminal">obj</span> 2).</p>
                 </dd>
                 <dt>~C</dt>
                 <dd>
-                    <p>Character: An error shall be signaled if obj is not a character. obj is output directly without any conversion.</p>
-                    <p>This effect is implemented by (format-char output-stream obj).</p>
+                    <p>Character: An error shall be signaled if <span class="nonterminal">obj</span> is not a character. <span class="nonterminal">obj</span> is output directly without any conversion.</p>
+                    <p>This effect is implemented by (<span class="terminal">format-char</span> <span class="nonterminal">output-stream</span> <span class="nonterminal">obj</span>).</p>
                 </dd>
                 <dt>~D</dt>
                 <dd>
-                    <p>Decimal: An error shall be signaled if obj is not an integer. obj is printed in decimal radix (radix 10).</p>
-                    <p>This effect is implemented by (format-integer output-stream obj 10).</p>
+                    <p>Decimal: An error shall be signaled if <span class="nonterminal">obj</span> is not an integer. <span class="nonterminal">obj</span> is printed in decimal radix (radix 10).</p>
+                    <p>This effect is implemented by (<span class="terminal">format-integer</span> <span class="nonterminal">output-stream</span> <span class="nonterminal">obj</span> 10).</p>
                 </dd>
                 <dt>~G</dt>
                 <dd>
-                    <p>General ﬂoating point: An error shall be signaled if obj is not a number. obj is printed as a ﬂoat.</p>
-                    <p>This effect is implemented by (format-float output-stream obj).</p>
+                    <p>General ﬂoating point: An error shall be signaled if <span class="nonterminal">obj</span> is not a number. <span class="nonterminal">obj</span> is printed as a ﬂoat.</p>
+                    <p>This effect is implemented by (<span class="terminal">format-float</span> <span class="nonterminal">output-stream</span> <span class="nonterminal">obj</span>).</p>
                 </dd>
                 <dt>~O</dt>
                 <dd>
-                    <p>Octal: An error shall be signaled if obj is not an integer. obj is printed in octal radix (radix 8).</p>
-                    <p>This effect is implemented by (format-integer output-stream obj 8).</p>
+                    <p>Octal: An error shall be signaled if <span class="nonterminal">obj</span> is not an integer. <span class="nonterminal">obj</span> is printed in octal radix (radix 8).</p>
+                    <p>This effect is implemented by (<span class="terminal">format-integer</span> <span class="nonterminal">output-stream</span> <span class="nonterminal">obj</span> 8).</p>
                 </dd>
-                <dt>~nR</dt>
+                <dt>~<span class="nonterminal">n</span>R</dt>
                 <dd>
-                    <p>Radix: An error shall be signaled if obj is not an integer. obj is printed in radix n (which must be between 2 and 36, inclusive).</p>
-                    <p>This effect is implemented by (format-integer output-stream obj n).</p>
+                    <p>Radix: An error shall be signaled if <span class="nonterminal">obj</span> is not an integer. <span class="nonterminal">obj</span> is printed in radix <span class="nonterminal">n</span> (which must be between 2 and 36, inclusive).</p>
+                    <p>This effect is implemented by (<span class="terminal">format-integer</span> <span class="nonterminal">output-stream</span> <span class="nonterminal">obj</span> <span class="nonterminal">n</span>).</p>
                 </dd>
                 <dt>~S</dt>
                 <dd>
-                    <p>S-expression: obj is any object. This format directive outputs the textual representation of obj , with escape characters as needed. That is, the output generated using this format directive is suitable for input to the function read.</p>
-                    <p>This effect is implemented by (format-object output-stream obj t).</p>
+                    <p>S-expression: <span class="nonterminal">obj</span> is any object. This format directive outputs the textual representation of <span class="nonterminal">obj</span>, with escape characters as needed. That is, the output generated using this format directive is suitable for input to the function <span class="terminal">read</span>.</p>
+                    <p>This effect is implemented by (<span class="terminal">format-object</span> <span class="nonterminal">output-stream</span> <span class="nonterminal">obj</span> <span class="terminal">t</span>).</p>
                 </dd>
-                <dt>~nT</dt>
+                <dt>~<span class="nonterminal">n</span>T</dt>
                 <dd>
-                    <p>Tab: output enough spaces to move to column n (where column 0 represents the left margin). If already at or beyond column n, one space is output. If an implementation cannot determine the current column position, the behavior is <a href="#td_implementation_defined">implementation defined</a>, but at least one space will be output.</p>
-                    <p>This effect is implemented by (format-tab output-stream n).</p>
+                    <p>Tab: output enough spaces to move to column <span class="nonterminal">n</span> (where column 0 represents the left margin). If already at or beyond column <span class="nonterminal">n</span>, one space is output. If an implementation cannot determine the current column position, the behavior is <a href="#td_implementation_defined">implementation defined</a>, but at least one space will be output.</p>
+                    <p>This effect is implemented by (<span class="terminal">format-tab</span> <span class="nonterminal">output-stream</span> <span class="nonterminal">n</span>).</p>
                 </dd>
                 <dt>~X</dt>
                 <dd>
-                    <p>Hexadecimal: An error shall be signaled if obj is not an integer. obj is printed in hexadecimal radix (radix 16).</p>
-                    <p>This effect is implemented by (format-integer output-stream obj 16).</p>
+                    <p>Hexadecimal: An error shall be signaled if <span class="nonterminal">obj</span> is not an integer. <span class="nonterminal">obj</span> is printed in hexadecimal radix (radix 16).</p>
+                    <p>This effect is implemented by (<span class="terminal">format-integer</span> <span class="nonterminal">output-stream</span> <span class="nonterminal">obj</span> 16).</p>
                 </dd>
                 <dt>~%</dt>
                 <dd>
                     <p>newline: output a #\newline character;</p>
-                    <p>This effect is implemented by (format-char output-stream #\newline).</p>
+                    <p>This effect is implemented by (<span class="terminal">format-char</span> <span class="nonterminal">output-stream</span> #\newline).</p>
                 </dd>
                 <dt>~&amp;</dt>
                 <dd>
                     <p>conditional newline: output a #\newline character if it cannot be determined that the output stream is at the beginning of a fresh line;</p>
-                    <p>This effect is implemented by (format-fresh-line output-stream).</p>
+                    <p>This effect is implemented by (<span class="terminal">format-fresh-line</span> <span class="nonterminal">output-stream</span>).</p>
                 </dd>
                 <dt>~~</dt>
                 <dd>
                     <p>tilde: output a tilde (˜).</p>
-                    <p>This effect is implemented by (format-char output-stream #\~).</p>
+                    <p>This effect is implemented by (<span class="terminal">format-char</span> <span class="nonterminal">output-stream</span> #\~).</p>
                 </dd>
             </dl>
 <pre class="example">
@@ -5147,8 +5146,8 @@ Output is: This is a tilde: ~
                 (<span class="operator">read-byte</span> <span class="arg">input-stream</span> [<span class="arg">eos-error-p</span> [<span class="arg">eos-value</span>]]) → <span class="class">integer</span>
             </div>
             
-            <p>Reads a byte from the input-stream and returns it. The number of bits in a byte is determined by the stream element type of the input-stream; see open-input-file.</p>
-            <p>See §27.1 for information about how input-stream, eos-error-p, and eos-value are treated.</p>
+            <p>Reads a byte from the <span class="nonterminal">input-stream</span> and returns it. The number of bits in a byte is determined by the stream element type of the <span class="nonterminal">input-stream</span>; see <a href="#f_open_input_file"><span class="terminal">open-input-file</span></a>.</p>
+            <p>See <a href="#argument_conventions">§27.1</a> for information about how <span class="nonterminal">input-stream</span>, <span class="nonterminal">eos-error-p</span>, and <span class="nonterminal">eos-value</span> are treated.</p>
             
 <pre class="example">
 ;; This example assumes 8-bit byte codes are stored in files.
@@ -5177,7 +5176,7 @@ Output is: This is a tilde: ~
                 (<span class="operator">write-byte</span> <span class="arg">z</span> <span class="arg">output-stream</span>) → <span class="class">integer</span>
             </div>
             
-            <p>Writes z to the output-stream and returns it. An error shall be signaled if z is not an integer in the range appropriate to the stream element type of output-stream or if output-stream is not a stream capable of handling output operations (error-id. <span class="error_id">domain-error</span>).</p>
+            <p>Writes <span class="nonterminal">z</span> to the <span class="nonterminal">output-stream</span> and returns it. An error shall be signaled if <span class="nonterminal">z</span> is not an integer in the range appropriate to the stream element type of <span class="nonterminal">output-stream</span> or if <span class="nonterminal">output-stream</span> is not a stream capable of handling output operations (error-id. <span class="error_id">domain-error</span>).</p>
             
 <pre class="example">
 (let ((out-str (open-output-stream "byte-example" 8)))
