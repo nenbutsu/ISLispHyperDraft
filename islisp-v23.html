@@ -5511,7 +5511,7 @@ Output is: This is a tilde: ~
                 <dd>Errors of this kind occur when a request is made to allocate a list that cannot be allocated. Errors of this kind are represented as conditions of class <span class="class">storage-exhausted</span>.</dd>
                 <dt id="e_cannot_create_sequence" class="error_id">cannot-create-sequence</dt>
                 <dd>
-                    Errors of this kind occur if a function that produces a sequence (<span class="latin">e.g.</span>, subseq) cannot allocate that sequence. Errors of this kind are represented as conditions of class <span class="class">storage-exhausted</span>.
+                    Errors of this kind occur if a function that produces a sequence (<span class="latin">e.g.</span>, <a href="#f_subseq"><span class="terminal">subseq</span></a>) cannot allocate that sequence. Errors of this kind are represented as conditions of class <span class="class">storage-exhausted</span>.
                 </dd>
                 <dt id="e_cannot_create_string" class="error_id">cannot-create-string</dt>
                 <dd>
@@ -5524,11 +5524,11 @@ Output is: This is a tilde: ~
                 
                 <dt id="e_cannot_parse_number" class="error_id">cannot-parse-number</dt>
                 <dd>
-                    Errors of this kind occur when the string parameter received by the parse-number function cannot be classified as the textual representation of a number. Errors of this kind are represented as conditions of class <span class="class">parse-error</span>.
+                    Errors of this kind occur when the string parameter received by the <a href="#f_parse_number"><span class="terminal">parse-number</span></a> function cannot be classified as the textual representation of a number. Errors of this kind are represented as conditions of class <span class="class">parse-error</span>.
                 </dd>
                 <dt id="e_control_error" class="error_id">control-error</dt>
                 <dd>
-                    Errors of this kind occur when an attempt is made to leave a block more than once or when there is no outstanding catcher for a catch tag. Errors of this kind are represented as conditions of class <span class="class">control-error</span>.
+                    Errors of this kind occur when an attempt is made to leave a block more than once or when there is no outstanding catcher for a <i>catch tag</i>. Errors of this kind are represented as conditions of class <span class="class">control-error</span>.
                 </dd>
                 
                 <dt id="e_division_by_zero" class="error_id">division-by-zero</dt>
@@ -5544,17 +5544,17 @@ Output is: This is a tilde: ~
                 
                 <dt id="e_end_of_stream" class="error_id">end-of-stream</dt>
                 <dd>
-                    Errors of this kind occur when an attempt to read a character or byte at the end-of-stream when eos-error-p argument is true, or when an attempt to read a more complex object is about to begin (<span class="latin">e.g.</span>, by read or read-line) but the end-of-stream is seen before parsing of that object has finished. Errors of this kind are represented as conditions of class <span class="class">end-of-stream</span>.
+                    Errors of this kind occur when an attempt to read a character or byte at the end-of-stream when <span class="nonterminal">eos-error-p</span> argument is true, or when an attempt to read a more complex object is about to begin (<span class="latin">e.g.</span>, by <a href="#f_read"><span class="terminal">read</span></a> or <a href="#f_read_line"><span class="terminal">read-line</span></a>) but the end-of-stream is seen before parsing of that object has finished. Errors of this kind are represented as conditions of class <span class="class">end-of-stream</span>.
                 </dd>
                 <dt id="e_immutable_binding" class="error_id">immutable-binding</dt>
                 <dd>Errors of this kind occur when an attempt is made to change an immutable binding. Errors of this kind are represented as conditions of class <span class="class">program-error</span>.
                 </dd>
                 <dt id="e_improper_argument_list" class="error_id">improper-argument-list</dt>
                 <dd>
-                    Errors of this kind occur when the last argument given to the apply function is not a proper list. Errors of this kind are represented as conditions of class <span class="class">program-error</span>.
+                    Errors of this kind occur when the last argument given to the <a href="#f_apply"><span class="terminal">apply</span></a> function is not a proper list. Errors of this kind are represented as conditions of class <span class="class">program-error</span>.
                 </dd>
                 <dt id="e_index_out_of_range" class="error_id">index-out-of-range</dt>
-                <dd>Errors of this kind occur when the index given to a function that accesses an element in a sequence (such as elt) is an integer outside the range of the sequence. Errors of this kind are represented as conditions of class <span class="class">program-error</span>.
+                <dd>Errors of this kind occur when the index given to a function that accesses an element in a sequence (such as <a href="#f_elt"><span class="terminal">elt</span></a>) is an integer outside the range of the sequence. Errors of this kind are represented as conditions of class <span class="class">program-error</span>.
                 </dd>
                 <dt id="e_not_an_input_stream" class="error_id">not-an-input-stream</dt>
                 <dd>Errors of this kind occur when an attempt is made to read from a stream which is not an input stream. Errors of this kind are represented as conditions of class <span class="class">domain-error</span>.</dd>
@@ -5584,18 +5584,18 @@ Output is: This is a tilde: ~
             
             <p>Returns an object that is the same as obj under eql. obj may be any ISLISP object.</p>
 <pre class="example">
-(identity '(a b c)) ⇒ (a b c)
+<span class="input" contenteditable="true">(identity '(a b c))</span><button class="eval"> ⇒ </button><span class="output">(a b c)</span>
 </pre>
             <div id="f_get_universal_time" class="definition-function">
                 (<span class="operator">get-universal-time</span>) → <span class="class">integer</span>
             </div>
             
-            <p>Returns an approximation to the <q>current time</q> in Universal Time Format. The units are seconds. Universal Time Format represents time as an integer number of seconds since the beginning (<span class="latin">i.e.</span>, midnight), January 1, 1900 UT (ignoring leap seconds). If get-universal-time is called twice, the first value shall be less than or equal to the second value.</p>
+            <p>Returns an approximation to the <q>current time</q> in Universal Time Format. The units are seconds. Universal Time Format represents time as an integer number of seconds since the beginning (<span class="latin">i.e.</span>, midnight), January 1, 1900 UT (ignoring leap seconds). If <span class="terminal">get-universal-time</span> is called twice, the first value shall be less than or equal to the second value.</p>
             
             <p>No implementation is required to have a way to verify that the time returned is correct. However, an error shall be signaled if an implementation can determine that the time it would return would not be correct (<span class="latin">e.g.</span>, it can determine that the clock was never initialized).</p>
             
 <pre class="example">
-(get-universal-time) ⇒ 2901312000
+<span class="input" contenteditable="true">(get-universal-time)</span><button class="eval"> ⇒ </button><span class="output">2901312000</span>
 </pre>
             
             <div id="f_get_internal_run_time" class="definition-function">
@@ -5605,14 +5605,14 @@ Output is: This is a tilde: ~
                 (<span class="operator">get-internal-real-time</span>) → <span class="class">integer</span>
             </div>
             
-            <p>get-internal-real-time returns as an integer the current time in internal time units, relative to an arbitrary time base. The difference between the values of two calls to this function is the amount of elapsed real time (<span class="latin">i.e.</span>, clock time) between the two calls.</p>
-            <p>get-internal-run-time returns as an integer the current run time in internal time units. The precise meaning of this quantity is <a href="#td_implementation_defined">implementation defined</a>. The difference between the values of two calls to this function is the amount of time between the two calls during which computational effort was expended on behalf of the executing program.</p>
+            <p><span class="terminal">get-internal-real-time</span> returns as an integer the current time in internal time units, relative to an arbitrary time base. The difference between the values of two calls to this function is the amount of elapsed real time (<span class="latin">i.e.</span>, clock time) between the two calls.</p>
+            <p><span class="terminal">get-internal-run-time</span> returns as an integer the current run time in internal time units. The precise meaning of this quantity is <a href="#td_implementation_defined">implementation defined</a>. The difference between the values of two calls to this function is the amount of time between the two calls during which computational effort was expended on behalf of the executing program.</p>
             
             <div id="f_internal_time_units_per_second" class="definition-function">
                 (<span class="operator">internal-time-units-per-second</span>) → <span class="class">integer</span>
             </div>
             
-            <p>internal-time-units-per-second returns the number of time units per second for the implementation.</p>
+            <p><span class="terminal">internal-time-units-per-second</span> returns the number of time units per second for the implementation.</p>
             
             <h2 id="index">Index</h2>
 <pre>
