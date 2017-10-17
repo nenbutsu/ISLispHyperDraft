@@ -455,22 +455,22 @@
             <div class="definition-example">
                 (<span class="operator">f-name</span> <span class="arg">argument</span>*) → <span class="class">result-class</span>
             </div>
-            <p>In this notation, words written in italics are non-terminal (pattern variables). f-name is always terminal: Specific function names, special operators, defining form names, or generic function names are always presented.</p>
-            <p>An underlined term (like the name in a defining form) in this notation, indicates an expression that is not evaluated. If a form might or might not be evaluated (like one of the then-form or else-form in an if), this is indicated explicitly in the text.</p>
+            <p>In this notation, words written in italics are non-terminal (pattern variables). <span class="terminal">f-name</span> is always terminal: Specific function names, special operators, defining form names, or generic function names are always presented.</p>
+            <p>An underlined term (like the name in a defining form) in this notation, indicates an expression that is not evaluated. If a form might or might not be evaluated (like one of the <span class="nonterminal">then-form</span> or <span class="nonterminal">else-form</span> in an <span class="terminal">if</span>), this is indicated explicitly in the text.</p>
             <p>Class names are uniformly denoted as follows: <span class="class">class-name</span>. For example, <span class="class">list</span> is the name of a class; this is usually spoken aloud as <q>list class.</q></p>
             <p>Notes, appearing as Note: note-text, in this document have no effect on the language. They are for better understanding by the human reader.</p>
             <p>Regarding the pattern variables and the extensions of above, the following conventions are also adopted:</p>
             <dl>
-                <dt><span class="arg">term</span>+</dt>
-                <dd>denotes one or more occurrences of term;</dd>
-                <dt><span class="arg">term</span>*</dt>
-                <dd>denotes zero or more occurrences of term;</dd>
-                <dt>[<span class="arg">term</span>]</dt>
-                <dd>denotes at most one occurrence of term, commonly one says that term is optional;</dd>
-                <dt>{<span class="arg">term<sub>1</sub></span> <span class="arg">term<sub>2</sub></span> …}</dt>
-                <dd>denotes grouping of terms.</dd>
-                <dt><span class="arg">term<sub>1</sub></span> | <span class="arg">term<sub>2</sub></span> | …</dt>
-                <dd>denotes grouping of alternative terms.</dd>
+                <dt><span class="nonterminal">term</span>+</dt>
+                <dd>denotes one or more occurrences of <span class="nonterminal">term</span>;</dd>
+                <dt><span class="nonterminal">term</span>*</dt>
+                <dd>denotes zero or more occurrences of <span class="nonterminal">term</span>;</dd>
+                <dt>[<span class="nonterminal">term</span>]</dt>
+                <dd>denotes at most one occurrence of <span class="nonterminal">term</span>, commonly one says that <span class="nonterminal">term</span> is optional;</dd>
+                <dt>{<span class="nonterminal">term<sub>1</sub></span> <span class="nonterminal">term<sub>2</sub></span> …}</dt>
+                <dd>denotes grouping of <span class="nonterminal">terms</span>.</dd>
+                <dt><span class="nonterminal">term<sub>1</sub></span> | <span class="nonterminal">term<sub>2</sub></span> | …</dt>
+                <dd>denotes grouping of alternative <span class="nonterminal">terms</span>.</dd>
             </dl>
             <p>The following naming conventions are used to denote forms whose arguments obey the respective class restrictions:</p>
             <dl>
@@ -553,16 +553,16 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             <p>Being a separator, a comment cannot occur inside a lexeme.</p>
             
             <h3 id="textual_representation">Textual representation</h3>
-            <p>The textual representation of an object is machine independent. The following are some of the textual representations of the ISLISP objects. This representation is readable by the read function. Lexemes are described in §6</p>
+            <p>The textual representation of an object is machine independent. The following are some of the textual representations of the ISLISP objects. This representation is readable by the read function. Lexemes are described in <a href="#lexemes">§6</a></p>
             <dl>
                 <dt class="classname" id="null10">Null</dt>
-                <dd>The object nil is the only object whose class is <span class="class">null</span>. Upon input, it may be written as nil or (). It is <a href="#td_implementation_defined">implementation defined</a> whether nil prints as nil or ().</dd>
+                <dd>The object <span class="terminal">nil</span> is the only object whose class is <span class="class">null</span>. Upon input, it may be written as <span class="terminal">nil</span> or <span class="terminal">()</span>. It is <a href="#td_implementation_defined">implementation defined</a> whether <span class="terminal">nil</span> prints as <span class="terminal">nil</span> or <span class="terminal">()</span>.</dd>
                 <dt class="classname" id="list10">List</dt>
-                <dd>Proper lists are those lists terminated by nil. Usually they are denoted as (obj<sub>1</sub> obj<sub>2</sub> ...obj<sub>n</sub>). A dotted list (<span class="latin">i.e.</span>, a list whose last tail is not nil) appears as (obj<sub>1</sub> obj<sub>2</sub> ...obj<sub>n</sub> . obj<sub>n+1</sub>).</dd>
+                <dd>Proper lists are those lists terminated by <span class="terminal">nil</span>. Usually they are denoted as (<span class="nonterminal">obj<sub>1</sub></span> <span class="nonterminal">obj<sub>2</sub></span> ...<span class="nonterminal">obj<sub>n</sub></span>). A dotted list (<span class="latin">i.e.</span>, a list whose last tail is not <span class="terminal">nil</span>) appears as (<span class="nonterminal">obj<sub>1</sub></span> <span class="nonterminal">obj<sub>2</sub></span> ...<span class="nonterminal">obj<sub>n</sub></span> . <span class="nonterminal">obj<sub>n+1</sub></span>).</dd>
                 <dt class="classname" id="character">Character</dt>
-                <dd>An instance of the <span class="class">character</span> class is represented by #\?, where <q>?</q> is the character in question. There are two special standard characters that are not represented in this way, namely newline and space, whose representations are #\newline and #\space, respectively.</dd>
+                <dd>An instance of the <span class="class">character</span> class is represented by #\<span class="nonterminal">?</span>, where <q><span class="nonterminal">?</span></q> is the character in question. There are two special standard characters that are not represented in this way, namely newline and space, whose representations are #\newline and #\space, respectively.</dd>
                 <dt class="classname" id="cons10">Cons</dt>
-                <dd>A cons is expressed as (car . cdr), where the car and cdr are objects.</dd>
+                <dd>A cons is expressed as (<span class="nonterminal">car</span> . <span class="nonterminal">cdr</span>), where the <span class="nonterminal">car</span> and <span class="nonterminal">cdr</span> are objects.</dd>
                 <dt class="classname" id="integer10">Integer</dt>
                 <dd>An integer (radix 10) is represented as a sequence of digits optionally preceded by a <span class="terminal">+</span> or <span class="terminal">-</span> sign. If the number is represented in binary radix (or in octal or hexadecimal) then the textual representation is preceded by #b (or #o or #x, respectively).</dd>
                 <dt class="classname" id="float11">Float</dt>
@@ -578,14 +578,14 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
                     <p>where <span class="nonterminal">s</span> is either <q>+</q> or <q>-</q>, and <span class="nonterminal">d</span> is one of <q>0</q> – <q>9</q>. <span title="This number, although belonging to the set of natural numbers, usually is considered as only a floating point number because of its representation.">For example: 987.12, +12.5E-13, -1.5E12, 1E32</span></p>
                 </dd>
                 <dt class="classname" id="vector11">Vector</dt>
-                <dd>A vector of class <span class="class">general-vector</span> is written as #(obj<sub>1</sub> … obj<sub>n</sub>).</dd>
+                <dd>A vector of class <span class="class">general-vector</span> is written as #(<span class="nonterminal">obj<sub>1</sub></span> … <span class="nonterminal">obj<sub>n</sub></span>).</dd>
                 <dt class="classname" id="array">Array</dt>
                 <dd>
-                    <p>An array of class &lt;general-array*&gt; or <span class="class">general-vector</span> can be written on input as #na (where n is an integer indicating the number of dimensions of the array) followed by a nested structure of sequences denoting the contents of the array. This structure is defined as follows. If n = 1 the structure is simply (obj<sub>1</sub> ... obj<sub>n</sub>). If n > 1 and the dimensions are n<sub>1</sub> n<sub>2</sub> ..., the structure is (str<sub>1</sub> ... strn<sub>1</sub>), where the stri are the structures of the n<sub>1</sub> subarrays, each of which has dimensions (n<sub>2</sub> ...). As an example, the representation of (create-array '(2 3 4) 5) is as follows:</p>
+                    <p>An array of class <span class="class">general-array*</span> or <span class="class">general-vector</span> can be written on input as #<span class="nonterminal">n</span>a (where <span class="nonterminal">n</span> is an integer indicating the number of dimensions of the array) followed by a nested structure of sequences denoting the contents of the array. This structure is defined as follows. If <span class="nonterminal">n</span> = 1 the structure is simply (<span class="nonterminal">obj<sub>1</sub></span> ... <span class="nonterminal">obj<sub>n</sub></span>). If <span class="nonterminal">n</span> > 1 and the dimensions are <span class="nonterminal">n<sub>1</sub></span> <span class="nonterminal">n<sub>2</sub></span> ..., the structure is (<span class="nonterminal">str<sub>1</sub></span> ... <span class="nonterminal">str<sub>n</sub></span>), where the <span class="nonterminal">str<sub>i</sub></span> are the structures of the <span class="nonterminal">n<sub>1</sub></span> subarrays, each of which has dimensions (<span class="nonterminal">n<sub>2</sub></span> ...). As an example, the representation of (create-array '(2 3 4) 5) is as follows:</p>
 <pre>
 #3a(((5 5 5 5) (5 5 5 5) (5 5 5 5)) ((5 5 5 5) (5 5 5 5) (5 5 5 5)))
 </pre>
-                    <p>On output (see format), arrays of class <span class="class">general-vector</span> will be printed using #(...) notation.</p>
+                    <p>On output (see <a href="#f_format">format</a>), arrays of class <span class="class">general-vector</span> will be printed using #(...) notation.</p>
                 </dd>
                 <dt class="classname" id="string11">String</dt>
                 <dd>A string is represented by the sequence of its characters enclosed in a pair of "'s. For example: "abc". Special characters are preceded with a backslash as an escape character.</dd>
