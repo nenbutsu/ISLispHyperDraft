@@ -265,6 +265,11 @@ pre {
     font-style: italic;
 }
 
+.noeval_arg {
+    font-style: italic;
+    text-decoration: underline;
+}
+
 .operator {
     font-weight: bold;
 }

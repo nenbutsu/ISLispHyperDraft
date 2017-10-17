@@ -1041,7 +1041,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             <p>Function bindings are entities established during execution of a prepared <span class="terminal">labels</span> or <span class="terminal">flet</span> forms or by a function-defining form. A function binding is an association between an identifier, <span class="nonterminal">function-name</span>, and a function object that is denoted by <span class="nonterminal">function-name</span>—if in operator position—or by (<span class="terminal">function</span> <span class="nonterminal">function-name</span>) elsewhere.</p>
             
             <div id="s_function" class="definition-special">
-                (<span class="operator">function</span> <span class="arg">function-name</span>) → <span class="class">function</span>
+                (<span class="operator">function</span> <span class="noeval_arg">function-name</span>) → <span class="class">function</span>
             </div>
             <div class="definition-syntax">
                 #'<span class="arg">function-name</span> → <span class="class">function</span>
@@ -1058,7 +1058,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
 </pre>
             
             <div id="s_lambda" class="definition-special">
-                (<span class="operator">lambda</span> <span class="arg">lambda-list</span> <span class="arg">form</span>*) → <span class="class">function</span>
+                (<span class="operator">lambda</span> <span class="noeval_arg">lambda-list</span> <span class="noeval_arg">form</span>*) → <span class="class">function</span>
             </div>
             
 <pre>
@@ -1086,10 +1086,10 @@ Where:
 </pre>
             
             <div id="s_labels" class="definition-special">
-                (<span class="operator">labels</span> ((<span class="arg">function-name</span> <span class="arg">lambda-list</span> <span class="arg">form</span>*)*) <span class="arg">body-form</span>*) → <span class="class">object</span>
+                (<span class="operator">labels</span> ((<span class="noeval_arg">function-name</span> <span class="noeval_arg">lambda-list</span> <span class="noeval_arg">form</span>*)*) <span class="arg">body-form</span>*) → <span class="class">object</span>
             </div>
             <div id="s_flet" class="definition-special">
-                (<span class="operator">flet</span> ((<span class="arg">function-name</span> <span class="arg">lambda-list</span> <span class="arg">form</span>*)*) <span class="arg">body-form</span>*) → <span class="class">object</span>
+                (<span class="operator">flet</span> ((<span class="noeval_arg">function-name</span> <span class="noeval_arg">lambda-list</span> <span class="noeval_arg">form</span>*)*) <span class="arg">body-form</span>*) → <span class="class">object</span>
             </div>
             
             <p>The <span class="terminal">flet</span> and <span class="terminal">labels</span> special forms allow the definition of new identifiers in the function namespace for function objects.</p>
@@ -1564,7 +1564,7 @@ where var does not occur in <span class="nonterminal">form<sub>2</sub></span> �
 </pre>
             
             <div id="s_quote" class="definition-special">
-                (<span class="operator">quote</span> <span class="arg">obj</span>) → <span class="class">object</span>
+                (<span class="operator">quote</span> <span class="noeval_arg">obj</span>) → <span class="class">object</span>
             </div>
             <div class="definition-syntax">
                 '<span class="nonterminal">obj</span> → <span class="class">object</span>
@@ -1624,7 +1624,7 @@ x               ⇒ 0
 </pre>
             
             <div id="s_setq" class="definition-special">
-                (<span class="operator">setq</span> <span class="arg">var</span> <span class="arg">form</span>) → <span class="class">object</span>
+                (<span class="operator">setq</span> <span class="noeval_arg">var</span> <span class="arg">form</span>) → <span class="class">object</span>
             </div>
             
             <p>This form represents an assignment to the variable denoted by the <span class="nonterminal">identifier</span>. In consequence, the <span class="nonterminal">identifier</span> may designate a different object than before, the value of <span class="nonterminal">form</span>.</p>
@@ -1645,8 +1645,8 @@ x               ⇒ 0
 (+ x 1)                    ⇒ 5
 </pre>
             
-            <div id="s_setf" class="definition-special">
-                (<span class="operator">setf</span> <span class="arg">place</span> <span class="arg">form</span>) → <span class="class">object</span>
+            <div id="s_setf" class="definition-special-form">
+                (<span class="operator">setf</span> <span class="noeval_arg">place</span> <span class="arg">form</span>) → <span class="class">object</span>
             </div>
             
             <p>This macro is used for generalized assignment.</p>
@@ -1708,7 +1708,7 @@ In the cons x, the car now is 2.
 </pre>
             
             <div id="s_let" class="definition-special">
-                (<span class="operator">let</span> ((<span class="arg">var</span> <span class="arg">form</span>)*) <span class="arg">body-form</span>*) → <span class="class">object</span>
+                (<span class="operator">let</span> ((<span class="noeval_arg">var</span> <span class="arg">form</span>)*) <span class="arg">body-form</span>*) → <span class="class">object</span>
             </div>
             
             <p>The <span class="terminal">let</span> special form is used to define a scope for a group of identifiers for a sequence of forms <span class="nonterminal">body-form</span>* (collectively referred to as the <span class="nonterminal">body</span>). The list of pairs (<span class="nonterminal">var</span> <span class="nonterminal">form</span>)* is called the <span class="terminal">let</span> variable list. The scope of the identifier <span class="nonterminal">var</span> is the <span class="nonterminal">body</span>.</p>
@@ -1754,7 +1754,7 @@ In the cons x, the car now is 2.
 </pre>
             
             <div id="s_let_s" class="definition-special">
-                (<span class="operator">let*</span> ((<span class="arg">var</span> <span class="arg">form</span>)*) <span class="arg">body-form</span>*) → <span class="class">object</span>
+                (<span class="operator">let*</span> ((<span class="noeval_arg">var</span> <span class="arg">form</span>)*) <span class="arg">body-form</span>*) → <span class="class">object</span>
             </div>
             
             <p>The <span class="terminal">let*</span> form is used to define a scope for a group of identifiers for a sequence of forms <span class="nonterminal">body-form</span>* (collectively referred to as the <span class="nonterminal">body</span>). The first subform (the <span class="terminal">let*</span> variable list) is a list of pairs (<span class="nonterminal">var</span> <span class="nonterminal">form</span>). The scope of an identifier <span class="nonterminal">var</span> is the <span class="nonterminal">body</span> along with all <span class="nonterminal">form</span> forms following the pair (<span class="nonterminal">var</span> <span class="nonterminal">form</span>) in the <span class="terminal">let*</span> variable list.</p>
@@ -1797,17 +1797,17 @@ In the cons x, the car now is 2.
             <p>The value of a dynamic variable can be accessed by (<span class="terminal">dynamic</span> <span class="nonterminal">var</span>).</p>
             
             <div id="s_dynamic" class="definition-special">
-                (<span class="operator">dynamic</span> <span class="arg">var</span>) → <span class="class">object</span>
+                (<span class="operator">dynamic</span> <span class="noeval_arg">var</span>) → <span class="class">object</span>
             </div>
             
             <p>This special form denotes a reference to the identifier denoting a dynamic variable. This special form is not allowed in the scope of a definition of <span class="nonterminal">var</span> which is not done by <span class="terminal">defdynamic</span> or <span class="nonterminal">dynamic-let</span>.</p>
             <p>During activation, the current dynamic binding of the variable <span class="nonterminal">var</span> is returned that was established most recently and is still in effect. An error shall be signaled if such a binding does not exist (error-id. <span class="error_id">unbound-variable</span>).</p>
             
             <div id="s_setf_dynamic" class="definition-special-form">
-                (<span class="operator">setf</span> (<span class="operator">dynamic</span> <span class="arg">var</span>) <span class="arg">form</span>) → <span class="class">object</span>
+                (<span class="operator">setf</span> (<span class="operator">dynamic</span> <span class="noeval_arg">var</span>) <span class="arg">form</span>) → <span class="class">object</span>
             </div>
             <div id="s_set_dynamic" class="definition-special">
-                (<span class="operator">set-dynamic</span> <span class="arg">form</span> <span class="arg">var</span>) → <span class="class">object</span>
+                (<span class="operator">set-dynamic</span> <span class="arg">form</span> <span class="noeval_arg">var</span>) → <span class="class">object</span>
             </div>
             
             <p>This special form denotes an assignment to a dynamic variable. This form can appear anywhere that (<span class="terminal">dynamic</span> <span class="nonterminal">var</span>) can appear.</p>
@@ -1815,7 +1815,7 @@ In the cons x, the car now is 2.
             <p>An error shall be signaled if <span class="nonterminal">var</span> has no dynamic value (error-id. <span class="error_id">unbound-variable</span>). <span class="terminal">setf</span> of <span class="terminal">dynamic</span> can be used only for modifying bindings, and not for establishing them.
             </p>
             <div id="s_dynamic_let" class="definition-special">
-                (<span class="operator">dynamic-let</span> ((<span class="arg">var</span> <span class="arg">form</span>)*) <span class="arg">body-form</span>*) → <span class="class">object</span>
+                (<span class="operator">dynamic-let</span> ((<span class="noeval_arg">var</span> <span class="arg">form</span>)*) <span class="arg">body-form</span>*) → <span class="class">object</span>
             </div>
             
             <p>The <span class="terminal">dynamic-let</span> special form is used to establish dynamic variable bindings. The first subform (the <span class="terminal">dynamic-let</span> variable list) is a list of pairs (<span class="nonterminal">var</span> <span class="nonterminal">form</span>). The scope of an identifier <span class="nonterminal">var</span> defined by <span class="terminal">dynamic-let</span> is the current toplevel scope. The extent of the bindings of each <span class="nonterminal">var</span> is the extent of the body of the <span class="terminal">dynamic-let</span>. The <span class="terminal">dynamic-let</span> special form establishes dynamic variables for all <span class="nonterminal">vars</span>.</p>
@@ -1909,10 +1909,10 @@ In the cons x, the car now is 2.
 </pre>
             
             <div id="s_case" class="definition-special">
-                (<span class="operator">case</span> <span class="arg">keyform</span> ((<span class="arg">key</span>*) <span class="arg">form</span>*)* [(<span class="terminal">t</span> <span class="arg">form</span>*)]) → <span class="class">object</span>
+                (<span class="operator">case</span> <span class="arg">keyform</span> ((<span class="noeval_arg">key</span>*) <span class="arg">form</span>*)* [(<span class="terminal">t</span> <span class="arg">form</span>*)]) → <span class="class">object</span>
             </div>
             <div id="s_case_using" class="definition-special">
-                (<span class="operator">case-using</span> <span class="arg">predform</span> <span class="arg">keyform</span> ((<span class="arg">key</span>*) <span class="arg">form</span>*)* [(<span class="terminal">t</span> <span class="arg">form</span>*)]) → <span class="class">object</span>
+                (<span class="operator">case-using</span> <span class="arg">predform</span> <span class="arg">keyform</span> ((<span class="noeval_arg">key</span>*) <span class="arg">form</span>*)* [(<span class="terminal">t</span> <span class="arg">form</span>*)]) → <span class="class">object</span>
             </div>
             
             <p>The <span class="terminal">case</span> and <span class="terminal">case-using</span> special forms, called <span class="term">case forms</span>, provide a mechanism to execute a matching clause from a series of clauses based on the value of a dispatching form <span class="nonterminal">keyform</span>.</p>
@@ -1996,7 +1996,7 @@ prints  4 plus 1 equals 5
 </pre>
             
             <div id="s_for" class="definition-special">
-                (<span class="operator">for</span> (<span class="arg">iteration-spec</span>*) (<span class="arg">end-test</span> <span class="arg">result*</span>) <span class="arg">form</span>*) → <span class="class">object</span>
+                (<span class="operator">for</span> (<span class="noeval_arg">iteration-spec</span>*) (<span class="arg">end-test</span> <span class="arg">result*</span>) <span class="arg">form</span>*) → <span class="class">object</span>
             </div>
             
 <pre>
@@ -2061,10 +2061,10 @@ Where:
             <p>When a non-local exit is initiated, any potential destination that was established more recently than the destination to which control is being transferred is immediately considered invalid.</p>
             
             <div id="s_block" class="definition-special">
-                (<span class="operator">block</span> <span class="arg">name</span> <span class="arg">form</span>*) → <span class="class">object</span>
+                (<span class="operator">block</span> <span class="noeval_arg">name</span> <span class="arg">form</span>*) → <span class="class">object</span>
             </div>
             <div id="s_return_from" class="definition-special">
-                (<span class="operator">return-from</span> <span class="arg">name</span> <span class="arg">result-form</span> <span class="comment">transfers control and data</span>
+                (<span class="operator">return-from</span> <span class="noeval_arg">name</span> <span class="arg">result-form</span> <span class="comment">transfers control and data</span>
             </div>
             
             <p>The <span class="terminal">block</span> special form executes each <span class="nonterminal">form</span> sequentially from left to right. If the last form exits normally, whatever it returns is returned by the <span class="terminal">block</span> form.</p>
@@ -2146,10 +2146,10 @@ Where:
 (foo '(1 2 a 4)) ⇒ 0
 </pre>
             <div id="s_tagbody" class="definition-special">
-                (<span class="operator">tagbody</span> {<span class="arg">tagbody-tag</span> | <span class="arg">form</span>}*) → <span class="class">object</span>
+                (<span class="operator">tagbody</span> {<span class="noeval_arg">tagbody-tag</span> | <span class="arg">form</span>}*) → <span class="class">object</span>
             </div>
             <div id="s_go" class="definition-special">
-                (<span class="operator">go</span> <span class="arg">tagbody-tag</span>) <span class="comment">transfers control</span>
+                (<span class="operator">go</span> <span class="noeval_arg">tagbody-tag</span>) <span class="comment">transfers control</span>
             </div>
             
             <p><span class="terminal">tagbody</span> executes the <span class="nonterminal">forms</span> sequentially from left to right, discarding their values. If the execution of the last <span class="nonterminal">form</span> completes normally, <span class="terminal">nil</span> is returned by the <span class="terminal">tagbody</span> special form.</p>
@@ -2589,7 +2589,7 @@ Where:
             
             <p>Returns <span class="terminal">t</span> if the class <span class="nonterminal">class<sub>1</sub></span> is a subclass of the class <span class="nonterminal">class<sub>2</sub></span>; otherwise, returns <span class="terminal">nil</span>. An error shall be signaled if either <span class="nonterminal">class<sub>1</sub></span> or <span class="nonterminal">class<sub>2</sub></span> is not a class object (error-id. <span class="error_id">domain-error</span>).</p>
             <div id="s_class" class="definition-special">
-                (<span class="operator">class</span> <span class="arg">class-name</span>) → <span class="class">class</span>
+                (<span class="operator">class</span> <span class="noeval_arg">class-name</span>) → <span class="class">class</span>
             </div>
             <p>Returns the class object that corresponds to the class named <span class="nonterminal">class-name</span>.</p>
             
@@ -2650,10 +2650,10 @@ Where:
             
             <h3 id="declarations_and_coercions">Declarations and coercions</h3>
             <div id="s_the" class="definition-special">
-                (<span class="operator">the</span> <span class="arg">class-name</span> <span class="arg">form</span>) → <span class="class">object</span>
+                (<span class="operator">the</span> <span class="noeval_arg">class-name</span> <span class="arg">form</span>) → <span class="class">object</span>
             </div>
             <div id="s_assure" class="definition-special">
-                (<span class="operator">assure</span> <span class="arg">class-name</span> <span class="arg">form</span>) → <span class="class">object</span>
+                (<span class="operator">assure</span> <span class="noeval_arg">class-name</span> <span class="arg">form</span>) → <span class="class">object</span>
             </div>
             <p>These forms evaluate <span class="nonterminal">form</span>. If <span class="nonterminal">form</span> returns, the returned value is returned by the <span class="terminal">the</span> or <span class="terminal">assure</span> form. In addition, these forms specify that the value of <span class="nonterminal">form</span> is of the class specified by <span class="nonterminal">class-name</span> (which must be the name of an existing class).</p>
             <p>In a <span class="terminal">the</span> special form, the consequences are undefined if the value of <span class="nonterminal">form</span> is not of the class or a subclass of the class designated by <span class="nonterminal">class-name</span>. In an <span class="terminal">assure</span> special form, an error shall be signaled if the value of <span class="nonterminal">form</span> is not of the class or a subclass of the class designated by <span class="nonterminal">class-name</span> (error-id. <span class="error_id">domain-error</span>).</p>
@@ -2671,7 +2671,7 @@ Where:
 (assure <span class="class">float</span> 10)   an error shall be signaled
 </pre>
             <div id="s_convert" class="definition-special">
-                (<span class="operator">convert</span> <span class="arg">obj</span> <span class="arg">class-name</span>) → <span class="class">object</span>
+                (<span class="operator">convert</span> <span class="arg">obj</span> <span class="noeval_arg">class-name</span>) → <span class="class">object</span>
             </div>
             
             <p>Returns an object of class <span class="nonterminal">class-name</span> which corresponds to the object <span class="nonterminal">obj</span> according to one of the following projections, called a <span class="term">coercion function</span>. The table shows <span class="nonterminal">obj</span> along the left-hand column and class-name along the top row (with &lt;&gt;'s in class names omitted here only for textual brevity):</p>
@@ -2897,8 +2897,8 @@ Where:
 <pre class="example">
 <span class="input" contenteditable="true">(property 'zeus 'daughter)</span><button class="eval"> ⇒ </button><span class="output">athena</span>
 </pre>
-            <div id="s_setf_property" class="definition-special-form">
-                (<span class="operator">setf</span> (<span class="operator">property</span> <span class="arg">symbol</span> <span class="arg">property-name</span>) <span class="arg">obj</span>) → <span class="class">object</span>
+            <div id="s_setf_property" class="definition-special">
+                (<span class="operator">setf</span> (<span class="operator">property</span> <span class="arg">symbol</span> <span class="noeval_arg">property-name</span>) <span class="arg">obj</span>) → <span class="class">object</span>
             </div>
             <div id="f_set_property" class="definition-function">
                 (<span class="operator">set-property</span> <span class="arg">obj</span> <span class="arg">symbol</span> <span class="arg">property-name</span>) → <span class="class">object</span>
@@ -3973,7 +3973,7 @@ a&lt;b&lt;c&lt;d&lt;e&lt;f&lt;g&lt;h&lt;i&lt;j&lt;k&lt;l&lt;m&lt;n&lt;o&lt;p&lt;
 <span class="input" contenteditable="true">(cdr '(1 . 2))</span><button class="eval"> ⇒ </button><span class="output">2</span>
 </pre>
             
-            <div class="definition-special-form">
+            <div class="definition-special">
                 (<span class="operator">setf</span> (<span class="operator">car</span> <span class="arg">cons</span>) <span class="arg">obj</span>) → <span class="class">object</span>
             </div>
             
@@ -4807,13 +4807,13 @@ a                           ⇒ (2 4 6 8)
 </pre>
             
             <div id="s_with_open_output_file" class="definition-special">
-                (<span class="operator">with-open-output-file</span> (<span class="arg">name</span> <span class="arg">filename</span> [<span class="arg">element-class</span>]) <span class="arg">form</span>*) → <span class="class">object</span>
+                (<span class="operator">with-open-output-file</span> (<span class="noeval_arg">name</span> <span class="arg">filename</span> [<span class="arg">element-class</span>]) <span class="arg">form</span>*) → <span class="class">object</span>
             </div>
             <div id="s_with_open_io_file" class="definition-special">
-                (<span class="operator">with-open-io-file</span> (<span class="arg">name</span> <span class="arg">filename</span> [<span class="arg">element-class</span>]) <span class="arg">form</span>*) → <span class="class">object</span>
+                (<span class="operator">with-open-io-file</span> (<span class="noeval_arg">name</span> <span class="arg">filename</span> [<span class="arg">element-class</span>]) <span class="arg">form</span>*) → <span class="class">object</span>
             </div>
             <div id="s_with_open_input_file" class="definition-special">
-                (<span class="operator">with-open-input-file</span> (<span class="arg">name</span> <span class="arg">filename</span> [<span class="arg">element-class</span>]) <span class="arg">form</span>*) → <span class="class">object</span>
+                (<span class="operator">with-open-input-file</span> (<span class="noeval_arg">name</span> <span class="arg">filename</span> [<span class="arg">element-class</span>]) <span class="arg">form</span>*) → <span class="class">object</span>
             </div>
             
             <p>Each of these special forms opens a stream to a file (using <span class="terminal">open-input-file</span>, <span class="terminal">open-output-file</span>, or <span class="terminal">open-io-file</span>, respectively), evaluates the <span class="nonterminal">forms</span>, closes the file, and returns the value returned by the last <span class="nonterminal">form</span> (or <span class="terminal">nil</span> if there are no forms).</p>
