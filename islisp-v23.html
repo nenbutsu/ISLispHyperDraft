@@ -990,7 +990,7 @@ a b c d e f g h i j k l m n o p q r s t u v w x y z
             
             <p>This document describes defining forms in the following format:</p>
             <div class="definition-defining">
-                (<span class="operator">defining-form-name</span> <span class="arg">name</span> <span class="arg">argument</span>*) → <span class="class">symbol</span>
+                (<span class="operator">defining-form-name</span> <span class="noeval_arg">name</span> <span class="arg">argument</span>*) → <span class="class">symbol</span>
             </div>
             
             <h4 id="macro_forms">Macro forms</h4>
@@ -1159,7 +1159,7 @@ Where:
             <p>Two defining forms with the same identifier in the same namespace are not allowed in one toplevel scope.</p>
             
             <div id="def_defconstant" class="definition-defining">
-                (<span class="operator">defconstant</span> <span class="arg">name</span> <span class="arg">form</span>) → <span class="class">symbol</span>
+                (<span class="operator">defconstant</span> <span class="noeval_arg">name</span> <span class="arg">form</span>) → <span class="class">symbol</span>
             </div>
             
             <p>This form is used to define a named constant in the variable namespace of the current toplevel scope. The scope of name is the entire current toplevel scope except the body form.</p>
@@ -1176,7 +1176,7 @@ e                                  ⇒ 2.7182818284590451
 </pre>
             
             <div id="def_defglobal" class="definition-defining">
-                (<span class="operator">defglobal</span> <span class="arg">name</span> <span class="arg">form</span>) → <span class="class">symbol</span>
+                (<span class="operator">defglobal</span> <span class="noeval_arg">name</span> <span class="arg">form</span>) → <span class="class">symbol</span>
             </div>
             
             <p>This form is used to define an identifier in the variable namespace of the current toplevel scope. The scope of name is the entire current toplevel scope except the body form.
@@ -1202,7 +1202,7 @@ today                          ⇒ wednesday
 </pre>
             
             <div id="def_defdynamic" class="definition-defining">
-                (<span class="operator">defdynamic</span> <span class="arg">name</span> <span class="arg">form</span>) → <span class="class">symbol</span>
+                (<span class="operator">defdynamic</span> <span class="noeval_arg">name</span> <span class="arg">form</span>) → <span class="class">symbol</span>
             </div>
             
             <p>This form is used to define a <a href="#td_dynamic_variable">dynamic variable</a> identifier in the <a href="#td_dynamic">dynamic variable namespace</a>. The scope of name is the entire current toplevel scope except the body form.</p>
@@ -1223,7 +1223,7 @@ today                          ⇒ wednesday
 </pre>
             
             <div id="def_defun" class="definition-defining">
-                (<span class="operator">defun</span> <span class="arg">function-name</span> <span class="arg">lambda-list</span> <span class="arg">form</span>*) → <span class="class">symbol</span>
+                (<span class="operator">defun</span> <span class="noeval_arg">function-name</span> <span class="arg">lambda-list</span> <span class="arg">form</span>*) → <span class="class">symbol</span>
             </div>
             
             <p>The defun-form defines function-name as an identifier in the function namespace; function-name is bound to a function object equivalent to (lambda lambda-list form*).</p>
@@ -2259,7 +2259,7 @@ Where:
             </ul>
             
             <div id="def_defclass" class="definition-defining">
-                (<span class="operator">defclass</span> <span class="arg">class-name</span> (<span class="arg">sc-name</span>*) (<span class="arg">slot-spec</span>*) <span class="arg">class-opt</span>*) → <span class="class">symbol</span>
+                (<span class="operator">defclass</span> <span class="noeval_arg">class-name</span> (<span class="arg">sc-name</span>*) (<span class="arg">slot-spec</span>*) <span class="arg">class-opt</span>*) → <span class="class">symbol</span>
             </div>
 <pre>
 Where:
@@ -2373,7 +2373,7 @@ Where:
             <p>Some forms define methods for a generic function. These forms will be referred to as <q>method-defining forms.</q> These forms are the <span class="terminal">defmethod</span> and <span class="terminal">defclass</span> defining forms.</p>
             <p id="reader_writer_accessor2">During preparation for execution, a <span class="terminal">defmethod</span> form must be preceded by the <span class="terminal">defgeneric</span> form for the generic function to be specialized. (Methods implicitly defined by <span class="terminal">defclass</span> due to <span class="terminal">:reader</span>, <span class="terminal">:writer</span>, or <span class="terminal">:accessor</span> options do not need a preceding <span class="terminal">defgeneric</span>.)</p>
             <div id="def_defgeneric" class="definition-defining">
-                (<span class="operator">defgeneric</span> <span class="arg">func-spec</span> <span class="arg">lambda-list</span> {<span class="arg">option</span> | <span class="arg">method-desc</span>}*) → <span class="class">symbol</span>
+                (<span class="operator">defgeneric</span> <span class="noeval_arg">func-spec</span> <span class="arg">lambda-list</span> {<span class="arg">option</span> | <span class="arg">method-desc</span>}*) → <span class="class">symbol</span>
             </div>
 <pre>
 Where:
@@ -2415,7 +2415,7 @@ Where:
             <h5 id="defining_methods">Defining methods for generic functions</h5>
             
             <div id="def_defmethod" class="definition-defining">
-                (<span class="operator">defmethod</span> <span class="arg">func-spec</span> <span class="arg">method-qualifier</span>* <span class="arg">parameter-profile</span> <span class="arg">form</span>*) → <span class="class">symbol</span>
+                (<span class="operator">defmethod</span> <span class="noeval_arg">func-spec</span> <span class="arg">method-qualifier</span>* <span class="arg">parameter-profile</span> <span class="arg">form</span>*) → <span class="class">symbol</span>
             </div>
 <pre>
 Where:
@@ -2604,7 +2604,7 @@ Where:
             <p>When a toplevel form is a macro form, its resulting macro expansion is also considered to be a toplevel form.</p>
             <p>A macro form can appear as the place specified in a setf special form. See <span class="terminal">setf</span> on <a href="#s_setf">page 35</a>.</p>
             <div id="def_defmacro" class="definition-defining">
-                (<span class="operator">defmacro</span> <span class="arg">macro-name</span> <span class="arg">lambda-list</span> <span class="arg">form</span>*) → <span class="class">symbol</span>
+                (<span class="operator">defmacro</span> <span class="noeval_arg">macro-name</span> <span class="arg">lambda-list</span> <span class="arg">form</span>*) → <span class="class">symbol</span>
             </div>
             
             <p>Defines a named (toplevel) macro. No implicit block with the macro name is established when the macro-expansion function is invoked. <span class="nonterminal">macro-name</span> must be an identifier whose scope is the current toplevel scope in which the defmacro form appears. <span class="nonterminal">lambda-list</span> is as defined in <a href="#s_lambda">page 23</a>. The definition point of <span class="nonterminal">macro-name</span> is the closing parenthesis of the <span class="nonterminal">lambda-list</span>.</p>
