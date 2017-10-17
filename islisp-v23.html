@@ -2259,7 +2259,7 @@ Where:
             </ul>
             
             <div id="def_defclass" class="definition-defining">
-                (<span class="operator">defclass</span> <span class="noeval_arg">class-name</span> (<span class="arg">sc-name</span>*) (<span class="arg">slot-spec</span>*) <span class="arg">class-opt</span>*) → <span class="class">symbol</span>
+                (<span class="operator">defclass</span> <span class="noeval_arg">class-name</span> (<span class="noeval_arg">sc-name</span>*) (<span class="noeval_arg">slot-spec</span>*) <span class="noeval_arg">class-opt</span>*) → <span class="class">symbol</span>
             </div>
 <pre>
 Where:
@@ -2373,7 +2373,7 @@ Where:
             <p>Some forms define methods for a generic function. These forms will be referred to as <q>method-defining forms.</q> These forms are the <span class="terminal">defmethod</span> and <span class="terminal">defclass</span> defining forms.</p>
             <p id="reader_writer_accessor2">During preparation for execution, a <span class="terminal">defmethod</span> form must be preceded by the <span class="terminal">defgeneric</span> form for the generic function to be specialized. (Methods implicitly defined by <span class="terminal">defclass</span> due to <span class="terminal">:reader</span>, <span class="terminal">:writer</span>, or <span class="terminal">:accessor</span> options do not need a preceding <span class="terminal">defgeneric</span>.)</p>
             <div id="def_defgeneric" class="definition-defining">
-                (<span class="operator">defgeneric</span> <span class="noeval_arg">func-spec</span> <span class="arg">lambda-list</span> {<span class="arg">option</span> | <span class="arg">method-desc</span>}*) → <span class="class">symbol</span>
+                (<span class="operator">defgeneric</span> <span class="noeval_arg">func-spec</span> <span class="noeval_arg">lambda-list</span> {<span class="noeval_arg">option</span> | <span class="noeval_arg">method-desc</span>}*) → <span class="class">symbol</span>
             </div>
 <pre>
 Where:
@@ -2415,7 +2415,7 @@ Where:
             <h5 id="defining_methods">Defining methods for generic functions</h5>
             
             <div id="def_defmethod" class="definition-defining">
-                (<span class="operator">defmethod</span> <span class="noeval_arg">func-spec</span> <span class="arg">method-qualifier</span>* <span class="arg">parameter-profile</span> <span class="arg">form</span>*) → <span class="class">symbol</span>
+                (<span class="operator">defmethod</span> <span class="noeval_arg">func-spec</span> <span class="noeval_arg">method-qualifier</span>* <span class="noeval_arg">parameter-profile</span> <span class="noeval_arg">form</span>*) → <span class="class">symbol</span>
             </div>
 <pre>
 Where:
@@ -2604,7 +2604,7 @@ Where:
             <p>When a toplevel form is a macro form, its resulting macro expansion is also considered to be a toplevel form.</p>
             <p>A macro form can appear as the place specified in a setf special form. See <span class="terminal">setf</span> on <a href="#s_setf">page 35</a>.</p>
             <div id="def_defmacro" class="definition-defining">
-                (<span class="operator">defmacro</span> <span class="noeval_arg">macro-name</span> <span class="arg">lambda-list</span> <span class="arg">form</span>*) → <span class="class">symbol</span>
+                (<span class="operator">defmacro</span> <span class="noeval_arg">macro-name</span> <span class="noeval_arg">lambda-list</span> <span class="noeval_arg">form</span>*) → <span class="class">symbol</span>
             </div>
             
             <p>Defines a named (toplevel) macro. No implicit block with the macro name is established when the macro-expansion function is invoked. <span class="nonterminal">macro-name</span> must be an identifier whose scope is the current toplevel scope in which the defmacro form appears. <span class="nonterminal">lambda-list</span> is as defined in <a href="#s_lambda">page 23</a>. The definition point of <span class="nonterminal">macro-name</span> is the closing parenthesis of the <span class="nonterminal">lambda-list</span>.</p>
