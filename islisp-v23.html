@@ -1162,9 +1162,9 @@ Where:
                 (<span class="operator">defconstant</span> <span class="noeval_arg">name</span> <span class="arg">form</span>) → <span class="class">symbol</span>
             </div>
             
-            <p>This form is used to define a named constant in the variable namespace of the current toplevel scope. The scope of name is the entire current toplevel scope except the body form.</p>
-            <p>Although name is globally constant, a variable binding for name can be locally established by a binding form.</p>
-            <p>The result of the evaluation of form is bound to the variable named by name. The binding and the object created as the result of evaluating the second argument are immutable. The symbol named name is returned.</p>
+            <p>This form is used to define a named constant in the variable namespace of the current toplevel scope. The scope of <span class="nonterminal">name</span> is the entire current toplevel scope except the body form.</p>
+            <p>Although <span class="nonterminal">name</span> is globally constant, a variable binding for <span class="nonterminal">name</span> can be locally established by a binding form.</p>
+            <p>The result of the evaluation of form is bound to the variable named by <span class="nonterminal">name</span>. The binding and the object created as the result of evaluating the second argument are immutable. The symbol named <span class="nonterminal">name</span> is returned.</p>
 <pre class="example">
 (defconstant e 2.7182818284590451) ⇒ e
 
