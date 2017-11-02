@@ -1205,9 +1205,9 @@ today                          ⇒ wednesday
                 (<span class="operator">defdynamic</span> <span class="noeval_arg">name</span> <span class="arg">form</span>) → <span class="class">symbol</span>
             </div>
             
-            <p>This form is used to define a <a href="#td_dynamic_variable">dynamic variable</a> identifier in the <a href="#td_dynamic">dynamic variable namespace</a>. The scope of name is the entire current toplevel scope except the body form.</p>
+            <p>This form is used to define a <a href="#td_dynamic_variable">dynamic variable</a> identifier in the <a href="#td_dynamic">dynamic variable namespace</a>. The scope of <span class="nonterminal">name</span> is the entire current toplevel scope except the body form.</p>
             
-            <p>The symbol named name is returned.</p>
+            <p>The symbol named <span class="nonterminal">name</span> is returned.</p>
 <pre class="example">
 (defdynamic *color* 'red)          ⇒ *color*
 
@@ -1226,10 +1226,10 @@ today                          ⇒ wednesday
                 (<span class="operator">defun</span> <span class="noeval_arg">function-name</span> <span class="arg">lambda-list</span> <span class="arg">form</span>*) → <span class="class">symbol</span>
             </div>
             
-            <p>The defun-form defines function-name as an identifier in the function namespace; function-name is bound to a function object equivalent to (lambda lambda-list form*).</p>
+            <p>The <i>defun-form</i> defines <span class="nonterminal">function-name</span> as an identifier in the function namespace; <span class="nonterminal">function-name</span> is bound to a function object equivalent to (<span class="terminal">lambda</span> <span class="nonterminal">lambda-list</span> <span class="nonterminal">form</span>*).</p>
             
-            <p>The scope of function-name is the whole current toplevel scope. Therefore, the definition of a function admits recursion, occurrences of function-name within the form* refer to the function being defined. The binding between function-name and the function object is immutable.</p>
-            <p>defun returns the function name which is the symbol named function-name. The free identifiers in the body form* (<span class="latin">i.e.</span>, those which are not contained in the lambda list) follow the rules of lexical scoping.</p>
+            <p>The scope of <span class="nonterminal">function-name</span> is the whole current toplevel scope. Therefore, the definition of a function admits recursion, occurrences of <span class="nonterminal">function-name</span> within the <span class="nonterminal">form</span>* refer to the function being defined. The binding between <span class="nonterminal">function-name</span> and the function object is immutable.</p>
+            <p><span class="terminal">defun</span> returns the function name which is the symbol named <span class="nonterminal">function-name</span>. The free identifiers in the body <span class="nonterminal">form</span>* (<span class="latin">i.e.</span>, those which are not contained in the lambda list) follow the rules of lexical scoping.</p>
             
 <pre class="example">
 (defun caar (x) (car (car x))) ⇒ caar
