@@ -1128,7 +1128,7 @@ Where:
 
 (defun compose (f g)
   (lambda (:rest args)
-    (funcall f (apply g args)))))
+    (funcall f (apply g args))))
 ⇒ compose
 
 (funcall (compose (function sqrt) (function *)) 12 75) ⇒ 30
