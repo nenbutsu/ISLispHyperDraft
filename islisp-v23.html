@@ -1711,7 +1711,7 @@ In the cons x, the car now is 2.
                 (<span class="operator">let</span> ((<span class="noeval_arg">var</span> <span class="arg">form</span>)*) <span class="arg">body-form</span>*) → <span class="class">object</span>
             </div>
             
-            <p>The <span class="terminal">let</span> special form is used to define a scope for a group of identifiers for a sequence of forms <span class="nonterminal">body-form</span>* (collectively referred to as the <span class="nonterminal">body</span>). The list of pairs (<span class="nonterminal">var</span> <span class="nonterminal">form</span>)* is called the <span class="terminal">let</span> variable list. The scope of the identifier <span class="nonterminal">var</span> is the <span class="nonterminal">body</span>.</p>
+            <p>The <span class="terminal">let</span> special form is used to define a scope for a group of identifiers for a sequence of forms <span class="nonterminal">body-form*</span> (collectively referred to as the <span class="nonterminal">body</span>). The list of pairs (<span class="nonterminal">var</span> <span class="nonterminal">form*</span>) is called the <span class="terminal">let</span> variable list. The scope of the identifier <span class="nonterminal">var</span> is the <span class="nonterminal">body</span>.</p>
             <p>The <span class="nonterminal">forms</span> are evaluated sequentially from left to right; then each variable denoted by the identifier <span class="nonterminal">var</span> is initialized to the corresponding value. Using these bindings along with the already existing bindings of visible identifiers the <span class="nonterminal">body-forms</span> are evaluated. The returned value of <span class="terminal">let</span> is the result of the evaluation of the last <span class="nonterminal">body-form</span> of its body (or <span class="terminal">nil</span> if there is none).</p>
             
             <p>No <span class="nonterminal">var</span> may appear more than once in <span class="terminal">let</span> variable list.</p>
@@ -1719,9 +1719,9 @@ In the cons x, the car now is 2.
             
             <table>
                 <tr>
-                    <td>(<span class="terminal">let</span> () <span class="nonterminal">body-form</span>*)</td>
+                    <td>(<span class="terminal">let</span> () <span class="nonterminal">body-form*</span>)</td>
                     <td>≡</td>
-                    <td><span title="For the definition of progn see §14.5 below.">(<span class="terminal">progn</span> <span class="nonterminal">body-form</span>*)</span></td>
+                    <td><span title="For the definition of progn see §14.5 below.">(<span class="terminal">progn</span> <span class="nonterminal">body-form*</span>)</span></td>
                 </tr>
                 <tr>
                     <td>
@@ -1730,12 +1730,12 @@ In the cons x, the car now is 2.
                             (<span class="nonterminal">var<sub>2</sub></span> <span class="nonterminal">form<sub>2</sub></span>)
                             …
                             (<span class="nonterminal">var<sub>n</sub></span> <span class="nonterminal">form<sub>n</sub></span>))
-                            <span class="nonterminal">body-form</span>*)
+                            <span class="nonterminal">body-form*</span>)
                         </span>
                     </td>
                     <td>≡</td>
                     <td>
-                        ((<span class="terminal">lambda</span> (<span class="nonterminal">var<sub>1</sub></span> <span class="nonterminal">var<sub>2</sub></span> … <span class="nonterminal">var<sub>n</sub></span>) <span class="nonterminal">body-form</span>* ) <span class="nonterminal">form<sub>1</sub></span> <span class="nonterminal">form<sub>2</sub></span> … <span class="nonterminal">form<sub>n</sub></span>)
+                        ((<span class="terminal">lambda</span> (<span class="nonterminal">var<sub>1</sub></span> <span class="nonterminal">var<sub>2</sub></span> … <span class="nonterminal">var<sub>n</sub></span>) <span class="nonterminal">body-form*</span>) <span class="nonterminal">form<sub>1</sub></span> <span class="nonterminal">form<sub>2</sub></span> … <span class="nonterminal">form<sub>n</sub></span>)
                     </td>
                 </tr>
             </table>
