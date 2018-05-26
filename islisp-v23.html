@@ -2167,9 +2167,9 @@ Where:
        (tagbody
          ,tag
          (return-from ,tag
-         (flet ((retry () (go ,tag)))
-           ,@forms))))))
-                ⇒ with-retry
+           (flet ((retry () (go ,tag)))
+             ,@forms))))))
+                  ⇒ with-retry
                 
 (let ((i -5))
   (with-retry
